@@ -1,0 +1,141 @@
+<resources>
+    <string name="app_name">Sefricam</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">lnDmaHV1WzIn9pFAVdplY0vZNTWfNoQidKppqRyz</string>
+    <string name="back4app_client_key">dYLCw4So2tLDJVcAdGTFwnObVyPToAQAkNaAWneB</string>
+
+
+    <!-- Text Views -->
+    <!-- Pantalla Bienvenida -->
+    <string name="tv_Bienvenida">Bienvenido a Sefricam</string>
+
+    <!-- Pantalla Login -->
+    <string name="tv_ContrasenaOlvidada">¿Ha olvidado su contraseña?</string>
+
+    <!-- Pantalla Recuperar Contraseña -->
+    <string name="tv_IntroduzcaSuEmail">Introduzca su email para recuperar su contraseña:</string>
+
+    <!-- Pantalla Menu Principal -->
+    <string name="tv_Localizacion">Localización:</string>
+    <string name="tv_FechaDeToma">Fecha de toma de datos:</string>
+    <string name="tv_FechaVacia">__-__-____</string>
+    <string name="tv_NumeroGrupo">Numero de Grupo:</string>
+    <string name="tv_DNI">DNI:</string>
+    <!-- Pantalla Datos de Aves -->
+
+    <!-- Pantalla Datos de Entorno -->
+
+    <!-- Pantalla Metodos de Captura -->
+
+    <!-- Pantalla Datos de Avistamiento -->
+
+
+
+    <!-- Texto Botones -->
+    <!-- Pantalla Bienvenida -->
+    <string name="btn_Comenzar">Comenzar</string>
+
+    <!-- Pantalla Login -->
+    <string name="btn_IniciarSesion">Iniciar Sesión</string>
+
+    <!-- Pantalla Recuperar Contraseña -->
+    <string name="btn_RecuperarContrasena">Recuperar contraseña</string>
+
+    <!-- Pantalla Menu Principal -->
+    <string name="btn_LocalizacionActual">Localizacion Actual</string>
+    <string name="btn_DatosAves">Datos Aves</string>
+    <string name="btn_DatosEntorno">Datos Entorno</string>
+    <string name="btn_MetodosCaptura">Metodos de Captura</string>
+    <string name="btn_DatosAvistamientos">Datos avistamientos</string>
+    <string name="btn_Salir">Salir</string>
+    <!-- Pantalla Datos de Aves -->
+
+    <!-- Pantalla Datos de Entorno -->
+
+    <!-- Pantalla Metodos de Captura -->
+
+    <!-- Pantalla Datos de Avistamiento -->
+
+
+
+    <!-- Hints -->
+    <!-- Pantalla Login -->
+    <string name="hint_email">Introduzca su email</string> <!-- Compartido con recuperar contraseña -->
+    <string name="hint_contrasena">Introduzca su contraseña</string> <!-- Compartido con recuperar contraseña -->
+
+    <!-- Pantalla Menu Principal -->
+    <string name="hint_Latitud">LATITUD</string>
+    <string name="hint_Longitud">LONGITUD</string>
+
+    <!-- Pantalla Datos de Aves -->
+
+    <!-- Pantalla Datos de Entorno -->
+
+    <!-- Pantalla Metodos de Captura -->
+
+    <!-- Pantalla Datos de Avistamiento -->
+
+
+    <string name="DELIMITADOR">DELIMITADOR</string>
+    <string name="hint_ValorPredeterminadoAvistamiento">0</string>
+
+    <!-- Nombres Pajaros -->
+    <string name="tv_camachuelo">Camachuelo</string>
+    <string name="tv_jilguero">Jilguero</string>
+    <string name="tv_lugano">Lúgano</string>
+    <string name="tv_pardillo_comun">Pard. Común</string>
+    <string name="tv_picogordo">Picogordo</string>
+    <string name="tv_pinzon_comun">Pinzón Común</string>
+    <string name="tv_pinzon_real">Pinzón Real</string>
+    <string name="tv_piquituerto">Piquituerto</string>
+    <string name="tv_verdecillo">Verdecillo</string>
+    <string name="tv_verdon_comun">V. Común</string>
+    <string name="tv_verdon_serrano">V. Serrano</string>
+
+
+    <!-- Comunes -->
+    <string name="btn_Guardar">Guardar</string>
+    <string name="btn_Volver">Volver</string>
+    <string name="et_ValorPredeterminado0">0</string>
+
+
+    <string name="cb_Especie01">Azotacristos</string>
+    <string name="cb_Especie02">Cardillo</string>
+    <string name="cb_Especie03">C. Borriquero</string>
+    <string name="cb_Especie04">C. Cabeza pollo</string>
+    <string name="cb_Especie05">C. Corredor</string>
+    <string name="cb_Especie06">C. Cuco</string>
+    <string name="cb_Especie07">C. de calvero</string>
+    <string name="cb_Especie08">C. Cardador</string>
+    <string name="cb_Especie09">C. Delgado</string>
+    <string name="cb_Especie10">C. Estrellado</string>
+    <string name="cb_Especie11">C. Gigante</string>
+    <string name="cb_Especie12">C. Mariano</string>
+    <string name="cb_Especie13">C. Quesero</string>
+    <string name="cb_Especie14">Garmon./Escob.</string>
+    <string name="cb_Especie15">Girasol</string>
+    <string name="cb_Especie16">Olivarda</string>
+    <string name="cb_Especie17">Olivardilla</string>
+    <string name="cb_Especie18">Coniza</string>
+    <string name="cb_Especie19">Lechuguilla</string>
+    <string name="cb_Especie20">Ajonjera</string>
+    <string name="cb_Especie21">Achicoria azul</string>
+    <string name="cb_Especie22">Cenizo</string>
+    <string name="cb_Especie23">Cerraja</string>
+    <string name="cb_Especie24">Chupamiel</string>
+    <string name="cb_Especie25">Corremundo</string>
+    <string name="cb_Especie26">Garamasta</string>
+    <string name="cb_Especie27">Hierba cana</string>
+    <string name="cb_Especie28">H. de Santiago</string>
+    <string name="cb_Especie29">Jaram./Raba.</string>
+    <string name="cb_Especie30">Lavan./Can.</string>
+    <string name="cb_Especie31">Ortiga Menor</string>
+    <string name="cb_Especie32">Romero</string>
+    <string name="cb_Especie33">Verrucaria</string>
+    <string name="cb_Especie34">Vivorera</string>
+    <string name="cb_Especie35">Zurron de pastor</string>
+
+</resources>

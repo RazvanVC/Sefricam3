@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blanco">
+
+    <ImageView
+        android:id="@+id/iv_LogoGrandeEntorno"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/iconofedcaza" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="4"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/LinLH_BotonesGSEntorno"
+        app:layout_constraintTop_toBottomOf="@+id/iv_LogoGrandeEntorno">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_IntruduceTemperatura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Introduzca la temperatura:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etnd_TemperaturaInicio"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Temperatura Incio"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:textColor="@color/Negro"
+                    android:textSize="@dimen/_13ssp" />
+
+                <Space
+                    android:layout_width="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0" />
+
+                <EditText
+                    android:id="@+id/etnd_TemperaturaFin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Temperatura Fin"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:textColor="@color/Negro"
+                    android:textSize="@dimen/_13ssp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_Zonificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zonificacion por uso del Suelo"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"/>
+
+            <Spinner
+                android:id="@+id/sp_Zonificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_FuerzaViento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Viento (Marque la correspondiente)"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"/>
+
+            <RadioGroup
+                android:id="@+id/rbg_FuerzaViento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_VientoCalma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CALMA"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_VientoLigero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LIGERO"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_VientoFuerte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FUERTE"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_DireccionViento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seleccione la direccion del viento:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"/>
+
+            <Spinner
+                android:id="@+id/sp_DireccionViento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_Nubes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nubes (Marque la correspondiente)"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"/>
+
+            <RadioGroup
+                android:id="@+id/rbg_Nubes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_NubesAusente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AUSENTES"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_NubesNYC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NUBES Y CLAROS"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_NubesCubierto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CUBIERTO"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_NubesMCubierto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MUY CUBIERTO"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_Lluvia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lluvia (Marque la correspondiente)"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"/>
+
+            <RadioGroup
+                android:id="@+id/rbg_Lluvia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_LluviaAusente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AUSENTE"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_LluviaIntermitente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INTERMITENTE"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_LluviaLigera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LIGERA"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_LluviaFuerte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FUERTE"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_LluviaMFuerte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MUY FUERTE"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plantas (Marque las correspondientes)"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie01"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie02"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie02"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie03"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie03"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie04"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie04"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie05"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie05"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie06"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie06"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie07"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie07"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie08"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie08"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie09"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie09"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie10"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie11"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie12"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie13"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie14"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie15"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie16"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie17"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie17"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie18"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie19"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie19"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie20"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie21"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie21"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie22"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie22"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie23"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie23"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie24"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie24"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie25"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie25"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie26"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie26"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie27"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie27"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie28"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie28"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie29"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie29"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie30"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie30"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie31"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie31"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie32"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie32"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_Especie33"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie33"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox
+                    android:id="@+id/cb_Especie34"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie34"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <CheckBox
+                    android:id="@+id/cb_Especie35"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie35"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/LinLH_BotonesGSEntorno"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_GuardarEntorno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_redondeado"
+            android:text="Guardar"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_18ssp" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+        <Button
+            android:id="@+id/btn_VolverEntorno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_redondeado"
+            android:text="Volver"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_18ssp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blanco">
+
+    <ImageView
+        android:id="@+id/iv_LogoGrandeAves"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_90sdp"
+        app:layout_constraintVertical_weight="1"
+        android:background="@drawable/iconofedcaza"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_LogoGrandeAves"
+        app:layout_constraintBottom_toTopOf="@+id/LinLH_BotonesGSAves"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingLeft="@dimen/_10sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Hora de captura del ave:"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp" />
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:id="@+id/tv_HoraCapturaAve"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:text="--:--"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Seleccione la especie: "/>
+
+            <Spinner
+                android:id="@+id/sp_Especie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Ejemplares Capturados"/>
+
+            <Spinner
+                android:id="@+id/sp_Capturas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Introduzca los datos del ave"/>
+            <EditText
+                android:id="@+id/etn_NumeroAnilla"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15ssp"
+                android:inputType="number"
+                android:textColor="@color/Negro"
+                android:hint="Numero de anilla"
+                android:enabled="true"/>
+            <EditText
+                android:id="@+id/et_NumeroAnillaPrexistente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/Negro"
+                android:hint="Anilla preexistente"
+                android:enabled="true"/>
+            <EditText
+                android:id="@+id/etnd_Peso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/Negro"
+                android:hint="Peso (gr)"
+                android:enabled="true"/>
+            <EditText
+                android:id="@+id/etnd_LongitudTarso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/Negro"
+                android:hint="Longitud del tarso (cm)"
+                android:enabled="true"/>
+            <EditText
+                android:id="@+id/etnd_LongitudPico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/Negro"
+                android:hint="Longitud del pico (cm)"
+                android:enabled="true"/>
+            <EditText
+                android:id="@+id/etnd_LongitudTerceraPrimaria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/Negro"
+                android:hint="Longitud tercera primaria (cm)"
+                android:enabled="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Local"/>
+            <RadioGroup
+                android:id="@+id/rbg_Localizacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_LocalizacionLocal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Si"/>
+                <RadioButton
+                    android:id="@+id/rb_LocalizacionNoLocal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="No"/>
+
+                <RadioButton
+                    android:id="@+id/rb_LocalizacionIndeterminado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Indeterminado"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Sexo"/>
+            <RadioGroup
+                android:id="@+id/rbg_Sexo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_SexoMacho"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Macho"/>
+                <RadioButton
+                    android:id="@+id/rb_SexoHembra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Hembra"/>
+                <RadioButton
+                    android:id="@+id/rb_SexoIndeterminado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Indeterminado"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Edad"/>
+            <RadioGroup
+                android:id="@+id/rbg_Edad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_EdadJuvenil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Juvenil"/>
+                <RadioButton
+                    android:id="@+id/rb_EdadAdulto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Adulto"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Condicion Fisica"/>
+            <RadioGroup
+                android:id="@+id/rbg_CondicionFisica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_CondicionBuena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Buena"/>
+                <RadioButton
+                    android:id="@+id/rb_CondicionLesiones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Presenta Lesiones"/>
+                <RadioButton
+                    android:id="@+id/rb_CondicionEnfermedad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Sintomas de enfermedad"/>
+                <RadioButton
+                    android:id="@+id/rb_CondicionMalformacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Malformacion"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Grasa"/>
+            <RadioGroup
+                android:id="@+id/rbg_Grasa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_GrasaAusente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Ausente"/>
+                <RadioButton
+                    android:id="@+id/rb_GrasaInter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Interclavicular"/>
+                <RadioButton
+                    android:id="@+id/rb_GrasaInter_Abd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Inter. + Abdominal"/>
+                <RadioButton
+                    android:id="@+id/rb_GrasaInter_Abd_Pectoral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Inter. + Abdominal + Pectoral"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Músculo Pectoral"/>
+            <RadioGroup
+                android:id="@+id/rbg_MusculoPectoral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_MusculoQEvidente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Quilla evidente"/>
+                <RadioButton
+                    android:id="@+id/rb_MusculoQDistinguible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Quilla distinguible"/>
+                <RadioButton
+                    android:id="@+id/rb_MusculoQLigera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Quilla ligera"/>
+                <RadioButton
+                    android:id="@+id/rb_MusculoNoQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="No marca quilla"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="Muda"/>
+            <RadioGroup
+                android:id="@+id/rbg_Muda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_MudaAusente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Ausente"/>
+                <RadioButton
+                    android:id="@+id/rb_MudaEnCurso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="En curso"/>
+                <RadioButton
+                    android:id="@+id/rb_MudaTerminada"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Terminada"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp"
+                android:text="(SI HEMBRA) Placa incubatriz"/>
+            <RadioGroup
+                android:id="@+id/rbg_PlacaInc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="0dp">
+                <RadioButton
+                    android:id="@+id/rb_PlacaIncNoEvidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="No evidencia"/>
+                <RadioButton
+                    android:id="@+id/rb_PlacaIncIncompleta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Incompleta"/>
+                <RadioButton
+                    android:id="@+id/rb_PlacaIncMEvidente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp"
+                    android:text="Muy evidente"/>
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/LinLH_BotonesGSAves"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:id="@+id/btn_EnviarAves"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_redondeado"
+
+            android:text="Enviar"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_18ssp" />
+
+        <Space
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/btn_VolverAves"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boton_redondeado"
+            android:text="Volver"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_18ssp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

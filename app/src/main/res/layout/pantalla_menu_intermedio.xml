@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_LogoGrandeIncio"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_100sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/iconofedcaza"
+        />
+
+    <LinearLayout
+        android:id="@+id/LinLV_TextosBienvenida"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_LogoGrandeIncio"
+        >
+
+        <TextView
+            android:id="@+id/tv_Bienvenida"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="¡Bienvenido "
+            android:textColor="@color/VerdePrimario"
+            android:textSize="@dimen/_15ssp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="DNI:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+            <TextView
+                android:id="@+id/tv_DNI"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Numero de Grupo: "
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+            <TextView
+                android:id="@+id/tv_NGrupo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinLV_BotonesSeleccionMenu"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LinLV_TextosBienvenida">
+
+        <Button
+            android:id="@+id/btn_Menu_Capturas_Entorno"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:maxHeight="@dimen/_30sdp"
+            android:background="@drawable/boton_semiredondeado"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:text="Datos de capturas y entorno"
+            android:textAlignment="textStart"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_15ssp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp" />
+
+        <Button
+            android:id="@+id/btn_Consular_Envios"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:maxHeight="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:background="@drawable/boton_semiredondeado"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:text="Mis datos"
+            android:textAlignment="textStart"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_15ssp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp" />
+
+        <Button
+            android:id="@+id/btn_Salir"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:maxHeight="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:background="@drawable/boton_semiredondeado"
+            android:paddingStart="@dimen/_10sdp"
+            android:text="SALIR"
+            android:textAlignment="textStart"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_15ssp" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

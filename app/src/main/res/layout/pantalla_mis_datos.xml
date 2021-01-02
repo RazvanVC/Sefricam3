@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/Blanco">
+
+    <ImageView
+        android:id="@+id/iv_LogoGrandeIncio"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_100sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/iconofedcaza"
+        app:layout_constraintVertical_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/tv_MisDatos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_LogoGrandeIncio"
+
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/boton_semiredondeado"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:text="Mis Datos"
+        android:textAlignment="textStart"
+        android:textColor="@color/Blanco"
+        android:textSize="@dimen/_20ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/btn_VolverDatos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_MisDatos"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_weight="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <Space
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_NombreDatos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Apellidos:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <Space
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_ApellidosDatos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DNI:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <Space
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_DNIDatos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Numero grupo:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <Space
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_NumeroGrupoDatos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Aves enviadas:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <Space
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_CapturasEnviadasDatos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fichas enviadas:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <Space
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_DatosEnviadosDatos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_VolverDatos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/boton_redondeado"
+        android:text="@string/btn_Volver"
+        android:textColor="@color/Blanco"
+        android:textSize="@dimen/_20ssp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

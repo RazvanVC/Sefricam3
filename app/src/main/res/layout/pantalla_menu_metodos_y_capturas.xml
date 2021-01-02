@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blanco"
+    tools:ignore="ContentDescription">
+
+    <ImageView
+        android:id="@+id/iv_LogoGrandeMenuPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_90sdp"
+        android:background="@drawable/iconofedcaza"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/linLH_Localizacion"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_LogoGrandeMenuPrincipal"
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/tv_Localizacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="2"
+
+            android:gravity="center_vertical"
+            android:text="@string/tv_Localizacion"
+            android:textColor="@color/VerdePrimario"
+            android:textSize="@dimen/_15ssp" />
+
+        <Button
+            android:id="@+id/btn_LocalizacionActual"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="3"
+            android:background="@drawable/boton_redondeado"
+            android:text="@string/btn_LocalizacionActual"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_13ssp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLH_Coordenadas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintVertical_weight="1"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linLH_Localizacion">
+
+        <EditText
+            android:id="@+id/etnd_Latitud"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+
+            android:ems="10"
+            android:hint="@string/hint_Latitud"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textSize="@dimen/_15ssp"
+            android:enabled="false"/>
+
+        <Space
+            android:id="@+id/dpSpace_linLHCoords"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:id="@+id/etnd_Longitud"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+
+            android:ems="10"
+            android:hint="@string/hint_Longitud"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textSize="@dimen/_15ssp"
+            android:enabled="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLH_Fecha"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintVertical_weight="1"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linLH_Coordenadas">
+
+        <TextView
+            android:id="@+id/tv_FechaDeToma"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="@string/tv_FechaDeToma"
+            android:textColor="@color/VerdePrimario"
+            android:textSize="@dimen/_15ssp" />
+
+        <TextView
+            android:id="@+id/tv_FechaDeTomaIntroducida"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="@string/tv_FechaVacia"
+            android:textAlignment="center"
+            android:textColor="@color/Negro"
+            android:textSize="@dimen/_15ssp"
+            android:enabled="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLV_Botones"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintBottom_toTopOf="@+id/linLH_BotonesGS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linLH_Fecha">
+
+        <Button
+            android:id="@+id/btn_DatosAves"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/boton_semiredondeado_apagado"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/btn_DatosAves"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_17ssp"
+            tools:ignore="RtlHardcoded,RtlSymmetry"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/btn_DatosEntorno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/boton_semiredondeado"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/btn_DatosEntorno"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_17ssp"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btn_MetodosCaptura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/boton_semiredondeado"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/btn_MetodosCaptura"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_17ssp"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btn_DatosAvistamientos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/boton_semiredondeado"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/btn_DatosAvistamientos"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_17ssp"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+        <Button
+            android:id="@+id/btn_MiEnvio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/boton_semiredondeado"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="Mi envio"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_17ssp"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLH_BotonesGS"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.5"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_EnviarMC"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/boton_redondeado_apagado"
+            android:gravity="center"
+            android:text="Enviar"
+            android:enabled="false"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_18ssp" />
+
+        <Space
+            android:id="@+id/dpSpace_linLHBotones"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_VolverMenuPrincipalMC"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/boton_redondeado"
+            android:gravity="center"
+            android:text="@string/btn_Volver"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_18ssp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

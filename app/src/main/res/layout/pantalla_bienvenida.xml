@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blanco"
+    tools:ignore="ContentDescription"
+    >
+
+
+    <TextView
+        android:id="@+id/tv_FondoVerde"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        app:layout_constraintVertical_weight="3"
+        android:background="@color/VerdeSecundario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_FondoBlanco"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="7"
+        android:background="@color/Blanco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_FondoVerde" />
+
+    <ImageView
+        android:id="@+id/iv_LogoPequenoBienvenida"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:adjustViewBounds="true"
+        android:clickable="false"
+        android:background="@drawable/logo_fmcaza"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.77"
+        />
+
+    <TextView
+        android:id="@+id/tv_Bienvenida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tv_Bienvenida"
+        android:textColor="@color/VerdePrimario"
+        android:textSize="@dimen/_28ssp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/iv_LogoPequenoBienvenida"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_Comenzar"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/btn_Comenzar"
+        android:textColor="@color/Blanco"
+        android:textSize="@dimen/_26ssp"
+        android:background="@drawable/boton_redondeado"
+        app:layout_constraintTop_toBottomOf="@id/tv_Bienvenida"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Comenzar"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/VerdePrimario"
+        android:text="Version 3.0"
+        android:textAlignment="center"/>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

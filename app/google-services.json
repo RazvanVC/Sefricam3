@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "770218067258",
+    "firebase_url": "https://sefricam-v3.firebaseio.com",
+    "project_id": "sefricam-v3",
+    "storage_bucket": "sefricam-v3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770218067258:android:0d8b8390871aef93e5bc03",
+        "android_client_info": {
+          "package_name": "com.sefricam.sefricam3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770218067258-62v89gvuvndqhit9no21flm3bdbrso49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE4aHGMgW62_6Zx5gumsofjZcDnDNHjoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770218067258-62v89gvuvndqhit9no21flm3bdbrso49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
