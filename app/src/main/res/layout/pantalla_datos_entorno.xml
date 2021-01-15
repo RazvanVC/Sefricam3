@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Blanco">
@@ -726,6 +724,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center">
+
                 <CheckBox
                     android:id="@+id/cb_Especie35"
                     android:layout_width="0dp"
@@ -733,7 +732,58 @@
                     android:layout_weight="1"
                     android:text="@string/cb_Especie35"
                     android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp" />
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content" />
+
+                <CheckBox
+                    android:id="@+id/cb_Especie36"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cb_Especie36"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15sdp"
+                android:text="Especies no registradas" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <EditText
+                    android:id="@+id/et_Especie37"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Especie no registrada"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <Space
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/et_Especie38"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Especie no registrada"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

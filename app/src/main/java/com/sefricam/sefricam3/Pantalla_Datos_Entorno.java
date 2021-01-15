@@ -16,24 +16,25 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pantalla_Datos_Entorno extends Activity implements View.OnClickListener{
+public class Pantalla_Datos_Entorno extends Activity implements View.OnClickListener {
 
     private Spinner sp_Zonificacion, sp_DireccionViento;
     private Button btn_Guardar, btn_Volver;
 
     //Coponentes
     private EditText etnd_TemperaturaInicio, etnd_TemperaturaFin;
-    private RadioGroup rbg_FuerzaViento,rbg_Nubes,rbg_Lluvia;
+    private RadioGroup rbg_FuerzaViento, rbg_Nubes, rbg_Lluvia;
     private RadioButton rb_VientoCalma, rb_VientoLigero, rb_VientoFuerte;
     private RadioButton rb_NubesAusente, rb_NubesNYC, rb_NubesCubierto, rb_NubesMCubierto;
     private RadioButton rb_LluviaAusente, rb_LluviaIntermitente, rb_LluviaLigera, rb_LluviaFuerte, rb_LluviaMFuerte;
-    private CheckBox cb_Especie01,cb_Especie02,cb_Especie03,cb_Especie04,cb_Especie05;
-    private CheckBox cb_Especie06,cb_Especie07,cb_Especie08,cb_Especie09,cb_Especie10;
-    private CheckBox cb_Especie11,cb_Especie12,cb_Especie13,cb_Especie14,cb_Especie15;
-    private CheckBox cb_Especie16,cb_Especie17,cb_Especie18,cb_Especie19,cb_Especie20;
-    private CheckBox cb_Especie21,cb_Especie22,cb_Especie23,cb_Especie24,cb_Especie25;
-    private CheckBox cb_Especie26,cb_Especie27,cb_Especie28,cb_Especie29,cb_Especie30;
-    private CheckBox cb_Especie31,cb_Especie32,cb_Especie33,cb_Especie34,cb_Especie35;
+    private CheckBox cb_Especie01, cb_Especie02, cb_Especie03, cb_Especie04, cb_Especie05;
+    private CheckBox cb_Especie06, cb_Especie07, cb_Especie08, cb_Especie09, cb_Especie10;
+    private CheckBox cb_Especie11, cb_Especie12, cb_Especie13, cb_Especie14, cb_Especie15;
+    private CheckBox cb_Especie16, cb_Especie17, cb_Especie18, cb_Especie19, cb_Especie20;
+    private CheckBox cb_Especie21, cb_Especie22, cb_Especie23, cb_Especie24, cb_Especie25;
+    private CheckBox cb_Especie26, cb_Especie27, cb_Especie28, cb_Especie29, cb_Especie30;
+    private CheckBox cb_Especie31, cb_Especie32, cb_Especie33, cb_Especie34, cb_Especie35, cb_Especie36;
+    private EditText et_Especie37, et_Especie38;
 
     private int viento;
     private int nubes;
@@ -58,7 +59,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             recuperarDatosRecibidos(datos);
 
             System.out.println("Datos recibidos en Datos de Entorno");
-            imprimirDatosRecibidos();
+            imprimirDatos();
         }
 
         iniciarFindView();
@@ -147,120 +148,122 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         int i = 0;
 
         //Metodo a cambiar ya que el array va a pasar a ser booleano y de tamaño fijo
-        while (i  < datosEntorno.getPlantas().size()){
-            String planta = datosEntorno.getPlantas().get(i);
-            marcarPlanta(planta);
+        while (i < datosEntorno.getPlantas().size()) {
+            boolean planta = datosEntorno.getPlantas().get(i);
+            marcarPlanta(planta, i);
             i++;
         }
     }
 
-    private void marcarPlanta(String planta) {
-        switch (planta){
-            case "Azotacristos":
-                cb_Especie01.setChecked(true);
+    private void marcarPlanta(boolean planta, Integer numero) {
+        switch (numero) {
+            case 0:
+                cb_Especie01.setChecked(planta);
                 break;
-            case "Cardillo":
-                cb_Especie02.setChecked(true);
+            case 1:
+                cb_Especie02.setChecked(planta);
                 break;
-            case "C. borriquero":
-                cb_Especie03.setChecked(true);
+            case 2:
+                cb_Especie03.setChecked(planta);
                 break;
-            case "C. cab. de pollo":
-                cb_Especie04.setChecked(true);
+            case 3:
+                cb_Especie04.setChecked(planta);
                 break;
-            case "C. corredor":
-                cb_Especie05.setChecked(true);
+            case 4:
+                cb_Especie05.setChecked(planta);
                 break;
-            case "C. cuco":
-                cb_Especie06.setChecked(true);
+            case 5:
+                cb_Especie06.setChecked(planta);
                 break;
-            case "C. de calvero":
-                cb_Especie07.setChecked(true);
+            case 6:
+                cb_Especie07.setChecked(planta);
                 break;
-            case "C. de carda.":
-                cb_Especie08.setChecked(true);
+            case 7:
+                cb_Especie08.setChecked(planta);
                 break;
-            case "C. delgado":
-                cb_Especie09.setChecked(true);
+            case 8:
+                cb_Especie09.setChecked(planta);
                 break;
-            case "C. estrellado":
-                cb_Especie10.setChecked(true);
+            case 9:
+                cb_Especie10.setChecked(planta);
                 break;
-            case "C. gigante":
-                cb_Especie11.setChecked(true);
+            case 10:
+                cb_Especie11.setChecked(planta);
                 break;
-            case "C. mariano":
-                cb_Especie12.setChecked(true);
+            case 11:
+                cb_Especie12.setChecked(planta);
                 break;
-            case "C. quesero":
-                cb_Especie13.setChecked(true);
+            case 12:
+                cb_Especie13.setChecked(planta);
                 break;
-            case "Garmon./Escob.":
-                cb_Especie14.setChecked(true);
+            case 13:
+                cb_Especie14.setChecked(planta);
                 break;
-            case "Girasol":
-                cb_Especie15.setChecked(true);
+            case 14:
+                cb_Especie15.setChecked(planta);
                 break;
-            case "Olivarda":
-                cb_Especie16.setChecked(true);
+            case 15:
+                cb_Especie16.setChecked(planta);
                 break;
-            case "Olivardilla":
-                cb_Especie17.setChecked(true);
+            case 16:
+                cb_Especie17.setChecked(planta);
                 break;
-            case "Coniza":
-                cb_Especie18.setChecked(true);
+            case 17:
+                cb_Especie18.setChecked(planta);
                 break;
-            case "Lechuguilla":
-                cb_Especie19.setChecked(true);
+            case 18:
+                cb_Especie19.setChecked(planta);
                 break;
-            case "Ajongera":
-                cb_Especie20.setChecked(true);
+            case 19:
+                cb_Especie20.setChecked(planta);
                 break;
-            case "Achicoria azul":
-                cb_Especie21.setChecked(true);
+            case 20:
+                cb_Especie21.setChecked(planta);
                 break;
-            case "Cenizo":
-                cb_Especie22.setChecked(true);
+            case 21:
+                cb_Especie22.setChecked(planta);
                 break;
-            case "Cerraja":
-                cb_Especie23.setChecked(true);
+            case 22:
+                cb_Especie23.setChecked(planta);
                 break;
-            case "Chupamiel":
-                cb_Especie24.setChecked(true);
+            case 23:
+                cb_Especie24.setChecked(planta);
                 break;
-            case "Corremundo":
-                cb_Especie25.setChecked(true);
+            case 24:
+                cb_Especie25.setChecked(planta);
                 break;
-            case "Garamasta":
-                cb_Especie26.setChecked(true);
+            case 25:
+                cb_Especie26.setChecked(planta);
                 break;
-            case "Hierba cana":
-                cb_Especie27.setChecked(true);
+            case 26:
+                cb_Especie27.setChecked(planta);
                 break;
-            case "H. de Santiago":
-                cb_Especie28.setChecked(true);
+            case 27:
+                cb_Especie28.setChecked(planta);
                 break;
-            case "Jaram./Raba":
-                cb_Especie29.setChecked(true);
+            case 28:
+                cb_Especie29.setChecked(planta);
                 break;
-            case "Lavan./Can.":
-                cb_Especie30.setChecked(true);
+            case 29:
+                cb_Especie30.setChecked(planta);
                 break;
-            case "Oritiga Menor":
-                cb_Especie31.setChecked(true);
+            case 30:
+                cb_Especie31.setChecked(planta);
                 break;
-            case "Romero":
-                cb_Especie32.setChecked(true);
+            case 31:
+                cb_Especie32.setChecked(planta);
                 break;
-            case "Verrucaria":
-                cb_Especie33.setChecked(true);
+            case 32:
+                cb_Especie33.setChecked(planta);
                 break;
-            case "Vivorera":
-                cb_Especie34.setChecked(true);
+            case 33:
+                cb_Especie34.setChecked(planta);
                 break;
-            case "Zurron de pastor":
-                cb_Especie35.setChecked(true);
+            case 34:
+                cb_Especie35.setChecked(planta);
                 break;
+            case 35:
+                cb_Especie36.setChecked(planta);
         }
     }
 
@@ -337,6 +340,10 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         cb_Especie33 = findViewById(R.id.cb_Especie33);
         cb_Especie34 = findViewById(R.id.cb_Especie34);
         cb_Especie35 = findViewById(R.id.cb_Especie35);
+        cb_Especie36 = findViewById(R.id.cb_Especie36);
+
+        et_Especie37 = findViewById(R.id.et_Especie37);
+        et_Especie38 = findViewById(R.id.et_Especie38);
 
         //Botones
         btn_Guardar = findViewById(R.id.btn_GuardarEntorno);
@@ -492,71 +499,62 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 lluvia=4;
                 break;
             case R.id.rb_LluviaMFuerte:
-                lluvia=5;
+                lluvia = 5;
                 break;
         }
-        ArrayList<String> plantas = escogerPlantas();
+        ArrayList<Boolean> plantas = escogerPlantas();
 
-        datosEntorno = new DatosEntorno(tInicio, tFin, zonificacion,viento, direccionViento,nubes,lluvia, plantas);
+        datosEntorno = new DatosEntorno(tInicio, tFin, zonificacion, viento, direccionViento, nubes, lluvia, plantas, et_Especie37.getText().toString(), et_Especie38.getText().toString());
 
 
     }
 
-    private ArrayList<String> escogerPlantas() {
-        ArrayList<String> plantasSeleccionadas = new ArrayList<>();
+    private ArrayList<Boolean> escogerPlantas() {
+        ArrayList<Boolean> plantasSeleccionadas = new ArrayList<>();
 
-        if (cb_Especie01.isChecked()) plantasSeleccionadas.add(cb_Especie01.getText().toString());
-        if (cb_Especie02.isChecked()) plantasSeleccionadas.add(cb_Especie02.getText().toString());
-        if (cb_Especie03.isChecked()) plantasSeleccionadas.add(cb_Especie03.getText().toString());
-        if (cb_Especie04.isChecked()) plantasSeleccionadas.add(cb_Especie04.getText().toString());
-        if (cb_Especie05.isChecked()) plantasSeleccionadas.add(cb_Especie05.getText().toString());
-        if (cb_Especie06.isChecked()) plantasSeleccionadas.add(cb_Especie06.getText().toString());
-        if (cb_Especie07.isChecked()) plantasSeleccionadas.add(cb_Especie07.getText().toString());
-        if (cb_Especie08.isChecked()) plantasSeleccionadas.add(cb_Especie08.getText().toString());
-        if (cb_Especie09.isChecked()) plantasSeleccionadas.add(cb_Especie09.getText().toString());
-        if (cb_Especie10.isChecked()) plantasSeleccionadas.add(cb_Especie10.getText().toString());
-        if (cb_Especie11.isChecked()) plantasSeleccionadas.add(cb_Especie11.getText().toString());
-        if (cb_Especie12.isChecked()) plantasSeleccionadas.add(cb_Especie12.getText().toString());
-        if (cb_Especie13.isChecked()) plantasSeleccionadas.add(cb_Especie13.getText().toString());
-        if (cb_Especie14.isChecked()) plantasSeleccionadas.add(cb_Especie14.getText().toString());
-        if (cb_Especie15.isChecked()) plantasSeleccionadas.add(cb_Especie15.getText().toString());
-        if (cb_Especie16.isChecked()) plantasSeleccionadas.add(cb_Especie16.getText().toString());
-        if (cb_Especie17.isChecked()) plantasSeleccionadas.add(cb_Especie17.getText().toString());
-        if (cb_Especie18.isChecked()) plantasSeleccionadas.add(cb_Especie18.getText().toString());
-        if (cb_Especie19.isChecked()) plantasSeleccionadas.add(cb_Especie19.getText().toString());
-        if (cb_Especie20.isChecked()) plantasSeleccionadas.add(cb_Especie20.getText().toString());
-        if (cb_Especie21.isChecked()) plantasSeleccionadas.add(cb_Especie21.getText().toString());
-        if (cb_Especie22.isChecked()) plantasSeleccionadas.add(cb_Especie22.getText().toString());
-        if (cb_Especie23.isChecked()) plantasSeleccionadas.add(cb_Especie23.getText().toString());
-        if (cb_Especie24.isChecked()) plantasSeleccionadas.add(cb_Especie24.getText().toString());
-        if (cb_Especie25.isChecked()) plantasSeleccionadas.add(cb_Especie25.getText().toString());
-        if (cb_Especie26.isChecked()) plantasSeleccionadas.add(cb_Especie26.getText().toString());
-        if (cb_Especie27.isChecked()) plantasSeleccionadas.add(cb_Especie27.getText().toString());
-        if (cb_Especie28.isChecked()) plantasSeleccionadas.add(cb_Especie28.getText().toString());
-        if (cb_Especie29.isChecked()) plantasSeleccionadas.add(cb_Especie29.getText().toString());
-        if (cb_Especie30.isChecked()) plantasSeleccionadas.add(cb_Especie30.getText().toString());
-        if (cb_Especie31.isChecked()) plantasSeleccionadas.add(cb_Especie31.getText().toString());
-        if (cb_Especie32.isChecked()) plantasSeleccionadas.add(cb_Especie32.getText().toString());
-        if (cb_Especie33.isChecked()) plantasSeleccionadas.add(cb_Especie33.getText().toString());
-        if (cb_Especie34.isChecked()) plantasSeleccionadas.add(cb_Especie34.getText().toString());
-        if (cb_Especie35.isChecked()) plantasSeleccionadas.add(cb_Especie35.getText().toString());
+        plantasSeleccionadas.add(cb_Especie01.isChecked());
+        plantasSeleccionadas.add(cb_Especie02.isChecked());
+        plantasSeleccionadas.add(cb_Especie03.isChecked());
+        plantasSeleccionadas.add(cb_Especie04.isChecked());
+        plantasSeleccionadas.add(cb_Especie05.isChecked());
+        plantasSeleccionadas.add(cb_Especie06.isChecked());
+        plantasSeleccionadas.add(cb_Especie07.isChecked());
+        plantasSeleccionadas.add(cb_Especie08.isChecked());
+        plantasSeleccionadas.add(cb_Especie09.isChecked());
+        plantasSeleccionadas.add(cb_Especie10.isChecked());
+        plantasSeleccionadas.add(cb_Especie11.isChecked());
+        plantasSeleccionadas.add(cb_Especie12.isChecked());
+        plantasSeleccionadas.add(cb_Especie13.isChecked());
+        plantasSeleccionadas.add(cb_Especie14.isChecked());
+        plantasSeleccionadas.add(cb_Especie15.isChecked());
+        plantasSeleccionadas.add(cb_Especie16.isChecked());
+        plantasSeleccionadas.add(cb_Especie17.isChecked());
+        plantasSeleccionadas.add(cb_Especie18.isChecked());
+        plantasSeleccionadas.add(cb_Especie19.isChecked());
+        plantasSeleccionadas.add(cb_Especie20.isChecked());
+        plantasSeleccionadas.add(cb_Especie21.isChecked());
+        plantasSeleccionadas.add(cb_Especie22.isChecked());
+        plantasSeleccionadas.add(cb_Especie23.isChecked());
+        plantasSeleccionadas.add(cb_Especie24.isChecked());
+        plantasSeleccionadas.add(cb_Especie25.isChecked());
+        plantasSeleccionadas.add(cb_Especie26.isChecked());
+        plantasSeleccionadas.add(cb_Especie27.isChecked());
+        plantasSeleccionadas.add(cb_Especie28.isChecked());
+        plantasSeleccionadas.add(cb_Especie29.isChecked());
+        plantasSeleccionadas.add(cb_Especie30.isChecked());
+        plantasSeleccionadas.add(cb_Especie31.isChecked());
+        plantasSeleccionadas.add(cb_Especie32.isChecked());
+        plantasSeleccionadas.add(cb_Especie33.isChecked());
+        plantasSeleccionadas.add(cb_Especie34.isChecked());
+        plantasSeleccionadas.add(cb_Especie35.isChecked());
+        plantasSeleccionadas.add(cb_Especie36.isChecked());
 
         return plantasSeleccionadas;
     }
 
     private void guardarParametros(Intent actividadDestino) {
 
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
+        imprimirDatos();
 
         actividadDestino.putExtra("EMAIL",email);
         actividadDestino.putExtra("DNI",DNI);
@@ -582,7 +580,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
     }
 
-    private void imprimirDatosRecibidos() {
+    private void imprimirDatos() {
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
