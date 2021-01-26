@@ -350,8 +350,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         docData.put("CA06", metodosCaptura.getControlAgentes().get(5));
 
         //Reclamos Capturas y Cimbeles
-        docData.put("RecCamichuelo", metodosCaptura.getReclamosCamachuelo());
-        docData.put("CapCamichuelo", metodosCaptura.getCapturasCamachuelo());
+        /*docData.put("RecCamichuelo", metodosCaptura.getReclamosCamachuelo());
+        docData.put("CapCamichuelo", metodosCaptura.getCapturasCamachueloM());
         docData.put("CimCamichuelo", metodosCaptura.getCimbelesCamachuelo());
         docData.put("RecJilguero", metodosCaptura.getReclamosJilguero());
         docData.put("CapJilguero", metodosCaptura.getCapturasJilguero());
@@ -382,7 +382,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         docData.put("CimVerdComun", metodosCaptura.getCimbelesVerdonComun());
         docData.put("RecVerdSerrano", metodosCaptura.getReclamosVerdonSerrano());
         docData.put("CapVerdSerrano", metodosCaptura.getCapturasVerdonSerrano());
-        docData.put("CimVerdSerrano", metodosCaptura.getCimbelesVerdonSerrano());
+        docData.put("CimVerdSerrano", metodosCaptura.getCimbelesVerdonSerrano());*/
 
         //Observaciones
         docData.put("Observaciones",metodosCaptura.getObservaciones());
