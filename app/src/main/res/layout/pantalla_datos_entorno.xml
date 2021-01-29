@@ -235,42 +235,111 @@
                     android:layout_height="wrap_content"
                     android:text="MUY FUERTE"
                     android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp" />
             </RadioGroup>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/cb_Especie01"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie01S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie01N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie01A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Plantas (Marque las correspondientes)"
+                android:text="Plantas"
                 android:textColor="@color/VerdePrimario"
-                android:textSize="@dimen/_15ssp"/>
+                android:textSize="@dimen/_15ssp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/cb_Especie01"
+                <TextView
+                    android:id="@+id/tv_Especie02"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie01"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie02"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie02"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie02"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie02S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie02N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie02A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -278,27 +347,95 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/cb_Especie03"
+                <TextView
+                    android:id="@+id/tv_Especie03"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie03"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
 
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie04"
+                <RadioGroup
+                    android:id="@+id/rbg_Especie03"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie03S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie03N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie03A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie04"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie04"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie04"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie04S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie04N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie04A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -306,27 +443,95 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/cb_Especie05"
+                <TextView
+                    android:id="@+id/tv_Especie05"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie05"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie06"
+                <RadioGroup
+                    android:id="@+id/rbg_Especie05"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie05S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie05N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie05A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie06"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie06"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie06"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie06S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie06N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie06A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -334,27 +539,95 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/cb_Especie07"
+                <TextView
+                    android:id="@+id/tv_Especie07"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie07"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
 
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie08"
+                <RadioGroup
+                    android:id="@+id/rbg_Especie07"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie07S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie07N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie07A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie08"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie08"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie08"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie08S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie08N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie08A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -362,391 +635,97 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/cb_Especie09"
+                <TextView
+                    android:id="@+id/tv_Especie09"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie09"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
 
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie10"
+                <RadioGroup
+                    android:id="@+id/rbg_Especie09"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie09S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie09N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie09A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="35"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/cb_Especie10"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie10S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Si"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie10N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie10A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Abundante"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario" />
+                </RadioGroup>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie11"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie11"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie12"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie12"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie13"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie13"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie14"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie15"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie15"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie16"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie16"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie17"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie17"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie18"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie18"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie19"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie19"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie20"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie20"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie21"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie21"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie22"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie22"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie23"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie23"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie24"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie24"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie25"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie25"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie26"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie26"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie27"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie27"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie28"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie28"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie29"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie29"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie30"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie30"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie31"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie31"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie32"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie32"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie33"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie33"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:id="@+id/cb_Especie34"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie34"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <CheckBox
-                    android:id="@+id/cb_Especie35"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie35"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp" />
-
-                <Space
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="wrap_content" />
-
-                <CheckBox
-                    android:id="@+id/cb_Especie36"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/cb_Especie36"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp" />
-            </LinearLayout>
 
             <TextView
                 android:layout_marginTop="@dimen/_5sdp"

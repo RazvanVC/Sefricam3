@@ -305,6 +305,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_LluviaMFuerte = findViewById(R.id.rb_LluviaMFuerte);
 
         //Check Box Especies Plantas
+        /*
         cb_Especie01 = findViewById(R.id.cb_Especie01);
         cb_Especie02 = findViewById(R.id.cb_Especie02);
         cb_Especie03 = findViewById(R.id.cb_Especie03);
@@ -344,7 +345,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
         et_Especie37 = findViewById(R.id.et_Especie37);
         et_Especie38 = findViewById(R.id.et_Especie38);
-
+*/
         //Botones
         btn_Guardar = findViewById(R.id.btn_GuardarEntorno);
         btn_Volver = findViewById(R.id.btn_VolverEntorno);
