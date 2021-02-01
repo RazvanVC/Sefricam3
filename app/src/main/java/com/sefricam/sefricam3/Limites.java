@@ -5,8 +5,10 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class Limites {
-    private int minLat, maxLat, minLon, maxLon, minTemp, maxTemp, maxNAnilla;
+import java.io.Serializable;
+
+public class Limites implements Serializable {
+    private int minLat, maxLat, minLon, maxLon, minTemp, maxTemp, minNAnilla, maxNAnilla;
     private int maxRecCamachuelo, maxCimCamachuelo, minAlaCamachuelo, maxAlaCamachuelo, minPicoCamachuelo, macPicoCamachuelo, minTarsoCamachuelo, maxTarsoCamachuelo, minPesoCamachuelo, maxPesoCamachuelo;
     private int maxRecJilguero, maxCimJilguero, minAlaJilguero, maxAlaJilguero, minPicoJilguero, macPicoJilguero, minTarsoJilguero, maxTarsoJilguero, minPesoJilguero, maxPesoJilguero;
     private int maxRecLugano, maxCimLugano, minAlaLugano, maxAlaLugano, minPicoLugano, macPicoLugano, minTarsoLugano, maxTarsoLugano, minPesoLugano, maxPesoLugano;
@@ -33,7 +35,12 @@ public class Limites {
             public void done(ParseObject result, ParseException e) {
                 if (e == null) {
                     //Datos Generales
-
+                    minLat = result.getInt("MinLat");
+                    maxLat = result.getInt("MaxLat");
+                    minLon = result.getInt("MinLon");
+                    maxLon = result.getInt("MaxLon");
+                    minTemp = result.getInt("MinTemp");
+                    maxTemp = result.getInt("MaxTemp");
 
                     //Datos Aves
                     maxRecCamachuelo = result.getInt("MaxRecCamachuelo");
@@ -513,5 +520,17 @@ public class Limites {
 
     public int getMaxPesoVerdSerrano() {
         return maxPesoVerdSerrano;
+    }
+
+    public int getMinNAnilla() {
+        return minNAnilla;
+    }
+
+    public void setMinNAnilla(int minNAnilla) {
+        this.minNAnilla = minNAnilla;
+    }
+
+    public void setMaxNAnilla(int maxNAnilla) {
+        this.maxNAnilla = maxNAnilla;
     }
 }

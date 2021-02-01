@@ -53,6 +53,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
+    private Limites limites;
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
@@ -569,6 +570,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("LIMITES", limites);
 
     }
 
@@ -582,6 +584,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
     private void imprimirDatosRecibidos() {

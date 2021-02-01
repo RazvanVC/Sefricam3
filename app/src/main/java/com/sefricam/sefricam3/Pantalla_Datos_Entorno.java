@@ -46,6 +46,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
+    private Limites limites;
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
@@ -586,8 +587,8 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     }
 
     private boolean comprobarCampos() {
-        double temperaturaMinima = -15.0;
-        double temperaturaMaxima = +40.0;
+        double temperaturaMinima = limites.getMinTemp();
+        double temperaturaMaxima = limites.getMaxTemp();
         if (sp_Zonificacion.getSelectedItem().toString().equals("Seleccione el que corresponda")) return false;
         if (rbg_FuerzaViento.getCheckedRadioButtonId()==-1) return false;
         if (sp_DireccionViento.getSelectedItem().toString().equals("Seleccione la que corresponda")) return false;
@@ -1086,9 +1087,9 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         actividadDestino.putExtra("EMAIL", email);
         actividadDestino.putExtra("DNI", DNI);
         actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", (Serializable) datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", (Serializable) datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", (Serializable) metodosCaptura);
+        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
+        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
+        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
@@ -1105,12 +1106,14 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
     private void imprimirDatos() {
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
+        System.out.println("LIMITES                => " + limites);
         System.out.println("____________________________________________________");
         System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
         System.out.println("DATOS ENTORNO          => " + datosEntorno);

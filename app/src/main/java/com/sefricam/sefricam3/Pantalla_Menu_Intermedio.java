@@ -31,6 +31,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
     private Button btn_Salir, btn_MenuCapturasEntorno, btn_Envios;
     public String email;
     private TextView tv_NGrupo, tv_DNI, tv_Bienvenida;
+    private Limites limites;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +42,12 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         iniciarOnClickListener();
 
         //Carga de datos recuperados de la BD
-        db = FirebaseFirestore.getInstance();
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             email = datos.getString("EMAIL");
+            limites = (Limites) datos.getSerializable("LIMITES");
             cargarDatos(email);
         }
-        Log.d("EMAIL =>", email);
     }
 
     private void cargarDatos(String email) {
@@ -113,6 +113,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             activity.putExtra("MCAPTURAS_COMPLETADO", false);
             activity.putExtra("AVISTAMIENTO_COMPLETADO", false);
             activity.putExtra("ENVIO_COMPLETADO",false);
+            activity.putExtra("LIMITES", limites);
             finish();
             startActivity(activity);
         }

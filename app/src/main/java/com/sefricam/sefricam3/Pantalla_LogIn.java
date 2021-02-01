@@ -19,16 +19,17 @@ public class Pantalla_LogIn extends Activity {
     //public FirebaseAuth mAuth;
 
     private EditText email,password;
+    private Limites limites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_login);
 
+        limites = new Limites();
         email = findViewById(R.id.ete_EmailInicio);
         password = findViewById(R.id.etp_ContrasenaIncio);
 
-        //mAuth = FirebaseAuth.getInstance();
 
         Button btn_Login = findViewById(R.id.btn_IniciarSesion);
         TextView tv_RecuperarContrasena = findViewById(R.id.tv_RecuperarContrasena);
@@ -63,6 +64,7 @@ public class Pantalla_LogIn extends Activity {
                 if (parseUser != null) {
                     Intent activity =  new Intent(Pantalla_LogIn.this, Pantalla_Menu_Intermedio.class);
                     activity.putExtra("EMAIL", email.getText().toString());
+                    activity.putExtra("LIMITES", limites);
                     startActivity(activity);
                     finish();
                 } else {

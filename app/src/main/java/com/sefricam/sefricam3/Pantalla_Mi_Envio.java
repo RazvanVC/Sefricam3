@@ -1,5 +1,6 @@
 package com.sefricam.sefricam3;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -85,11 +86,12 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void cargarDatosEntorno() {
         iv_DatosCheckBoxEntorno.setBackground(getDrawable(R.drawable.baseline_check_box_24));
 
-        tv_DatosTemperaturaInicio.setText(String.valueOf(datosEntorno.gettInicio())+" ºC");
-        tv_DatosTemperaturaFin.setText(String.valueOf(datosEntorno.gettFin())+" ºC");
+        tv_DatosTemperaturaInicio.setText(datosEntorno.gettInicio() + " ºC");
+        tv_DatosTemperaturaFin.setText(datosEntorno.gettFin()+" ºC");
         switch (datosEntorno.getZonificacion()){
             case 1:
                 tv_DatosZonificacion.setText("Afloramientos Rocosos y Rasos");
@@ -171,14 +173,16 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         int i = 0;
         while (i<datosEntorno.getPlantas().size()){
             String estado = "No encontrado";
-            if (datosEntorno.getPlantas().get(i) == 1) estado = "Encontrado";
+            int estadoRecuperado = datosEntorno.getPlantas().get(i);
+            System.out.println("Estado"+i+": "+estadoRecuperado);
+            if (estadoRecuperado == 1) estado = "Encontrado";
             if (datosEntorno.getPlantas().get(i) == 2) estado = "Abundante";
             if (i < 9) tv_DatosPlantas.append(("0" + (i + 1)) + ". " + estado + "\n");
             else tv_DatosPlantas.append((i + 1) + ". " + estado + "\n");
             i++;
         }
 
-        if (datosEntorno.getEP37()!="")tv_DatosPlantas.append("37. "+datosEntorno.getEP37()+"\n");
+        if (datosEntorno.getEP37()!="_")tv_DatosPlantas.append("37. "+datosEntorno.getEP37()+"\n");
         else tv_DatosPlantas.append("37. No encontrado\n");
 
         if (datosEntorno.getEP38()!="")tv_DatosPlantas.append("38. "+datosEntorno.getEP38());
