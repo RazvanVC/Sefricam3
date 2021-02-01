@@ -1,7 +1,6 @@
 package com.sefricam.sefricam3;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DatosEntorno implements Serializable {
@@ -13,11 +12,11 @@ public class DatosEntorno implements Serializable {
     private final String direccionViento;
     private final int nubes;
     private final int lluvia;
-    private final ArrayList<Boolean> plantas;
+    private final ArrayList<Integer> plantas;
     private final String EP37;
     private final String EP38;
 
-    public DatosEntorno(double tInicio, double tFin, int zonificacion, int viento, String direccionViento, int nubes, int lluvia, ArrayList<Boolean> plantas, String EP37,  String EP38) {
+    public DatosEntorno(double tInicio, double tFin, int zonificacion, int viento, String direccionViento, int nubes, int lluvia, ArrayList<Integer> plantas, String EP37, String EP38) {
         this.tInicio = tInicio;
         this.tFin = tFin;
         this.zonificacion = zonificacion;
@@ -58,7 +57,7 @@ public class DatosEntorno implements Serializable {
         return lluvia;
     }
 
-    public ArrayList<Boolean> getPlantas() {
+    public ArrayList<Integer> getPlantas() {
         return plantas;
     }
 

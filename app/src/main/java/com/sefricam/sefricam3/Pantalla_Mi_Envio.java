@@ -171,9 +171,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         int i = 0;
         while (i<datosEntorno.getPlantas().size()){
             String estado = "No encontrado";
-            if (datosEntorno.getPlantas().get(i)) estado = "Encontrado";
-            if (i<9) tv_DatosPlantas.append(("0"+(i+1))+". "+estado+"\n");
-            else tv_DatosPlantas.append((i+1)+". "+estado+"\n");
+            if (datosEntorno.getPlantas().get(i) == 1) estado = "Encontrado";
+            if (datosEntorno.getPlantas().get(i) == 2) estado = "Abundante";
+            if (i < 9) tv_DatosPlantas.append(("0" + (i + 1)) + ". " + estado + "\n");
+            else tv_DatosPlantas.append((i + 1) + ". " + estado + "\n");
             i++;
         }
 
