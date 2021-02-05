@@ -51,6 +51,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
+    private Limites limites;
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
@@ -719,17 +720,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
 
     private void guardarParametros(Intent actividadDestino) {
 
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
+        imprimirDatosRecibidos();
 
         actividadDestino.putExtra("EMAIL",email);
         actividadDestino.putExtra("DNI",DNI);
@@ -740,6 +731,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("LIMITES", limites);
 
     }
 
@@ -753,12 +745,14 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
     private void imprimirDatosRecibidos() {
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
+        System.out.println("LIMITES                => " + limites);
         System.out.println("____________________________________________________");
         System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
         System.out.println("DATOS ENTORNO          => " + datosEntorno);
