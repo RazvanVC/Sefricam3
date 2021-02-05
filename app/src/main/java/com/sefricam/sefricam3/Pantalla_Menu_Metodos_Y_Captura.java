@@ -591,6 +591,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
+        System.out.println("LIMITES                => " + limites);
         System.out.println("____________________________________________________");
         System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
         System.out.println("DATOS ENTORNO          => " + datosEntorno);

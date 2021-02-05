@@ -721,7 +721,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 viento=3;
                 break;
         }
-        
+
         switch (rbg_DireccionViento.getCheckedRadioButtonId()){
             case R.id.rb_DirN:
                 direccionViento = "N";
@@ -1211,6 +1211,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("LIMITES" , limites);
 
     }
 
