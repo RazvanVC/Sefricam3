@@ -82,10 +82,100 @@
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
-            <Spinner
-                android:id="@+id/sp_Zonificacion"
+            <RadioGroup
+                android:id="@+id/rbg_Zonificacion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Afloramientos Rocosos y Rasos"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Cultivos"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Láminas y Cursos de Agua"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion04"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Dehesa y zonas adehesadas"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion05"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Plantaciones de Frondosas y Coníferas"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion06"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Vegetación Arbórea de Coníferas"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion07"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Vegetación Arbórea de Frondosas"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion08"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Vegetación de Matorral"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion09"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Vegetación Herbácea"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Viñedos, Olivares y Otros Frutales"/>
+
+                <RadioButton
+                    android:id="@+id/rb_Zonificacion11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Zonas Artificiales"/>
+
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/tv_FuerzaViento"
@@ -125,18 +215,93 @@
                     android:textSize="@dimen/_13ssp" />
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/tv_DireccionViento"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Seleccione la direccion del viento:"
-                android:textColor="@color/VerdePrimario"
-                android:textSize="@dimen/_15ssp" />
+                android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/sp_DireccionViento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_DireccionViento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="55"
+                    android:text="Direccion del viento:"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15ssp" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_DireccionViento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rb_DirN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[N]  Norte"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_DirNE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[NE] Nordeste"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_DirE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[E]  Este"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_DirSE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[SE] Sudeste"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_DirS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[S]  Sur"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_DirSO"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[SO] Sudoeste"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_DirO"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[O]  Oeste"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_DirNO"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="[NO] Nordoeste"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/VerdePrimario"/>
+                </RadioGroup>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_Nubes"
@@ -280,7 +445,7 @@
                         android:id="@+id/rb_Especie01S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -331,7 +496,7 @@
                         android:id="@+id/rb_Especie02S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -382,7 +547,7 @@
                         android:id="@+id/rb_Especie03S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -433,7 +598,7 @@
                         android:id="@+id/rb_Especie04S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -484,7 +649,7 @@
                         android:id="@+id/rb_Especie05S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -535,7 +700,7 @@
                         android:id="@+id/rb_Especie06S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -586,7 +751,7 @@
                         android:id="@+id/rb_Especie07S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -637,7 +802,7 @@
                         android:id="@+id/rb_Especie08S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -688,7 +853,7 @@
                         android:id="@+id/rb_Especie09S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -739,7 +904,7 @@
                         android:id="@+id/rb_Especie10S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -790,7 +955,7 @@
                         android:id="@+id/rb_Especie11S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -841,7 +1006,7 @@
                         android:id="@+id/rb_Especie12S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -892,7 +1057,7 @@
                         android:id="@+id/rb_Especie13S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -943,7 +1108,7 @@
                         android:id="@+id/rb_Especie14S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -994,7 +1159,7 @@
                         android:id="@+id/rb_Especie15S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1045,7 +1210,7 @@
                         android:id="@+id/rb_Especie16S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1096,7 +1261,7 @@
                         android:id="@+id/rb_Especie17S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1147,7 +1312,7 @@
                         android:id="@+id/rb_Especie18S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1198,7 +1363,7 @@
                         android:id="@+id/rb_Especie19S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1249,7 +1414,7 @@
                         android:id="@+id/rb_Especie20S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1300,7 +1465,7 @@
                         android:id="@+id/rb_Especie21S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1351,7 +1516,7 @@
                         android:id="@+id/rb_Especie22S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1402,7 +1567,7 @@
                         android:id="@+id/rb_Especie23S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1453,7 +1618,7 @@
                         android:id="@+id/rb_Especie24S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1504,7 +1669,7 @@
                         android:id="@+id/rb_Especie25S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1555,7 +1720,7 @@
                         android:id="@+id/rb_Especie26S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1606,7 +1771,7 @@
                         android:id="@+id/rb_Especie27S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1657,7 +1822,7 @@
                         android:id="@+id/rb_Especie28S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1708,7 +1873,7 @@
                         android:id="@+id/rb_Especie29S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1759,7 +1924,7 @@
                         android:id="@+id/rb_Especie30S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1810,7 +1975,7 @@
                         android:id="@+id/rb_Especie31S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1861,7 +2026,7 @@
                         android:id="@+id/rb_Especie32S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1912,7 +2077,7 @@
                         android:id="@+id/rb_Especie33S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -1963,7 +2128,7 @@
                         android:id="@+id/rb_Especie34S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -2014,7 +2179,7 @@
                         android:id="@+id/rb_Especie35S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 
@@ -2065,7 +2230,7 @@
                         android:id="@+id/rb_Especie36S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaSi"
+                        android:text="@string/rb_PlantaPresente"
                         android:textColor="@color/VerdePrimario"
                         android:textSize="@dimen/_13ssp" />
 

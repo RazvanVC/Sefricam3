@@ -10,20 +10,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Pantalla_Datos_Entorno extends Activity implements View.OnClickListener {
 
-    private Spinner sp_Zonificacion, sp_DireccionViento;
+
     private Button btn_Guardar, btn_Volver;
 
     //Coponentes
     private EditText etnd_TemperaturaInicio, etnd_TemperaturaFin;
-    private RadioGroup rbg_FuerzaViento, rbg_Nubes, rbg_Lluvia;
+    private RadioGroup rbg_FuerzaViento, rbg_Nubes, rbg_Lluvia, rbg_Zonificacion, rbg_DireccionViento;
+    private RadioButton rb_Zonficacion01, rb_Zonficacion02, rb_Zonficacion03, rb_Zonficacion04, rb_Zonficacion05,
+            rb_Zonficacion06, rb_Zonficacion07, rb_Zonficacion08, rb_Zonficacion09, rb_Zonficacion10, rb_Zonficacion11;
+    private RadioButton rb_DirVientoN , rb_DirVientoS, rb_DirVientoE, rb_DirVientoO, rb_DirVientoNE, rb_DirVientoNO, rb_DirVientoSE, rb_DirVientoSO;
     private RadioButton rb_VientoCalma, rb_VientoLigero, rb_VientoFuerte;
     private RadioButton rb_NubesAusente, rb_NubesNYC, rb_NubesCubierto, rb_NubesMCubierto;
     private RadioButton rb_LluviaAusente, rb_LluviaIntermitente, rb_LluviaLigera, rb_LluviaFuerte, rb_LluviaMFuerte;
@@ -37,9 +38,11 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
     private EditText et_Especie37, et_Especie38;
 
+    /*
+    private  String direccionViento;
     private int viento;
     private int nubes;
-    private int lluvia;
+    private int lluvia;*/
 
     //Parametros
     private boolean envioCompletado;
@@ -65,7 +68,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         }
 
         iniciarFindView();
-        iniciarSpinners();
         iniciarOnClickListeners();
 
         if (entornoCompletado){
@@ -78,7 +80,42 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
         etnd_TemperaturaInicio.setText(String.valueOf(datosEntorno.gettInicio()));
         etnd_TemperaturaFin.setText(String.valueOf(datosEntorno.gettFin()));
-        sp_Zonificacion.setSelection(datosEntorno.getZonificacion());
+
+        switch (datosEntorno.getZonificacion()){
+            case 1:
+                rb_Zonficacion01.setChecked(true);
+                break;
+            case 2:
+                rb_Zonficacion02.setChecked(true);
+                break;
+            case 3:
+                rb_Zonficacion03.setChecked(true);
+                break;
+            case 4:
+                rb_Zonficacion04.setChecked(true);
+                break;
+            case 5:
+                rb_Zonficacion05.setChecked(true);
+                break;
+            case 6:
+                rb_Zonficacion06.setChecked(true);
+                break;
+            case 7:
+                rb_Zonficacion07.setChecked(true);
+                break;
+            case 8:
+                rb_Zonficacion08.setChecked(true);
+                break;
+            case 9:
+                rb_Zonficacion09.setChecked(true);
+                break;
+            case 10:
+                rb_Zonficacion10.setChecked(true);
+                break;
+            case 11:
+                rb_Zonficacion11.setChecked(true);
+                break;
+        }
 
         cargarDireccionViento();
 
@@ -477,8 +514,19 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         etnd_TemperaturaInicio = findViewById(R.id.etnd_TemperaturaInicio);
         etnd_TemperaturaFin = findViewById(R.id.etnd_TemperaturaFin);
 
-        //Spinner Zonificacion
-        sp_Zonificacion = findViewById(R.id.sp_Zonificacion);
+        //Radio Button Grupo Zonificacion
+        rbg_Zonificacion = findViewById(R.id.rbg_Zonificacion);
+        rb_Zonficacion01 = findViewById(R.id.rb_Zonificacion01);
+        rb_Zonficacion02 = findViewById(R.id.rb_Zonificacion02);
+        rb_Zonficacion03 = findViewById(R.id.rb_Zonificacion03);
+        rb_Zonficacion04 = findViewById(R.id.rb_Zonificacion04);
+        rb_Zonficacion05 = findViewById(R.id.rb_Zonificacion05);
+        rb_Zonficacion06 = findViewById(R.id.rb_Zonificacion06);
+        rb_Zonficacion07 = findViewById(R.id.rb_Zonificacion07);
+        rb_Zonficacion08 = findViewById(R.id.rb_Zonificacion08);
+        rb_Zonficacion09 = findViewById(R.id.rb_Zonificacion09);
+        rb_Zonficacion10 = findViewById(R.id.rb_Zonificacion10);
+        rb_Zonficacion11 = findViewById(R.id.rb_Zonificacion11);
 
         //Radio Button Group Viento
         rbg_FuerzaViento = findViewById(R.id.rbg_FuerzaViento);
@@ -486,8 +534,17 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_VientoLigero = findViewById(R.id.rb_VientoLigero);
         rb_VientoFuerte = findViewById(R.id.rb_VientoFuerte);
 
-        //Spinner Direccion Viento
-        sp_DireccionViento = findViewById(R.id.sp_DireccionViento);
+        //Radio Button Group Direccion Viento
+        rbg_DireccionViento = findViewById(R.id.rbg_DireccionViento);
+        rb_DirVientoN = findViewById(R.id.rb_DirN);
+        rb_DirVientoS = findViewById(R.id.rb_DirS);
+        rb_DirVientoE = findViewById(R.id.rb_DirE);
+        rb_DirVientoE = findViewById(R.id.rb_DirO);
+        rb_DirVientoNE = findViewById(R.id.rb_DirNE);
+        rb_DirVientoNE = findViewById(R.id.rb_DirNO);
+        rb_DirVientoSE = findViewById(R.id.rb_DirSE);
+        rb_DirVientoSE = findViewById(R.id.rb_DirSO);
+
 
         //Radio Button Group Nubes
         rbg_Nubes = findViewById(R.id.rbg_Nubes);
@@ -504,7 +561,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_LluviaFuerte = findViewById(R.id.rb_LluviaFuerte);
         rb_LluviaMFuerte = findViewById(R.id.rb_LluviaMFuerte);
 
-        //RadioGroup especie plantas
+        //Radio Button Group Especie Plantas
         rbg_Especie01 = findViewById(R.id.rbg_Especie01);
         rbg_Especie02 = findViewById(R.id.rbg_Especie02);
         rbg_Especie03 = findViewById(R.id.rbg_Especie03);
@@ -552,16 +609,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
     }
 
-    private void iniciarSpinners() {
-        String [] zonificacion = {"Seleccione el que corresponda","Afloramientos Rocosos y Rasos", "Cultivos", "Láminas y Cursos de Agua", "Dehesa y zonas adehesadas", "Plantaciones de Frondosas y Coníferas", "Vegetación Arbórea de Coníferas", "Vegetación Arbórea de Frondosas", "Vegetación de Matorral", "Vegetación Herbácea", "Viñedos, Olivares y Otros Frutales", "Zonas Artificiales"};
-        ArrayAdapter<String> adapterZonificacion = new ArrayAdapter<String>(this, R.layout.spinner,zonificacion);
-        sp_Zonificacion.setAdapter(adapterZonificacion);
-
-        String [] direccionViento = {"Seleccione la que corresponda","N","S","E","O","NE","NO","SE","SO"};
-        ArrayAdapter<String> adapterDireccionViento = new ArrayAdapter<>(this,R.layout.spinner,direccionViento);
-        sp_DireccionViento.setAdapter(adapterDireccionViento);
-    }
-
     @Override
     public void onClick(View v) {
         if (v == btn_Guardar){
@@ -589,15 +636,16 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private boolean comprobarCampos() {
         double temperaturaMinima = limites.getMinTemp();
         double temperaturaMaxima = limites.getMaxTemp();
-        if (sp_Zonificacion.getSelectedItem().toString().equals("Seleccione el que corresponda")) return false;
+        if (rbg_Zonificacion.getCheckedRadioButtonId()==-1) return false;
         if (rbg_FuerzaViento.getCheckedRadioButtonId()==-1) return false;
-        if (sp_DireccionViento.getSelectedItem().toString().equals("Seleccione la que corresponda")) return false;
+        if (rbg_DireccionViento.getCheckedRadioButtonId()==-1) return false;
         if (rbg_Nubes.getCheckedRadioButtonId()==-1) return false;
         if (rbg_Lluvia.getCheckedRadioButtonId()==-1) return false;
         try {
             Double.valueOf(etnd_TemperaturaInicio.getText().toString());
             Double.valueOf(etnd_TemperaturaFin.getText().toString());
         }catch (Exception e){
+            Toast.makeText(this, "La temperatura ha de ser un valor numérico", Toast.LENGTH_LONG).show();
             return false;
         }
         if (Double.parseDouble(etnd_TemperaturaFin.getText().toString()) < temperaturaMinima || Double.parseDouble(etnd_TemperaturaInicio.getText().toString()) < temperaturaMinima) {
@@ -614,11 +662,53 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
     @SuppressLint("NonConstantResourceId")
     private void asignacionValores() {
+        //Declaracion
+        int zonificacion = 0;
+        int viento = 0;
+        String direccionViento = "N";
+        int nubes = 0;
+        int lluvia = 0;
 
         //Datos
         double tInicio = Double.parseDouble(etnd_TemperaturaInicio.getText().toString());
         double tFin = Double.parseDouble(etnd_TemperaturaFin.getText().toString());
-        int zonificacion = sp_Zonificacion.getSelectedItemPosition();
+
+        //Cambiar pot RB
+        switch (rbg_Zonificacion.getCheckedRadioButtonId()){
+            case R.id.rb_Zonificacion01:
+                zonificacion = 1;
+                break;
+            case R.id.rb_Zonificacion02:
+                zonificacion = 2;
+                break;
+            case R.id.rb_Zonificacion03:
+                zonificacion = 3;
+                break;
+            case R.id.rb_Zonificacion04:
+                zonificacion = 4;
+                break;
+            case R.id.rb_Zonificacion05:
+                zonificacion = 5;
+                break;
+            case R.id.rb_Zonificacion06:
+                zonificacion = 6;
+                break;
+            case R.id.rb_Zonificacion07:
+                zonificacion = 7;
+                break;
+            case R.id.rb_Zonificacion08:
+                zonificacion = 8;
+                break;
+            case R.id.rb_Zonificacion09:
+                zonificacion = 9;
+                break;
+            case R.id.rb_Zonificacion10:
+                zonificacion = 10;
+                break;
+            case R.id.rb_Zonificacion11:
+                zonificacion = 11;
+                break;
+        }
 
         switch (rbg_FuerzaViento.getCheckedRadioButtonId()) {
             case R.id.rb_VientoCalma:
@@ -631,7 +721,34 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 viento=3;
                 break;
         }
-        String direccionViento = sp_DireccionViento.getSelectedItem().toString();
+        
+        switch (rbg_DireccionViento.getCheckedRadioButtonId()){
+            case R.id.rb_DirN:
+                direccionViento = "N";
+                break;
+            case R.id.rb_DirS:
+                direccionViento = "S";
+                break;
+            case R.id.rb_DirE:
+                direccionViento = "E";
+                break;
+            case R.id.rb_DirO:
+                direccionViento = "O";
+                break;
+            case R.id.rb_DirNE:
+                direccionViento = "NE";
+                break;
+            case R.id.rb_DirNO:
+                direccionViento = "NO";
+                break;
+            case R.id.rb_DirSE:
+                direccionViento = "SE";
+                break;
+            case R.id.rb_DirSO:
+                direccionViento = "SO";
+                break;
+        }
+
         switch (rbg_Nubes.getCheckedRadioButtonId()){
             case R.id.rb_NubesAusente:
                 nubes=1;
@@ -646,6 +763,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 nubes=4;
                 break;
         }
+
         switch (rbg_Lluvia.getCheckedRadioButtonId()){
             case R.id.rb_LluviaAusente:
                 lluvia=1;
@@ -1130,28 +1248,28 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private void cargarDireccionViento() {
         switch (datosEntorno.getDireccionViento()) {
             case "N":
-                sp_DireccionViento.setSelection(1);
+                rb_DirVientoN.setChecked(true);
                 break;
             case "S":
-                sp_DireccionViento.setSelection(2);
+                rb_DirVientoS.setChecked(true);
                 break;
             case "E":
-                sp_DireccionViento.setSelection(3);
+                rb_DirVientoE.setChecked(true);
                 break;
             case "O":
-                sp_DireccionViento.setSelection(4);
+                rb_DirVientoO.setChecked(true);
                 break;
             case "NE":
-                sp_DireccionViento.setSelection(5);
+                rb_DirVientoNE.setChecked(true);
                 break;
             case "NO":
-                sp_DireccionViento.setSelection(6);
+                rb_DirVientoNO.setChecked(true);
                 break;
             case "SE":
-                sp_DireccionViento.setSelection(7);
+                rb_DirVientoSE.setChecked(true);
                 break;
             case "SO":
-                sp_DireccionViento.setSelection(8);
+                rb_DirVientoSO.setChecked(true);
                 break;
         }
     }

@@ -74,8 +74,8 @@
 
     <!-- Pantalla Datos de Entorno -->
     <string name="rb_PlantaNo">No</string>
-    <string name="rb_PlantaSi">Si</string>
-    <string name="rb_PlantaAbundante">Abundante</string>
+    <string name="rb_PlantaPresente">Pres.</string>
+    <string name="rb_PlantaAbundante">Abun.</string>
 
     <!-- Pantalla Metodos de Captura -->
 
