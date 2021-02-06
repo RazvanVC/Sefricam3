@@ -5,22 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.valueOf;
 
 public class Pantalla_Metodos_Captura extends Activity implements View.OnClickListener{
 
@@ -45,7 +41,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     private RadioButton rb_SiControl, rb_NoControl, rb_CotoSI, rb_CotoNO;
     private CheckBox cb_ControlSeprona, cb_ControlForestales, cb_ControlPoliciaMunicipal, cb_ControlPoliciaNacional, cb_ControlOtros;
 
-    private ArrayList<Integer> ControlAgentes = new ArrayList<>();
+    private final ArrayList<Boolean> ControlAgentes = new ArrayList<>();
 
     //Parametros
     private boolean envioCompletado;
@@ -145,20 +141,6 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         etn_ReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerderonSerrano()));
         etn_CapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoM()));
         etn_CapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoH()));
-
-        //Capturas
-        /*
-        etn_CapturasCamachuelo.setText(String.valueOf(metodosCaptura.getCapturasCamachueloM()));
-        etn_CapturasJilguero.setText(String.valueOf(metodosCaptura.getCapturasJilguero()));
-        etn_CapturasLugano.setText(String.valueOf(metodosCaptura.getCapturasLugano()));
-        etn_CapturasPardilloComun.setText(String.valueOf(metodosCaptura.getCapturasPardilloComun()));
-        etn_CapturasPicogordo.setText(String.valueOf(metodosCaptura.getCapturasPicogordo()));
-        etn_CapturasPinzonComun.setText(String.valueOf(metodosCaptura.getCapturasPinzonComun()));
-        etn_CapturasPinzonReal.setText(String.valueOf(metodosCaptura.getCapturasPinzonReal()));
-        etn_CapturasPiquituerto.setText(String.valueOf(metodosCaptura.getCapturasPiquituerto()));
-        etn_CapturasVerdecillo.setText(String.valueOf(metodosCaptura.getCapturasVerdecillo()));
-        etn_CapturasVerdonComun.setText(String.valueOf(metodosCaptura.getCapturasVerdonComun()));
-        etn_CapturasVerdonSerrano.setText(String.valueOf(metodosCaptura.getCapturasVerdonSerrano()));*/
 
         et_Observaciones.setText(metodosCaptura.getObservaciones());
     }
@@ -303,9 +285,8 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
     private void asignacionValores() {
 
-        System.out.println("1."+maxRecCamachuelo);
-        int numeroMallas = Integer.parseInt(etn_NumeroMallas.getText().toString());
-        int longitudRed = Integer.parseInt(etn_LongitudRed.getText().toString());
+        int numeroMallas = parseInt(etn_NumeroMallas.getText().toString());
+        int longitudRed = parseInt(etn_LongitudRed.getText().toString());
 
         asignarControlAgentes();
         boolean coto = false;
@@ -313,51 +294,113 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
             coto = true;
         }
 
+        //Asignacion Reclamos
+        int reclamosCamachuelo = parseInt(etn_ReclamosCamachuelo.getText().toString());
+        int reclamosJilguero = parseInt(etn_ReclamosJilguero.getText().toString());
+        int reclamosLugano = parseInt(etn_ReclamosLugano.getText().toString());
+        int reclamosPardilloComun = parseInt(etn_ReclamosPardilloComun.getText().toString());
+        int reclamosPicogordo = parseInt(etn_ReclamosPicogordo.getText().toString());
+        int reclamosPinzonComun = parseInt(etn_ReclamosPinzonComun.getText().toString());
+        int reclamosPinzonReal = parseInt(etn_ReclamosPinzonReal.getText().toString());
+        int reclamosPiquituerto = parseInt(etn_ReclamosPiquituerto.getText().toString());
+        int reclamosVerdecillo = parseInt(etn_ReclamosVerdecillo.getText().toString());
+        int reclamosVerderonComun = parseInt(etn_ReclamosVerderonComun.getText().toString());
+        int reclamosVerderonSerrano = parseInt(etn_ReclamosVerderonSerrano.getText().toString());
 
-        //Spinner Reclamos
-
+        //Asignacion Cimbeles
+        int cimbelesCamachuelo = parseInt(etn_CimbelesCamachuelo.getText().toString());
+        int cimbelesJilguero = parseInt(etn_CimbelesJilguero.getText().toString());
+        int cimbelesLugano = parseInt(etn_CimbelesLugano.getText().toString());
+        int cimbelesPardilloComun = parseInt(etn_CimbelesPardilloComun.getText().toString());
+        int cimbelesPicogordo = parseInt(etn_CimbelesPicogordo.getText().toString());
+        int cimbelesPinzonComun = parseInt(etn_CimbelesPinzonComun.getText().toString());
+        int cimbelesPinzonReal = parseInt(etn_CimbelesPinzonReal.getText().toString());
+        int cimbelesPiquituerto = parseInt(etn_CimbelesPiquituerto.getText().toString());
+        int cimbelesVerdecillo = parseInt(etn_CimbelesVerdecillo.getText().toString());
+        int cimbelesVerderonComun = parseInt(etn_CimbelesVerderonComun.getText().toString());
+        int cimbelesVerderonSerrano = parseInt(etn_CimbelesVerderonSerrano.getText().toString());
 
         //EditText Capturas
-        /*
+
         int capturasCamachueloM = Integer.parseInt(etn_CapturasCamachueloM.getText().toString());
-        int capturasJilguero = Integer.parseInt(etn_CapturasJilguero.getText().toString());
-        int capturasLugano = Integer.parseInt(etn_CapturasLugano.getText().toString());
-        int capturasPardilloComun = Integer.parseInt(etn_CapturasPardilloComun.getText().toString());
-        int capturasPicogordo = Integer.parseInt(etn_CapturasPicogordo.getText().toString());
-        int capturasPinzonComun = Integer.parseInt(etn_CapturasPinzonComun.getText().toString());
-        int capturasPinzonReal = Integer.parseInt(etn_CapturasPinzonReal.getText().toString());
-        int capturasPiquituerto = Integer.parseInt(etn_CapturasPiquituerto.getText().toString());
-        int capturasVerdecillo = Integer.parseInt(etn_CapturasVerdecillo.getText().toString());
-        int capturasVerdonComun = Integer.parseInt(etn_CapturasVerdonComun.getText().toString());
-        int capturasVerdonSerrano = Integer.parseInt(etn_CapturasVerdonSerrano.getText().toString());*/
+        int capturasJilgueroM = Integer.parseInt(etn_CapturasJilgueroM.getText().toString());
+        int capturasLuganoM = Integer.parseInt(etn_CapturasLuganoM.getText().toString());
+        int capturasPardilloComunM = Integer.parseInt(etn_CapturasPardilloComunM.getText().toString());
+        int capturasPicogordoM = Integer.parseInt(etn_CapturasPicogordoM.getText().toString());
+        int capturasPinzonComunM = Integer.parseInt(etn_CapturasPinzonComunM.getText().toString());
+        int capturasPinzonRealM = Integer.parseInt(etn_CapturasPinzonRealM.getText().toString());
+        int capturasPiquituertoM = Integer.parseInt(etn_CapturasPiquituertoM.getText().toString());
+        int capturasVerdecilloM = Integer.parseInt(etn_CapturasVerdecilloM.getText().toString());
+        int capturasVerdonComunM = Integer.parseInt(etn_CapturasVerderonComunM.getText().toString());
+        int capturasVerdonSerranoM = Integer.parseInt(etn_CapturasVerderonSerranoM.getText().toString());
+
+        int capturasCamachueloH = Integer.parseInt(etn_CapturasCamachueloH.getText().toString());
+        int capturasJilgueroH = Integer.parseInt(etn_CapturasJilgueroH.getText().toString());
+        int capturasLuganoH = Integer.parseInt(etn_CapturasLuganoH.getText().toString());
+        int capturasPardilloComunH = Integer.parseInt(etn_CapturasPardilloComunH.getText().toString());
+        int capturasPicogordoH = Integer.parseInt(etn_CapturasPicogordoH.getText().toString());
+        int capturasPinzonComunH = Integer.parseInt(etn_CapturasPinzonComunH.getText().toString());
+        int capturasPinzonRealH = Integer.parseInt(etn_CapturasPinzonRealH.getText().toString());
+        int capturasPiquituertoH = Integer.parseInt(etn_CapturasPiquituertoH.getText().toString());
+        int capturasVerdecilloH = Integer.parseInt(etn_CapturasVerdecilloH.getText().toString());
+        int capturasVerdonComunH = Integer.parseInt(etn_CapturasVerderonComunH.getText().toString());
+        int capturasVerdonSerranoH = Integer.parseInt(etn_CapturasVerderonSerranoH.getText().toString());
 
         String observaciones = et_Observaciones.getText().toString();
 
-        //metodosCaptura = new MetodosCaptura(numeroMallas, longitudRed, coto,ControlAgentes, reclamosCamachuelo, cimbelesCamachuelo, capturasCamachuelo, reclamosJilguero, cimbelesJilguero, capturasJilguero, reclamosLugano, cimbelesLugano, capturasLugano, reclamosPardilloComun, cimbelesPardilloComun, capturasPardilloComun, reclamosPicogordo, cimbelesPicogordo, capturasPicogordo, reclamosPinzonComun, cimbelesPinzonComun, capturasPinzonComun, reclamosPinzonReal, cimbelesPinzonReal, capturasPinzonReal, reclamosPiquituerto, cimbelesPiquituerto, capturasPiquituerto, reclamosVerdecillo, cimbelesVerdecillo, capturasVerdecillo, reclamosVerdonComun, cimbelesVerdonComun, capturasVerdonComun, reclamosVerdonSerrano, cimbelesVerdonSerrano, capturasVerdonSerrano, observaciones);
+        metodosCaptura = new MetodosCaptura(numeroMallas, longitudRed, coto, ControlAgentes,
+                reclamosCamachuelo, cimbelesCamachuelo, capturasCamachueloM, capturasCamachueloH,
+                reclamosJilguero, cimbelesJilguero, capturasJilgueroM, capturasJilgueroH,
+                reclamosLugano, cimbelesLugano, capturasLuganoM, capturasLuganoH,
+                reclamosPardilloComun, cimbelesPardilloComun, capturasPardilloComunM, capturasPardilloComunH,
+                reclamosPicogordo, cimbelesPicogordo, capturasPicogordoM, capturasPicogordoH,
+                reclamosPinzonComun, cimbelesPinzonComun, capturasPinzonComunM, capturasPinzonComunH,
+                reclamosPinzonReal, cimbelesPinzonReal, capturasPinzonRealM, capturasPinzonRealH,
+                reclamosPiquituerto, cimbelesPiquituerto, capturasPiquituertoM, capturasPiquituertoH,
+                reclamosVerdecillo, cimbelesVerdecillo, capturasVerdecilloM, capturasVerdecilloH,
+                reclamosVerderonComun, cimbelesVerderonComun, capturasVerdonComunM, capturasVerdonComunH,
+                reclamosVerderonSerrano, cimbelesVerderonSerrano, capturasVerdonSerranoM, capturasVerdonSerranoH,
+                observaciones);
     }
 
     private void asignarControlAgentes() {
-        if (rb_SiControl.isChecked()){
-            if (cb_ControlSeprona.isChecked()) ControlAgentes.add(1);
-            if (cb_ControlForestales.isChecked()) ControlAgentes.add(2);
-            if (cb_ControlPoliciaMunicipal.isChecked()) ControlAgentes.add(3);
-            if (cb_ControlPoliciaNacional.isChecked()) ControlAgentes.add(4);
-            if (cb_ControlOtros.isChecked()) ControlAgentes.add(5);
-        }
-        if (rb_NoControl.isChecked()) ControlAgentes.add(0);
+        if (rb_SiControl.isChecked())
+            ControlAgentes.add(true);
+        if (rb_NoControl.isChecked())
+            ControlAgentes.add(false);
+
+        ControlAgentes.add(cb_ControlSeprona.isChecked());
+        ControlAgentes.add(cb_ControlForestales.isChecked());
+        ControlAgentes.add(cb_ControlPoliciaMunicipal.isChecked());
+        ControlAgentes.add(cb_ControlPoliciaNacional.isChecked());
+        ControlAgentes.add(cb_ControlOtros.isChecked());
     }
 
     private boolean comprobarCampos() {
         boolean comprobado =  true;
 
         if (TextUtils.isEmpty(etn_NumeroMallas.getText().toString())) comprobado = false;
+        if (!comprobado) return comprobado;
         if (TextUtils.isEmpty(etn_LongitudRed.getText().toString())) comprobado = false;
+        if (!comprobado) return comprobado;
 
         comprobado = comprobarCimbeles();
+        if (!comprobado) return comprobado;
+
         comprobado = comprobarReclamos();
+        if (!comprobado) return comprobado;
+
+        comprobado = comprobarCapturasM();
+        if (!comprobado) return comprobado;
+
+        comprobado = comprobarCapturasH();
+        if (!comprobado) return comprobado;
+
         if (rbg_Coto.getCheckedRadioButtonId()==-1) comprobado =false;
-        if (rbg_ControlAgentes.getCheckedRadioButtonId()==-1)
-            comprobado=false;
+        if (!comprobado) return comprobado;
+
+        if (rbg_ControlAgentes.getCheckedRadioButtonId()==-1) comprobado=false;
+        if (!comprobado) return comprobado;
         if (rbg_ControlAgentes.getCheckedRadioButtonId()!=-1)
             if (rbg_ControlAgentes.getCheckedRadioButtonId()==R.id.rb_SiControlAgentes){
                 if (
@@ -369,19 +412,126 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
                 )
                 comprobado=false;
             }
+        if (!comprobado) {
+            Toast.makeText(this, "Los valores introducidos son erroneos", Toast.LENGTH_SHORT).show();
+        }
+        return comprobado;
+    }
+
+    private boolean comprobarCapturasM() {
+        boolean comprobado = true;
+        try {
+            valueOf(etn_CapturasCamachueloM.getText().toString());
+            valueOf(etn_CapturasJilgueroM.getText().toString());
+            valueOf(etn_CapturasLuganoM.getText().toString());
+            valueOf(etn_CapturasPardilloComunM.getText().toString());
+            valueOf(etn_CapturasPicogordoM.getText().toString());
+            valueOf(etn_CapturasPinzonComunM.getText().toString());
+            valueOf(etn_CapturasPinzonRealM.getText().toString());
+            valueOf(etn_CapturasPiquituertoM.getText().toString());
+            valueOf(etn_CapturasVerdecilloM.getText().toString());
+            valueOf(etn_CapturasVerderonComunM.getText().toString());
+            valueOf(etn_CapturasVerderonSerranoM.getText().toString());
+        } catch (Exception e){
+            comprobado = false;
+            Toast.makeText(this, "Los valores de la columna reclamos machos tienen que estar rellenos", Toast.LENGTH_LONG).show();
+        }
+        return comprobado;
+    }
+
+    private boolean comprobarCapturasH() {
+        boolean comprobado = true;
+        try {
+            valueOf(etn_CapturasCamachueloH.getText().toString());
+            valueOf(etn_CapturasJilgueroH.getText().toString());
+            valueOf(etn_CapturasLuganoH.getText().toString());
+            valueOf(etn_CapturasPardilloComunH.getText().toString());
+            valueOf(etn_CapturasPicogordoH.getText().toString());
+            valueOf(etn_CapturasPinzonComunH.getText().toString());
+            valueOf(etn_CapturasPinzonRealH.getText().toString());
+            valueOf(etn_CapturasPiquituertoH.getText().toString());
+            valueOf(etn_CapturasVerdecilloH.getText().toString());
+            valueOf(etn_CapturasVerderonComunH.getText().toString());
+            valueOf(etn_CapturasVerderonSerranoH.getText().toString());
+        } catch (Exception e){
+            comprobado = false;
+            Toast.makeText(this, "Los valores de la columna reclamos hembra tienen que estar rellenos", Toast.LENGTH_LONG).show();
+        }
         return comprobado;
     }
 
     private boolean comprobarReclamos() {
-        boolean reclamoComprobado = false;
+        boolean comprobado = true;
+        try {
+            valueOf(etn_ReclamosCamachuelo.getText().toString());
+            valueOf(etn_ReclamosJilguero.getText().toString());
+            valueOf(etn_ReclamosLugano.getText().toString());
+            valueOf(etn_ReclamosPardilloComun.getText().toString());
+            valueOf(etn_ReclamosPicogordo.getText().toString());
+            valueOf(etn_ReclamosPinzonComun.getText().toString());
+            valueOf(etn_ReclamosPinzonReal.getText().toString());
+            valueOf(etn_ReclamosPiquituerto.getText().toString());
+            valueOf(etn_ReclamosVerdecillo.getText().toString());
+            valueOf(etn_ReclamosVerderonComun.getText().toString());
+            valueOf(etn_ReclamosVerderonSerrano.getText().toString());
+        } catch (Exception e){
+            Toast.makeText(this, "Los valores de la columna reclamos tienen que estar rellenos", Toast.LENGTH_LONG).show();
+        }
 
+        if (parseInt(etn_ReclamosCamachuelo.getText().toString())>limites.getMaxRecCamachuelo()) comprobado = false;
+        if (parseInt(etn_ReclamosJilguero.getText().toString())>limites.getMaxRecJilguero()) comprobado = false;
+        if (parseInt(etn_ReclamosLugano.getText().toString())>limites.getMaxRecLugano()) comprobado = false;
+        if (parseInt(etn_ReclamosPardilloComun.getText().toString())>limites.getMaxRecPardComun()) comprobado = false;
+        if (parseInt(etn_ReclamosPicogordo.getText().toString())>limites.getMaxRecPicogordo()) comprobado = false;
+        if (parseInt(etn_ReclamosPinzonComun.getText().toString())>limites.getMaxRecPinzComun()) comprobado = false;
+        if (parseInt(etn_ReclamosPinzonReal.getText().toString())>limites.getMaxRecPinzReal()) comprobado = false;
+        if (parseInt(etn_ReclamosPiquituerto.getText().toString())>limites.getMaxRecPiquituerto()) comprobado = false;
+        if (parseInt(etn_ReclamosVerdecillo.getText().toString())>limites.getMaxRecVerdecillo()) comprobado = false;
+        if (parseInt(etn_ReclamosVerderonComun.getText().toString())>limites.getMaxRecVerdComun()) comprobado = false;
+        if (parseInt(etn_ReclamosVerderonSerrano.getText().toString())>limites.getMaxRecVerdSerrano()) comprobado = false;
 
-        return reclamoComprobado;
+        if (!comprobado) {
+            Toast.makeText(this, "Los valores que ha metido en los reclamos no se corresponden con los permitidos", Toast.LENGTH_LONG).show();
+        }
+
+        return comprobado;
     }
 
     private boolean comprobarCimbeles() {
+        boolean comprobado = true;
+        try {
+            valueOf(etn_CimbelesCamachuelo.getText().toString());
+            valueOf(etn_CimbelesJilguero.getText().toString());
+            valueOf(etn_CimbelesLugano.getText().toString());
+            valueOf(etn_CimbelesPardilloComun.getText().toString());
+            valueOf(etn_CimbelesPicogordo.getText().toString());
+            valueOf(etn_CimbelesPinzonComun.getText().toString());
+            valueOf(etn_CimbelesPinzonReal.getText().toString());
+            valueOf(etn_CimbelesPiquituerto.getText().toString());
+            valueOf(etn_CimbelesVerdecillo.getText().toString());
+            valueOf(etn_CimbelesVerderonComun.getText().toString());
+            valueOf(etn_CimbelesVerderonSerrano.getText().toString());
+        } catch (Exception e){
+            Toast.makeText(this, "Los valores de la columna cimbeles tienen que estar rellenos", Toast.LENGTH_LONG).show();
+        }
 
-        return true;
+        if (parseInt(etn_CimbelesCamachuelo.getText().toString())>limites.getMaxCimCamachuelo()) comprobado = false;
+        if (parseInt(etn_CimbelesJilguero.getText().toString())>limites.getMaxCimJilguero()) comprobado = false;
+        if (parseInt(etn_CimbelesLugano.getText().toString())>limites.getMaxCimLugano()) comprobado = false;
+        if (parseInt(etn_CimbelesPardilloComun.getText().toString())>limites.getMaxCimPardComun()) comprobado = false;
+        if (parseInt(etn_CimbelesPicogordo.getText().toString())>limites.getMaxCimPicogordo()) comprobado = false;
+        if (parseInt(etn_CimbelesPinzonComun.getText().toString())>limites.getMaxCimPinzComun()) comprobado = false;
+        if (parseInt(etn_CimbelesPinzonReal.getText().toString())>limites.getMaxCimPinzReal()) comprobado = false;
+        if (parseInt(etn_CimbelesPiquituerto.getText().toString())>limites.getMaxCimPiquituerto()) comprobado = false;
+        if (parseInt(etn_CimbelesVerdecillo.getText().toString())>limites.getMaxCimVerdecillo()) comprobado = false;
+        if (parseInt(etn_CimbelesVerderonComun.getText().toString())>limites.getMaxCimVerdComun()) comprobado = false;
+        if (parseInt(etn_CimbelesVerderonSerrano.getText().toString())>limites.getMaxCimVerdSerrano()) comprobado = false;
+
+        if (!comprobado) {
+            Toast.makeText(this, "Los valores que ha metido en los cimbeles no se corresponden con los permitidos", Toast.LENGTH_LONG).show();
+        }
+
+        return comprobado;
     }
 
     private void guardarParametros(Intent actividadDestino) {
