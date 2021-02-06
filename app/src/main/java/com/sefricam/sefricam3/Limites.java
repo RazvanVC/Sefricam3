@@ -46,7 +46,36 @@ public class Limites implements Serializable {
                     maxRecCamachuelo = result.getInt("MaxRecCamachuelo");
                     maxCimCamachuelo = result.getInt("MaxCimCamachuelo");
                     minAlaCamachuelo = result.getInt("MinAlaCamachuelo");
-                    
+
+                    maxRecJilguero = result.getInt("maxRecJilguero");
+                    maxCimJilguero = result.getInt("maxCimJilguero");
+
+                    maxRecLugano = result.getInt("maxRecLugano");
+                    maxCimLugano = result.getInt("maxCimLugano");
+
+                    maxRecPardComun = result.getInt("maxRecPardComun");
+                    maxCimPardComun = result.getInt("maxCimPardComun");
+
+                    maxCimPicogordo = result.getInt("maxCimPicogordo");
+                    maxRecPicogordo = result.getInt("maxRecPicogordo");
+
+                    maxCimPinzComun = result.getInt("maxCimPinzComun");
+                    maxRecPinzComun = result.getInt("maxRecPinzComun");
+
+                    maxRecPinzReal = result.getInt("maxRecPinzReal");
+                    maxCimPinzReal = result.getInt("maxCimPinzReal");
+
+                    maxRecPiquituerto = result.getInt("maxRecPiquituerto");
+                    maxCimPiquituerto = result.getInt("maxCimPiquituerto");
+
+                    maxRecVerdecillo = result.getInt("maxRecVerdecillo");
+                    maxCimVerdecillo = result.getInt("maxCimVerdecillo");
+
+                    maxRecVerdComun = result.getInt("maxRecVerdComun");
+                    maxCimVerdComun = result.getInt("maxCimVerdComun");
+
+                    maxRecVerdSerrano = result.getInt("maxRecVerdSerrano");
+                    maxCimVerdSerrano = result.getInt("maxCimVerdSerrano");
 
                 } else {
                     System.out.println("ERROR: No es posible leer los datos");
