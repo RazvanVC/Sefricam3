@@ -52,12 +52,10 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
+    private Limites limites;
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
-
-    //Limites
-    private int maxRecCamachuelo, maxCimCamchuelo, maxRecJilguero, maxCimJilguero, maxRecLuagno;
 
 
     @Override
@@ -77,13 +75,11 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
         iniciarOnClickListener();
 
-        readObject();
 
         if (mCapturasCompletado){
             cargarDatos();
         }
 
-        System.out.println("1. "+maxRecCamachuelo);
     }
 
     private void cargarDatos() {
@@ -95,6 +91,60 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
         llenarControlAgentes();
 
+        etn_CimbelesCamachuelo.setText(String.valueOf(metodosCaptura.getCimbelesCamachuelo()));
+        etn_ReclamosCamachuelo.setText(String.valueOf(metodosCaptura.getReclamosCamachuelo()));
+        etn_CapturasCamachueloM.setText(String.valueOf(metodosCaptura.getCapturasCamachueloM()));
+        etn_CapturasCamachueloH.setText(String.valueOf(metodosCaptura.getCapturasCamachueloH()));
+
+        etn_CimbelesJilguero.setText(String.valueOf(metodosCaptura.getCimbelesJilguero()));
+        etn_ReclamosJilguero.setText(String.valueOf(metodosCaptura.getReclamosJilguero()));
+        etn_CapturasJilgueroM.setText(String.valueOf(metodosCaptura.getCapturasJilgueroM()));
+        etn_CapturasJilgueroH.setText(String.valueOf(metodosCaptura.getCapturasJilgueroH()));
+
+        etn_CimbelesLugano.setText(String.valueOf(metodosCaptura.getCimbelesLugano()));
+        etn_ReclamosLugano.setText(String.valueOf(metodosCaptura.getReclamosLugano()));
+        etn_CapturasLuganoM.setText(String.valueOf(metodosCaptura.getCapturasLuganoM()));
+        etn_CapturasLuganoH.setText(String.valueOf(metodosCaptura.getCapturasLuganoH()));
+
+        etn_CimbelesPardilloComun.setText(String.valueOf(metodosCaptura.getCimbelesPardilloComun()));
+        etn_ReclamosPardilloComun.setText(String.valueOf(metodosCaptura.getReclamosPardilloComun()));
+        etn_CapturasPardilloComunM.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunM()));
+        etn_CapturasPardilloComunH.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunH()));
+
+        etn_CimbelesPicogordo.setText(String.valueOf(metodosCaptura.getCimbelesPicogordo()));
+        etn_ReclamosPicogordo.setText(String.valueOf(metodosCaptura.getReclamosPicogordo()));
+        etn_CapturasPicogordoM.setText(String.valueOf(metodosCaptura.getCapturasPicogordoM()));
+        etn_CapturasPicogordoH.setText(String.valueOf(metodosCaptura.getCapturasPicogordoH()));
+
+        etn_CimbelesPinzonComun.setText(String.valueOf(metodosCaptura.getCimbelesPinzonComun()));
+        etn_ReclamosPinzonComun.setText(String.valueOf(metodosCaptura.getReclamosPinzonComun()));
+        etn_CapturasPinzonComunM.setText(String.valueOf(metodosCaptura.getCapturasPinzonComunM()));
+        etn_CapturasPinzonComunH.setText(String.valueOf(metodosCaptura.getCapturasPinzonComunH()));
+
+        etn_CimbelesPinzonReal.setText(String.valueOf(metodosCaptura.getCimbelesPinzonReal()));
+        etn_ReclamosPinzonReal.setText(String.valueOf(metodosCaptura.getReclamosPinzonReal()));
+        etn_CapturasPinzonRealM.setText(String.valueOf(metodosCaptura.getCapturasPinzonRealM()));
+        etn_CapturasPinzonRealH.setText(String.valueOf(metodosCaptura.getCapturasPinzonRealH()));
+
+        etn_CimbelesPiquituerto.setText(String.valueOf(metodosCaptura.getCimbelesPiquituerto()));
+        etn_ReclamosPiquituerto.setText(String.valueOf(metodosCaptura.getReclamosPiquituerto()));
+        etn_CapturasPiquituertoM.setText(String.valueOf(metodosCaptura.getCapturasPiquituertoM()));
+        etn_CapturasPiquituertoH.setText(String.valueOf(metodosCaptura.getCapturasPiquituertoH()));
+
+        etn_CimbelesVerdecillo.setText(String.valueOf(metodosCaptura.getCimbelesVerdecillo()));
+        etn_ReclamosVerdecillo.setText(String.valueOf(metodosCaptura.getReclamosVerdecillo()));
+        etn_CapturasVerdecilloM.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloM()));
+        etn_CapturasVerdecilloH.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloH()));
+
+        etn_CimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerderonComun()));
+        etn_ReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerderonComun()));
+        etn_CapturasVerderonComunM.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunM()));
+        etn_CapturasVerderonComunH.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunH()));
+
+        etn_CimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerderonSerrano()));
+        etn_ReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerderonSerrano()));
+        etn_CapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoM()));
+        etn_CapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoH()));
 
         //Capturas
         /*
@@ -370,12 +420,14 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
     private void imprimirDatosRecibidos() {
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
+        System.out.println("LIMITES                => " + limites);
         System.out.println("____________________________________________________");
         System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
         System.out.println("DATOS ENTORNO          => " + datosEntorno);
@@ -386,24 +438,4 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         System.out.println("____________________________________________________");
     }
 
-
-
-    public void readObject() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Limites");
-
-        // The query will search for a ParseObject, given its objectId.
-        // When the query finishes running, it will invoke the GetCallback
-        // with either the object, or the exception thrown
-        query.getInBackground("AWmV7DLevo", new GetCallback<ParseObject>() {
-            public void done(ParseObject result, ParseException e) {
-                if (e == null) {
-                    maxRecCamachuelo = result.getInt("MaxRecCamachuelo");
-                    maxCimCamchuelo = result.getInt("MaxCimCamachuelo");
-
-                } else {
-                    System.out.println("ERROR: No es posible leer los datos");
-                }
-            }
-        });
-    }
 }
