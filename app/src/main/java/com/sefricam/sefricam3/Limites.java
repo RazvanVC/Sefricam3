@@ -9,17 +9,17 @@ import java.io.Serializable;
 
 public class Limites implements Serializable {
     private int minLat, maxLat, minLon, maxLon, minTemp, maxTemp, minNAnilla, maxNAnilla;
-    private int maxRecCamachuelo, maxCimCamachuelo, minAlaCamachuelo, maxAlaCamachuelo, minPicoCamachuelo, macPicoCamachuelo, minTarsoCamachuelo, maxTarsoCamachuelo, minPesoCamachuelo, maxPesoCamachuelo;
-    private int maxRecJilguero, maxCimJilguero, minAlaJilguero, maxAlaJilguero, minPicoJilguero, macPicoJilguero, minTarsoJilguero, maxTarsoJilguero, minPesoJilguero, maxPesoJilguero;
-    private int maxRecLugano, maxCimLugano, minAlaLugano, maxAlaLugano, minPicoLugano, macPicoLugano, minTarsoLugano, maxTarsoLugano, minPesoLugano, maxPesoLugano;
-    private int maxRecPardComun, maxCimPardComun, minAlaPardComun, maxAlaPardComun, minPicoPardComun, macPicoPardComun, minTarsoPardComun, maxTarsoPardComun, minPesoPardComun, maxPesoPardComun;
-    private int maxRecPicogordo, maxCimPicogordo, minAlaPicogordo, maxAlaPicogordo, minPicoPicogordo, macPicoPicogordo, minTarsoPicogordo, maxTarsoPicogordo, minPesoPicogordo, maxPesoPicogordo;
-    private int maxRecPinzComun, maxCimPinzComun, minAlaPinzComun, maxAlaPinzComun, minPicoPinzComun, macPicoPinzComun, minTarsoPinzComun, maxTarsoPinzComun, minPesoPinzComun, maxPesoPinzComun;
-    private int maxRecPinzReal, maxCimPinzReal, minAlaPinzReal, maxAlaPinzReal, minPicoPinzReal, macPicoPinzReal, minTarsoPinzReal, maxTarsoPinzReal, minPesoPinzReal, maxPesoPinzReal;
-    private int maxRecPiquituerto, maxCimPiquituerto, minAlaPiquituerto, maxAlaPiquituerto, minPicoPiquituerto, macPicoPiquituerto, minTarsoPiquituerto, maxTarsoPiquituerto, minPesoPiquituerto, maxPesoPiquituerto;
-    private int maxRecVerdecillo, maxCimVerdecillo, minAlaVerdecillo, maxAlaVerdecillo, minPicoVerdecillo, macPicoVerdecillo, minTarsoVerdecillo, maxTarsoVerdecillo, minPesoVerdecillo, maxPesoVerdecillo;
-    private int maxRecVerdComun, maxCimVerdComun, minAlaVerdComun, maxAlaVerdComun, minPicoVerdComun, macPicoVerdComun, minTarsoVerdComun, maxTarsoVerdComun, minPesoVerdComun, maxPesoVerdComun;
-    private int maxRecVerdSerrano, maxCimVerdSerrano, minAlaVerdSerrano, maxAlaCVerdSerrano, minPicoVerdSerrano, macPicoVerdSerrano, minTarsoVerdSerrano, maxTarsoVerdSerrano, minPesoVerdSerrano, maxPesoVerdSerrano;
+    private int maxRecCamachuelo, maxCimCamachuelo, minAlaCamachuelo, maxAlaCamachuelo, minPicoCamachuelo, maxPicoCamachuelo, minTarsoCamachuelo, maxTarsoCamachuelo, minPesoCamachuelo, maxPesoCamachuelo;
+    private int maxRecJilguero, maxCimJilguero, minAlaJilguero, maxAlaJilguero, minPicoJilguero, maxPicoJilguero, minTarsoJilguero, maxTarsoJilguero, minPesoJilguero, maxPesoJilguero;
+    private int maxRecLugano, maxCimLugano, minAlaLugano, maxAlaLugano, minPicoLugano, maxPicoLugano, minTarsoLugano, maxTarsoLugano, minPesoLugano, maxPesoLugano;
+    private int maxRecPardComun, maxCimPardComun, minAlaPardComun, maxAlaPardComun, minPicoPardComun, maxPicoPardComun, minTarsoPardComun, maxTarsoPardComun, minPesoPardComun, maxPesoPardComun;
+    private int maxRecPicogordo, maxCimPicogordo, minAlaPicogordo, maxAlaPicogordo, minPicoPicogordo, maxPicoPicogordo, minTarsoPicogordo, maxTarsoPicogordo, minPesoPicogordo, maxPesoPicogordo;
+    private int maxRecPinzComun, maxCimPinzComun, minAlaPinzComun, maxAlaPinzComun, minPicoPinzComun, maxPicoPinzComun, minTarsoPinzComun, maxTarsoPinzComun, minPesoPinzComun, maxPesoPinzComun;
+    private int maxRecPinzReal, maxCimPinzReal, minAlaPinzReal, maxAlaPinzReal, minPicoPinzReal, maxPicoPinzReal, minTarsoPinzReal, maxTarsoPinzReal, minPesoPinzReal, maxPesoPinzReal;
+    private int maxRecPiquituerto, maxCimPiquituerto, minAlaPiquituerto, maxAlaPiquituerto, minPicoPiquituerto, maxPicoPiquituerto, minTarsoPiquituerto, maxTarsoPiquituerto, minPesoPiquituerto, maxPesoPiquituerto;
+    private int maxRecVerdecillo, maxCimVerdecillo, minAlaVerdecillo, maxAlaVerdecillo, minPicoVerdecillo, maxPicoVerdecillo, minTarsoVerdecillo, maxTarsoVerdecillo, minPesoVerdecillo, maxPesoVerdecillo;
+    private int maxRecVerdComun, maxCimVerdComun, minAlaVerdComun, maxAlaVerdComun, minPicoVerdComun, maxPicoVerdComun, minTarsoVerdComun, maxTarsoVerdComun, minPesoVerdComun, maxPesoVerdComun;
+    private int maxRecVerdSerrano, maxCimVerdSerrano, minAlaVerdSerrano, maxAlaCVerdSerrano, minPicoVerdSerrano, maxPicoVerdSerrano, minTarsoVerdSerrano, maxTarsoVerdSerrano, minPesoVerdSerrano, maxPesoVerdSerrano;
 
     public Limites() {
         readObject();
@@ -46,6 +46,7 @@ public class Limites implements Serializable {
                     maxRecCamachuelo = result.getInt("MaxRecCamachuelo");
                     maxCimCamachuelo = result.getInt("MaxCimCamachuelo");
                     minAlaCamachuelo = result.getInt("MinAlaCamachuelo");
+                    
 
                 } else {
                     System.out.println("ERROR: No es posible leer los datos");
@@ -102,8 +103,8 @@ public class Limites implements Serializable {
         return minPicoCamachuelo;
     }
 
-    public int getMacPicoCamachuelo() {
-        return macPicoCamachuelo;
+    public int getmaxPicoCamachuelo() {
+        return maxPicoCamachuelo;
     }
 
     public int getMinTarsoCamachuelo() {
@@ -142,8 +143,8 @@ public class Limites implements Serializable {
         return minPicoJilguero;
     }
 
-    public int getMacPicoJilguero() {
-        return macPicoJilguero;
+    public int getmaxPicoJilguero() {
+        return maxPicoJilguero;
     }
 
     public int getMinTarsoJilguero() {
@@ -182,8 +183,8 @@ public class Limites implements Serializable {
         return minPicoLugano;
     }
 
-    public int getMacPicoLugano() {
-        return macPicoLugano;
+    public int getmaxPicoLugano() {
+        return maxPicoLugano;
     }
 
     public int getMinTarsoLugano() {
@@ -222,8 +223,8 @@ public class Limites implements Serializable {
         return minPicoPardComun;
     }
 
-    public int getMacPicoPardComun() {
-        return macPicoPardComun;
+    public int getmaxPicoPardComun() {
+        return maxPicoPardComun;
     }
 
     public int getMinTarsoPardComun() {
@@ -262,8 +263,8 @@ public class Limites implements Serializable {
         return minPicoPicogordo;
     }
 
-    public int getMacPicoPicogordo() {
-        return macPicoPicogordo;
+    public int getmaxPicoPicogordo() {
+        return maxPicoPicogordo;
     }
 
     public int getMinTarsoPicogordo() {
@@ -302,8 +303,8 @@ public class Limites implements Serializable {
         return minPicoPinzComun;
     }
 
-    public int getMacPicoPinzComun() {
-        return macPicoPinzComun;
+    public int getmaxPicoPinzComun() {
+        return maxPicoPinzComun;
     }
 
     public int getMinTarsoPinzComun() {
@@ -342,8 +343,8 @@ public class Limites implements Serializable {
         return minPicoPinzReal;
     }
 
-    public int getMacPicoPinzReal() {
-        return macPicoPinzReal;
+    public int getmaxPicoPinzReal() {
+        return maxPicoPinzReal;
     }
 
     public int getMinTarsoPinzReal() {
@@ -382,8 +383,8 @@ public class Limites implements Serializable {
         return minPicoPiquituerto;
     }
 
-    public int getMacPicoPiquituerto() {
-        return macPicoPiquituerto;
+    public int getmaxPicoPiquituerto() {
+        return maxPicoPiquituerto;
     }
 
     public int getMinTarsoPiquituerto() {
@@ -422,8 +423,8 @@ public class Limites implements Serializable {
         return minPicoVerdecillo;
     }
 
-    public int getMacPicoVerdecillo() {
-        return macPicoVerdecillo;
+    public int getmaxPicoVerdecillo() {
+        return maxPicoVerdecillo;
     }
 
     public int getMinTarsoVerdecillo() {
@@ -462,8 +463,8 @@ public class Limites implements Serializable {
         return minPicoVerdComun;
     }
 
-    public int getMacPicoVerdComun() {
-        return macPicoVerdComun;
+    public int getmaxPicoVerdComun() {
+        return maxPicoVerdComun;
     }
 
     public int getMinTarsoVerdComun() {
@@ -502,8 +503,8 @@ public class Limites implements Serializable {
         return minPicoVerdSerrano;
     }
 
-    public int getMacPicoVerdSerrano() {
-        return macPicoVerdSerrano;
+    public int getmaxPicoVerdSerrano() {
+        return maxPicoVerdSerrano;
     }
 
     public int getMinTarsoVerdSerrano() {
@@ -526,11 +527,4 @@ public class Limites implements Serializable {
         return minNAnilla;
     }
 
-    public void setMinNAnilla(int minNAnilla) {
-        this.minNAnilla = minNAnilla;
-    }
-
-    public void setMaxNAnilla(int maxNAnilla) {
-        this.maxNAnilla = maxNAnilla;
-    }
 }
