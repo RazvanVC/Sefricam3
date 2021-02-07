@@ -20,17 +20,17 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     //Metodos de Captura
     ImageView iv_DatosCheckBoxCapturas;
     TextView tv_DatosNumeroMallas, tv_DatosLongitudRed, tv_DatosCoto, tv_DatosControlAgentes;
-    TextView tv_DatosReclamosCamichuelo, tv_DatosCimbelesCamichuelo, tv_DatosCapturasCamichuelo;
-    TextView tv_DatosReclamosJilguero, tv_DatosCimbelesJilguero, tv_DatosCapturasJilguero;
-    TextView tv_DatosReclamosLugano, tv_DatosCimbelesLugano, tv_DatosCapturasLugano;
-    TextView tv_DatosReclamosPardilloComun, tv_DatosCimbelesPardilloComun, tv_DatosCapturasPardilloComun;
-    TextView tv_DatosReclamosPicogordo, tv_DatosCimbelesPicogordo, tv_DatosCapturasPicogordo;
-    TextView tv_DatosReclamosPinzonComun, tv_DatosCimbelesPinzonComun, tv_DatosCapturasPinzonComun;
-    TextView tv_DatosReclamosPinzonReal, tv_DatosCimbelesPinzonReal, tv_DatosCapturasPinzonReal;
-    TextView tv_DatosReclamosPiquituerto, tv_DatosCimbelesPiquituerto, tv_DatosCapturasPiquituerto;
-    TextView tv_DatosReclamosVerdecillo, tv_DatosCimbelesVerdecillo, tv_DatosCapturasVerdecillo;
-    TextView tv_DatosReclamosVerderonComun, tv_DatosCimbelesVerderonComun, tv_DatosCapturasVerderonComun;
-    TextView tv_DatosReclamosVerderonSerrano, tv_DatosCimbelesVerderonSerrano, tv_DatosCapturasVerderonSerrano;
+    TextView tv_DatosReclamosCamichuelo, tv_DatosCimbelesCamichuelo, tv_DatosCapturasCamichueloM , tv_DatosCapturasCamichueloH;
+    TextView tv_DatosReclamosJilguero, tv_DatosCimbelesJilguero, tv_DatosCapturasJilgueroM, tv_DatosCapturasJilgueroH;
+    TextView tv_DatosReclamosLugano, tv_DatosCimbelesLugano, tv_DatosCapturasLuganoM, tv_DatosCapturasLuganoH;
+    TextView tv_DatosReclamosPardilloComun, tv_DatosCimbelesPardilloComun, tv_DatosCapturasPardilloComunM, tv_DatosCapturasPardilloComunH;
+    TextView tv_DatosReclamosPicogordo, tv_DatosCimbelesPicogordo, tv_DatosCapturasPicogordoM, tv_DatosCapturasPicogordoH;
+    TextView tv_DatosReclamosPinzonComun, tv_DatosCimbelesPinzonComun, tv_DatosCapturasPinzonComunM, tv_DatosCapturasPinzonComunH;
+    TextView tv_DatosReclamosPinzonReal, tv_DatosCimbelesPinzonReal, tv_DatosCapturasPinzonRealM, tv_DatosCapturasPinzonRealH;
+    TextView tv_DatosReclamosPiquituerto, tv_DatosCimbelesPiquituerto, tv_DatosCapturasPiquituertoM, tv_DatosCapturasPiquituertoH;
+    TextView tv_DatosReclamosVerdecillo, tv_DatosCimbelesVerdecillo, tv_DatosCapturasVerdecilloM, tv_DatosCapturasVerdecilloH;
+    TextView tv_DatosReclamosVerderonComun, tv_DatosCimbelesVerderonComun, tv_DatosCapturasVerderonComunM, tv_DatosCapturasVerderonComunH;
+    TextView tv_DatosReclamosVerderonSerrano, tv_DatosCimbelesVerderonSerrano, tv_DatosCapturasVerderonSerranoM, tv_DatosCapturasVerderonSerranoH;
     TextView tv_DatosObservaciones;
 
     //Datos Avistamiento
@@ -200,64 +200,84 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
             tv_DatosCoto.setText("No");
         }
         int i = 0;
-        /*while (i < metodosCaptura.getControlAgentes().size()){
-            switch (metodosCaptura.getControlAgentes().get(i)){
+
+        while (i < metodosCaptura.getControlAgentes().size()){
+            switch (i){
                 case 0:
-                    tv_DatosControlAgentes.append("NO");
+                    if (!metodosCaptura.getControlAgentes().get(i))
+                    tv_DatosControlAgentes.append("No hay control");
                     break;
                 case 1:
+                    if (metodosCaptura.getControlAgentes().get(i))
                     tv_DatosControlAgentes.append("Seprona\n");
                     break;
                 case 2:
+                    if (metodosCaptura.getControlAgentes().get(i))
                     tv_DatosControlAgentes.append("Agentes Forestales\n");
                     break;
                 case 3:
+                    if (metodosCaptura.getControlAgentes().get(i))
                     tv_DatosControlAgentes.append("Policía Local\n");
                     break;
                 case 4:
+                    if (metodosCaptura.getControlAgentes().get(i))
                     tv_DatosControlAgentes.append("Policía Nacional\n");
                     break;
                 case 5:
+                    if (metodosCaptura.getControlAgentes().get(i))
                     tv_DatosControlAgentes.append("Otros");
                     break;
             }
             i++;
         }
 
+
         tv_DatosReclamosCamichuelo.setText(String.valueOf(metodosCaptura.getReclamosCamachuelo()));
         tv_DatosCimbelesCamichuelo.setText(String.valueOf(metodosCaptura.getCimbelesCamachuelo()));
-        tv_DatosCapturasCamichuelo.setText(String.valueOf(metodosCaptura.getCapturasCamachueloM()));
+        tv_DatosCapturasCamichueloM.setText(String.valueOf(metodosCaptura.getCapturasCamachueloM()));
+        tv_DatosCapturasCamichueloH.setText(String.valueOf(metodosCaptura.getCapturasCamachueloH()));
         tv_DatosReclamosJilguero.setText(String.valueOf(metodosCaptura.getReclamosJilguero()));
         tv_DatosCimbelesJilguero.setText(String.valueOf(metodosCaptura.getCimbelesJilguero()));
-        tv_DatosCapturasJilguero.setText(String.valueOf(metodosCaptura.getCapturasJilguero()));
+        tv_DatosCapturasJilgueroM.setText(String.valueOf(metodosCaptura.getCapturasJilgueroM()));
+        tv_DatosCapturasJilgueroH.setText(String.valueOf(metodosCaptura.getCapturasJilgueroH()));
         tv_DatosReclamosLugano.setText(String.valueOf(metodosCaptura.getReclamosLugano()));
         tv_DatosCimbelesLugano.setText(String.valueOf(metodosCaptura.getCimbelesLugano()));
-        tv_DatosCapturasLugano.setText(String.valueOf(metodosCaptura.getCapturasLugano()));
+        tv_DatosCapturasLuganoM.setText(String.valueOf(metodosCaptura.getCapturasLuganoM()));
+        tv_DatosCapturasLuganoH.setText(String.valueOf(metodosCaptura.getCapturasLuganoH()));
         tv_DatosReclamosPardilloComun.setText(String.valueOf(metodosCaptura.getReclamosPardilloComun()));
         tv_DatosCimbelesPardilloComun.setText(String.valueOf(metodosCaptura.getCimbelesPardilloComun()));
-        tv_DatosCapturasPardilloComun.setText(String.valueOf(metodosCaptura.getCapturasPardilloComun()));
+        tv_DatosCapturasPardilloComunM.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunM()));
+        tv_DatosCapturasPardilloComunH.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunH()));
         tv_DatosReclamosPicogordo.setText(String.valueOf(metodosCaptura.getReclamosPicogordo()));
         tv_DatosCimbelesPicogordo.setText(String.valueOf(metodosCaptura.getCimbelesPicogordo()));
-        tv_DatosCapturasPicogordo.setText(String.valueOf(metodosCaptura.getCapturasPicogordo()));
+        tv_DatosCapturasPicogordoM.setText(String.valueOf(metodosCaptura.getCapturasPicogordoM()));
+        tv_DatosCapturasPicogordoH.setText(String.valueOf(metodosCaptura.getCapturasPicogordoH()));
         tv_DatosReclamosPinzonComun.setText(String.valueOf(metodosCaptura.getReclamosPinzonComun()));
         tv_DatosCimbelesPinzonComun.setText(String.valueOf(metodosCaptura.getCimbelesPinzonComun()));
-        tv_DatosCapturasPinzonComun.setText(String.valueOf(metodosCaptura.getCapturasPinzonComun()));
+        tv_DatosCapturasPinzonComunM.setText(String.valueOf(metodosCaptura.getCapturasPinzonComunM()));
+        tv_DatosCapturasPinzonComunH.setText(String.valueOf(metodosCaptura.getCapturasPinzonComunH()));
         tv_DatosReclamosPinzonReal.setText(String.valueOf(metodosCaptura.getReclamosPinzonReal()));
         tv_DatosCimbelesPinzonReal.setText(String.valueOf(metodosCaptura.getCimbelesPinzonReal()));
-        tv_DatosCapturasPinzonReal.setText(String.valueOf(metodosCaptura.getCapturasPinzonReal()));
+        tv_DatosCapturasPinzonRealM.setText(String.valueOf(metodosCaptura.getCapturasPinzonRealM()));
+        tv_DatosCapturasPinzonRealH.setText(String.valueOf(metodosCaptura.getCapturasPinzonRealH()));
         tv_DatosReclamosPiquituerto.setText(String.valueOf(metodosCaptura.getReclamosPiquituerto()));
         tv_DatosCimbelesPiquituerto.setText(String.valueOf(metodosCaptura.getCimbelesPiquituerto()));
-        tv_DatosCapturasPiquituerto.setText(String.valueOf(metodosCaptura.getCapturasPiquituerto()));
+        tv_DatosCapturasPiquituertoM.setText(String.valueOf(metodosCaptura.getCapturasPiquituertoM()));
+        tv_DatosCapturasPiquituertoH.setText(String.valueOf(metodosCaptura.getCapturasPiquituertoH()));
         tv_DatosReclamosVerdecillo.setText(String.valueOf(metodosCaptura.getReclamosVerdecillo()));
         tv_DatosCimbelesVerdecillo.setText(String.valueOf(metodosCaptura.getCimbelesVerdecillo()));
-        tv_DatosCapturasVerdecillo.setText(String.valueOf(metodosCaptura.getCapturasVerdecillo()));
-        tv_DatosReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerdonComun()));
-        tv_DatosCimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerdonComun()));
-        tv_DatosCapturasVerderonComun.setText(String.valueOf(metodosCaptura.getCapturasVerdonComun()));
-        tv_DatosReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerdonSerrano()));
-        tv_DatosCimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerdonSerrano()));
-        tv_DatosCapturasVerderonSerrano.setText(String.valueOf(metodosCaptura.getCapturasVerdonSerrano()));
-        tv_DatosObservaciones.setText(String.valueOf(metodosCaptura.getObservaciones()));*/
+        tv_DatosCapturasVerdecilloM.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloM()));
+        tv_DatosCapturasVerdecilloH.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloH()));
+        tv_DatosReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerderonComun()));
+        tv_DatosCimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerderonComun()));
+        tv_DatosCapturasVerderonComunM.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunM()));
+        tv_DatosCapturasVerderonComunH.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunH()));
+        tv_DatosReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerderonSerrano()));
+        tv_DatosCimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerderonSerrano()));
+        tv_DatosCapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoM()));
+        tv_DatosCapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoM()));
+
+        tv_DatosObservaciones.setText(String.valueOf(metodosCaptura.getObservaciones()));
     }
 
     private void cargarDatosAvistamiento() {
@@ -568,37 +588,48 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosControlAgentes = findViewById(R.id.tv_DatosControlAgentes);
         tv_DatosReclamosCamichuelo =  findViewById(R.id.tv_DatosReclamosCamichuelo);
         tv_DatosCimbelesCamichuelo = findViewById(R.id.tv_DatosCimbelesCamichuelo);
-        tv_DatosCapturasCamichuelo =  findViewById(R.id.tv_DatosCapturasCamichuelo);
+        tv_DatosCapturasCamichueloM =  findViewById(R.id.tv_DatosCapturasCamichueloM);
+        tv_DatosCapturasCamichueloH =  findViewById(R.id.tv_DatosCapturasCamichueloH);
         tv_DatosReclamosJilguero = findViewById(R.id.tv_DatosReclamosJilguero);
         tv_DatosCimbelesJilguero = findViewById(R.id.tv_DatosCimbelesJilguero);
-        tv_DatosCapturasJilguero = findViewById(R.id.tv_DatosCapturasJilguero);
+        tv_DatosCapturasJilgueroM = findViewById(R.id.tv_DatosCapturasJilgueroM);
+        tv_DatosCapturasJilgueroH = findViewById(R.id.tv_DatosCapturasJilgueroH);
         tv_DatosReclamosLugano = findViewById(R.id.tv_DatosReclamosLugano);
         tv_DatosCimbelesLugano = findViewById(R.id.tv_DatosCimbelesLugano);
-        tv_DatosCapturasLugano = findViewById(R.id.tv_DatosCapturasLugano);
+        tv_DatosCapturasLuganoM = findViewById(R.id.tv_DatosCapturasLuganoM);
+        tv_DatosCapturasLuganoH = findViewById(R.id.tv_DatosCapturasLuganoH);
         tv_DatosReclamosPardilloComun = findViewById(R.id.tv_DatosReclamosPardilloComun);
         tv_DatosCimbelesPardilloComun = findViewById(R.id.tv_DatosCimbelesPardilloComun);
-        tv_DatosCapturasPardilloComun = findViewById(R.id.tv_DatosCapturasPardilloComun);
+        tv_DatosCapturasPardilloComunM = findViewById(R.id.tv_DatosCapturasPardilloComunM);
+        tv_DatosCapturasPardilloComunH = findViewById(R.id.tv_DatosCapturasPardilloComunH);
         tv_DatosReclamosPicogordo =  findViewById(R.id.tv_DatosReclamosPicogordo);
         tv_DatosCimbelesPicogordo = findViewById(R.id.tv_DatosCimbelesPicogordo);
-        tv_DatosCapturasPicogordo = findViewById(R.id.tv_DatosCapturasPicogordo);
+        tv_DatosCapturasPicogordoM = findViewById(R.id.tv_DatosCapturasPicogordoM);
+        tv_DatosCapturasPicogordoH = findViewById(R.id.tv_DatosCapturasPicogordoH);
         tv_DatosReclamosPinzonComun = findViewById(R.id.tv_DatosReclamosPinzonComun);
         tv_DatosCimbelesPinzonComun = findViewById(R.id.tv_DatosCimbelesPinzonComun);
-        tv_DatosCapturasPinzonComun = findViewById(R.id.tv_DatosCapturasPinzonComun);
+        tv_DatosCapturasPinzonComunM = findViewById(R.id.tv_DatosCapturasPinzonComunM);
+        tv_DatosCapturasPinzonComunH = findViewById(R.id.tv_DatosCapturasPinzonComunH);
         tv_DatosReclamosPinzonReal = findViewById(R.id.tv_DatosReclamosPinzonReal);
         tv_DatosCimbelesPinzonReal = findViewById(R.id.tv_DatosCimbelesPinzonReal);
-        tv_DatosCapturasPinzonReal = findViewById(R.id.tv_DatosCapturasPinzonReal);
+        tv_DatosCapturasPinzonRealM = findViewById(R.id.tv_DatosCapturasPinzonRealM);
+        tv_DatosCapturasPinzonRealH = findViewById(R.id.tv_DatosCapturasPinzonRealH);
         tv_DatosReclamosPiquituerto = findViewById(R.id.tv_DatosReclamosPiquituerto);
         tv_DatosCimbelesPiquituerto = findViewById(R.id.tv_DatosCimbelesPiquituerto);
-        tv_DatosCapturasPiquituerto = findViewById(R.id.tv_DatosCapturasPiquituerto);
+        tv_DatosCapturasPiquituertoM = findViewById(R.id.tv_DatosCapturasPiquituertoM);
+        tv_DatosCapturasPiquituertoH = findViewById(R.id.tv_DatosCapturasPiquituertoH);
         tv_DatosReclamosVerdecillo = findViewById(R.id.tv_DatosReclamosVerdecillo);
         tv_DatosCimbelesVerdecillo = findViewById(R.id.tv_DatosCimbelesVerdecillo);
-        tv_DatosCapturasVerdecillo = findViewById(R.id.tv_DatosCapturasVerdecillo);
+        tv_DatosCapturasVerdecilloM = findViewById(R.id.tv_DatosCapturasVerdecilloM);
+        tv_DatosCapturasVerdecilloH = findViewById(R.id.tv_DatosCapturasVerdecilloH);
         tv_DatosReclamosVerderonComun = findViewById(R.id.tv_DatosReclamosVerderonComun);
         tv_DatosCimbelesVerderonComun = findViewById(R.id.tv_DatosCimbelesVerderonComun);
-        tv_DatosCapturasVerderonComun = findViewById(R.id.tv_DatosCapturasVerderonComun);
+        tv_DatosCapturasVerderonComunM = findViewById(R.id.tv_DatosCapturasVerderonComunM);
+        tv_DatosCapturasVerderonComunH = findViewById(R.id.tv_DatosCapturasVerderonComunH);
         tv_DatosReclamosVerderonSerrano = findViewById(R.id.tv_DatosReclamosVerderonSerrano);
         tv_DatosCimbelesVerderonSerrano = findViewById(R.id.tv_DatosCimbelesVerderonSerrano);
-        tv_DatosCapturasVerderonSerrano = findViewById(R.id.tv_DatosCapturasVerderonSerrano);
+        tv_DatosCapturasVerderonSerranoM = findViewById(R.id.tv_DatosCapturasVerderonSerranoM);
+        tv_DatosCapturasVerderonSerranoH = findViewById(R.id.tv_DatosCapturasVerderonSerranoH);
         tv_DatosObservaciones = findViewById(R.id.tv_DatosObservaciones);
 
         //Datos Avistamiento

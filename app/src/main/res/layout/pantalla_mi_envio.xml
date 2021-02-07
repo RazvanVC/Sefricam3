@@ -417,7 +417,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -450,7 +450,16 @@
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Capt."
+                    android:text="Capt. M"
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text="Capt. H"
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
             </LinearLayout>
@@ -461,7 +470,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -491,7 +500,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasCamichuelo"
+                    android:id="@+id/tv_DatosCapturasCamichueloM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasCamichueloH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -508,7 +527,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -538,7 +557,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasJilguero"
+                    android:id="@+id/tv_DatosCapturasJilgueroM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasJilgueroH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -555,7 +584,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -585,7 +614,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasLugano"
+                    android:id="@+id/tv_DatosCapturasLuganoM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasLuganoH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -602,7 +641,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -632,7 +671,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasPardilloComun"
+                    android:id="@+id/tv_DatosCapturasPardilloComunM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasPardilloComunH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -649,7 +698,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -679,7 +728,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasPicogordo"
+                    android:id="@+id/tv_DatosCapturasPicogordoM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasPicogordoH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -696,7 +755,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -726,7 +785,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasPinzonComun"
+                    android:id="@+id/tv_DatosCapturasPinzonComunM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasPinzonComunH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -743,7 +812,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -773,7 +842,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasPinzonReal"
+                    android:id="@+id/tv_DatosCapturasPinzonRealM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasPinzonRealH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -790,7 +869,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -820,7 +899,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasPiquituerto"
+                    android:id="@+id/tv_DatosCapturasPiquituertoM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasPiquituertoH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -837,7 +926,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -867,7 +956,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasVerdecillo"
+                    android:id="@+id/tv_DatosCapturasVerdecilloM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasVerdecilloH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -884,7 +983,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -914,7 +1013,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasVerderonComun"
+                    android:id="@+id/tv_DatosCapturasVerderonComunM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasVerderonComunH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -931,7 +1040,7 @@
                 android:layout_marginStart="@dimen/_15sdp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/_30sdp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
@@ -961,7 +1070,17 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasVerderonSerrano"
+                    android:id="@+id/tv_DatosCapturasVerderonSerranoM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
+                    android:layout_weight="1"
+                    android:textColor="@color/VerdePrimario"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:background="@drawable/celda"/>
+                <TextView
+                    android:id="@+id/tv_DatosCapturasVerderonSerranoH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
