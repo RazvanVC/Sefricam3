@@ -47,35 +47,35 @@ public class Limites implements Serializable {
                     maxCimCamachuelo = result.getInt("MaxCimCamachuelo");
                     minAlaCamachuelo = result.getInt("MinAlaCamachuelo");
 
-                    maxRecJilguero = result.getInt("maxRecJilguero");
-                    maxCimJilguero = result.getInt("maxCimJilguero");
+                    maxRecJilguero = result.getInt("MaxRecJilguero");
+                    maxCimJilguero = result.getInt("MaxCimJilguero");
 
-                    maxRecLugano = result.getInt("maxRecLugano");
-                    maxCimLugano = result.getInt("maxCimLugano");
+                    maxRecLugano = result.getInt("MaxRecLugano");
+                    maxCimLugano = result.getInt("MaxCimLugano");
 
-                    maxRecPardComun = result.getInt("maxRecPardComun");
-                    maxCimPardComun = result.getInt("maxCimPardComun");
+                    maxRecPardComun = result.getInt("MaxRecPardComun");
+                    maxCimPardComun = result.getInt("MaxCimPardComun");
 
-                    maxCimPicogordo = result.getInt("maxCimPicogordo");
-                    maxRecPicogordo = result.getInt("maxRecPicogordo");
+                    maxCimPicogordo = result.getInt("MaxCimPicogordo");
+                    maxRecPicogordo = result.getInt("MaxRecPicogordo");
 
-                    maxCimPinzComun = result.getInt("maxCimPinzComun");
-                    maxRecPinzComun = result.getInt("maxRecPinzComun");
+                    maxCimPinzComun = result.getInt("MaxCimPinzComun");
+                    maxRecPinzComun = result.getInt("MaxRecPinzComun");
 
-                    maxRecPinzReal = result.getInt("maxRecPinzReal");
-                    maxCimPinzReal = result.getInt("maxCimPinzReal");
+                    maxRecPinzReal = result.getInt("MaxRecPinzReal");
+                    maxCimPinzReal = result.getInt("MaxCimPinzReal");
 
-                    maxRecPiquituerto = result.getInt("maxRecPiquituerto");
-                    maxCimPiquituerto = result.getInt("maxCimPiquituerto");
+                    maxRecPiquituerto = result.getInt("MaxRecPiquituerto");
+                    maxCimPiquituerto = result.getInt("MaxCimPiquituerto");
 
-                    maxRecVerdecillo = result.getInt("maxRecVerdecillo");
-                    maxCimVerdecillo = result.getInt("maxCimVerdecillo");
+                    maxRecVerdecillo = result.getInt("MaxRecVerdecillo");
+                    maxCimVerdecillo = result.getInt("MaxCimVerdecillo");
 
-                    maxRecVerdComun = result.getInt("maxRecVerdComun");
-                    maxCimVerdComun = result.getInt("maxCimVerdComun");
+                    maxRecVerdComun = result.getInt("MaxRecVerdComun");
+                    maxCimVerdComun = result.getInt("MaxCimVerdComun");
 
-                    maxRecVerdSerrano = result.getInt("maxRecVerdSerrano");
-                    maxCimVerdSerrano = result.getInt("maxCimVerdSerrano");
+                    maxRecVerdSerrano = result.getInt("MaxRecVerdSerrano");
+                    maxCimVerdSerrano = result.getInt("MaxCimVerdSerrano");
 
                 } else {
                     System.out.println("ERROR: No es posible leer los datos");
@@ -554,6 +554,38 @@ public class Limites implements Serializable {
 
     public int getMinNAnilla() {
         return minNAnilla;
+    }
+
+    public void imprimirDatosRecYCim(){
+        System.out.println("Datos Recibidos de Reclamos");
+        System.out.println("___________________________________");
+        System.out.println("Reclamos Camachuelo    =>" + getMaxRecCamachuelo());
+        System.out.println("Reclamos Jilguero      =>" + getMaxRecJilguero());
+        System.out.println("Reclamos Lugano        =>" + getMaxRecLugano());
+        System.out.println("Reclamos Pard Comun    =>" + getMaxRecPardComun());
+        System.out.println("Reclamos Picogordo     =>" + getMaxRecPicogordo());
+        System.out.println("Reclamos Pinz Comun    =>" + getMaxRecPinzComun());
+        System.out.println("Reclamos Pinz Real     =>" + getMaxRecPinzReal());
+        System.out.println("Reclamos Piquituerto   =>" + getMaxRecPiquituerto());
+        System.out.println("Reclamos Verdecillo    =>" + getMaxRecVerdecillo());
+        System.out.println("Reclamos Verd. Comun   =>" + getMaxRecVerdComun());
+        System.out.println("Reclamos Verd. Serrano =>" + getMaxRecVerdSerrano());
+        System.out.println("___________________________________");
+        System.out.println("Datos Recibidos de Reclamos");
+        System.out.println("___________________________________");
+        System.out.println("Cimbeles Camachuelo    =>" + getMaxCimCamachuelo());
+        System.out.println("Cimbeles Jilguero      =>" + getMaxCimJilguero());
+        System.out.println("Cimbeles Lugano        =>" + getMaxCimLugano());
+        System.out.println("Cimbeles Pard Comun    =>" + getMaxCimPardComun());
+        System.out.println("Cimbeles Picogordo     =>" + getMaxCimPicogordo());
+        System.out.println("Cimbeles Pinz Comun    =>" + getMaxCimPinzComun());
+        System.out.println("Cimbeles Pinz Real     =>" + getMaxCimPinzReal());
+        System.out.println("Cimbeles Piquituerto   =>" + getMaxCimPiquituerto());
+        System.out.println("Cimbeles Verdecillo    =>" + getMaxCimVerdecillo());
+        System.out.println("Cimbeles Verd. Comun   =>" + getMaxCimVerdComun());
+        System.out.println("Cimbeles Verd. Serrano =>" + getMaxCimVerdSerrano());
+        System.out.println("___________________________________");
+
     }
 
 }

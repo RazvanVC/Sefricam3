@@ -63,7 +63,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
             recuperarDatosRecibidos(datos);
 
             System.out.println("Datos recibidos en Metodos de Captura");
-            imprimirDatosRecibidos();
+            imprimirDatos();
         }
 
         setContentView(R.layout.pantalla_metodos_captura);
@@ -146,15 +146,21 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     }
 
     private void llenarControlAgentes() {
-        if (!metodosCaptura.getControlAgentes().get(0)){
-            rb_NoControl.setChecked(true);
-        } else {
+        System.out.println(metodosCaptura.getControlAgentes());
+        if (metodosCaptura.getControlAgentes().get(0)){
             rb_SiControl.setChecked(true);
             cb_ControlSeprona.setChecked(metodosCaptura.getControlAgentes().get(1));
-            cb_ControlForestales.setClickable(metodosCaptura.getControlAgentes().get(2));
-            cb_ControlOtros.setClickable(metodosCaptura.getControlAgentes().get(3));
-            cb_ControlPoliciaMunicipal.setClickable(metodosCaptura.getControlAgentes().get(4));
-            cb_ControlPoliciaNacional.setClickable(metodosCaptura.getControlAgentes().get(5));
+            cb_ControlForestales.setChecked(metodosCaptura.getControlAgentes().get(2));
+            cb_ControlOtros.setChecked(metodosCaptura.getControlAgentes().get(3));
+            cb_ControlPoliciaMunicipal.setChecked(metodosCaptura.getControlAgentes().get(4));
+            cb_ControlPoliciaNacional.setChecked(metodosCaptura.getControlAgentes().get(5));
+            cb_ControlSeprona.setClickable(true);
+            cb_ControlForestales.setClickable(true);
+            cb_ControlOtros.setClickable(true);
+            cb_ControlPoliciaMunicipal.setClickable(true);
+            cb_ControlPoliciaNacional.setClickable(true);
+        } else {
+            rb_NoControl.setChecked(true);
         }
     }
 
@@ -434,7 +440,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
             valueOf(etn_CapturasVerderonSerranoM.getText().toString());
         } catch (Exception e){
             comprobado = false;
-            Toast.makeText(this, "Los valores de la columna reclamos machos tienen que estar rellenos", Toast.LENGTH_LONG).show();
+            /*Toast.makeText*/System.out.println(/*this,*/ "Los valores de la columna capturas machos tienen que estar rellenos"/*, Toast.LENGTH_LONG).show();*/);
         }
         return comprobado;
     }
@@ -455,7 +461,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
             valueOf(etn_CapturasVerderonSerranoH.getText().toString());
         } catch (Exception e){
             comprobado = false;
-            Toast.makeText(this, "Los valores de la columna reclamos hembra tienen que estar rellenos", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Los valores de la columna capturas hembra tienen que estar rellenos", Toast.LENGTH_LONG).show();
         }
         return comprobado;
     }
@@ -476,7 +482,13 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
             valueOf(etn_ReclamosVerderonSerrano.getText().toString());
         } catch (Exception e){
             Toast.makeText(this, "Los valores de la columna reclamos tienen que estar rellenos", Toast.LENGTH_LONG).show();
+            return false;
         }
+
+        System.out.println("Max Rec Camachuelo => "+limites.getMaxRecCamachuelo());
+        System.out.println("Max Rec Jilguero   => "+limites.getMaxRecJilguero());
+        System.out.println("Max Rec Lugano     => "+limites.getMaxRecLugano());
+
 
         if (parseInt(etn_ReclamosCamachuelo.getText().toString())>limites.getMaxRecCamachuelo()) comprobado = false;
         if (parseInt(etn_ReclamosJilguero.getText().toString())>limites.getMaxRecJilguero()) comprobado = false;
@@ -513,7 +525,12 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
             valueOf(etn_CimbelesVerderonSerrano.getText().toString());
         } catch (Exception e){
             Toast.makeText(this, "Los valores de la columna cimbeles tienen que estar rellenos", Toast.LENGTH_LONG).show();
+            return false;
         }
+
+        System.out.println("Max Cim Camachuelo => "+limites.getMaxCimCamachuelo());
+        System.out.println("Max Cim Jilguero   => "+limites.getMaxCimJilguero());
+        System.out.println("Max Cim Lugano     => "+limites.getMaxCimLugano());
 
         if (parseInt(etn_CimbelesCamachuelo.getText().toString())>limites.getMaxCimCamachuelo()) comprobado = false;
         if (parseInt(etn_CimbelesJilguero.getText().toString())>limites.getMaxCimJilguero()) comprobado = false;
@@ -536,17 +553,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
     private void guardarParametros(Intent actividadDestino) {
 
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
+        imprimirDatos();
 
         actividadDestino.putExtra("EMAIL",email);
         actividadDestino.putExtra("DNI",DNI);
@@ -557,6 +564,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("LIMITES", limites);
 
     }
 
@@ -573,7 +581,8 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         limites = (Limites) datos.getSerializable("LIMITES");
     }
 
-    private void imprimirDatosRecibidos() {
+
+    private void imprimirDatos() {
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
