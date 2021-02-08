@@ -19,6 +19,7 @@ public class Pantalla_Mis_Datos extends Activity {
     private String email;
     private TextView tv_NombreDatos, tv_ApellidosDatos, tv_DNIDatos, tv_NumeroGrupoDatos, tv_CapturasDatos, tv_DatosEnviadosDatos;
     private Button btn_VolverDatos;
+    private Limites limites;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class Pantalla_Mis_Datos extends Activity {
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             email = datos.getString("EMAIL");
+            limites = (Limites) datos.getSerializable("LIMITES");
             cargarDatos(email);
         }
 
@@ -37,6 +39,7 @@ public class Pantalla_Mis_Datos extends Activity {
             public void onClick(View v) {
                 Intent activity = new Intent(Pantalla_Mis_Datos.this,Pantalla_Menu_Intermedio.class);
                 activity.putExtra("EMAIL",email);
+                activity.putExtra("LIMITES", limites);
                 startActivity(activity);
             }
         });

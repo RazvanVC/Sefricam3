@@ -121,6 +121,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         if (view == btn_Envios){
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Mis_Datos.class);
             activity.putExtra("EMAIL",email);
+            activity.putExtra("LIMITES", limites);
             finish();
             startActivity(activity);
         }

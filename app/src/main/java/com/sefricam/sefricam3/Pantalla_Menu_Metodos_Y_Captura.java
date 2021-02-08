@@ -261,6 +261,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         if (view == btn_Volver){
             Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
             activity.putExtra("EMAIL",email);
+            activity.putExtra("LIMITES", limites);
             startActivity(activity);
             finish();
         }

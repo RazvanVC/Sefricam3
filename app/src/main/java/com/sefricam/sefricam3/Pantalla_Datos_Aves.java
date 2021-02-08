@@ -105,7 +105,7 @@ public class Pantalla_Datos_Aves extends Activity implements AdapterView.OnItemS
     private void iniciarSpinners() {
         String [] nCapturas = {"-","0","1","2","3","4","5","6","7","8","9","10+"};
         ArrayAdapter<String> adapterCapturas = new ArrayAdapter<String>(this, R.layout.spinner,nCapturas);
-        sp_Capturas.setAdapter(adapterCapturas);
+        //sp_Capturas.setAdapter(adapterCapturas);
         String [] especies = {"Seleccione la especie","Camachuelo","Jilguero","Lúgano","Pardillo Común","Picogordo","Pinzón Común","Pinzón Real","Piquituerto","Verdecillo","Verderón Común","Verderón Serrano"};
         ArrayAdapter<String> adapterEspecies = new ArrayAdapter<String>(this, R.layout.spinner,especies);
         sp_Especies.setAdapter(adapterEspecies);
@@ -139,7 +139,7 @@ public class Pantalla_Datos_Aves extends Activity implements AdapterView.OnItemS
 
         rbg_Edad = findViewById(R.id.rbg_Edad);
 
-        sp_Capturas = (Spinner) findViewById(R.id.sp_Capturas);
+        //sp_Capturas = (Spinner) findViewById(R.id.sp_Capturas);
 
         rbg_CondicionFisica = findViewById(R.id.rbg_CondicionFisica);
 
