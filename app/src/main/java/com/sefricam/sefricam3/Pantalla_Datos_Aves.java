@@ -73,7 +73,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         iniciarFindView();
         iniciarOnClickListener();
-        iniciarSpinners();
 
         cargarDatos(email);
     }
@@ -100,14 +99,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     }
 
-    private void iniciarSpinners() {
-        String [] nCapturas = {"-","0","1","2","3","4","5","6","7","8","9","10+"};
-        ArrayAdapter<String> adapterCapturas = new ArrayAdapter<String>(this, R.layout.spinner,nCapturas);
-        //sp_Capturas.setAdapter(adapterCapturas);
-        String [] especies = {"Seleccione la especie","Camachuelo","Jilguero","Lúgano","Pardillo Común","Picogordo","Pinzón Común","Pinzón Real","Piquituerto","Verdecillo","Verderón Común","Verderón Serrano"};
-        ArrayAdapter<String> adapterEspecies = new ArrayAdapter<String>(this, R.layout.spinner,especies);
-        sp_Especies.setAdapter(adapterEspecies);
-    }
 
     private void iniciarOnClickListener() {
         btn_Enviar.setOnClickListener(this);
@@ -117,9 +108,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     private void iniciarFindView() {
         //Text View Hora Captura
-        tv_Hora = (TextView) findViewById(R.id.tv_HoraCapturaAve);
+        tv_Hora = findViewById(R.id.tv_HoraCapturaAve);
 
-        //Spinner Especie de Ave
 
 
         //Datos del ave
@@ -137,7 +127,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         rbg_Edad = findViewById(R.id.rbg_Edad);
 
-        //sp_Capturas = (Spinner) findViewById(R.id.sp_Capturas);
 
         rbg_CondicionFisica = findViewById(R.id.rbg_CondicionFisica);
 
@@ -149,15 +138,15 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         rbg_PlacaInc = findViewById(R.id.rbg_PlacaInc);
 
-        btn_Volver = (Button) findViewById(R.id.btn_VolverAves);
-        btn_Enviar = (Button) findViewById(R.id.btn_EnviarAves);
+        btn_Volver = findViewById(R.id.btn_VolverAves);
+        btn_Enviar = findViewById(R.id.btn_EnviarAves);
 
 
     }
 
     @Override
     public void onClick(View v) {
-        if (v == btn_Enviar){
+        /*if (v == btn_Enviar){
             if (comprobarValores()){
                 asignacionValores();
                 Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
@@ -173,7 +162,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             } else {
                 Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
             }
-        }
+        }*/
         if (v == btn_Volver){
             Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
             guardarParametros(activity);
@@ -203,6 +192,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     }
 
     private void envioDatos() {
+        /*
         Map<String, Object> docData = new HashMap<>();
         //Formatear como date
         docData.put("Fecha Captura", fecha);
@@ -243,12 +233,13 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(Pantalla_Datos_Aves.this, "Algo no ha ido bien, vuelva a intentarlo.\nSi ve que el error persiste póngase en contacto con un administrador", Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
     }
 
     private void asignacionValores() {
         hora = tv_Hora.getText().toString();
-        especie = sp_Especies.getSelectedItem().toString();
+        //Cambiar por Radio Buttons
+        // especie = sp_Especies.getSelectedItem().toString();
         if (!etn_NumeroAnilla.getText().toString().isEmpty()) numeroAnilla = Integer.parseInt(etn_NumeroAnilla.getText().toString());
         if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) anillaPreexistente = et_NumeroAnillaPreexistente.getText().toString();
         peso = Double.parseDouble(etnd_Peso.getText().toString());
@@ -285,7 +276,9 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 edad=2;
                 break;
         }
-        nEjemplares = sp_Capturas.getSelectedItemPosition();
+        //Cambiar por el Edit Text
+        // nEjemplares = sp_Capturas.getSelectedItemPosition();
+
         switch (rbg_CondicionFisica.getCheckedRadioButtonId()){
             case R.id.rb_CondicionBuena:
                 condicionFisica=1;
