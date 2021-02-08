@@ -44,6 +44,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
+    private Limites limites;
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
@@ -712,27 +713,18 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
 
     private void guardarParametros(Intent actividadDestino) {
 
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
+        imprimirDatosRecibidos();
 
         actividadDestino.putExtra("EMAIL",email);
         actividadDestino.putExtra("DNI",DNI);
         actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", (Serializable) datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", (Serializable) datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", (Serializable) metodosCaptura);
+        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
+        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
+        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("LIMITES", limites);
 
         if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
             actividadDestino.putExtra("FECHA", fecha);
@@ -752,6 +744,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+        limites = (Limites) datos.getSerializable("LIMITES");
 
         if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
             fecha = datos.getString("FECHA");
