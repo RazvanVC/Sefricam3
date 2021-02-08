@@ -37,7 +37,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private RadioGroup rbg_Especie31, rbg_Especie32, rbg_Especie33, rbg_Especie34, rbg_Especie35, rbg_Especie36;
 
     private EditText et_Especie37, et_Especie38;
-    private String fecha, latitud, longitud;
 
     /*
     private  String direccionViento;
@@ -54,6 +53,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
+    private String fecha, latitud, longitud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
