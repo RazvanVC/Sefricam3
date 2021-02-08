@@ -52,6 +52,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
+    private String fecha, latitud, longitud;
 
 
     @Override
@@ -74,6 +75,11 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
         if (mCapturasCompletado){
             cargarDatos();
+        }
+        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
+            fecha = datos.getString("FECHA");
+            latitud = datos.getString("LATITUD");
+            longitud = datos.getString("LONGITUD");
         }
 
     }
@@ -565,6 +571,12 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
         actividadDestino.putExtra("LIMITES", limites);
+
+        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
+            actividadDestino.putExtra("FECHA", fecha);
+            actividadDestino.putExtra("LATITUD", latitud);
+            actividadDestino.putExtra("LONGITUD", longitud);
+        }
 
     }
 
