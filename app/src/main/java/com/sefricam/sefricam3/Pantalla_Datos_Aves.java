@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Pantalla_Datos_Aves extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
+public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListener{
 
     private Button btn_Enviar, btn_Volver;
     private Spinner sp_Especies, sp_Capturas;
@@ -41,8 +41,6 @@ public class Pantalla_Datos_Aves extends Activity implements AdapterView.OnItemS
     private String hora,especie,anillaPreexistente;
     private int numeroAnilla,localizacion,sexo,edad,nEjemplares,condicionFisica,grasa,musculoPectoral,muda,placaIncubatriz;
     private Double peso, longitudTarso, longitudPico, longitudTerceraPrimaria, capturasEnviadas;
-
-    private double pesoMax, longitudTarsoMax, longitudPicoMax, longitudTerceraPrimariaMax,pesoMin, longitudTarsoMin, longitudPicoMin, longitudTerceraPrimariaMin;
 
     private EditText etn_NumeroAnilla, et_NumeroAnillaPreexistente, etnd_Peso, etnd_LongitudTarso, etnd_LongitudPico, etnd_LongitudTerceraPrimaria;
     private RadioGroup rbg_Localizacion, rbg_Sexo, rbg_Edad, rbg_CondicionFisica, rbg_Grasa, rbg_MusculoPectoral,rbg_Muda,rbg_PlacaInc;
@@ -122,7 +120,7 @@ public class Pantalla_Datos_Aves extends Activity implements AdapterView.OnItemS
         tv_Hora = (TextView) findViewById(R.id.tv_HoraCapturaAve);
 
         //Spinner Especie de Ave
-        sp_Especies = (Spinner) findViewById(R.id.sp_Especie);
+
 
         //Datos del ave
         etn_NumeroAnilla = findViewById(R.id.etn_NumeroAnilla);
@@ -390,42 +388,6 @@ public class Pantalla_Datos_Aves extends Activity implements AdapterView.OnItemS
         return comprobado;
     }
 
-    /**
-     * <p>Callback method to be invoked when an item in this view has been
-     * selected. This callback is invoked only when the newly selected
-     * position is different from the previously selected position or if
-     * there was no selected item.</p>
-     * <p>
-     * Implementers can call getItemAtPosition(position) if they need to access the
-     * data associated with the selected item.
-     *
-     * @param parent   The AdapterView where the selection happened
-     * @param view     The view within the AdapterView that was clicked
-     * @param position The position of the view in the adapter
-     * @param id       The row id of the item that is selected
-     */
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //Implementacion de los pesos maximos y minimos
-        if (parent.getId()==R.id.sp_Especie){
-            switch (parent.getSelectedItemPosition()){
-                case 0:
-                    break;
-                default:
-                    habilitarDatosPajaros();
-                    pesoMax = 500;
-                    longitudPicoMax = 10;
-                    longitudTarsoMax = 10;
-                    longitudTerceraPrimariaMax = 10;
-                    pesoMin=0;
-                    longitudPicoMin = 0;
-                    longitudTarsoMin = 0;
-                    longitudTerceraPrimariaMin = 0;
-                    break;
-            }
-        }
-    }
-
     private void habilitarDatosPajaros() {
         etn_NumeroAnilla.setEnabled(true);
         et_NumeroAnillaPreexistente.setEnabled(true);
@@ -435,17 +397,6 @@ public class Pantalla_Datos_Aves extends Activity implements AdapterView.OnItemS
         etnd_Peso.setEnabled(true);
     }
 
-    /**
-     * Callback method to be invoked when the selection disappears from this
-     * view. The selection can disappear for instance when touch is activated
-     * or when the adapter becomes empty.
-     *
-     * @param parent The AdapterView that now contains no selected item.
-     */
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     private void guardarParametros(Intent actividadDestino) {
 
