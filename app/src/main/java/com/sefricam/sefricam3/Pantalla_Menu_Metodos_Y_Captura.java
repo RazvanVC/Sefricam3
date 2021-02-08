@@ -186,19 +186,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Datos_Aves.class);
             guardarParametros(activity);
 
-            if (envioCompletado){
-                fecha = tv_Fecha.getText().toString();
-                latitud = Double.parseDouble(etnd_Latitud.getText().toString());
-                longitud = Double.parseDouble(etnd_Longitud.getText().toString());
-
-                activity.putExtra("FECHA",fecha);
-                activity.putExtra("LONGITUD",longitud);
-                activity.putExtra("LATITUD",latitud);
-            }
-
             startActivity(activity);
             finish();
-
         }
         if (view == btn_DatosEntorno){
             System.out.println("Boton Datos de Entorno");
@@ -229,21 +218,12 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             Intent activity = new Intent(this, Pantalla_Mi_Envio.class);
             guardarParametros(activity);
 
-            if (envioCompletado){
-                fecha = tv_Fecha.getText().toString();
-                latitud = Double.parseDouble(etnd_Latitud.getText().toString());
-                longitud = Double.parseDouble(etnd_Longitud.getText().toString());
-
-                activity.putExtra("FECHA",fecha);
-                activity.putExtra("LONGITUD",longitud);
-                activity.putExtra("LATITUD",latitud);
-            }
-
             startActivity(activity);
             finish();
 
         }
         if (view == btn_Enviar){
+            /*
             if (comprobarValores()){
                 db = FirebaseFirestore.getInstance();
                 actualizarDatosEnviados();
@@ -256,7 +236,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
             } else {
                 Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
-            }
+            }*/
         }
         if (view == btn_Volver){
             Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
