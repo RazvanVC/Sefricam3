@@ -56,7 +56,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     private String email;
     private String DNI;
     //Solo usados una vez completado el envío
-    private double latitud,longitud;
+    private String latitud,longitud;
     private String fecha;
 
     @Override
@@ -65,11 +65,6 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             recuperarDatosRecibidos(datos);
-
-            //Datos Recibidos de Menu Metodos y Capturas
-            latitud = datos.getDouble("LATITUD");
-            longitud = datos.getDouble("LONGITUD");
-            fecha = datos.getString("FECHA");
 
             System.out.println("Datos recibidos en Mi Envio");
             imprimirDatosRecibidos();
@@ -84,6 +79,12 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         if (mCapturasCompletado) cargarDatosMCapturas();
 
         if (avistamientoCompletado) cargarDatosAvistamiento();
+
+        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
+            fecha = datos.getString("FECHA");
+            latitud = datos.getString("LATITUD");
+            longitud = datos.getString("LONGITUD");
+        }
 
     }
 
@@ -763,6 +764,12 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
         actividadDestino.putExtra("LIMITES", limites);
+
+        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
+            actividadDestino.putExtra("FECHA", fecha);
+            actividadDestino.putExtra("LATITUD", latitud);
+            actividadDestino.putExtra("LONGITUD", longitud);
+        }
 
     }
 
