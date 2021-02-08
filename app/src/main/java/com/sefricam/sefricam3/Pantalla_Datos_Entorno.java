@@ -38,11 +38,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
     private EditText et_Especie37, et_Especie38;
 
-    /*
-    private  String direccionViento;
-    private int viento;
-    private int nubes;
-    private int lluvia;*/
 
     //Parametros
     private boolean envioCompletado;
@@ -60,6 +55,9 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_datos_entorno);
 
+        iniciarFindView();
+        iniciarOnClickListeners();
+
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             recuperarDatosRecibidos(datos);
@@ -68,17 +66,10 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             imprimirDatos();
         }
 
-        iniciarFindView();
-        iniciarOnClickListeners();
-
         if (entornoCompletado){
             cargarDatos();
         }
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getString("LATITUD");
-            longitud = datos.getString("LONGITUD");
-        }
+
     }
 
     private void cargarDatos() {
@@ -544,11 +535,11 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_DirVientoN = findViewById(R.id.rb_DirN);
         rb_DirVientoS = findViewById(R.id.rb_DirS);
         rb_DirVientoE = findViewById(R.id.rb_DirE);
-        rb_DirVientoE = findViewById(R.id.rb_DirO);
+        rb_DirVientoO = findViewById(R.id.rb_DirO);
         rb_DirVientoNE = findViewById(R.id.rb_DirNE);
-        rb_DirVientoNE = findViewById(R.id.rb_DirNO);
+        rb_DirVientoNO = findViewById(R.id.rb_DirNO);
         rb_DirVientoSE = findViewById(R.id.rb_DirSE);
-        rb_DirVientoSE = findViewById(R.id.rb_DirSO);
+        rb_DirVientoSO = findViewById(R.id.rb_DirSO);
 
 
         //Radio Button Group Nubes
@@ -1237,6 +1228,12 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
         limites = (Limites) datos.getSerializable("LIMITES");
+
+        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
+            fecha = datos.getString("FECHA");
+            latitud = datos.getString("LATITUD");
+            longitud = datos.getString("LONGITUD");
+        }
     }
 
     private void imprimirDatos() {
