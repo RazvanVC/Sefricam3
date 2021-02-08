@@ -988,7 +988,7 @@
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
                     android:textColor="@color/VerdePrimario"
-                    android:text="@string/tv_verdon_comun"
+                    android:text="@string/tv_verderon_comun"
                     android:paddingStart="@dimen/_5sdp"
                     android:background="@drawable/celda"/>
 
@@ -1045,7 +1045,7 @@
                     android:textSize="@dimen/_13ssp"
                     android:layout_weight="1.5"
                     android:textColor="@color/VerdePrimario"
-                    android:text="@string/tv_verdon_serrano"
+                    android:text="@string/tv_verderon_serrano"
                     android:paddingStart="@dimen/_5sdp"
                     android:background="@drawable/celda"/>
 
@@ -1329,7 +1329,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:text="@string/tv_verdon_comun"
+                        android:text="@string/tv_verderon_comun"
                         android:textColor="@color/VerdePrimario"
                         android:background="@drawable/celda"
                         android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
@@ -1339,7 +1339,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:text="@string/tv_verdon_serrano"
+                        android:text="@string/tv_verderon_serrano"
                         android:textColor="@color/VerdePrimario"
                         android:background="@drawable/celda"
                         android:textSize="@dimen/_13ssp" /> <!-- Verderon Serrano -->

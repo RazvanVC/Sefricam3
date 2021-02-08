@@ -766,7 +766,7 @@
                             android:layout_width="@dimen/_110sdp"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
-                            android:text="@string/tv_verdon_comun"
+                            android:text="@string/tv_verderon_comun"
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" />
 
@@ -822,7 +822,7 @@
                             android:layout_width="@dimen/_110sdp"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
-                            android:text="@string/tv_verdon_serrano"
+                            android:text="@string/tv_verderon_serrano"
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" />
 

@@ -211,7 +211,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:gravity="center_vertical"
-                            android:text="@string/tv_verdon_comun"
+                            android:text="@string/tv_verderon_comun"
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Verderon Comun -->
                         <TextView
@@ -219,7 +219,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:gravity="center_vertical"
-                            android:text="@string/tv_verdon_serrano"
+                            android:text="@string/tv_verderon_serrano"
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Verderon Serrano -->
                     </LinearLayout>

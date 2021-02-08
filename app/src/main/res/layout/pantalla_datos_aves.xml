@@ -63,15 +63,100 @@
                 android:text="Seleccione la especie: "/>
 
             <RadioGroup
+                android:id="@+id/rbg_EspeciesAves"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <RadioButton
+                    android:id="@+id/rb_EspecieCamachuelo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_camachuelo"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspecieJilguero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_jilguero"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspecieLugano"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_lugano"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspeciePardComun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pardillo Común"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspeciePicogordo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_picogordo"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspeciePinzonComun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_pinzon_comun"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspeciePinzonReal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_pinzon_real"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspeciePiquituerto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_piquituerto"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspecieVerdecillo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_verdecillo"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspecieVerdComun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Verderón Común"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
+
+                <RadioButton
+                    android:id="@+id/rb_EspecieVerdSerrano"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Verderón Serrano"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"/>
             </RadioGroup>
-            <Spinner
-                android:id="@+id/sp_Especie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
