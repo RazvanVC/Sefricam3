@@ -285,7 +285,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         ParseObject docData = new ParseObject("DatosEntorno");
 
         //General
-        docData.put("Fecha",convertStringToData(fecha));
+
+        docData.put("Fecha",convertStringToData(tv_Fecha.getText().toString()));
         docData.put("Latitud",latitud);
         docData.put("Longitud",longitud);
         docData.put("Cuadricula", cuadricula());
@@ -528,27 +529,23 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     private boolean comprobarValores() {
-        boolean comprobado = true;
 
-        if (tv_Fecha.getText().toString().equals("-- / -- / ----"))comprobado=false;
-        if (etnd_Longitud.getText().toString().isEmpty()) comprobado=false;
+        if (tv_Fecha.getText().toString().equals("-- / -- / ----")) return false;
+        if (etnd_Longitud.getText().toString().isEmpty()) return false;
         try {
             Double.parseDouble(etnd_Longitud.getText().toString());
-            Double.parseDouble(etnd_Longitud.getText().toString());
             Double.parseDouble(etnd_Latitud.getText().toString());
-            Double.parseDouble(etnd_Latitud.getText().toString());
-
         } catch (Exception e){
-            comprobado = false;
-            return comprobado;
+            return false;
         }
-        if (Double.parseDouble(etnd_Longitud.getText().toString())>180) comprobado=false;
-        if (Double.parseDouble(etnd_Longitud.getText().toString())<-180) comprobado=false;
-        if (etnd_Latitud.getText().toString().isEmpty()) comprobado=false;
-        if (Double.parseDouble(etnd_Latitud.getText().toString())>90) comprobado=false;
-        if (Double.parseDouble(etnd_Latitud.getText().toString())<-90) comprobado=false;
+        if (Double.parseDouble(etnd_Longitud.getText().toString())>limites.getMaxLat()) return false;
+        if (Double.parseDouble(etnd_Longitud.getText().toString())<limites.getMinLat()) return false;
+        if (etnd_Latitud.getText().toString().isEmpty()) return false;
+        if (Double.parseDouble(etnd_Latitud.getText().toString())>limites.getMaxLon()) return false;
+        //noinspection RedundantIfStatement
+        if (Double.parseDouble(etnd_Latitud.getText().toString())<limites.getMinLon()) return false;
 
-        return comprobado;
+        return true;
     }
 
     private void guardarParametros(Intent actividadDestino) {
