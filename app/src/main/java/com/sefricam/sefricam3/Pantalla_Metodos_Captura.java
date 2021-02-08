@@ -76,11 +76,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         if (mCapturasCompletado){
             cargarDatos();
         }
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getString("LATITUD");
-            longitud = datos.getString("LONGITUD");
-        }
+
 
     }
 
@@ -591,6 +587,12 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
         limites = (Limites) datos.getSerializable("LIMITES");
+
+        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
+            fecha = datos.getString("FECHA");
+            latitud = datos.getString("LATITUD");
+            longitud = datos.getString("LONGITUD");
+        }
     }
 
 

@@ -47,6 +47,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
+    private String fecha, latitud, longitud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -733,6 +734,12 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
 
+        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
+            actividadDestino.putExtra("FECHA", fecha);
+            actividadDestino.putExtra("LATITUD", latitud);
+            actividadDestino.putExtra("LONGITUD", longitud);
+        }
+
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
@@ -745,6 +752,12 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+
+        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
+            fecha = datos.getString("FECHA");
+            latitud = datos.getString("LATITUD");
+            longitud = datos.getString("LONGITUD");
+        }
     }
 
     private void imprimirDatosRecibidos() {
