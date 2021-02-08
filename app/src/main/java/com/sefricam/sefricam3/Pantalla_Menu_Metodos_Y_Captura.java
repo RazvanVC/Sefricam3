@@ -95,6 +95,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             etnd_Latitud.setEnabled(true);
             etnd_Longitud.setEnabled(true);
             btn_Enviar.setEnabled(true);
+            etnd_Latitud.setText(datos.getString("LATITUD"));
+            etnd_Longitud.setText(datos.getString("LONGITUD"));
+            tv_Fecha.setText(datos.getString("FECHA"));
             btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
         }
     }
@@ -266,7 +269,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     public static Date convertStringToData(String getDate){
         Date today = null;
-        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
             today = simpleDate.parse(getDate);
@@ -474,6 +477,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 });
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void desactivarBotonesDatos() {
         btn_DatosAves.setEnabled(true);
         btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
@@ -549,17 +553,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     private void guardarParametros(Intent actividadDestino) {
 
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
+        imprimirDatosRecibidos();
 
         actividadDestino.putExtra("EMAIL",email);
         actividadDestino.putExtra("DNI",DNI);
@@ -571,7 +565,11 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
         actividadDestino.putExtra("LIMITES", limites);
-
+        if (entornoCompletado && mCapturasCompletado && avistamientoCompletado){
+            actividadDestino.putExtra("LATITUD", etnd_Latitud.getText().toString());
+            actividadDestino.putExtra("LONGITUD", etnd_Longitud.getText().toString());
+            actividadDestino.putExtra("FECHA", tv_Fecha.getText().toString());
+        }
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
