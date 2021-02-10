@@ -37,7 +37,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private Double peso, longitudTarso, longitudPico, longitudTerceraPrimaria, capturasEnviadas;
 
     private EditText etn_NumeroAnilla, et_NumeroAnillaPreexistente, etnd_Peso, etnd_LongitudTarso, etnd_LongitudPico, etnd_LongitudTerceraPrimaria;
-    private RadioGroup rbg_Localizacion, rbg_Sexo, rbg_Edad, rbg_CondicionFisica, rbg_Grasa, rbg_MusculoPectoral,rbg_Muda,rbg_PlacaInc;
+    private RadioGroup rbg_Localizacion, rbg_Sexo, rbg_Edad, rbg_CondicionFisica, rbg_Grasa, rbg_MusculoPectoral,rbg_Muda,rbg_PlacaInc, rbg_EspeciesAves;
 
     //Parametros
     private boolean envioCompletado;
@@ -51,6 +51,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private String fecha, latitud, longitud;
     private int numGrupo;
     private int numAves;
+    private int maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +104,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         btn_Enviar.setOnClickListener(this);
         btn_Volver.setOnClickListener(this);
         tv_Hora.setOnClickListener(this);
+
     }
 
     private void iniciarFindView() {
@@ -109,6 +112,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         tv_Hora = findViewById(R.id.tv_HoraCapturaAve);
 
         //RB Especie aves
+        rbg_EspeciesAves = findViewById(R.id.rbg_EspeciesAves);
 
         //Datos del ave
         etn_NumeroAnilla = findViewById(R.id.etn_NumeroAnilla);
@@ -156,8 +160,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 envioDatos();
                 startActivity(activity);
                 finish();
-            } else {
-                Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
             }
         }
         if (v == btn_Volver){
@@ -348,7 +350,27 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 */
     }
 
+
+
+    private void habilitarRellenadoDatosAves() {
+        etn_NumeroAnilla.setEnabled(true);
+        et_NumeroAnillaPreexistente.setEnabled(true);
+        etnd_LongitudPico.setEnabled(true);
+        etnd_LongitudTarso.setEnabled(true);
+        etnd_LongitudTerceraPrimaria.setEnabled(true);
+        etnd_Peso.setEnabled(true);
+    }
+
     private boolean comprobarValores() {
+        if (tv_Hora.getText().toString().equals("--:--")) {
+            Toast.makeText(this, "ERROR: \nEl camo de la hora no se puede quedar vacío", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (rbg_EspeciesAves.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR \nSe ha de seleccionar una especie de ave", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         /*boolean comprobado  = true;
         if (tv_Hora.getText().toString().equals("--:--")) comprobado = false;
         if (sp_Especies.getSelectedItemPosition()==0) comprobado = false;
@@ -381,16 +403,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         return comprobado;*/
         return true;
     }
-
-    private void habilitarDatosPajaros() {
-        etn_NumeroAnilla.setEnabled(true);
-        et_NumeroAnillaPreexistente.setEnabled(true);
-        etnd_LongitudPico.setEnabled(true);
-        etnd_LongitudTarso.setEnabled(true);
-        etnd_LongitudTerceraPrimaria.setEnabled(true);
-        etnd_Peso.setEnabled(true);
-    }
-
 
     private void guardarParametros(Intent actividadDestino) {
 
@@ -450,5 +462,34 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         System.out.println("FECHA                  => " + fecha);
         System.out.println("LATITUD                => " + latitud);
         System.out.println("LONGITUD               => " + longitud);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    public void seleccionAve(View v){
+        habilitarRellenadoDatosAves();
+        switch (v.getId()){
+            case R.id.rb_EspecieCamachuelo:
+                maxPeso  = limites.getMaxPesoCamachuelo();
+                maxTarso = limites.getMaxTarsoCamachuelo();
+                maxAla = limites.getMaxAlaCamachuelo();
+                maxPico = limites.getMaxPicoCamachuelo();
+
+                minPeso  = limites.getMinPesoCamachuelo();
+                minTarso = limites.getMinTarsoCamachuelo();
+                minAla = limites.getMinAlaCamachuelo();
+                minPico = limites.getMinPicoCamachuelo();
+                break;
+            case R.id.rb_EspecieJilguero:
+                maxPeso  = limites.getMaxPesoJilguero();
+                maxTarso = limites.getMaxTarsoJilguero();
+                maxAla = limites.getMaxAlaJilguero();
+                maxPico = limites.getMaxPicoCamachuelo();
+
+                minPeso  = limites.getMinPesoJilguero();
+                minTarso = limites.getMinTarsoJilguero();
+                minAla = limites.getMinAlaJilguero();
+                minPico = limites.getMinPicoJilguero();
+                break;
+        }
     }
 }
