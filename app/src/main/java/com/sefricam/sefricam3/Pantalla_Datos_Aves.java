@@ -1,12 +1,11 @@
 package com.sefricam.sefricam3;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -15,21 +14,16 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListener{
 
@@ -55,13 +49,14 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private String email,DNI;
     public FirebaseFirestore db;
     private String fecha, latitud, longitud;
+    private int numGrupo;
+    private int numAves;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_datos_aves);
 
-        db = FirebaseFirestore.getInstance();
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             recuperarDatosRecibidos(datos);
@@ -70,35 +65,38 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             System.out.println("Datos recibidos en Datos Aves");
             imprimirDatosRecibidos();
         }
+        cargarDatos(email);
 
         iniciarFindView();
         iniciarOnClickListener();
-
-        cargarDatos(email);
     }
 
     private void cargarDatos(String email) {
 
-
-        db.collection("users")
-                .whereEqualTo("Email",email)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                DNI=(""+document.getData().get("DNI"));
-                                capturasEnviadas =  Double.parseDouble(Objects.requireNonNull(document.getData().get("Capturas Enviadas")).toString());
-                            }
-                        }else{
-
-                        }
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+        query.whereEqualTo("username",email);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null){
+                    ParseObject obj = null;
+                    for (int i = 0; i<objects.size(); i++){
+                        obj = objects.get(i);
                     }
-                });
+                    try {
+                        DNI = obj.getString("DNI");
+                        numGrupo = (Integer) obj.getInt("NumGrupo");
+                        numAves = (Integer) obj.getInt("NumAves");
+                    } catch (Exception x){
+                        Toast.makeText(Pantalla_Datos_Aves.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
+                    }
 
+                }
+            }
+        });
+
+        limites.findGrupo(numGrupo);
     }
-
 
     private void iniciarOnClickListener() {
         btn_Enviar.setOnClickListener(this);
@@ -110,7 +108,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         //Text View Hora Captura
         tv_Hora = findViewById(R.id.tv_HoraCapturaAve);
 
-
+        //RB Especie aves
 
         //Datos del ave
         etn_NumeroAnilla = findViewById(R.id.etn_NumeroAnilla);
@@ -141,12 +139,11 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         btn_Volver = findViewById(R.id.btn_VolverAves);
         btn_Enviar = findViewById(R.id.btn_EnviarAves);
 
-
     }
 
     @Override
     public void onClick(View v) {
-        /*if (v == btn_Enviar){
+        if (v == btn_Enviar){
             if (comprobarValores()){
                 asignacionValores();
                 Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
@@ -162,7 +159,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             } else {
                 Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
             }
-        }*/
+        }
         if (v == btn_Volver){
             Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
             guardarParametros(activity);
@@ -191,52 +188,55 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     }
 
-    private void envioDatos() {
-        /*
-        Map<String, Object> docData = new HashMap<>();
-        //Formatear como date
-        docData.put("Fecha Captura", fecha);
-        docData.put("Latitud", latitud);
-        docData.put("Longitud", longitud);
-        docData.put("Hora Captura",hora);
-        docData.put("Especie",especie);
-        docData.put("Numero Ejemplares",nEjemplares);
-        docData.put("Numero Anilla",numeroAnilla);
-        docData.put("Anillla Preexistente",anillaPreexistente);
-        docData.put("Peso",peso);
-        docData.put("Longitud Tarso",longitudTarso);
-        docData.put("Longitud Pico", longitudPico);
-        docData.put("Longitud Tercera Primaria", longitudTerceraPrimaria);
-        docData.put("Localizacion",localizacion);
-        docData.put("Sexo",sexo);
-        docData.put("Edad",edad);
-        docData.put("Condicion Fisica",condicionFisica);
-        docData.put("Grasa",grasa);
-        docData.put("Musculo Pectoral",musculoPectoral);
-        docData.put("Muda",muda);
-        docData.put("Placa Incubatriz",placaIncubatriz);
+    public void envioDatos() {
+        ParseObject entity = new ParseObject("Datos_Aves");
 
-        String rutaDocumento = ""+DNI+fecha+hora;
-        db.collection("Aves").document(rutaDocumento)
-                .set(docData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(Pantalla_Datos_Aves.this, "Se ha enviado correctamente los datos", Toast.LENGTH_LONG).show();
-                        DocumentReference userRef = db.collection("users").document(DNI);
-                        capturasEnviadas++;
-                        userRef.update("Capturas Enviadas", capturasEnviadas);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Pantalla_Datos_Aves.this, "Algo no ha ido bien, vuelva a intentarlo.\nSi ve que el error persiste póngase en contacto con un administrador", Toast.LENGTH_LONG).show();
-                    }
-                });*/
+        entity.put("FechaCap", convertStringToData(fecha));
+        entity.put("Latitud", latitud);
+        entity.put("Longitud", longitud);
+        entity.put("HoraCap", hora);
+        entity.put("Especie", especie);
+        entity.put("NEjemplares", nEjemplares);
+        entity.put("NumAnilla", numeroAnilla);
+        entity.put("AnillaPre", anillaPreexistente);
+        entity.put("Peso", peso);
+        entity.put("LongTarso", longitudTarso);
+        entity.put("LongPico", longitudPico);
+        entity.put("LongTerPrim", longitudTerceraPrimaria);
+        entity.put("Localizacion", localizacion);
+        entity.put("Sexo", sexo);
+        entity.put("Edad", edad);
+        entity.put("CondFisica", condicionFisica);
+        entity.put("Grasa", grasa);
+        entity.put("MuscPectoral", musculoPectoral);
+        entity.put("Muda", muda);
+        entity.put("PlacIncubatriz", placaIncubatriz);
+
+        // Saves the new object.
+        // Notice that the SaveCallback is totally optional!
+        entity.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                // Here you can handle errors, if thrown. Otherwise, "e" should be null
+            }
+        });
     }
 
+    public static Date convertStringToData(String getDate){
+        Date today = null;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            today = simpleDate.parse(getDate);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return today;
+    }
+
+    @SuppressLint("NonConstantResourceId")
     private void asignacionValores() {
+        /*
         hora = tv_Hora.getText().toString();
         //Cambiar por Radio Buttons
         // especie = sp_Especies.getSelectedItem().toString();
@@ -345,11 +345,11 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                     break;
             }
         } else placaIncubatriz=0;
-
+*/
     }
 
     private boolean comprobarValores() {
-        boolean comprobado  = true;
+        /*boolean comprobado  = true;
         if (tv_Hora.getText().toString().equals("--:--")) comprobado = false;
         if (sp_Especies.getSelectedItemPosition()==0) comprobado = false;
         //if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<1) comprobado =false;
@@ -378,7 +378,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         if (rbg_Sexo.getCheckedRadioButtonId()==R.id.rb_SexoHembra){
             if (rbg_PlacaInc.getCheckedRadioButtonId()==-1)comprobado=false;
         }
-        return comprobado;
+        return comprobado;*/
+        return true;
     }
 
     private void habilitarDatosPajaros() {
@@ -437,6 +438,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
+        System.out.println("LIMITES                => " + limites);
         System.out.println("____________________________________________________");
         System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
         System.out.println("DATOS ENTORNO          => " + datosEntorno);

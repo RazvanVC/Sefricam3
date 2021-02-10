@@ -1,11 +1,15 @@
 package com.sefricam.sefricam3;
 
+import android.widget.Toast;
+
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Limites implements Serializable {
     private int minLat, maxLat, minLon, maxLon, minTemp, maxTemp, minNAnilla, maxNAnilla;
@@ -588,4 +592,28 @@ public class Limites implements Serializable {
 
     }
 
+    public void findGrupo(int numGrupo) {
+        System.out.println("ANILLA MAX =>" + maxNAnilla);
+        System.out.println("ANILLA MIN =>" + minNAnilla);
+
+        ParseQuery<ParseObject> query= ParseQuery.getQuery("Limites_Anillamiento");
+        query.whereEqualTo("NumGrupo",0);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null){
+                    ParseObject obj = null;
+                    for (int i = 0; i<objects.size(); i++){
+                        obj = objects.get(i);
+                    }
+                    try {
+                        minNAnilla = obj.getInt("NAnillaMin");
+                        maxNAnilla = (Integer) obj.getNumber("NAnillaMax");
+                    } catch (Exception x){
+                        System.out.println("ERROR EN LA RECUPERACION DE DATOS");
+                    }
+                }
+            }
+        });
+    }
 }
