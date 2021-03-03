@@ -47,6 +47,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             email = datos.getString("EMAIL");
             limites = (Limites) datos.getSerializable("LIMITES");
             limites.imprimirDatosRecYCim();
+            limites.imprimirDatosParametrosAves();
             cargarDatos(email);
         }
     }

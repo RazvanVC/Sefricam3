@@ -36,7 +36,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private int numeroAnilla,localizacion,sexo,edad,nEjemplares,condicionFisica,grasa,musculoPectoral,muda,placaIncubatriz;
     private Double peso, longitudTarso, longitudPico, longitudTerceraPrimaria, capturasEnviadas;
 
-    private EditText etn_NumeroAnilla, et_NumeroAnillaPreexistente, etnd_Peso, etnd_LongitudTarso, etnd_LongitudPico, etnd_LongitudTerceraPrimaria;
+    private EditText etn_EjemplaresCapturados, etn_NumeroAnilla, et_NumeroAnillaPreexistente, etnd_Peso, etnd_LongitudTarso, etnd_LongitudPico, etnd_LongitudTerceraPrimaria;
     private RadioGroup rbg_Localizacion, rbg_Sexo, rbg_Edad, rbg_CondicionFisica, rbg_Grasa, rbg_MusculoPectoral,rbg_Muda,rbg_PlacaInc, rbg_EspeciesAves;
 
     //Parametros
@@ -113,6 +113,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         //RB Especie aves
         rbg_EspeciesAves = findViewById(R.id.rbg_EspeciesAves);
+
+        etn_EjemplaresCapturados = findViewById(R.id.etn_EjemplaresCapturados);
 
         //Datos del ave
         etn_NumeroAnilla = findViewById(R.id.etn_NumeroAnilla);
@@ -363,14 +365,27 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     private boolean comprobarValores() {
         if (tv_Hora.getText().toString().equals("--:--")) {
-            Toast.makeText(this, "ERROR: \nEl camo de la hora no se puede quedar vacío", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "ERROR: El campo de la hora no se puede quedar vacío", Toast.LENGTH_LONG).show();
             return false;
         }
 
         if (rbg_EspeciesAves.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "ERROR \nSe ha de seleccionar una especie de ave", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR: Se ha de seleccionar una especie de ave", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        if (etn_EjemplaresCapturados.getText().toString().equals("0")){
+            Toast.makeText(this, "ERROR: Las capturas tienenq ue ser distintas de cero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        //Comprobacion de parámetros dentro de límites
+        if (Double.parseDouble(etnd_Peso.getText().toString())<minPeso || Double.parseDouble(etnd_Peso.getText().toString())>maxPeso){
+            Toast.makeText(this, "El peso no se ajustan a los parámetros de peso del ave seleccionada", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         /*boolean comprobado  = true;
         if (tv_Hora.getText().toString().equals("--:--")) comprobado = false;
         if (sp_Especies.getSelectedItemPosition()==0) comprobado = false;
@@ -468,6 +483,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     public void seleccionAve(View v){
         habilitarRellenadoDatosAves();
         switch (v.getId()){
+            /*
             case R.id.rb_EspecieCamachuelo:
                 maxPeso  = limites.getMaxPesoCamachuelo();
                 maxTarso = limites.getMaxTarsoCamachuelo();
@@ -489,7 +505,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 minTarso = limites.getMinTarsoJilguero();
                 minAla = limites.getMinAlaJilguero();
                 minPico = limites.getMinPicoJilguero();
-                break;
+                break;*/
         }
     }
 }

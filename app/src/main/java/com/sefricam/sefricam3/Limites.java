@@ -13,17 +13,34 @@ import java.util.List;
 
 public class Limites implements Serializable {
     private int minLat, maxLat, minLon, maxLon, minTemp, maxTemp, minNAnilla, maxNAnilla;
-    private int maxRecCamachuelo, maxCimCamachuelo, minAlaCamachuelo, maxAlaCamachuelo, minPicoCamachuelo, maxPicoCamachuelo, minTarsoCamachuelo, maxTarsoCamachuelo, minPesoCamachuelo, maxPesoCamachuelo;
-    private int maxRecJilguero, maxCimJilguero, minAlaJilguero, maxAlaJilguero, minPicoJilguero, maxPicoJilguero, minTarsoJilguero, maxTarsoJilguero, minPesoJilguero, maxPesoJilguero;
-    private int maxRecLugano, maxCimLugano, minAlaLugano, maxAlaLugano, minPicoLugano, maxPicoLugano, minTarsoLugano, maxTarsoLugano, minPesoLugano, maxPesoLugano;
-    private int maxRecPardComun, maxCimPardComun, minAlaPardComun, maxAlaPardComun, minPicoPardComun, maxPicoPardComun, minTarsoPardComun, maxTarsoPardComun, minPesoPardComun, maxPesoPardComun;
-    private int maxRecPicogordo, maxCimPicogordo, minAlaPicogordo, maxAlaPicogordo, minPicoPicogordo, maxPicoPicogordo, minTarsoPicogordo, maxTarsoPicogordo, minPesoPicogordo, maxPesoPicogordo;
-    private int maxRecPinzComun, maxCimPinzComun, minAlaPinzComun, maxAlaPinzComun, minPicoPinzComun, maxPicoPinzComun, minTarsoPinzComun, maxTarsoPinzComun, minPesoPinzComun, maxPesoPinzComun;
-    private int maxRecPinzReal, maxCimPinzReal, minAlaPinzReal, maxAlaPinzReal, minPicoPinzReal, maxPicoPinzReal, minTarsoPinzReal, maxTarsoPinzReal, minPesoPinzReal, maxPesoPinzReal;
-    private int maxRecPiquituerto, maxCimPiquituerto, minAlaPiquituerto, maxAlaPiquituerto, minPicoPiquituerto, maxPicoPiquituerto, minTarsoPiquituerto, maxTarsoPiquituerto, minPesoPiquituerto, maxPesoPiquituerto;
-    private int maxRecVerdecillo, maxCimVerdecillo, minAlaVerdecillo, maxAlaVerdecillo, minPicoVerdecillo, maxPicoVerdecillo, minTarsoVerdecillo, maxTarsoVerdecillo, minPesoVerdecillo, maxPesoVerdecillo;
-    private int maxRecVerdComun, maxCimVerdComun, minAlaVerdComun, maxAlaVerdComun, minPicoVerdComun, maxPicoVerdComun, minTarsoVerdComun, maxTarsoVerdComun, minPesoVerdComun, maxPesoVerdComun;
-    private int maxRecVerdSerrano, maxCimVerdSerrano, minAlaVerdSerrano, maxAlaCVerdSerrano, minPicoVerdSerrano, maxPicoVerdSerrano, minTarsoVerdSerrano, maxTarsoVerdSerrano, minPesoVerdSerrano, maxPesoVerdSerrano;
+
+    //Camachuelo
+    private int maxRecCamachuelo, maxCimCamachuelo;
+    private double minAlaCamachuelo, maxAlaCamachuelo, minPicoCamachuelo, maxPicoCamachuelo, minTarsoCamachuelo, maxTarsoCamachuelo, minPesoCamachuelo, maxPesoCamachuelo;
+
+    private int maxRecJilguero, maxCimJilguero;
+    private double minAlaJilguero, maxAlaJilguero, minPicoJilguero, maxPicoJilguero, minTarsoJilguero, maxTarsoJilguero, minPesoJilguero, maxPesoJilguero;
+
+    private int maxRecLugano, maxCimLugano;
+    private double minAlaLugano, maxAlaLugano, minPicoLugano, maxPicoLugano, minTarsoLugano, maxTarsoLugano, minPesoLugano, maxPesoLugano;
+
+    private int maxRecPardComun, maxCimPardComun;
+    private double  minAlaPardComun, maxAlaPardComun, minPicoPardComun, maxPicoPardComun, minTarsoPardComun, maxTarsoPardComun, minPesoPardComun, maxPesoPardComun;
+
+    private int maxRecPicogordo, maxCimPicogordo;
+    private double minAlaPicogordo, maxAlaPicogordo, minPicoPicogordo, maxPicoPicogordo, minTarsoPicogordo, maxTarsoPicogordo, minPesoPicogordo, maxPesoPicogordo;
+    private int maxRecPinzComun, maxCimPinzComun;
+    private double minAlaPinzComun, maxAlaPinzComun, minPicoPinzComun, maxPicoPinzComun, minTarsoPinzComun, maxTarsoPinzComun, minPesoPinzComun, maxPesoPinzComun;
+    private int maxRecPinzReal, maxCimPinzReal;
+    private double minAlaPinzReal, maxAlaPinzReal, minPicoPinzReal, maxPicoPinzReal, minTarsoPinzReal, maxTarsoPinzReal, minPesoPinzReal, maxPesoPinzReal;
+    private int maxRecPiquituerto, maxCimPiquituerto;
+    private double minAlaPiquituerto, maxAlaPiquituerto, minPicoPiquituerto, maxPicoPiquituerto, minTarsoPiquituerto, maxTarsoPiquituerto, minPesoPiquituerto, maxPesoPiquituerto;
+    private int maxRecVerdecillo, maxCimVerdecillo;
+    private double minAlaVerdecillo, maxAlaVerdecillo, minPicoVerdecillo, maxPicoVerdecillo, minTarsoVerdecillo, maxTarsoVerdecillo, minPesoVerdecillo, maxPesoVerdecillo;
+    private int maxRecVerdComun, maxCimVerdComun;
+    private double minAlaVerdComun, maxAlaVerdComun, minPicoVerdComun, maxPicoVerdComun, minTarsoVerdComun, maxTarsoVerdComun, minPesoVerdComun, maxPesoVerdComun;
+    private int maxRecVerdSerrano, maxCimVerdSerrano;
+    private double minAlaVerdSerrano, maxAlaVerdSerrano, minPicoVerdSerrano, maxPicoVerdSerrano, minTarsoVerdSerrano, maxTarsoVerdSerrano, minPesoVerdSerrano, maxPesoVerdSerrano;
 
     public Limites() {
         readObject();
@@ -49,7 +66,6 @@ public class Limites implements Serializable {
                     //Datos Aves
                     maxRecCamachuelo = result.getInt("MaxRecCamachuelo");
                     maxCimCamachuelo = result.getInt("MaxCimCamachuelo");
-                    minAlaCamachuelo = result.getInt("MinAlaCamachuelo");
 
                     maxRecJilguero = result.getInt("MaxRecJilguero");
                     maxCimJilguero = result.getInt("MaxCimJilguero");
@@ -80,6 +96,107 @@ public class Limites implements Serializable {
 
                     maxRecVerdSerrano = result.getInt("MaxRecVerdSerrano");
                     maxCimVerdSerrano = result.getInt("MaxCimVerdSerrano");
+
+                    //Parámetros aves
+                    minAlaCamachuelo = result.getDouble("MinAlaCamachuelo");
+                    maxAlaCamachuelo = result.getDouble("MaxAlaCamachuelo");
+                    minPicoCamachuelo = result.getDouble("MinPicoCamachuelo");
+                    maxPicoCamachuelo = result.getDouble("MaxPicoCamachuelo");
+                    minTarsoCamachuelo = result.getDouble("MinTarsoCamachuelo");
+                    maxTarsoCamachuelo = result.getDouble("MaxTarsoCamachuelo");
+                    minPesoCamachuelo = result.getDouble("MinPesoCamachuelo");
+                    maxPesoCamachuelo = result.getDouble("MaxPesoCamachuelo");
+
+                    minAlaJilguero = result.getDouble("MinAlaJilguero");
+                    maxAlaJilguero = result.getDouble("MaxAlaJilguero");
+                    minPicoJilguero = result.getDouble("MinPicoJilguero");
+                    maxPicoJilguero = result.getDouble("MaxPicoJilguero");
+                    minTarsoJilguero = result.getDouble("MinTarsoJilguero");
+                    maxTarsoJilguero = result.getDouble("MaxTarsoJilguero");
+                    minPesoJilguero = result.getDouble("MinPesoJilguero");
+                    maxPesoJilguero = result.getDouble("MaxPesoJilguero");
+
+                    minAlaLugano = result.getDouble("MinAlaLugano");
+                    maxAlaLugano = result.getDouble("MaxAlaLugano");
+                    minPicoLugano = result.getDouble("MinPicoLugano");
+                    maxPicoLugano = result.getDouble("MaxPicoLugano");
+                    minTarsoLugano = result.getDouble("MinTarsoLugano");
+                    maxTarsoLugano = result.getDouble("MaxTarsoLugano");
+                    minPesoLugano = result.getDouble("MinPesoLugano");
+                    maxPesoLugano = result.getDouble("MaxPesoLugano");
+
+                    minAlaPardComun = result.getDouble("MinAlaPardComun");
+                    maxAlaPardComun = result.getDouble("MaxAlaPardComun");
+                    minPicoPardComun = result.getDouble("MinPicoPardComun");
+                    maxPicoPardComun = result.getDouble("MaxPicoPardComun");
+                    minTarsoPardComun = result.getDouble("MinTarsoPardComun");
+                    maxTarsoPardComun = result.getDouble("MaxTarsoPardComun");
+                    minPesoPardComun = result.getDouble("MinPesoPardComun");
+                    maxPesoPardComun = result.getDouble("MaxPesoPardComun");
+
+                    minAlaPicogordo = result.getDouble("MinAlaPicogordo");
+                    maxAlaPicogordo = result.getDouble("MaxAlaPicogordo");
+                    minPicoPicogordo = result.getDouble("MinPicoPicogordo");
+                    maxPicoPicogordo = result.getDouble("MaxPicoPicogordo");
+                    minTarsoPicogordo = result.getDouble("MinTarsoPicogordo");
+                    maxTarsoPicogordo = result.getDouble("MaxTarsoPicogordo");
+                    minPesoPicogordo = result.getDouble("MinPesoPicogordo");
+                    maxPesoPicogordo = result.getDouble("MaxPesoPicogordo");
+
+                    minAlaPinzComun = result.getDouble("MinAlaPinzComun");
+                    maxAlaPinzComun = result.getDouble("MaxAlaPinzComun");
+                    minPicoPinzComun = result.getDouble("MinPicoPinzComun");
+                    maxPicoPinzComun = result.getDouble("MaxPicoPinzComun");
+                    minTarsoPinzComun = result.getDouble("MinTarsoPinzComun");
+                    maxTarsoPinzComun = result.getDouble("MaxTarsoPinzComun");
+                    minPesoPinzComun = result.getDouble("MinPesoPinzComun");
+                    maxPesoPinzComun = result.getDouble("MaxPesoPinzComun");
+
+                    minAlaPinzReal = result.getDouble("MinAlaPinzReal");
+                    maxAlaPinzReal = result.getDouble("MaxAlaPinzReal");
+                    minPicoPinzReal = result.getDouble("MinPicoPinzReal");
+                    maxPicoPinzReal = result.getDouble("MaxPicoPinzReal");
+                    minTarsoPinzReal = result.getDouble("MinTarsoPinzReal");
+                    maxTarsoPinzReal = result.getDouble("MaxTarsoPinzReal");
+                    minPesoPinzReal = result.getDouble("MinPesoPinzReal");
+                    maxPesoPinzReal = result.getDouble("MaxPesoPinzReal");
+
+                    minAlaPiquituerto = result.getDouble("MinAlaPiquituerto");
+                    maxAlaPiquituerto = result.getDouble("MaxAlaPiquituerto");
+                    minPicoPiquituerto = result.getDouble("MinPicoPiquituerto");
+                    maxPicoPiquituerto = result.getDouble("MaxPicoPiquituerto");
+                    minTarsoPiquituerto = result.getDouble("MinTarsoPiquituerto");
+                    maxTarsoPiquituerto = result.getDouble("MaxTarsoPiquituerto");
+                    minPesoPiquituerto = result.getDouble("MinPesoPiquituerto");
+                    maxPesoPiquituerto = result.getDouble("MaxPesoPiquituerto");
+
+                    minAlaVerdecillo = result.getDouble("MinAlaVerdecillo");
+                    maxAlaVerdecillo = result.getDouble("MaxAlaVerdecillo");
+                    minPicoVerdecillo = result.getDouble("MinPicoVerdecillo");
+                    maxPicoVerdecillo = result.getDouble("MaxPicoVerdecillo");
+                    minTarsoVerdecillo = result.getDouble("MinTarsoVerdecillo");
+                    maxTarsoVerdecillo = result.getDouble("MaxTarsoVerdecillo");
+                    minPesoVerdecillo = result.getDouble("MinPesoVerdecillo");
+                    maxPesoVerdecillo = result.getDouble("MaxPesoVerdecillo");
+
+                    minAlaVerdComun = result.getDouble("MinAlaVerdComun");
+                    maxAlaVerdComun = result.getDouble("MaxAlaVerdComun");
+                    minPicoVerdComun = result.getDouble("MinPicoVerdComun");
+                    maxPicoVerdComun = result.getDouble("MaxPicoVerdComun");
+                    minTarsoVerdComun = result.getDouble("MinTarsoVerdComun");
+                    maxTarsoVerdComun = result.getDouble("MaxTarsoVerdComun");
+                    minPesoVerdComun = result.getDouble("MinPesoVerdComun");
+                    maxPesoVerdComun = result.getDouble("MaxPesoVerdComun");
+
+                    minAlaVerdSerrano = result.getDouble("MinAlaVerdSerrano");
+                    maxAlaVerdSerrano = result.getDouble("MaxAlaVerdSerrano");
+                    minPicoVerdSerrano = result.getDouble("MinPicoVerdSerrano");
+                    maxPicoVerdSerrano = result.getDouble("MaxPicoVerdSerrano");
+                    minTarsoVerdSerrano = result.getDouble("MinTarsoVerdSerrano");
+                    maxTarsoVerdSerrano = result.getDouble("MaxTarsoVerdSerrano");
+                    minPesoVerdSerrano = result.getDouble("MinPesoVerdSerrano");
+                    maxPesoVerdSerrano = result.getDouble("MaxPesoVerdSerrano");
+
 
                 } else {
                     System.out.println("ERROR: No es posible leer los datos");
@@ -168,7 +285,7 @@ public class Limites implements Serializable {
         this.maxCimCamachuelo = maxCimCamachuelo;
     }
 
-    public int getMinAlaCamachuelo() {
+    public double getMinAlaCamachuelo() {
         return minAlaCamachuelo;
     }
 
@@ -176,7 +293,7 @@ public class Limites implements Serializable {
         this.minAlaCamachuelo = minAlaCamachuelo;
     }
 
-    public int getMaxAlaCamachuelo() {
+    public double getMaxAlaCamachuelo() {
         return maxAlaCamachuelo;
     }
 
@@ -184,7 +301,7 @@ public class Limites implements Serializable {
         this.maxAlaCamachuelo = maxAlaCamachuelo;
     }
 
-    public int getMinPicoCamachuelo() {
+    public double getMinPicoCamachuelo() {
         return minPicoCamachuelo;
     }
 
@@ -192,7 +309,7 @@ public class Limites implements Serializable {
         this.minPicoCamachuelo = minPicoCamachuelo;
     }
 
-    public int getMaxPicoCamachuelo() {
+    public double getMaxPicoCamachuelo() {
         return maxPicoCamachuelo;
     }
 
@@ -200,7 +317,7 @@ public class Limites implements Serializable {
         this.maxPicoCamachuelo = maxPicoCamachuelo;
     }
 
-    public int getMinTarsoCamachuelo() {
+    public double getMinTarsoCamachuelo() {
         return minTarsoCamachuelo;
     }
 
@@ -208,7 +325,7 @@ public class Limites implements Serializable {
         this.minTarsoCamachuelo = minTarsoCamachuelo;
     }
 
-    public int getMaxTarsoCamachuelo() {
+    public double getMaxTarsoCamachuelo() {
         return maxTarsoCamachuelo;
     }
 
@@ -216,7 +333,7 @@ public class Limites implements Serializable {
         this.maxTarsoCamachuelo = maxTarsoCamachuelo;
     }
 
-    public int getMinPesoCamachuelo() {
+    public double getMinPesoCamachuelo() {
         return minPesoCamachuelo;
     }
 
@@ -224,7 +341,7 @@ public class Limites implements Serializable {
         this.minPesoCamachuelo = minPesoCamachuelo;
     }
 
-    public int getMaxPesoCamachuelo() {
+    public double getMaxPesoCamachuelo() {
         return maxPesoCamachuelo;
     }
 
@@ -248,67 +365,67 @@ public class Limites implements Serializable {
         this.maxCimJilguero = maxCimJilguero;
     }
 
-    public int getMinAlaJilguero() {
+    public double getMinAlaJilguero() {
         return minAlaJilguero;
     }
 
-    public void setMinAlaJilguero(int minAlaJilguero) {
+    public void setMinAlaJilguero(double minAlaJilguero) {
         this.minAlaJilguero = minAlaJilguero;
     }
 
-    public int getMaxAlaJilguero() {
+    public double getMaxAlaJilguero() {
         return maxAlaJilguero;
     }
 
-    public void setMaxAlaJilguero(int maxAlaJilguero) {
+    public void setMaxAlaJilguero(double maxAlaJilguero) {
         this.maxAlaJilguero = maxAlaJilguero;
     }
 
-    public int getMinPicoJilguero() {
+    public double getMinPicoJilguero() {
         return minPicoJilguero;
     }
 
-    public void setMinPicoJilguero(int minPicoJilguero) {
+    public void setMinPicoJilguero(double minPicoJilguero) {
         this.minPicoJilguero = minPicoJilguero;
     }
 
-    public int getMaxPicoJilguero() {
+    public double getMaxPicoJilguero() {
         return maxPicoJilguero;
     }
 
-    public void setMaxPicoJilguero(int maxPicoJilguero) {
+    public void setMaxPicoJilguero(double maxPicoJilguero) {
         this.maxPicoJilguero = maxPicoJilguero;
     }
 
-    public int getMinTarsoJilguero() {
+    public double getMinTarsoJilguero() {
         return minTarsoJilguero;
     }
 
-    public void setMinTarsoJilguero(int minTarsoJilguero) {
+    public void setMinTarsoJilguero(double minTarsoJilguero) {
         this.minTarsoJilguero = minTarsoJilguero;
     }
 
-    public int getMaxTarsoJilguero() {
+    public double getMaxTarsoJilguero() {
         return maxTarsoJilguero;
     }
 
-    public void setMaxTarsoJilguero(int maxTarsoJilguero) {
+    public void setMaxTarsoJilguero(double maxTarsoJilguero) {
         this.maxTarsoJilguero = maxTarsoJilguero;
     }
 
-    public int getMinPesoJilguero() {
+    public double getMinPesoJilguero() {
         return minPesoJilguero;
     }
 
-    public void setMinPesoJilguero(int minPesoJilguero) {
+    public void setMinPesoJilguero(double minPesoJilguero) {
         this.minPesoJilguero = minPesoJilguero;
     }
 
-    public int getMaxPesoJilguero() {
+    public double getMaxPesoJilguero() {
         return maxPesoJilguero;
     }
 
-    public void setMaxPesoJilguero(int maxPesoJilguero) {
+    public void setMaxPesoJilguero(double maxPesoJilguero) {
         this.maxPesoJilguero = maxPesoJilguero;
     }
 
@@ -328,67 +445,67 @@ public class Limites implements Serializable {
         this.maxCimLugano = maxCimLugano;
     }
 
-    public int getMinAlaLugano() {
+    public double getMinAlaLugano() {
         return minAlaLugano;
     }
 
-    public void setMinAlaLugano(int minAlaLugano) {
+    public void setMinAlaLugano(double minAlaLugano) {
         this.minAlaLugano = minAlaLugano;
     }
 
-    public int getMaxAlaLugano() {
+    public double getMaxAlaLugano() {
         return maxAlaLugano;
     }
 
-    public void setMaxAlaLugano(int maxAlaLugano) {
+    public void setMaxAlaLugano(double maxAlaLugano) {
         this.maxAlaLugano = maxAlaLugano;
     }
 
-    public int getMinPicoLugano() {
+    public double getMinPicoLugano() {
         return minPicoLugano;
     }
 
-    public void setMinPicoLugano(int minPicoLugano) {
+    public void setMinPicoLugano(double minPicoLugano) {
         this.minPicoLugano = minPicoLugano;
     }
 
-    public int getMaxPicoLugano() {
+    public double getMaxPicoLugano() {
         return maxPicoLugano;
     }
 
-    public void setMaxPicoLugano(int maxPicoLugano) {
+    public void setMaxPicoLugano(double maxPicoLugano) {
         this.maxPicoLugano = maxPicoLugano;
     }
 
-    public int getMinTarsoLugano() {
+    public double getMinTarsoLugano() {
         return minTarsoLugano;
     }
 
-    public void setMinTarsoLugano(int minTarsoLugano) {
+    public void setMinTarsoLugano(double minTarsoLugano) {
         this.minTarsoLugano = minTarsoLugano;
     }
 
-    public int getMaxTarsoLugano() {
+    public double getMaxTarsoLugano() {
         return maxTarsoLugano;
     }
 
-    public void setMaxTarsoLugano(int maxTarsoLugano) {
+    public void setMaxTarsoLugano(double maxTarsoLugano) {
         this.maxTarsoLugano = maxTarsoLugano;
     }
 
-    public int getMinPesoLugano() {
+    public double getMinPesoLugano() {
         return minPesoLugano;
     }
 
-    public void setMinPesoLugano(int minPesoLugano) {
+    public void setMinPesoLugano(double minPesoLugano) {
         this.minPesoLugano = minPesoLugano;
     }
 
-    public int getMaxPesoLugano() {
+    public double getMaxPesoLugano() {
         return maxPesoLugano;
     }
 
-    public void setMaxPesoLugano(int maxPesoLugano) {
+    public void setMaxPesoLugano(double maxPesoLugano) {
         this.maxPesoLugano = maxPesoLugano;
     }
 
@@ -408,67 +525,67 @@ public class Limites implements Serializable {
         this.maxCimPardComun = maxCimPardComun;
     }
 
-    public int getMinAlaPardComun() {
+    public double getMinAlaPardComun() {
         return minAlaPardComun;
     }
 
-    public void setMinAlaPardComun(int minAlaPardComun) {
+    public void setMinAlaPardComun(double minAlaPardComun) {
         this.minAlaPardComun = minAlaPardComun;
     }
 
-    public int getMaxAlaPardComun() {
+    public double getMaxAlaPardComun() {
         return maxAlaPardComun;
     }
 
-    public void setMaxAlaPardComun(int maxAlaPardComun) {
+    public void setMaxAlaPardComun(double maxAlaPardComun) {
         this.maxAlaPardComun = maxAlaPardComun;
     }
 
-    public int getMinPicoPardComun() {
+    public double getMinPicoPardComun() {
         return minPicoPardComun;
     }
 
-    public void setMinPicoPardComun(int minPicoPardComun) {
+    public void setMinPicoPardComun(double minPicoPardComun) {
         this.minPicoPardComun = minPicoPardComun;
     }
 
-    public int getMaxPicoPardComun() {
+    public double getMaxPicoPardComun() {
         return maxPicoPardComun;
     }
 
-    public void setMaxPicoPardComun(int maxPicoPardComun) {
+    public void setMaxPicoPardComun(double maxPicoPardComun) {
         this.maxPicoPardComun = maxPicoPardComun;
     }
 
-    public int getMinTarsoPardComun() {
+    public double getMinTarsoPardComun() {
         return minTarsoPardComun;
     }
 
-    public void setMinTarsoPardComun(int minTarsoPardComun) {
+    public void setMinTarsoPardComun(double minTarsoPardComun) {
         this.minTarsoPardComun = minTarsoPardComun;
     }
 
-    public int getMaxTarsoPardComun() {
+    public double getMaxTarsoPardComun() {
         return maxTarsoPardComun;
     }
 
-    public void setMaxTarsoPardComun(int maxTarsoPardComun) {
+    public void setMaxTarsoPardComun(double maxTarsoPardComun) {
         this.maxTarsoPardComun = maxTarsoPardComun;
     }
 
-    public int getMinPesoPardComun() {
+    public double getMinPesoPardComun() {
         return minPesoPardComun;
     }
 
-    public void setMinPesoPardComun(int minPesoPardComun) {
+    public void setMinPesoPardComun(double minPesoPardComun) {
         this.minPesoPardComun = minPesoPardComun;
     }
 
-    public int getMaxPesoPardComun() {
+    public double getMaxPesoPardComun() {
         return maxPesoPardComun;
     }
 
-    public void setMaxPesoPardComun(int maxPesoPardComun) {
+    public void setMaxPesoPardComun(double maxPesoPardComun) {
         this.maxPesoPardComun = maxPesoPardComun;
     }
 
@@ -488,67 +605,67 @@ public class Limites implements Serializable {
         this.maxCimPicogordo = maxCimPicogordo;
     }
 
-    public int getMinAlaPicogordo() {
+    public double getMinAlaPicogordo() {
         return minAlaPicogordo;
     }
 
-    public void setMinAlaPicogordo(int minAlaPicogordo) {
+    public void setMinAlaPicogordo(double minAlaPicogordo) {
         this.minAlaPicogordo = minAlaPicogordo;
     }
 
-    public int getMaxAlaPicogordo() {
+    public double getMaxAlaPicogordo() {
         return maxAlaPicogordo;
     }
 
-    public void setMaxAlaPicogordo(int maxAlaPicogordo) {
+    public void setMaxAlaPicogordo(double maxAlaPicogordo) {
         this.maxAlaPicogordo = maxAlaPicogordo;
     }
 
-    public int getMinPicoPicogordo() {
+    public double getMinPicoPicogordo() {
         return minPicoPicogordo;
     }
 
-    public void setMinPicoPicogordo(int minPicoPicogordo) {
+    public void setMinPicoPicogordo(double minPicoPicogordo) {
         this.minPicoPicogordo = minPicoPicogordo;
     }
 
-    public int getMaxPicoPicogordo() {
+    public double getMaxPicoPicogordo() {
         return maxPicoPicogordo;
     }
 
-    public void setMaxPicoPicogordo(int maxPicoPicogordo) {
+    public void setMaxPicoPicogordo(double maxPicoPicogordo) {
         this.maxPicoPicogordo = maxPicoPicogordo;
     }
 
-    public int getMinTarsoPicogordo() {
+    public double getMinTarsoPicogordo() {
         return minTarsoPicogordo;
     }
 
-    public void setMinTarsoPicogordo(int minTarsoPicogordo) {
+    public void setMinTarsoPicogordo(double minTarsoPicogordo) {
         this.minTarsoPicogordo = minTarsoPicogordo;
     }
 
-    public int getMaxTarsoPicogordo() {
+    public double getMaxTarsoPicogordo() {
         return maxTarsoPicogordo;
     }
 
-    public void setMaxTarsoPicogordo(int maxTarsoPicogordo) {
+    public void setMaxTarsoPicogordo(double maxTarsoPicogordo) {
         this.maxTarsoPicogordo = maxTarsoPicogordo;
     }
 
-    public int getMinPesoPicogordo() {
+    public double getMinPesoPicogordo() {
         return minPesoPicogordo;
     }
 
-    public void setMinPesoPicogordo(int minPesoPicogordo) {
+    public void setMinPesoPicogordo(double minPesoPicogordo) {
         this.minPesoPicogordo = minPesoPicogordo;
     }
 
-    public int getMaxPesoPicogordo() {
+    public double getMaxPesoPicogordo() {
         return maxPesoPicogordo;
     }
 
-    public void setMaxPesoPicogordo(int maxPesoPicogordo) {
+    public void setMaxPesoPicogordo(double maxPesoPicogordo) {
         this.maxPesoPicogordo = maxPesoPicogordo;
     }
 
@@ -568,67 +685,67 @@ public class Limites implements Serializable {
         this.maxCimPinzComun = maxCimPinzComun;
     }
 
-    public int getMinAlaPinzComun() {
+    public double getMinAlaPinzComun() {
         return minAlaPinzComun;
     }
 
-    public void setMinAlaPinzComun(int minAlaPinzComun) {
+    public void setMinAlaPinzComun(double minAlaPinzComun) {
         this.minAlaPinzComun = minAlaPinzComun;
     }
 
-    public int getMaxAlaPinzComun() {
+    public double getMaxAlaPinzComun() {
         return maxAlaPinzComun;
     }
 
-    public void setMaxAlaPinzComun(int maxAlaPinzComun) {
+    public void setMaxAlaPinzComun(double maxAlaPinzComun) {
         this.maxAlaPinzComun = maxAlaPinzComun;
     }
 
-    public int getMinPicoPinzComun() {
+    public double getMinPicoPinzComun() {
         return minPicoPinzComun;
     }
 
-    public void setMinPicoPinzComun(int minPicoPinzComun) {
+    public void setMinPicoPinzComun(double minPicoPinzComun) {
         this.minPicoPinzComun = minPicoPinzComun;
     }
 
-    public int getMaxPicoPinzComun() {
+    public double getMaxPicoPinzComun() {
         return maxPicoPinzComun;
     }
 
-    public void setMaxPicoPinzComun(int maxPicoPinzComun) {
+    public void setMaxPicoPinzComun(double maxPicoPinzComun) {
         this.maxPicoPinzComun = maxPicoPinzComun;
     }
 
-    public int getMinTarsoPinzComun() {
+    public double getMinTarsoPinzComun() {
         return minTarsoPinzComun;
     }
 
-    public void setMinTarsoPinzComun(int minTarsoPinzComun) {
+    public void setMinTarsoPinzComun(double minTarsoPinzComun) {
         this.minTarsoPinzComun = minTarsoPinzComun;
     }
 
-    public int getMaxTarsoPinzComun() {
+    public double getMaxTarsoPinzComun() {
         return maxTarsoPinzComun;
     }
 
-    public void setMaxTarsoPinzComun(int maxTarsoPinzComun) {
+    public void setMaxTarsoPinzComun(double maxTarsoPinzComun) {
         this.maxTarsoPinzComun = maxTarsoPinzComun;
     }
 
-    public int getMinPesoPinzComun() {
+    public double getMinPesoPinzComun() {
         return minPesoPinzComun;
     }
 
-    public void setMinPesoPinzComun(int minPesoPinzComun) {
+    public void setMinPesoPinzComun(double minPesoPinzComun) {
         this.minPesoPinzComun = minPesoPinzComun;
     }
 
-    public int getMaxPesoPinzComun() {
+    public double getMaxPesoPinzComun() {
         return maxPesoPinzComun;
     }
 
-    public void setMaxPesoPinzComun(int maxPesoPinzComun) {
+    public void setMaxPesoPinzComun(double maxPesoPinzComun) {
         this.maxPesoPinzComun = maxPesoPinzComun;
     }
 
@@ -648,67 +765,67 @@ public class Limites implements Serializable {
         this.maxCimPinzReal = maxCimPinzReal;
     }
 
-    public int getMinAlaPinzReal() {
+    public double getMinAlaPinzReal() {
         return minAlaPinzReal;
     }
 
-    public void setMinAlaPinzReal(int minAlaPinzReal) {
+    public void setMinAlaPinzReal(double minAlaPinzReal) {
         this.minAlaPinzReal = minAlaPinzReal;
     }
 
-    public int getMaxAlaPinzReal() {
+    public double getMaxAlaPinzReal() {
         return maxAlaPinzReal;
     }
 
-    public void setMaxAlaPinzReal(int maxAlaPinzReal) {
+    public void setMaxAlaPinzReal(double maxAlaPinzReal) {
         this.maxAlaPinzReal = maxAlaPinzReal;
     }
 
-    public int getMinPicoPinzReal() {
+    public double getMinPicoPinzReal() {
         return minPicoPinzReal;
     }
 
-    public void setMinPicoPinzReal(int minPicoPinzReal) {
+    public void setMinPicoPinzReal(double minPicoPinzReal) {
         this.minPicoPinzReal = minPicoPinzReal;
     }
 
-    public int getMaxPicoPinzReal() {
+    public double getMaxPicoPinzReal() {
         return maxPicoPinzReal;
     }
 
-    public void setMaxPicoPinzReal(int maxPicoPinzReal) {
+    public void setMaxPicoPinzReal(double maxPicoPinzReal) {
         this.maxPicoPinzReal = maxPicoPinzReal;
     }
 
-    public int getMinTarsoPinzReal() {
+    public double getMinTarsoPinzReal() {
         return minTarsoPinzReal;
     }
 
-    public void setMinTarsoPinzReal(int minTarsoPinzReal) {
+    public void setMinTarsoPinzReal(double minTarsoPinzReal) {
         this.minTarsoPinzReal = minTarsoPinzReal;
     }
 
-    public int getMaxTarsoPinzReal() {
+    public double getMaxTarsoPinzReal() {
         return maxTarsoPinzReal;
     }
 
-    public void setMaxTarsoPinzReal(int maxTarsoPinzReal) {
+    public void setMaxTarsoPinzReal(double maxTarsoPinzReal) {
         this.maxTarsoPinzReal = maxTarsoPinzReal;
     }
 
-    public int getMinPesoPinzReal() {
+    public double getMinPesoPinzReal() {
         return minPesoPinzReal;
     }
 
-    public void setMinPesoPinzReal(int minPesoPinzReal) {
+    public void setMinPesoPinzReal(double minPesoPinzReal) {
         this.minPesoPinzReal = minPesoPinzReal;
     }
 
-    public int getMaxPesoPinzReal() {
+    public double getMaxPesoPinzReal() {
         return maxPesoPinzReal;
     }
 
-    public void setMaxPesoPinzReal(int maxPesoPinzReal) {
+    public void setMaxPesoPinzReal(double maxPesoPinzReal) {
         this.maxPesoPinzReal = maxPesoPinzReal;
     }
 
@@ -728,67 +845,67 @@ public class Limites implements Serializable {
         this.maxCimPiquituerto = maxCimPiquituerto;
     }
 
-    public int getMinAlaPiquituerto() {
+    public double getMinAlaPiquituerto() {
         return minAlaPiquituerto;
     }
 
-    public void setMinAlaPiquituerto(int minAlaPiquituerto) {
+    public void setMinAlaPiquituerto(double minAlaPiquituerto) {
         this.minAlaPiquituerto = minAlaPiquituerto;
     }
 
-    public int getMaxAlaPiquituerto() {
+    public double getMaxAlaPiquituerto() {
         return maxAlaPiquituerto;
     }
 
-    public void setMaxAlaPiquituerto(int maxAlaPiquituerto) {
+    public void setMaxAlaPiquituerto(double maxAlaPiquituerto) {
         this.maxAlaPiquituerto = maxAlaPiquituerto;
     }
 
-    public int getMinPicoPiquituerto() {
+    public double getMinPicoPiquituerto() {
         return minPicoPiquituerto;
     }
 
-    public void setMinPicoPiquituerto(int minPicoPiquituerto) {
+    public void setMinPicoPiquituerto(double minPicoPiquituerto) {
         this.minPicoPiquituerto = minPicoPiquituerto;
     }
 
-    public int getMaxPicoPiquituerto() {
+    public double getMaxPicoPiquituerto() {
         return maxPicoPiquituerto;
     }
 
-    public void setMaxPicoPiquituerto(int maxPicoPiquituerto) {
+    public void setMaxPicoPiquituerto(double maxPicoPiquituerto) {
         this.maxPicoPiquituerto = maxPicoPiquituerto;
     }
 
-    public int getMinTarsoPiquituerto() {
+    public double getMinTarsoPiquituerto() {
         return minTarsoPiquituerto;
     }
 
-    public void setMinTarsoPiquituerto(int minTarsoPiquituerto) {
+    public void setMinTarsoPiquituerto(double minTarsoPiquituerto) {
         this.minTarsoPiquituerto = minTarsoPiquituerto;
     }
 
-    public int getMaxTarsoPiquituerto() {
+    public double getMaxTarsoPiquituerto() {
         return maxTarsoPiquituerto;
     }
 
-    public void setMaxTarsoPiquituerto(int maxTarsoPiquituerto) {
+    public void setMaxTarsoPiquituerto(double maxTarsoPiquituerto) {
         this.maxTarsoPiquituerto = maxTarsoPiquituerto;
     }
 
-    public int getMinPesoPiquituerto() {
+    public double getMinPesoPiquituerto() {
         return minPesoPiquituerto;
     }
 
-    public void setMinPesoPiquituerto(int minPesoPiquituerto) {
+    public void setMinPesoPiquituerto(double minPesoPiquituerto) {
         this.minPesoPiquituerto = minPesoPiquituerto;
     }
 
-    public int getMaxPesoPiquituerto() {
+    public double getMaxPesoPiquituerto() {
         return maxPesoPiquituerto;
     }
 
-    public void setMaxPesoPiquituerto(int maxPesoPiquituerto) {
+    public void setMaxPesoPiquituerto(double maxPesoPiquituerto) {
         this.maxPesoPiquituerto = maxPesoPiquituerto;
     }
 
@@ -808,67 +925,67 @@ public class Limites implements Serializable {
         this.maxCimVerdecillo = maxCimVerdecillo;
     }
 
-    public int getMinAlaVerdecillo() {
+    public double getMinAlaVerdecillo() {
         return minAlaVerdecillo;
     }
 
-    public void setMinAlaVerdecillo(int minAlaVerdecillo) {
+    public void setMinAlaVerdecillo(double minAlaVerdecillo) {
         this.minAlaVerdecillo = minAlaVerdecillo;
     }
 
-    public int getMaxAlaVerdecillo() {
+    public double getMaxAlaVerdecillo() {
         return maxAlaVerdecillo;
     }
 
-    public void setMaxAlaVerdecillo(int maxAlaVerdecillo) {
+    public void setMaxAlaVerdecillo(double maxAlaVerdecillo) {
         this.maxAlaVerdecillo = maxAlaVerdecillo;
     }
 
-    public int getMinPicoVerdecillo() {
+    public double getMinPicoVerdecillo() {
         return minPicoVerdecillo;
     }
 
-    public void setMinPicoVerdecillo(int minPicoVerdecillo) {
+    public void setMinPicoVerdecillo(double minPicoVerdecillo) {
         this.minPicoVerdecillo = minPicoVerdecillo;
     }
 
-    public int getMaxPicoVerdecillo() {
+    public double getMaxPicoVerdecillo() {
         return maxPicoVerdecillo;
     }
 
-    public void setMaxPicoVerdecillo(int maxPicoVerdecillo) {
+    public void setMaxPicoVerdecillo(double maxPicoVerdecillo) {
         this.maxPicoVerdecillo = maxPicoVerdecillo;
     }
 
-    public int getMinTarsoVerdecillo() {
+    public double getMinTarsoVerdecillo() {
         return minTarsoVerdecillo;
     }
 
-    public void setMinTarsoVerdecillo(int minTarsoVerdecillo) {
+    public void setMinTarsoVerdecillo(double minTarsoVerdecillo) {
         this.minTarsoVerdecillo = minTarsoVerdecillo;
     }
 
-    public int getMaxTarsoVerdecillo() {
+    public double getMaxTarsoVerdecillo() {
         return maxTarsoVerdecillo;
     }
 
-    public void setMaxTarsoVerdecillo(int maxTarsoVerdecillo) {
+    public void setMaxTarsoVerdecillo(double maxTarsoVerdecillo) {
         this.maxTarsoVerdecillo = maxTarsoVerdecillo;
     }
 
-    public int getMinPesoVerdecillo() {
+    public double getMinPesoVerdecillo() {
         return minPesoVerdecillo;
     }
 
-    public void setMinPesoVerdecillo(int minPesoVerdecillo) {
+    public void setMinPesoVerdecillo(double minPesoVerdecillo) {
         this.minPesoVerdecillo = minPesoVerdecillo;
     }
 
-    public int getMaxPesoVerdecillo() {
+    public double getMaxPesoVerdecillo() {
         return maxPesoVerdecillo;
     }
 
-    public void setMaxPesoVerdecillo(int maxPesoVerdecillo) {
+    public void setMaxPesoVerdecillo(double maxPesoVerdecillo) {
         this.maxPesoVerdecillo = maxPesoVerdecillo;
     }
 
@@ -888,67 +1005,67 @@ public class Limites implements Serializable {
         this.maxCimVerdComun = maxCimVerdComun;
     }
 
-    public int getMinAlaVerdComun() {
+    public double getMinAlaVerdComun() {
         return minAlaVerdComun;
     }
 
-    public void setMinAlaVerdComun(int minAlaVerdComun) {
+    public void setMinAlaVerdComun(double minAlaVerdComun) {
         this.minAlaVerdComun = minAlaVerdComun;
     }
 
-    public int getMaxAlaVerdComun() {
+    public double getMaxAlaVerdComun() {
         return maxAlaVerdComun;
     }
 
-    public void setMaxAlaVerdComun(int maxAlaVerdComun) {
+    public void setMaxAlaVerdComun(double maxAlaVerdComun) {
         this.maxAlaVerdComun = maxAlaVerdComun;
     }
 
-    public int getMinPicoVerdComun() {
+    public double getMinPicoVerdComun() {
         return minPicoVerdComun;
     }
 
-    public void setMinPicoVerdComun(int minPicoVerdComun) {
+    public void setMinPicoVerdComun(double minPicoVerdComun) {
         this.minPicoVerdComun = minPicoVerdComun;
     }
 
-    public int getMaxPicoVerdComun() {
+    public double getMaxPicoVerdComun() {
         return maxPicoVerdComun;
     }
 
-    public void setMaxPicoVerdComun(int maxPicoVerdComun) {
+    public void setMaxPicoVerdComun(double maxPicoVerdComun) {
         this.maxPicoVerdComun = maxPicoVerdComun;
     }
 
-    public int getMinTarsoVerdComun() {
+    public double getMinTarsoVerdComun() {
         return minTarsoVerdComun;
     }
 
-    public void setMinTarsoVerdComun(int minTarsoVerdComun) {
+    public void setMinTarsoVerdComun(double minTarsoVerdComun) {
         this.minTarsoVerdComun = minTarsoVerdComun;
     }
 
-    public int getMaxTarsoVerdComun() {
+    public double getMaxTarsoVerdComun() {
         return maxTarsoVerdComun;
     }
 
-    public void setMaxTarsoVerdComun(int maxTarsoVerdComun) {
+    public void setMaxTarsoVerdComun(double maxTarsoVerdComun) {
         this.maxTarsoVerdComun = maxTarsoVerdComun;
     }
 
-    public int getMinPesoVerdComun() {
+    public double getMinPesoVerdComun() {
         return minPesoVerdComun;
     }
 
-    public void setMinPesoVerdComun(int minPesoVerdComun) {
+    public void setMinPesoVerdComun(double minPesoVerdComun) {
         this.minPesoVerdComun = minPesoVerdComun;
     }
 
-    public int getMaxPesoVerdComun() {
+    public double getMaxPesoVerdComun() {
         return maxPesoVerdComun;
     }
 
-    public void setMaxPesoVerdComun(int maxPesoVerdComun) {
+    public void setMaxPesoVerdComun(double maxPesoVerdComun) {
         this.maxPesoVerdComun = maxPesoVerdComun;
     }
 
@@ -968,67 +1085,67 @@ public class Limites implements Serializable {
         this.maxCimVerdSerrano = maxCimVerdSerrano;
     }
 
-    public int getMinAlaVerdSerrano() {
+    public double getMinAlaVerdSerrano() {
         return minAlaVerdSerrano;
     }
 
-    public void setMinAlaVerdSerrano(int minAlaVerdSerrano) {
+    public void setMinAlaVerdSerrano(double minAlaVerdSerrano) {
         this.minAlaVerdSerrano = minAlaVerdSerrano;
     }
 
-    public int getMaxAlaCVerdSerrano() {
-        return maxAlaCVerdSerrano;
+    public double getMaxAlaCVerdSerrano() {
+        return maxAlaVerdSerrano;
     }
 
-    public void setMaxAlaCVerdSerrano(int maxAlaCVerdSerrano) {
-        this.maxAlaCVerdSerrano = maxAlaCVerdSerrano;
+    public void setMaxAlaCVerdSerrano(double maxAlaCVerdSerrano) {
+        this.maxAlVerdSerrano = maxAlaCVerdSerrano;
     }
 
-    public int getMinPicoVerdSerrano() {
+    public double getMinPicoVerdSerrano() {
         return minPicoVerdSerrano;
     }
 
-    public void setMinPicoVerdSerrano(int minPicoVerdSerrano) {
+    public void setMinPicoVerdSerrano(double minPicoVerdSerrano) {
         this.minPicoVerdSerrano = minPicoVerdSerrano;
     }
 
-    public int getMaxPicoVerdSerrano() {
+    public double getMaxPicoVerdSerrano() {
         return maxPicoVerdSerrano;
     }
 
-    public void setMaxPicoVerdSerrano(int maxPicoVerdSerrano) {
+    public void setMaxPicoVerdSerrano(double maxPicoVerdSerrano) {
         this.maxPicoVerdSerrano = maxPicoVerdSerrano;
     }
 
-    public int getMinTarsoVerdSerrano() {
+    public double getMinTarsoVerdSerrano() {
         return minTarsoVerdSerrano;
     }
 
-    public void setMinTarsoVerdSerrano(int minTarsoVerdSerrano) {
+    public void setMinTarsoVerdSerrano(double minTarsoVerdSerrano) {
         this.minTarsoVerdSerrano = minTarsoVerdSerrano;
     }
 
-    public int getMaxTarsoVerdSerrano() {
+    public double getMaxTarsoVerdSerrano() {
         return maxTarsoVerdSerrano;
     }
 
-    public void setMaxTarsoVerdSerrano(int maxTarsoVerdSerrano) {
+    public void setMaxTarsoVerdSerrano(double maxTarsoVerdSerrano) {
         this.maxTarsoVerdSerrano = maxTarsoVerdSerrano;
     }
 
-    public int getMinPesoVerdSerrano() {
+    public double getMinPesoVerdSerrano() {
         return minPesoVerdSerrano;
     }
 
-    public void setMinPesoVerdSerrano(int minPesoVerdSerrano) {
+    public void setMinPesoVerdSerrano(double minPesoVerdSerrano) {
         this.minPesoVerdSerrano = minPesoVerdSerrano;
     }
 
-    public int getMaxPesoVerdSerrano() {
+    public double getMaxPesoVerdSerrano() {
         return maxPesoVerdSerrano;
     }
 
-    public void setMaxPesoVerdSerrano(int maxPesoVerdSerrano) {
+    public void setMaxPesoVerdSerrano(double maxPesoVerdSerrano) {
         this.maxPesoVerdSerrano = maxPesoVerdSerrano;
     }
 
@@ -1064,6 +1181,31 @@ public class Limites implements Serializable {
 
     }
 
+    public void imprimirDatosParametrosAves(){
+        System.out.println("Parametros Recibidos de Camachuelo");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaCamachuelo);
+        System.out.println("MaxAla       => " + maxAlaCamachuelo);
+        System.out.println("MinPico      => " + minPicoCamachuelo);
+        System.out.println("MaxPico      => " + maxPicoCamachuelo);
+        System.out.println("MinTarso     => " + minTarsoCamachuelo);
+        System.out.println("MaxTarso     => " + maxTarsoCamachuelo);
+        System.out.println("MinPeso      => " + minPesoCamachuelo);
+        System.out.println("MaxPeso      => " + maxPesoCamachuelo);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de Camachuelo");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaCamachuelo);
+        System.out.println("MaxAla       => " + maxAlaCamachuelo);
+        System.out.println("MinPico      => " + minPicoCamachuelo);
+        System.out.println("MaxPico      => " + maxPicoCamachuelo);
+        System.out.println("MinTarso     => " + minTarsoCamachuelo);
+        System.out.println("MaxTarso     => " + maxTarsoCamachuelo);
+        System.out.println("MinPeso      => " + minPesoCamachuelo);
+        System.out.println("MaxPeso      => " + maxPesoCamachuelo);
+        System.out.println("___________________________________");
+    }
+
     public void findGrupo(int numGrupo) {
         System.out.println("ANILLA MAX =>" + maxNAnilla);
         System.out.println("ANILLA MIN =>" + minNAnilla);
@@ -1079,8 +1221,10 @@ public class Limites implements Serializable {
                         obj = objects.get(i);
                     }
                     try {
-                        minNAnilla = obj.getInt("NAnillaMin");
-                        maxNAnilla = (Integer) obj.getNumber("NAnillaMax");
+                        if (obj != null){
+                            minNAnilla = obj.getInt("NAnillaMin");
+                            maxNAnilla = obj.getInt("NAnillaMax");
+                        }
                     } catch (Exception x){
                         System.out.println("ERROR EN LA RECUPERACION DE DATOS");
                     }
