@@ -29,16 +29,22 @@ public class Limites implements Serializable {
 
     private int maxRecPicogordo, maxCimPicogordo;
     private double minAlaPicogordo, maxAlaPicogordo, minPicoPicogordo, maxPicoPicogordo, minTarsoPicogordo, maxTarsoPicogordo, minPesoPicogordo, maxPesoPicogordo;
+
     private int maxRecPinzComun, maxCimPinzComun;
     private double minAlaPinzComun, maxAlaPinzComun, minPicoPinzComun, maxPicoPinzComun, minTarsoPinzComun, maxTarsoPinzComun, minPesoPinzComun, maxPesoPinzComun;
+
     private int maxRecPinzReal, maxCimPinzReal;
     private double minAlaPinzReal, maxAlaPinzReal, minPicoPinzReal, maxPicoPinzReal, minTarsoPinzReal, maxTarsoPinzReal, minPesoPinzReal, maxPesoPinzReal;
+
     private int maxRecPiquituerto, maxCimPiquituerto;
     private double minAlaPiquituerto, maxAlaPiquituerto, minPicoPiquituerto, maxPicoPiquituerto, minTarsoPiquituerto, maxTarsoPiquituerto, minPesoPiquituerto, maxPesoPiquituerto;
+
     private int maxRecVerdecillo, maxCimVerdecillo;
     private double minAlaVerdecillo, maxAlaVerdecillo, minPicoVerdecillo, maxPicoVerdecillo, minTarsoVerdecillo, maxTarsoVerdecillo, minPesoVerdecillo, maxPesoVerdecillo;
+
     private int maxRecVerdComun, maxCimVerdComun;
     private double minAlaVerdComun, maxAlaVerdComun, minPicoVerdComun, maxPicoVerdComun, minTarsoVerdComun, maxTarsoVerdComun, minPesoVerdComun, maxPesoVerdComun;
+
     private int maxRecVerdSerrano, maxCimVerdSerrano;
     private double minAlaVerdSerrano, maxAlaVerdSerrano, minPicoVerdSerrano, maxPicoVerdSerrano, minTarsoVerdSerrano, maxTarsoVerdSerrano, minPesoVerdSerrano, maxPesoVerdSerrano;
 
@@ -1097,8 +1103,8 @@ public class Limites implements Serializable {
         return maxAlaVerdSerrano;
     }
 
-    public void setMaxAlaCVerdSerrano(double maxAlaCVerdSerrano) {
-        this.maxAlVerdSerrano = maxAlaCVerdSerrano;
+    public void setMaxAlaCVerdSerrano(double maxAlaVerdSerrano) {
+        this.maxAlaVerdSerrano = maxAlaVerdSerrano;
     }
 
     public double getMinPicoVerdSerrano() {
@@ -1193,16 +1199,115 @@ public class Limites implements Serializable {
         System.out.println("MinPeso      => " + minPesoCamachuelo);
         System.out.println("MaxPeso      => " + maxPesoCamachuelo);
         System.out.println("___________________________________");
-        System.out.println("Parametros Recibidos de Camachuelo");
+        System.out.println("Parametros Recibidos de Jilguero");
         System.out.println("___________________________________");
-        System.out.println("MinAla       => " + minAlaCamachuelo);
-        System.out.println("MaxAla       => " + maxAlaCamachuelo);
-        System.out.println("MinPico      => " + minPicoCamachuelo);
-        System.out.println("MaxPico      => " + maxPicoCamachuelo);
-        System.out.println("MinTarso     => " + minTarsoCamachuelo);
-        System.out.println("MaxTarso     => " + maxTarsoCamachuelo);
-        System.out.println("MinPeso      => " + minPesoCamachuelo);
-        System.out.println("MaxPeso      => " + maxPesoCamachuelo);
+        System.out.println("MinAla       => " + minAlaJilguero);
+        System.out.println("MaxAla       => " + maxAlaJilguero);
+        System.out.println("MinPico      => " + minPicoJilguero);
+        System.out.println("MaxPico      => " + maxPicoJilguero);
+        System.out.println("MinTarso     => " + minTarsoJilguero);
+        System.out.println("MaxTarso     => " + maxTarsoJilguero);
+        System.out.println("MinPeso      => " + minPesoJilguero);
+        System.out.println("MaxPeso      => " + maxPesoJilguero);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de Lugano");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaLugano);
+        System.out.println("MaxAla       => " + maxAlaLugano);
+        System.out.println("MinPico      => " + minPicoLugano);
+        System.out.println("MaxPico      => " + maxPicoLugano);
+        System.out.println("MinTarso     => " + minTarsoLugano);
+        System.out.println("MaxTarso     => " + maxTarsoLugano);
+        System.out.println("MinPeso      => " + minPesoLugano);
+        System.out.println("MaxPeso      => " + maxPesoLugano);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de PardComun");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaPardComun);
+        System.out.println("MaxAla       => " + maxAlaPardComun);
+        System.out.println("MinPico      => " + minPicoPardComun);
+        System.out.println("MaxPico      => " + maxPicoPardComun);
+        System.out.println("MinTarso     => " + minTarsoPardComun);
+        System.out.println("MaxTarso     => " + maxTarsoPardComun);
+        System.out.println("MinPeso      => " + minPesoPardComun);
+        System.out.println("MaxPeso      => " + maxPesoPardComun);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de Picogordo");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaPicogordo);
+        System.out.println("MaxAla       => " + maxAlaPicogordo);
+        System.out.println("MinPico      => " + minPicoPicogordo);
+        System.out.println("MaxPico      => " + maxPicoPicogordo);
+        System.out.println("MinTarso     => " + minTarsoPicogordo);
+        System.out.println("MaxTarso     => " + maxTarsoPicogordo);
+        System.out.println("MinPeso      => " + minPesoPicogordo);
+        System.out.println("MaxPeso      => " + maxPesoPicogordo);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de PinzComun");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaPinzComun);
+        System.out.println("MaxAla       => " + maxAlaPinzComun);
+        System.out.println("MinPico      => " + minPicoPinzComun);
+        System.out.println("MaxPico      => " + maxPicoPinzComun);
+        System.out.println("MinTarso     => " + minTarsoPinzComun);
+        System.out.println("MaxTarso     => " + maxTarsoPinzComun);
+        System.out.println("MinPeso      => " + minPesoPinzComun);
+        System.out.println("MaxPeso      => " + maxPesoPinzComun);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de PinzReal");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaPinzReal);
+        System.out.println("MaxAla       => " + maxAlaPinzReal);
+        System.out.println("MinPico      => " + minPicoPinzReal);
+        System.out.println("MaxPico      => " + maxPicoPinzReal);
+        System.out.println("MinTarso     => " + minTarsoPinzReal);
+        System.out.println("MaxTarso     => " + maxTarsoPinzReal);
+        System.out.println("MinPeso      => " + minPesoPinzReal);
+        System.out.println("MaxPeso      => " + maxPesoPinzReal);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de Piquituerto");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaPiquituerto);
+        System.out.println("MaxAla       => " + maxAlaPiquituerto);
+        System.out.println("MinPico      => " + minPicoPiquituerto);
+        System.out.println("MaxPico      => " + maxPicoPiquituerto);
+        System.out.println("MinTarso     => " + minTarsoPiquituerto);
+        System.out.println("MaxTarso     => " + maxTarsoPiquituerto);
+        System.out.println("MinPeso      => " + minPesoPiquituerto);
+        System.out.println("MaxPeso      => " + maxPesoPiquituerto);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de Verdecillo");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaVerdecillo);
+        System.out.println("MaxAla       => " + maxAlaVerdecillo);
+        System.out.println("MinPico      => " + minPicoVerdecillo);
+        System.out.println("MaxPico      => " + maxPicoVerdecillo);
+        System.out.println("MinTarso     => " + minTarsoVerdecillo);
+        System.out.println("MaxTarso     => " + maxTarsoVerdecillo);
+        System.out.println("MinPeso      => " + minPesoVerdecillo);
+        System.out.println("MaxPeso      => " + maxPesoVerdecillo);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de VerdComun");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaVerdComun);
+        System.out.println("MaxAla       => " + maxAlaVerdComun);
+        System.out.println("MinPico      => " + minPicoVerdComun);
+        System.out.println("MaxPico      => " + maxPicoVerdComun);
+        System.out.println("MinTarso     => " + minTarsoVerdComun);
+        System.out.println("MaxTarso     => " + maxTarsoVerdComun);
+        System.out.println("MinPeso      => " + minPesoVerdComun);
+        System.out.println("MaxPeso      => " + maxPesoVerdComun);
+        System.out.println("___________________________________");
+        System.out.println("Parametros Recibidos de VerdSerrano");
+        System.out.println("___________________________________");
+        System.out.println("MinAla       => " + minAlaVerdSerrano);
+        System.out.println("MaxAla       => " + maxAlaVerdSerrano);
+        System.out.println("MinPico      => " + minPicoVerdSerrano);
+        System.out.println("MaxPico      => " + maxPicoVerdSerrano);
+        System.out.println("MinTarso     => " + minTarsoVerdSerrano);
+        System.out.println("MaxTarso     => " + maxTarsoVerdSerrano);
+        System.out.println("MinPeso      => " + minPesoVerdSerrano);
+        System.out.println("MaxPeso      => " + maxPesoVerdSerrano);
         System.out.println("___________________________________");
     }
 
