@@ -47,6 +47,7 @@ public class Limites implements Serializable {
 
     private int maxRecVerdSerrano, maxCimVerdSerrano;
     private double minAlaVerdSerrano, maxAlaVerdSerrano, minPicoVerdSerrano, maxPicoVerdSerrano, minTarsoVerdSerrano, maxTarsoVerdSerrano, minPesoVerdSerrano, maxPesoVerdSerrano;
+    private int numeroGrupo;
 
     public Limites() {
         readObject();
@@ -1312,6 +1313,7 @@ public class Limites implements Serializable {
     }
 
     public void findGrupo(int numGrupo) {
+        this.numeroGrupo = numGrupo;
         ParseQuery<ParseObject> query= ParseQuery.getQuery("Limites_Anillamiento");
         query.whereEqualTo("NumGrupo", numGrupo);
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -1341,5 +1343,9 @@ public class Limites implements Serializable {
         System.out.println("ANILLA MAX =>" + maxNAnilla);
         System.out.println("ANILLA MIN =>" + minNAnilla);
         System.out.println("___________________________________");
+    }
+
+    public int getNumeroGrupo() {
+        return numeroGrupo;
     }
 }

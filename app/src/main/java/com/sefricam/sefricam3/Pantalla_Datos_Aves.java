@@ -32,8 +32,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private TextView tv_Hora;
 
     //Datos
-    private String hora,especie,anillaPreexistente;
-    private int numeroAnilla,localizacion,sexo,edad,nEjemplares,condicionFisica,grasa,musculoPectoral,muda,placaIncubatriz;
+    private String hora,anillaPreexistente;
+    private int especie, numeroAnilla,localizacion,sexo,edad,nEjemplares,condicionFisica,grasa,musculoPectoral,muda,placaIncubatriz;
     private Double peso, longitudTarso, longitudPico, longitudTerceraPrimaria, capturasEnviadas;
 
     private EditText etn_EjemplaresCapturados, etn_NumeroAnilla, et_NumeroAnillaPreexistente, etnd_Peso, etnd_LongitudTarso, etnd_LongitudPico, etnd_LongitudTerceraPrimaria;
@@ -48,7 +48,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email,DNI;
     private String fecha, latitud, longitud;
-    private int numGrupo;
     private int numAves;
     private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico;
 
@@ -166,6 +165,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     public void envioDatos() {
         ParseObject entity = new ParseObject("Datos_Aves");
 
+        entity.put("NumGrupo",limites.getNumeroGrupo());
         entity.put("FechaCap", convertStringToData(fecha));
         entity.put("Latitud", latitud);
         entity.put("Longitud", longitud);
@@ -201,16 +201,24 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     @SuppressLint("NonConstantResourceId")
     private void asignacionValores() {
-        /*
+
         hora = tv_Hora.getText().toString();
         //Cambiar por Radio Buttons
+        //especie =
         // especie = sp_Especies.getSelectedItem().toString();
-        if (!etn_NumeroAnilla.getText().toString().isEmpty()) numeroAnilla = Integer.parseInt(etn_NumeroAnilla.getText().toString());
-        if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) anillaPreexistente = et_NumeroAnillaPreexistente.getText().toString();
+        if (!etn_NumeroAnilla.getText().toString().isEmpty()) {
+            numeroAnilla = Integer.parseInt(etn_NumeroAnilla.getText().toString());
+            anillaPreexistente = "";
+        } else {
+            numeroAnilla = 0;
+            anillaPreexistente = et_NumeroAnillaPreexistente.getText().toString();
+        }
+
         peso = Double.parseDouble(etnd_Peso.getText().toString());
         longitudTarso =Double.parseDouble(etnd_LongitudTarso.getText().toString());
         longitudPico = Double.parseDouble(etnd_LongitudPico.getText().toString());
         longitudTerceraPrimaria = Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString());
+
         switch (rbg_Localizacion.getCheckedRadioButtonId()){
             case R.id.rb_LocalizacionLocal:
                 localizacion=1;
@@ -241,8 +249,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 edad=2;
                 break;
         }
-        //Cambiar por el Edit Text
-        // nEjemplares = sp_Capturas.getSelectedItemPosition();
+
+        nEjemplares = Integer.parseInt(etn_EjemplaresCapturados.getText().toString());
 
         switch (rbg_CondicionFisica.getCheckedRadioButtonId()){
             case R.id.rb_CondicionBuena:
@@ -310,19 +318,9 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                     break;
             }
         } else placaIncubatriz=0;
-*/
+
     }
 
-
-
-    private void habilitarRellenadoDatosAves() {
-        etn_NumeroAnilla.setEnabled(true);
-        et_NumeroAnillaPreexistente.setEnabled(true);
-        etnd_LongitudPico.setEnabled(true);
-        etnd_LongitudTarso.setEnabled(true);
-        etnd_LongitudTerceraPrimaria.setEnabled(true);
-        etnd_Peso.setEnabled(true);
-    }
 
     private boolean comprobarValores() {
 
