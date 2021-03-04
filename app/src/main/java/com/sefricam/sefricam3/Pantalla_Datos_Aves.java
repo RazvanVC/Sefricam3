@@ -59,44 +59,16 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         setContentView(R.layout.pantalla_datos_aves);
 
         Bundle datos = this.getIntent().getExtras();
+
         if (datos != null) {
             recuperarDatosRecibidos(datos);
-            //Datos Recibidos de Menu Metodos y Capturas
 
             System.out.println("Datos recibidos en Datos Aves");
             imprimirDatosRecibidos();
         }
-        cargarDatos(email);
 
         iniciarFindView();
         iniciarOnClickListener();
-    }
-
-    private void cargarDatos(String email) {
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-        query.whereEqualTo("username",email);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    ParseObject obj = null;
-                    for (int i = 0; i<objects.size(); i++){
-                        obj = objects.get(i);
-                    }
-                    try {
-                        DNI = obj.getString("DNI");
-                        numGrupo = (Integer) obj.getInt("NumGrupo");
-                        numAves = (Integer) obj.getInt("NumAves");
-                    } catch (Exception x){
-                        Toast.makeText(Pantalla_Datos_Aves.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
-                    }
-
-                }
-            }
-        });
-
-        limites.findGrupo(numGrupo);
     }
 
     private void iniciarOnClickListener() {
@@ -353,6 +325,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     }
 
     private boolean comprobarValores() {
+
         if (tv_Hora.getText().toString().equals("--:--")) {
             Toast.makeText(this, "ERROR: El campo de la hora no se puede quedar vacío", Toast.LENGTH_LONG).show();
             return false;
@@ -364,59 +337,172 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         }
 
         if (etn_EjemplaresCapturados.getText().toString().equals("0")){
-            Toast.makeText(this, "ERROR: Las capturas tienenq ue ser distintas de cero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR: Las capturas tienen que ser distintas de cero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //Comprobacion de que los parámetros no estén vacios
+
+        if (
+                etnd_LongitudPico.getText().toString().equals("") ||
+                etnd_LongitudTarso.getText().toString().equals("") ||
+                etnd_LongitudTerceraPrimaria.getText().toString().equals("") ||
+                etnd_Peso.getText().toString().equals("")
+        ){
+            Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         //Comprobacion de parámetros dentro de límites
+
+        if (!etn_NumeroAnilla.getText().toString().equals("")&&et_NumeroAnillaPreexistente.getText().toString().equals("")){
+            if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
+                Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            if (et_NumeroAnillaPreexistente.getText().length()>30){
+                Toast.makeText(this, "La anilla preexistente es demasiado larga", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
         asignacionParametrosAves();
 
         if (Double.parseDouble(etnd_Peso.getText().toString())<minPeso || Double.parseDouble(etnd_Peso.getText().toString())>maxPeso){
-            Toast.makeText(this, "El peso no se ajustan a los parámetros de peso del ave seleccionada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "El peso no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         if (Double.parseDouble(etnd_LongitudTarso.getText().toString())<minTarso || Double.parseDouble(etnd_LongitudTarso.getText().toString())>maxTarso){
-            Toast.makeText(this, "La longitud del tarso no se ajustan a los parámetros de peso del ave seleccionada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "La longitud del tarso no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (Double.parseDouble(etnd_Peso.getText().toString())<minPeso || Double.parseDouble(etnd_Peso.getText().toString())>maxPeso){
-            Toast.makeText(this, "El peso no se ajustan a los parámetros de peso del ave seleccionada", Toast.LENGTH_SHORT).show();
+        if (Double.parseDouble(etnd_LongitudPico.getText().toString())<minPico || Double.parseDouble(etnd_LongitudPico.getText().toString())>maxPico){
+            Toast.makeText(this, "La longitud del pico no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        /*boolean comprobado  = true;
-        if (tv_Hora.getText().toString().equals("--:--")) comprobado = false;
-        if (sp_Especies.getSelectedItemPosition()==0) comprobado = false;
-        //if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<1) comprobado =false;
-        //if (Integer.parseInt(etn_NumeroAnilla.getText().toString())>20000) comprobado=false;
-        //if (et_NumeroAnillaPreexistente.length()>30) comprobado=false;
-        if (etnd_Peso.getText().toString().isEmpty()) comprobado=false;
-        //if (Double.parseDouble(etnd_Peso.getText().toString())<pesoMin)comprobado=false;
-        //if (Double.parseDouble(etnd_Peso.getText().toString())>pesoMax)comprobado=false;
-        if (etnd_LongitudTarso.getText().toString().isEmpty()) comprobado=false;
-        //if (Double.parseDouble(etnd_LongitudTarso.getText().toString())<longitudTarsoMin)comprobado=false;
-        //if (Double.parseDouble(etnd_LongitudTarso.getText().toString())>longitudTarsoMax)comprobado=false;
-        if (etnd_LongitudPico.getText().toString().isEmpty()) comprobado=false;
-        //if (Double.parseDouble(etnd_LongitudPico.getText().toString())<longitudPicoMin)comprobado=false;
-        //if (Double.parseDouble(etnd_LongitudPico.getText().toString())>longitudPicoMax)comprobado=false;
-        if (etnd_LongitudTerceraPrimaria.getText().toString().isEmpty()) comprobado=false;
-        //if (Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())<longitudTerceraPrimariaMin)comprobado=false;
-        //if (Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())>longitudTerceraPrimariaMax)comprobado=false;
-        if (rbg_Localizacion.getCheckedRadioButtonId()==-1) comprobado=false;
-        if (rbg_Sexo.getCheckedRadioButtonId()==-1)comprobado=false;
-        if (rbg_Edad.getCheckedRadioButtonId()==-1)comprobado=false;
-        if (sp_Capturas.getSelectedItemPosition()==0)comprobado=false;
-        if (rbg_CondicionFisica.getCheckedRadioButtonId()==-1)comprobado=false;
-        if (rbg_Grasa.getCheckedRadioButtonId()==-1)comprobado=false;
-        if (rbg_MusculoPectoral.getCheckedRadioButtonId()==-1)comprobado=false;
-        if (rbg_Muda.getCheckedRadioButtonId()==-1) comprobado=false;
+        if (Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())<minAla || Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())>maxAla){
+            Toast.makeText(this, "La longitud de la tercera primaria no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //Comprobacion del resto de campos
+
+        if (rbg_Localizacion.getCheckedRadioButtonId()==-1) {
+            Toast.makeText(this, "Se ha de seleccionar una localización", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (rbg_Sexo.getCheckedRadioButtonId()==-1) {
+            Toast.makeText(this, "Se ha de seleccionar un sexo", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (rbg_Edad.getCheckedRadioButtonId()==-1){
+            Toast.makeText(this, "Se ha de seleccionar una edad", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (rbg_CondicionFisica.getCheckedRadioButtonId()==-1){
+            Toast.makeText(this, "Se ha de seleccionar una condición fisica", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (rbg_Grasa.getCheckedRadioButtonId()==-1){
+            Toast.makeText(this, "Se ha de seleccionar una opción de grasa", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (rbg_MusculoPectoral.getCheckedRadioButtonId()==-1){
+            Toast.makeText(this, "Se ha de seleccionar una opción de músculo pectoral", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (rbg_Muda.getCheckedRadioButtonId()==-1) {
+            Toast.makeText(this, "Se ha de seleccionar un estado de muda", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //Placa incubatriz
         if (rbg_Sexo.getCheckedRadioButtonId()==R.id.rb_SexoHembra){
-            if (rbg_PlacaInc.getCheckedRadioButtonId()==-1)comprobado=false;
+            if (rbg_PlacaInc.getCheckedRadioButtonId()==-1){
+                Toast.makeText(this, "Se ha de seleccionar el estado de la placa incubatriz", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
-        return comprobado;*/
+
         return true;
+    }
+
+    private void guardarParametros(Intent actividadDestino) {
+
+        imprimirDatosRecibidos();
+
+        actividadDestino.putExtra("EMAIL",email);
+        actividadDestino.putExtra("DNI",DNI);
+        actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
+        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
+        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
+        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
+        actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
+        actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
+        actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("LIMITES", limites);
+
+        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
+            actividadDestino.putExtra("FECHA", fecha);
+            actividadDestino.putExtra("LATITUD", latitud);
+            actividadDestino.putExtra("LONGITUD", longitud);
+        }
+
+    }
+
+    private void recuperarDatosRecibidos(Bundle datos) {
+        email = datos.getString("EMAIL");
+        DNI = datos.getString("DNI");
+        envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
+        mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
+        avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
+        entornoCompletado = datos.getBoolean("ENTORNO_COMPLETADO");
+        metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
+        datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
+        datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+        limites = (Limites) datos.getSerializable("LIMITES");
+
+        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
+            fecha = datos.getString("FECHA");
+            latitud = datos.getString("LATITUD");
+            longitud = datos.getString("LONGITUD");
+        }
+    }
+
+    private void imprimirDatosRecibidos() {
+        System.out.println("____________________________________________________");
+        System.out.println("EMAIL                  => " + email);
+        System.out.println("DNI                    => " + DNI);
+        System.out.println("LIMITES                => " + limites);
+        System.out.println("____________________________________________________");
+        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
+        System.out.println("DATOS ENTORNO          => " + datosEntorno);
+        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
+        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
+        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
+        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
+        System.out.println("____________________________________________________");
+        System.out.println("FECHA                  => " + fecha);
+        System.out.println("LATITUD                => " + latitud);
+        System.out.println("LONGITUD               => " + longitud);
+    }
+
+    private static Date convertStringToData(String getDate){
+        Date today = null;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            today = simpleDate.parse(getDate);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return today;
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -545,107 +631,5 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 minPico = limites.getMinPicoVerdSerrano();
                 break;
         }
-    }
-
-    private void guardarParametros(Intent actividadDestino) {
-
-        imprimirDatosRecibidos();
-
-        actividadDestino.putExtra("EMAIL",email);
-        actividadDestino.putExtra("DNI",DNI);
-        actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
-        actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
-        actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
-        actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
-        actividadDestino.putExtra("LIMITES", limites);
-
-        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
-            actividadDestino.putExtra("FECHA", fecha);
-            actividadDestino.putExtra("LATITUD", latitud);
-            actividadDestino.putExtra("LONGITUD", longitud);
-        }
-
-    }
-
-    private void recuperarDatosRecibidos(Bundle datos) {
-        email = datos.getString("EMAIL");
-        DNI = datos.getString("DNI");
-        envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
-        mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
-        avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
-        entornoCompletado = datos.getBoolean("ENTORNO_COMPLETADO");
-        metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
-        datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
-        datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
-        limites = (Limites) datos.getSerializable("LIMITES");
-
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getString("LATITUD");
-            longitud = datos.getString("LONGITUD");
-        }
-    }
-
-    private void imprimirDatosRecibidos() {
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("LIMITES                => " + limites);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
-        System.out.println("FECHA                  => " + fecha);
-        System.out.println("LATITUD                => " + latitud);
-        System.out.println("LONGITUD               => " + longitud);
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    public void seleccionAve(View v){
-        habilitarRellenadoDatosAves();
-        switch (v.getId()){
-            /*
-            case R.id.rb_EspecieCamachuelo:
-                maxPeso  = limites.getMaxPesoCamachuelo();
-                maxTarso = limites.getMaxTarsoCamachuelo();
-                maxAla = limites.getMaxAlaCamachuelo();
-                maxPico = limites.getMaxPicoCamachuelo();
-
-                minPeso  = limites.getMinPesoCamachuelo();
-                minTarso = limites.getMinTarsoCamachuelo();
-                minAla = limites.getMinAlaCamachuelo();
-                minPico = limites.getMinPicoCamachuelo();
-                break;
-            case R.id.rb_EspecieJilguero:
-                maxPeso  = limites.getMaxPesoJilguero();
-                maxTarso = limites.getMaxTarsoJilguero();
-                maxAla = limites.getMaxAlaJilguero();
-                maxPico = limites.getMaxPicoCamachuelo();
-
-                minPeso  = limites.getMinPesoJilguero();
-                minTarso = limites.getMinTarsoJilguero();
-                minAla = limites.getMinAlaJilguero();
-                minPico = limites.getMinPicoJilguero();
-                break;*/
-        }
-    }
-
-    private static Date convertStringToData(String getDate){
-        Date today = null;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-            today = simpleDate.parse(getDate);
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
-        return today;
     }
 }
