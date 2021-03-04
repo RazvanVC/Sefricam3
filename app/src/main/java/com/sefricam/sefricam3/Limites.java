@@ -1099,7 +1099,7 @@ public class Limites implements Serializable {
         this.minAlaVerdSerrano = minAlaVerdSerrano;
     }
 
-    public double getMaxAlaCVerdSerrano() {
+    public double getMaxAlaVerdSerrano() {
         return maxAlaVerdSerrano;
     }
 
