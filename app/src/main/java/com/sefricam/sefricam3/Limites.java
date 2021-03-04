@@ -1316,7 +1316,7 @@ public class Limites implements Serializable {
         System.out.println("ANILLA MIN =>" + minNAnilla);
 
         ParseQuery<ParseObject> query= ParseQuery.getQuery("Limites_Anillamiento");
-        query.whereEqualTo("NumGrupo",0);
+        query.whereEqualTo("NumGrupo", numGrupo);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
