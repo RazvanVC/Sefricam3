@@ -48,6 +48,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             limites = (Limites) datos.getSerializable("LIMITES");
             limites.imprimirDatosRecYCim();
             limites.imprimirDatosParametrosAves();
+            limites.imprimirDatosAnillamiento();
             cargarDatos(email);
         }
     }

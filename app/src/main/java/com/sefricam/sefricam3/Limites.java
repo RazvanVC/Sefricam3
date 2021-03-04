@@ -1337,4 +1337,12 @@ public class Limites implements Serializable {
             }
         });
     }
+
+    public void imprimirDatosAnillamiento() {
+        System.out.println("Datos Anillamiento Recibidos");
+        System.out.println("___________________________________");
+        System.out.println("ANILLA MAX =>" + maxNAnilla);
+        System.out.println("ANILLA MIN =>" + minNAnilla);
+        System.out.println("___________________________________");
+    }
 }

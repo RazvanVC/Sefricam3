@@ -10,9 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //Parse
+import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.LogInCallback;
+
+import java.util.List;
 
 public class Pantalla_LogIn extends Activity {
 
@@ -57,11 +62,12 @@ public class Pantalla_LogIn extends Activity {
         });
     }
 
-    private void loginUserParse(String emailLogin, String password){
+    private void loginUserParse(final String emailLogin, String password){
         ParseUser.logInInBackground(emailLogin, password, new LogInCallback() {
             @Override
             public void done(ParseUser parseUser, ParseException e) {
                 if (parseUser != null) {
+                    cargarDatos(emailLogin);
                     Intent activity =  new Intent(Pantalla_LogIn.this, Pantalla_Menu_Intermedio.class);
                     activity.putExtra("EMAIL", email.getText().toString());
                     activity.putExtra("LIMITES", limites);
@@ -70,6 +76,30 @@ public class Pantalla_LogIn extends Activity {
                 } else {
                     ParseUser.logOut();
                     Toast.makeText(Pantalla_LogIn.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private void cargarDatos(String email) {
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+        query.whereEqualTo("username",email);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null){
+                    ParseObject obj = null;
+                    for (int i = 0; i<objects.size(); i++){
+                        obj = objects.get(i);
+                    }
+                    try {
+                        if (obj != null){
+                            limites.findGrupo(obj.getInt("NumGrupo"));
+                        }
+                    } catch (Exception x){
+                        Toast.makeText(Pantalla_LogIn.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
