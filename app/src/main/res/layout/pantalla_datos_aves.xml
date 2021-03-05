@@ -74,8 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tv_camachuelo"
                     android:textSize="@dimen/_13sdp"
-                    android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    android:textColor="@color/VerdePrimario" />
 
                 <RadioButton
                     android:id="@+id/rb_EspecieJilguero"
@@ -83,8 +82,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tv_jilguero"
                     android:textSize="@dimen/_13sdp"
-                    android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    android:textColor="@color/VerdePrimario" />
 
                 <RadioButton
                     android:id="@+id/rb_EspecieLugano"
@@ -93,7 +91,7 @@
                     android:text="@string/tv_lugano"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspeciePardComun"
@@ -102,7 +100,7 @@
                     android:text="Pardillo Común"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspeciePicogordo"
@@ -111,7 +109,7 @@
                     android:text="@string/tv_picogordo"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspeciePinzComun"
@@ -120,7 +118,7 @@
                     android:text="@string/tv_pinzon_comun"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspeciePinzReal"
@@ -129,7 +127,7 @@
                     android:text="@string/tv_pinzon_real"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspeciePiquituerto"
@@ -138,7 +136,7 @@
                     android:text="@string/tv_piquituerto"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspecieVerdecillo"
@@ -147,7 +145,7 @@
                     android:text="@string/tv_verdecillo"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspecieVerdComun"
@@ -156,7 +154,7 @@
                     android:text="Verderón Común"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rb_EspecieVerdSerrano"
@@ -165,7 +163,7 @@
                     android:text="Verderón Serrano"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
-                    android:onClick="seleccionAve"/>
+                    />
             </RadioGroup>
             
             <LinearLayout

@@ -47,9 +47,9 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private Limites limites;
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email,DNI;
-    private String fecha, latitud, longitud;
+    private String fecha;
     private int numAves;
-    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico;
+    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico, latitud, longitud;;
 
 
     @Override
@@ -203,9 +203,45 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private void asignacionValores() {
 
         hora = tv_Hora.getText().toString();
-        //Cambiar por Radio Buttons
-        //especie =
-        // especie = sp_Especies.getSelectedItem().toString();
+
+        //Asignacion de especie
+        switch (rbg_EspeciesAves.getCheckedRadioButtonId()){
+            case R.id.rb_EspecieCamachuelo:
+                especie = 1;
+                break;
+            case R.id.rb_EspecieJilguero:
+                especie = 2;
+                break;
+            case R.id.rb_EspecieLugano:
+                especie = 3;
+                break;
+            case R.id.rb_EspeciePardComun:
+                especie = 4;
+                break;
+            case R.id.rb_EspeciePicogordo:
+                especie = 5;
+                break;
+            case R.id.rb_EspeciePinzComun:
+                especie = 6;
+                break;
+            case R.id.rb_EspeciePinzReal:
+                especie = 7;
+                break;
+            case R.id.rb_EspeciePiquituerto:
+                especie = 8;
+                break;
+            case R.id.rb_EspecieVerdecillo:
+                especie = 9;
+                break;
+            case R.id.rb_EspecieVerdComun:
+                especie = 10;
+                break;
+            case R.id.rb_EspecieVerdSerrano:
+                especie = 11;
+                break;
+        }
+
+        //Asignacion de anilla
         if (!etn_NumeroAnilla.getText().toString().isEmpty()) {
             numeroAnilla = Integer.parseInt(etn_NumeroAnilla.getText().toString());
             anillaPreexistente = "";
@@ -214,6 +250,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             anillaPreexistente = et_NumeroAnillaPreexistente.getText().toString();
         }
 
+        //Asignación de parámetros
         peso = Double.parseDouble(etnd_Peso.getText().toString());
         longitudTarso =Double.parseDouble(etnd_LongitudTarso.getText().toString());
         longitudPico = Double.parseDouble(etnd_LongitudPico.getText().toString());
@@ -354,7 +391,9 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         //Comprobacion de parámetros dentro de límites
 
         if (!etn_NumeroAnilla.getText().toString().equals("")&&et_NumeroAnillaPreexistente.getText().toString().equals("")){
-            if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
+            System.out.println("NUMERO ANILLA =>" + Integer.parseInt(etn_NumeroAnilla.getText().toString()));
+
+            if (Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMinNAnilla() && Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMaxNAnilla()){
                 Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
                 return false;
             }
@@ -451,7 +490,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             actividadDestino.putExtra("LATITUD", latitud);
             actividadDestino.putExtra("LONGITUD", longitud);
         }
-
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
@@ -468,30 +506,15 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
             fecha = datos.getString("FECHA");
-            latitud = datos.getString("LATITUD");
-            longitud = datos.getString("LONGITUD");
+            latitud = datos.getDouble("LATITUD",0);
+            longitud = datos.getDouble("LONGITUD",0);
         }
     }
 
-    private void imprimirDatosRecibidos() {
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("LIMITES                => " + limites);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
-        System.out.println("FECHA                  => " + fecha);
-        System.out.println("LATITUD                => " + latitud);
-        System.out.println("LONGITUD               => " + longitud);
-    }
+
 
     private static Date convertStringToData(String getDate){
+        getDate = "16/01/2021";
         Date today = null;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -506,7 +529,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     @SuppressLint("NonConstantResourceId")
     private void asignacionParametrosAves() {
         switch (rbg_EspeciesAves.getCheckedRadioButtonId()){
-
             case R.id.rb_EspecieCamachuelo:
                 maxPeso  = limites.getMaxPesoCamachuelo();
                 maxTarso = limites.getMaxTarsoCamachuelo();
@@ -629,5 +651,23 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 minPico = limites.getMinPicoVerdSerrano();
                 break;
         }
+    }
+
+    private void imprimirDatosRecibidos() {
+        System.out.println("____________________________________________________");
+        System.out.println("EMAIL                  => " + email);
+        System.out.println("DNI                    => " + DNI);
+        System.out.println("LIMITES                => " + limites);
+        System.out.println("____________________________________________________");
+        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
+        System.out.println("DATOS ENTORNO          => " + datosEntorno);
+        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
+        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
+        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
+        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
+        System.out.println("____________________________________________________");
+        System.out.println("FECHA                  => " + fecha);
+        System.out.println("LATITUD                => " + latitud);
+        System.out.println("LONGITUD               => " + longitud);
     }
 }
