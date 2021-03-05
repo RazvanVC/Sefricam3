@@ -506,15 +506,21 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
             fecha = datos.getString("FECHA");
-            latitud = datos.getDouble("LATITUD",0);
-            longitud = datos.getDouble("LONGITUD",0);
+            latitud = datos.getDouble("LATITUD");
+            longitud = datos.getDouble("LONGITUD");
         }
     }
 
 
 
-    private static Date convertStringToData(String getDate){
-        getDate = "16/01/2021"; //Test Feature
+    private Date convertStringToData(String getDate){
+        //Test Feature
+        if (getDate == null){
+            getDate = "16/01/2021";
+            latitud = 0;
+            longitud = 0;
+        }
+
         Date today = null;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 

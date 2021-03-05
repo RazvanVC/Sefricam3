@@ -589,6 +589,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
         actividadDestino.putExtra("LIMITES", limites);
+
         if (entornoCompletado && mCapturasCompletado && avistamientoCompletado){
             actividadDestino.putExtra("LATITUD", etnd_Latitud.getText().toString());
             actividadDestino.putExtra("LONGITUD", etnd_Longitud.getText().toString());
@@ -626,7 +627,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     /**
      * Codigo roto
-     * @return 
+     * @return
      */
     private String cuadricula(){
         //Primer valor

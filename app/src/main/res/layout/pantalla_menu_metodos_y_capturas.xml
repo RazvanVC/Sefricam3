@@ -129,6 +129,7 @@
             android:textSize="@dimen/_15ssp" />
 
         <TextView
+            android:background="@drawable/celda"
             android:id="@+id/tv_FechaDeTomaIntroducida"
             android:layout_width="0dp"
             android:layout_height="match_parent"
