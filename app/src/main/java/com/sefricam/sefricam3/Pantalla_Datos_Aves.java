@@ -514,7 +514,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
 
     private static Date convertStringToData(String getDate){
-        getDate = "16/01/2021";
+        getDate = "16/01/2021"; //Test Feature
         Date today = null;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 
