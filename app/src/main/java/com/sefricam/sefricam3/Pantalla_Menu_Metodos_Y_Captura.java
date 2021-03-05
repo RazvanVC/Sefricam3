@@ -44,8 +44,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private EditText etnd_Latitud, etnd_Longitud;
 
     private double latitud,longitud, datosEnviados;
-    private String fecha;
-    public FirebaseFirestore db;
+    private Date fecha;
 
     private Map<String, ArrayList> avistamientos = new HashMap<>();
 
@@ -64,9 +63,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_menu_metodos_y_capturas);
 
-
-
-        db = FirebaseFirestore.getInstance();
         iniciarFindView();
         iniciarOnClickListener();
 
@@ -81,11 +77,11 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 etnd_Longitud.setText(String.valueOf(datos.getDouble("LONGITUD")));
                 etnd_Latitud.setText(String.valueOf(datos.getDouble("LATITUD")));
                 tv_Fecha.setClickable(false);
-                etnd_Latitud.setEnabled(false);
-                etnd_Longitud.setEnabled(false);
+                //etnd_Latitud.setEnabled(false);
+                //etnd_Longitud.setEnabled(false);
 
                 //Desactivacion de botones
-                desactivarBotonesDatos();
+                //desactivarBotonesDatos();
 
             }
             System.out.println("Datos recibidos en Main Menu");
@@ -176,7 +172,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 @Override
                 public void onDateSet(DatePicker datePicker, int dayOfMonth, int month, int year) {
 
-                    tv_Fecha.setText(year + "-" + (month+1) + "-" + dayOfMonth);
+                    tv_Fecha.setText(year + "/" + (month+1) + "/" + dayOfMonth);
                 }
             },dia, mes, ano);
 
@@ -227,7 +223,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         if (view == btn_Enviar){
 
             if (comprobarValores()){
-                actualizarDatosEnviados();
+                //actualizarDatosEnviados();
                 tv_Fecha.setClickable(false);
                 etnd_Latitud.setEnabled(false);
                 etnd_Longitud.setEnabled(false);
@@ -236,7 +232,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 envioCompletado = true;
 
             } else {
-                Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
             }
         }
         if (view == btn_Volver){
@@ -264,245 +260,251 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private void envioDatos() {
 
         //Parse Send
-        ParseObject docData = new ParseObject("Datos_Entorno");
+        ParseObject entity = new ParseObject("Datos_Entorno");
 
         //General
 
-        docData.put("Fecha",convertStringToData(tv_Fecha.getText().toString()));
-        docData.put("Latitud",latitud);
-        docData.put("Longitud",longitud);
-        docData.put("Cuadricula", cuadricula());
-        docData.put("DNI",DNI);
+        entity.put("Fecha",fecha);
+        entity.put("Latitud",latitud);
+        entity.put("Longitud",longitud);
+        entity.put("Cuadricula", cuadricula());
+        entity.put("DNI",DNI);
 
         //Entorno
-        docData.put("TempInicial",datosEntorno.gettInicio());
-        docData.put("TempFinal",datosEntorno.gettFin());
-        docData.put("Zonificacion",datosEntorno.getZonificacion());
-        docData.put("Viento",datosEntorno.getViento());
-        docData.put("DirViento",datosEntorno.getDireccionViento());
-        docData.put("Nubes",datosEntorno.getNubes());
-        docData.put("Lluvia",datosEntorno.getLluvia());
+        entity.put("TempInicial",datosEntorno.gettInicio());
+        entity.put("TempFinal",datosEntorno.gettFin());
+        entity.put("Zonificacion",datosEntorno.getZonificacion());
+        entity.put("Viento",datosEntorno.getViento());
+        entity.put("DirViento",datosEntorno.getDireccionViento());
+        entity.put("Nubes",datosEntorno.getNubes());
+        entity.put("Lluvia",datosEntorno.getLluvia());
 
         //Plantas
-        docData.put("EP01", datosEntorno.getPlantas().get(0));
-        docData.put("EP02", datosEntorno.getPlantas().get(1));
-        docData.put("EP03", datosEntorno.getPlantas().get(2));
-        docData.put("EP04", datosEntorno.getPlantas().get(3));
-        docData.put("EP05", datosEntorno.getPlantas().get(4));
-        docData.put("EP06", datosEntorno.getPlantas().get(5));
-        docData.put("EP07", datosEntorno.getPlantas().get(6));
-        docData.put("EP08", datosEntorno.getPlantas().get(7));
-        docData.put("EP09", datosEntorno.getPlantas().get(8));
-        docData.put("EP10", datosEntorno.getPlantas().get(9));
-        docData.put("EP11", datosEntorno.getPlantas().get(10));
-        docData.put("EP12", datosEntorno.getPlantas().get(11));
-        docData.put("EP13", datosEntorno.getPlantas().get(12));
-        docData.put("EP14", datosEntorno.getPlantas().get(13));
-        docData.put("EP15", datosEntorno.getPlantas().get(14));
-        docData.put("EP16", datosEntorno.getPlantas().get(15));
-        docData.put("EP17", datosEntorno.getPlantas().get(16));
-        docData.put("EP18", datosEntorno.getPlantas().get(17));
-        docData.put("EP19", datosEntorno.getPlantas().get(18));
-        docData.put("EP20", datosEntorno.getPlantas().get(19));
-        docData.put("EP21", datosEntorno.getPlantas().get(20));
-        docData.put("EP22", datosEntorno.getPlantas().get(21));
-        docData.put("EP23", datosEntorno.getPlantas().get(22));
-        docData.put("EP24", datosEntorno.getPlantas().get(23));
-        docData.put("EP25", datosEntorno.getPlantas().get(24));
-        docData.put("EP26", datosEntorno.getPlantas().get(25));
-        docData.put("EP27", datosEntorno.getPlantas().get(26));
-        docData.put("EP28", datosEntorno.getPlantas().get(27));
-        docData.put("EP29", datosEntorno.getPlantas().get(28));
-        docData.put("EP30", datosEntorno.getPlantas().get(29));
-        docData.put("EP31", datosEntorno.getPlantas().get(30));
-        docData.put("EP32", datosEntorno.getPlantas().get(31));
-        docData.put("EP33", datosEntorno.getPlantas().get(32));
-        docData.put("EP34", datosEntorno.getPlantas().get(33));
-        docData.put("EP35", datosEntorno.getPlantas().get(34));
-        docData.put("EP36", datosEntorno.getPlantas().get(35));
-        docData.put("EP37", datosEntorno.getEP37());
-        docData.put("EP38", datosEntorno.getEP38());
+        entity.put("EP01", datosEntorno.getPlantas().get(0));
+        entity.put("EP02", datosEntorno.getPlantas().get(1));
+        entity.put("EP03", datosEntorno.getPlantas().get(2));
+        entity.put("EP04", datosEntorno.getPlantas().get(3));
+        entity.put("EP05", datosEntorno.getPlantas().get(4));
+        entity.put("EP06", datosEntorno.getPlantas().get(5));
+        entity.put("EP07", datosEntorno.getPlantas().get(6));
+        entity.put("EP08", datosEntorno.getPlantas().get(7));
+        entity.put("EP09", datosEntorno.getPlantas().get(8));
+        entity.put("EP10", datosEntorno.getPlantas().get(9));
+        entity.put("EP11", datosEntorno.getPlantas().get(10));
+        entity.put("EP12", datosEntorno.getPlantas().get(11));
+        entity.put("EP13", datosEntorno.getPlantas().get(12));
+        entity.put("EP14", datosEntorno.getPlantas().get(13));
+        entity.put("EP15", datosEntorno.getPlantas().get(14));
+        entity.put("EP16", datosEntorno.getPlantas().get(15));
+        entity.put("EP17", datosEntorno.getPlantas().get(16));
+        entity.put("EP18", datosEntorno.getPlantas().get(17));
+        entity.put("EP19", datosEntorno.getPlantas().get(18));
+        entity.put("EP20", datosEntorno.getPlantas().get(19));
+        entity.put("EP21", datosEntorno.getPlantas().get(20));
+        entity.put("EP22", datosEntorno.getPlantas().get(21));
+        entity.put("EP23", datosEntorno.getPlantas().get(22));
+        entity.put("EP24", datosEntorno.getPlantas().get(23));
+        entity.put("EP25", datosEntorno.getPlantas().get(24));
+        entity.put("EP26", datosEntorno.getPlantas().get(25));
+        entity.put("EP27", datosEntorno.getPlantas().get(26));
+        entity.put("EP28", datosEntorno.getPlantas().get(27));
+        entity.put("EP29", datosEntorno.getPlantas().get(28));
+        entity.put("EP30", datosEntorno.getPlantas().get(29));
+        entity.put("EP31", datosEntorno.getPlantas().get(30));
+        entity.put("EP32", datosEntorno.getPlantas().get(31));
+        entity.put("EP33", datosEntorno.getPlantas().get(32));
+        entity.put("EP34", datosEntorno.getPlantas().get(33));
+        entity.put("EP35", datosEntorno.getPlantas().get(34));
+        entity.put("EP36", datosEntorno.getPlantas().get(35));
+        entity.put("EP37", datosEntorno.getEP37());
+        entity.put("EP38", datosEntorno.getEP38());
 
         //Metodos Captura
-        docData.put("Numero Mallas", metodosCaptura.getNumeroMallas());
-        docData.put("Longitud red",metodosCaptura.getLongitudRed());
-        docData.put("Coto",metodosCaptura.isCoto());
+        entity.put("NumMallas", metodosCaptura.getNumeroMallas());
+        entity.put("Longred",metodosCaptura.getLongitudRed());
+        entity.put("Coto",metodosCaptura.isCoto());
 
-        docData.put("CA01", metodosCaptura.getControlAgentes().get(0));
-        docData.put("CA02", metodosCaptura.getControlAgentes().get(1));
-        docData.put("CA03", metodosCaptura.getControlAgentes().get(2));
-        docData.put("CA04", metodosCaptura.getControlAgentes().get(3));
-        docData.put("CA05", metodosCaptura.getControlAgentes().get(4));
-        docData.put("CA06", metodosCaptura.getControlAgentes().get(5));
+        entity.put("CA01", metodosCaptura.getControlAgentes().get(0));
+        entity.put("CA02", metodosCaptura.getControlAgentes().get(1));
+        entity.put("CA03", metodosCaptura.getControlAgentes().get(2));
+        entity.put("CA04", metodosCaptura.getControlAgentes().get(3));
+        entity.put("CA05", metodosCaptura.getControlAgentes().get(4));
+        entity.put("CA06", metodosCaptura.getControlAgentes().get(5));
 
-        docData.put("RecCamachuelo", metodosCaptura.getReclamosCamachuelo());
-        docData.put("CapCamachueloM", metodosCaptura.getCapturasCamachueloM());
-        docData.put("CapCamachueloH", metodosCaptura.getCapturasCamachueloH());
-        docData.put("CimCamachuelo", metodosCaptura.getCimbelesCamachuelo());
+        entity.put("RecCamachuelo", metodosCaptura.getReclamosCamachuelo());
+        entity.put("CapCamachueloM", metodosCaptura.getCapturasCamachueloM());
+        entity.put("CapCamachueloH", metodosCaptura.getCapturasCamachueloH());
+        entity.put("CimCamachuelo", metodosCaptura.getCimbelesCamachuelo());
 
-        docData.put("RecJilguero", metodosCaptura.getReclamosJilguero());
-        docData.put("CapJilgueroM", metodosCaptura.getCapturasJilgueroM());
-        docData.put("CapJilgueroH", metodosCaptura.getCapturasJilgueroH());
-        docData.put("CimJilguero", metodosCaptura.getCimbelesJilguero());
+        entity.put("RecJilguero", metodosCaptura.getReclamosJilguero());
+        entity.put("CapJilgueroM", metodosCaptura.getCapturasJilgueroM());
+        entity.put("CapJilgueroH", metodosCaptura.getCapturasJilgueroH());
+        entity.put("CimJilguero", metodosCaptura.getCimbelesJilguero());
 
-        docData.put("RecLugano", metodosCaptura.getReclamosLugano());
-        docData.put("CapLuganoM", metodosCaptura.getCapturasLuganoM());
-        docData.put("CapLuganoH", metodosCaptura.getCapturasLuganoH());
-        docData.put("CimLugano", metodosCaptura.getCimbelesLugano());
+        entity.put("RecLugano", metodosCaptura.getReclamosLugano());
+        entity.put("CapLuganoM", metodosCaptura.getCapturasLuganoM());
+        entity.put("CapLuganoH", metodosCaptura.getCapturasLuganoH());
+        entity.put("CimLugano", metodosCaptura.getCimbelesLugano());
 
-        docData.put("RecPardComun", metodosCaptura.getReclamosPardComun());
-        docData.put("CapPardComunM", metodosCaptura.getCapturasPardComunM());
-        docData.put("CapPardComunH", metodosCaptura.getCapturasPardComunH());
-        docData.put("CimPardComun", metodosCaptura.getCimbelesPardComun());
+        entity.put("RecPardComun", metodosCaptura.getReclamosPardComun());
+        entity.put("CapPardComunM", metodosCaptura.getCapturasPardComunM());
+        entity.put("CapPardComunH", metodosCaptura.getCapturasPardComunH());
+        entity.put("CimPardComun", metodosCaptura.getCimbelesPardComun());
 
-        docData.put("RecPicogordo", metodosCaptura.getReclamosPicogordo());
-        docData.put("CapPicogordoM", metodosCaptura.getCapturasPicogordoM());
-        docData.put("CapPicogordoH", metodosCaptura.getCapturasPicogordoH());
-        docData.put("CimPicogordo", metodosCaptura.getCimbelesPicogordo());
+        entity.put("RecPicogordo", metodosCaptura.getReclamosPicogordo());
+        entity.put("CapPicogordoM", metodosCaptura.getCapturasPicogordoM());
+        entity.put("CapPicogordoH", metodosCaptura.getCapturasPicogordoH());
+        entity.put("CimPicogordo", metodosCaptura.getCimbelesPicogordo());
 
-        docData.put("RecPinzComun", metodosCaptura.getReclamosPinzonComun());
-        docData.put("CapPinzComunM", metodosCaptura.getCapturasPinzonComunM());
-        docData.put("CapPinzComunH", metodosCaptura.getCapturasPinzonComunH());
-        docData.put("CimPinzComun", metodosCaptura.getCimbelesPinzonComun());
+        entity.put("RecPinzComun", metodosCaptura.getReclamosPinzonComun());
+        entity.put("CapPinzComunM", metodosCaptura.getCapturasPinzonComunM());
+        entity.put("CapPinzComunH", metodosCaptura.getCapturasPinzonComunH());
+        entity.put("CimPinzComun", metodosCaptura.getCimbelesPinzonComun());
 
-        docData.put("RecPinzReal", metodosCaptura.getReclamosPinzonReal());
-        docData.put("CapPinzRealM", metodosCaptura.getCapturasPinzonRealM());
-        docData.put("CapPinzRealH", metodosCaptura.getCapturasPinzonRealH());
-        docData.put("CimPinzReal", metodosCaptura.getCimbelesPinzonReal());
+        entity.put("RecPinzReal", metodosCaptura.getReclamosPinzonReal());
+        entity.put("CapPinzRealM", metodosCaptura.getCapturasPinzonRealM());
+        entity.put("CapPinzRealH", metodosCaptura.getCapturasPinzonRealH());
+        entity.put("CimPinzReal", metodosCaptura.getCimbelesPinzonReal());
 
-        docData.put("RecPiquituerto", metodosCaptura.getReclamosPiquituerto());
-        docData.put("CapPiquituertoM", metodosCaptura.getCapturasPiquituertoM());
-        docData.put("CapPiquituertoH", metodosCaptura.getCapturasPiquituertoH());
-        docData.put("CimPiquituerto", metodosCaptura.getCimbelesPiquituerto());
+        entity.put("RecPiquituerto", metodosCaptura.getReclamosPiquituerto());
+        entity.put("CapPiquituertoM", metodosCaptura.getCapturasPiquituertoM());
+        entity.put("CapPiquituertoH", metodosCaptura.getCapturasPiquituertoH());
+        entity.put("CimPiquituerto", metodosCaptura.getCimbelesPiquituerto());
 
-        docData.put("RecVerdecillo", metodosCaptura.getReclamosVerdecillo());
-        docData.put("CapVerdecilloM", metodosCaptura.getCapturasVerdecilloM());
-        docData.put("CapVerdecilloH", metodosCaptura.getCapturasVerdecilloH());
-        docData.put("CimVerdecillo", metodosCaptura.getCimbelesVerdecillo());
+        entity.put("RecVerdecillo", metodosCaptura.getReclamosVerdecillo());
+        entity.put("CapVerdecilloM", metodosCaptura.getCapturasVerdecilloM());
+        entity.put("CapVerdecilloH", metodosCaptura.getCapturasVerdecilloH());
+        entity.put("CimVerdecillo", metodosCaptura.getCimbelesVerdecillo());
 
-        docData.put("RecVerdComun", metodosCaptura.getReclamosVerdComun());
-        docData.put("CapVerdComunM", metodosCaptura.getCapturasVerdComunM());
-        docData.put("CapVerdComunH", metodosCaptura.getCapturasVerdComunH());
-        docData.put("CimVerdComun", metodosCaptura.getCimbelesVerdComun());
+        entity.put("RecVerdComun", metodosCaptura.getReclamosVerdComun());
+        entity.put("CapVerdComunM", metodosCaptura.getCapturasVerdComunM());
+        entity.put("CapVerdComunH", metodosCaptura.getCapturasVerdComunH());
+        entity.put("CimVerdComun", metodosCaptura.getCimbelesVerdComun());
 
-        docData.put("RecVerdSerrano", metodosCaptura.getReclamosVerdSerrano());
-        docData.put("CapVerdSerranoM", metodosCaptura.getCapturasVerdSerranoM());
-        docData.put("CapVerdSerranoH", metodosCaptura.getCapturasVerdSerranoH());
-        docData.put("CimVerdSerrano", metodosCaptura.getCimbelesVerdSerrano());
+        entity.put("RecVerdSerrano", metodosCaptura.getReclamosVerdSerrano());
+        entity.put("CapVerdSerranoM", metodosCaptura.getCapturasVerdSerranoM());
+        entity.put("CapVerdSerranoH", metodosCaptura.getCapturasVerdSerranoH());
+        entity.put("CimVerdSerrano", metodosCaptura.getCimbelesVerdSerrano());
 
-        docData.put("Observaciones",metodosCaptura.getObservaciones());
+        entity.put("Observaciones",metodosCaptura.getObservaciones());
 
         //Datos Avistamiento
-        docData.put("HoraInicio",datosAvistamiento.getHoraInicio());
-        docData.put("HoraFin",datosAvistamiento.getHoraFin());
+        entity.put("HoraInicio",datosAvistamiento.getHoraInicio());
+        entity.put("HoraFin",datosAvistamiento.getHoraFin());
 
         //Avistamientos Camachuelo
-        docData.put("Cam08", datosAvistamiento.getHora08().get(0));
-        docData.put("Cam09", datosAvistamiento.getHora09().get(0));
-        docData.put("Cam10", datosAvistamiento.getHora10().get(0));
-        docData.put("Cam11", datosAvistamiento.getHora11().get(0));
-        docData.put("Cam12", datosAvistamiento.getHora12().get(0));
-        docData.put("Cam13", datosAvistamiento.getHora13().get(0));
-        docData.put("Cam14", datosAvistamiento.getHora14().get(0));
+        entity.put("Cam08", datosAvistamiento.getHora08().get(0));
+        entity.put("Cam09", datosAvistamiento.getHora09().get(0));
+        entity.put("Cam10", datosAvistamiento.getHora10().get(0));
+        entity.put("Cam11", datosAvistamiento.getHora11().get(0));
+        entity.put("Cam12", datosAvistamiento.getHora12().get(0));
+        entity.put("Cam13", datosAvistamiento.getHora13().get(0));
+        entity.put("Cam14", datosAvistamiento.getHora14().get(0));
 
         //Avistamientos Jilguero
-        docData.put("Jil08", datosAvistamiento.getHora08().get(1));
-        docData.put("Jil09", datosAvistamiento.getHora09().get(1));
-        docData.put("Jil10", datosAvistamiento.getHora10().get(1));
-        docData.put("Jil11", datosAvistamiento.getHora11().get(1));
-        docData.put("Jil12", datosAvistamiento.getHora12().get(1));
-        docData.put("Jil13", datosAvistamiento.getHora13().get(1));
-        docData.put("Jil14", datosAvistamiento.getHora14().get(1));
+        entity.put("Jil08", datosAvistamiento.getHora08().get(1));
+        entity.put("Jil09", datosAvistamiento.getHora09().get(1));
+        entity.put("Jil10", datosAvistamiento.getHora10().get(1));
+        entity.put("Jil11", datosAvistamiento.getHora11().get(1));
+        entity.put("Jil12", datosAvistamiento.getHora12().get(1));
+        entity.put("Jil13", datosAvistamiento.getHora13().get(1));
+        entity.put("Jil14", datosAvistamiento.getHora14().get(1));
 
         //Avistamientos Lugano
-        docData.put("Lug08", datosAvistamiento.getHora08().get(2));
-        docData.put("Lug09", datosAvistamiento.getHora09().get(2));
-        docData.put("Lug10", datosAvistamiento.getHora10().get(2));
-        docData.put("Lug11", datosAvistamiento.getHora11().get(2));
-        docData.put("Lug12", datosAvistamiento.getHora12().get(2));
-        docData.put("Lug13", datosAvistamiento.getHora13().get(2));
-        docData.put("Lug14", datosAvistamiento.getHora14().get(2));
+        entity.put("Lug08", datosAvistamiento.getHora08().get(2));
+        entity.put("Lug09", datosAvistamiento.getHora09().get(2));
+        entity.put("Lug10", datosAvistamiento.getHora10().get(2));
+        entity.put("Lug11", datosAvistamiento.getHora11().get(2));
+        entity.put("Lug12", datosAvistamiento.getHora12().get(2));
+        entity.put("Lug13", datosAvistamiento.getHora13().get(2));
+        entity.put("Lug14", datosAvistamiento.getHora14().get(2));
 
         //Avistamientos Pardillo Comun
-        docData.put("PardC08", datosAvistamiento.getHora08().get(3));
-        docData.put("PardC09", datosAvistamiento.getHora09().get(3));
-        docData.put("PardC10", datosAvistamiento.getHora10().get(3));
-        docData.put("PardC11", datosAvistamiento.getHora11().get(3));
-        docData.put("PardC12", datosAvistamiento.getHora12().get(3));
-        docData.put("PardC13", datosAvistamiento.getHora13().get(3));
-        docData.put("PardC14", datosAvistamiento.getHora14().get(3));
+        entity.put("PardC08", datosAvistamiento.getHora08().get(3));
+        entity.put("PardC09", datosAvistamiento.getHora09().get(3));
+        entity.put("PardC10", datosAvistamiento.getHora10().get(3));
+        entity.put("PardC11", datosAvistamiento.getHora11().get(3));
+        entity.put("PardC12", datosAvistamiento.getHora12().get(3));
+        entity.put("PardC13", datosAvistamiento.getHora13().get(3));
+        entity.put("PardC14", datosAvistamiento.getHora14().get(3));
 
         //Avistamientos Picogordo
-        docData.put("Pic08", datosAvistamiento.getHora08().get(4));
-        docData.put("Pic09", datosAvistamiento.getHora09().get(4));
-        docData.put("Pic10", datosAvistamiento.getHora10().get(4));
-        docData.put("Pic11", datosAvistamiento.getHora11().get(4));
-        docData.put("Pic12", datosAvistamiento.getHora12().get(4));
-        docData.put("Pic13", datosAvistamiento.getHora13().get(4));
-        docData.put("Pic14", datosAvistamiento.getHora14().get(4));
+        entity.put("Pic08", datosAvistamiento.getHora08().get(4));
+        entity.put("Pic09", datosAvistamiento.getHora09().get(4));
+        entity.put("Pic10", datosAvistamiento.getHora10().get(4));
+        entity.put("Pic11", datosAvistamiento.getHora11().get(4));
+        entity.put("Pic12", datosAvistamiento.getHora12().get(4));
+        entity.put("Pic13", datosAvistamiento.getHora13().get(4));
+        entity.put("Pic14", datosAvistamiento.getHora14().get(4));
 
         //Avistamientos
-        docData.put("PinC08", datosAvistamiento.getHora08().get(5));
-        docData.put("PinC09", datosAvistamiento.getHora09().get(5));
-        docData.put("PinC10", datosAvistamiento.getHora10().get(5));
-        docData.put("PinC11", datosAvistamiento.getHora11().get(5));
-        docData.put("PinC12", datosAvistamiento.getHora12().get(5));
-        docData.put("PinC13", datosAvistamiento.getHora13().get(5));
-        docData.put("PinC14", datosAvistamiento.getHora14().get(5));
+        entity.put("PinC08", datosAvistamiento.getHora08().get(5));
+        entity.put("PinC09", datosAvistamiento.getHora09().get(5));
+        entity.put("PinC10", datosAvistamiento.getHora10().get(5));
+        entity.put("PinC11", datosAvistamiento.getHora11().get(5));
+        entity.put("PinC12", datosAvistamiento.getHora12().get(5));
+        entity.put("PinC13", datosAvistamiento.getHora13().get(5));
+        entity.put("PinC14", datosAvistamiento.getHora14().get(5));
 
         //Avistamientos
-        docData.put("PinR08", datosAvistamiento.getHora08().get(6));
-        docData.put("PinR09", datosAvistamiento.getHora09().get(6));
-        docData.put("PinR10", datosAvistamiento.getHora10().get(6));
-        docData.put("PinR11", datosAvistamiento.getHora11().get(6));
-        docData.put("PinR12", datosAvistamiento.getHora12().get(6));
-        docData.put("PinR13", datosAvistamiento.getHora13().get(6));
-        docData.put("PinR14", datosAvistamiento.getHora14().get(6));
+        entity.put("PinR08", datosAvistamiento.getHora08().get(6));
+        entity.put("PinR09", datosAvistamiento.getHora09().get(6));
+        entity.put("PinR10", datosAvistamiento.getHora10().get(6));
+        entity.put("PinR11", datosAvistamiento.getHora11().get(6));
+        entity.put("PinR12", datosAvistamiento.getHora12().get(6));
+        entity.put("PinR13", datosAvistamiento.getHora13().get(6));
+        entity.put("PinR14", datosAvistamiento.getHora14().get(6));
 
         //Avistamientos
-        docData.put("Piq08", datosAvistamiento.getHora08().get(7));
-        docData.put("Piq09", datosAvistamiento.getHora09().get(7));
-        docData.put("Piq10", datosAvistamiento.getHora10().get(7));
-        docData.put("Piq11", datosAvistamiento.getHora11().get(7));
-        docData.put("Piq12", datosAvistamiento.getHora12().get(7));
-        docData.put("Piq13", datosAvistamiento.getHora13().get(7));
-        docData.put("Piq14", datosAvistamiento.getHora14().get(7));
+        entity.put("Piq08", datosAvistamiento.getHora08().get(7));
+        entity.put("Piq09", datosAvistamiento.getHora09().get(7));
+        entity.put("Piq10", datosAvistamiento.getHora10().get(7));
+        entity.put("Piq11", datosAvistamiento.getHora11().get(7));
+        entity.put("Piq12", datosAvistamiento.getHora12().get(7));
+        entity.put("Piq13", datosAvistamiento.getHora13().get(7));
+        entity.put("Piq14", datosAvistamiento.getHora14().get(7));
 
         //Avistamientos
-        docData.put("Verd08", datosAvistamiento.getHora08().get(8));
-        docData.put("Verd09", datosAvistamiento.getHora09().get(8));
-        docData.put("Verd10", datosAvistamiento.getHora10().get(8));
-        docData.put("Verd11", datosAvistamiento.getHora11().get(8));
-        docData.put("Verd12", datosAvistamiento.getHora12().get(8));
-        docData.put("Verd13", datosAvistamiento.getHora13().get(8));
-        docData.put("Verd14", datosAvistamiento.getHora14().get(8));
+        entity.put("Verd08", datosAvistamiento.getHora08().get(8));
+        entity.put("Verd09", datosAvistamiento.getHora09().get(8));
+        entity.put("Verd10", datosAvistamiento.getHora10().get(8));
+        entity.put("Verd11", datosAvistamiento.getHora11().get(8));
+        entity.put("Verd12", datosAvistamiento.getHora12().get(8));
+        entity.put("Verd13", datosAvistamiento.getHora13().get(8));
+        entity.put("Verd14", datosAvistamiento.getHora14().get(8));
 
         //Avistamientos
-        docData.put("VerdC08", datosAvistamiento.getHora08().get(9));
-        docData.put("VerdC09", datosAvistamiento.getHora09().get(9));
-        docData.put("VerdC10", datosAvistamiento.getHora10().get(9));
-        docData.put("VerdC11", datosAvistamiento.getHora11().get(9));
-        docData.put("VerdC12", datosAvistamiento.getHora12().get(9));
-        docData.put("VerdC13", datosAvistamiento.getHora13().get(9));
-        docData.put("VerdC14", datosAvistamiento.getHora14().get(9));
+        entity.put("VerdC08", datosAvistamiento.getHora08().get(9));
+        entity.put("VerdC09", datosAvistamiento.getHora09().get(9));
+        entity.put("VerdC10", datosAvistamiento.getHora10().get(9));
+        entity.put("VerdC11", datosAvistamiento.getHora11().get(9));
+        entity.put("VerdC12", datosAvistamiento.getHora12().get(9));
+        entity.put("VerdC13", datosAvistamiento.getHora13().get(9));
+        entity.put("VerdC14", datosAvistamiento.getHora14().get(9));
 
         //Avistamientos
-        docData.put("VerdS08", datosAvistamiento.getHora08().get(10));
-        docData.put("VerdS09", datosAvistamiento.getHora09().get(10));
-        docData.put("VerdS10", datosAvistamiento.getHora10().get(10));
-        docData.put("VerdS11", datosAvistamiento.getHora11().get(10));
-        docData.put("VerdS12", datosAvistamiento.getHora12().get(10));
-        docData.put("VerdS13", datosAvistamiento.getHora13().get(10));
-        docData.put("VerdS14", datosAvistamiento.getHora14().get(10));
+        entity.put("VerdS08", datosAvistamiento.getHora08().get(10));
+        entity.put("VerdS09", datosAvistamiento.getHora09().get(10));
+        entity.put("VerdS10", datosAvistamiento.getHora10().get(10));
+        entity.put("VerdS11", datosAvistamiento.getHora11().get(10));
+        entity.put("VerdS12", datosAvistamiento.getHora12().get(10));
+        entity.put("VerdS13", datosAvistamiento.getHora13().get(10));
+        entity.put("VerdS14", datosAvistamiento.getHora14().get(10));
 
         //ENVIAR OBJETO
 
-        docData.saveInBackground(new SaveCallback() {
+        entity.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-
+                if (e==null){
+                    //Save was done
+                }else{
+                    //Something went wrong
+                    Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -540,18 +542,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 });*/
     }
 
-    private void modeladoAvisamientos() {
-        avistamientos.put("Avistamientos 08:00",datosAvistamiento.getHora08());
-        avistamientos.put("Avistamientos 09:00",datosAvistamiento.getHora09());
-        avistamientos.put("Avistamientos 10:00",datosAvistamiento.getHora10());
-        avistamientos.put("Avistamientos 11:00",datosAvistamiento.getHora11());
-        avistamientos.put("Avistamientos 12:00",datosAvistamiento.getHora12());
-        avistamientos.put("Avistamientos 13:00",datosAvistamiento.getHora13());
-        avistamientos.put("Avistamientos 14:00",datosAvistamiento.getHora14());
-    }
+
 
     private void asignacionValores() {
-        fecha = tv_Fecha.getText().toString();
+        fecha = convertStringToData(tv_Fecha.getText().toString());
         latitud = Double.parseDouble(etnd_Latitud.getText().toString());
         longitud = Double.parseDouble(etnd_Longitud.getText().toString());
     }
@@ -567,12 +561,17 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         } catch (Exception e){
             return false;
         }
-        if (Double.parseDouble(etnd_Longitud.getText().toString())>limites.getMaxLat()) return false;
-        if (Double.parseDouble(etnd_Longitud.getText().toString())<limites.getMinLat()) return false;
 
-        if (Double.parseDouble(etnd_Latitud.getText().toString())>limites.getMaxLon()) return false;
-        //noinspection RedundantIfStatement
-        if (Double.parseDouble(etnd_Latitud.getText().toString())<limites.getMinLon()) return false;
+        if (!(Double.parseDouble(etnd_Longitud.getText().toString())<limites.getMaxLon() && Double.parseDouble(etnd_Longitud.getText().toString())>limites.getMinLon())){
+            Toast.makeText(this, "La longitud no entra en los parámetros establecidos", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!(Double.parseDouble(etnd_Latitud.getText().toString())<limites.getMaxLat() && Double.parseDouble(etnd_Latitud.getText().toString())>limites.getMinLat())){
+            Toast.makeText(this, "La latitud no entra en los parámetros establecidos", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
@@ -625,6 +624,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         System.out.println("____________________________________________________");
     }
 
+    /**
+     * Codigo roto
+     * @return 
+     */
     private String cuadricula(){
         //Primer valor
         String codCuadricula = "";
