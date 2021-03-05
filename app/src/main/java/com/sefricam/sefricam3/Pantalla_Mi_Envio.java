@@ -245,10 +245,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosCimbelesLugano.setText(String.valueOf(metodosCaptura.getCimbelesLugano()));
         tv_DatosCapturasLuganoM.setText(String.valueOf(metodosCaptura.getCapturasLuganoM()));
         tv_DatosCapturasLuganoH.setText(String.valueOf(metodosCaptura.getCapturasLuganoH()));
-        tv_DatosReclamosPardilloComun.setText(String.valueOf(metodosCaptura.getReclamosPardilloComun()));
-        tv_DatosCimbelesPardilloComun.setText(String.valueOf(metodosCaptura.getCimbelesPardilloComun()));
-        tv_DatosCapturasPardilloComunM.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunM()));
-        tv_DatosCapturasPardilloComunH.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunH()));
+        tv_DatosReclamosPardilloComun.setText(String.valueOf(metodosCaptura.getReclamosPardComun()));
+        tv_DatosCimbelesPardilloComun.setText(String.valueOf(metodosCaptura.getCimbelesPardComun()));
+        tv_DatosCapturasPardilloComunM.setText(String.valueOf(metodosCaptura.getCapturasPardComunM()));
+        tv_DatosCapturasPardilloComunH.setText(String.valueOf(metodosCaptura.getCapturasPardComunH()));
         tv_DatosReclamosPicogordo.setText(String.valueOf(metodosCaptura.getReclamosPicogordo()));
         tv_DatosCimbelesPicogordo.setText(String.valueOf(metodosCaptura.getCimbelesPicogordo()));
         tv_DatosCapturasPicogordoM.setText(String.valueOf(metodosCaptura.getCapturasPicogordoM()));
@@ -269,14 +269,14 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosCimbelesVerdecillo.setText(String.valueOf(metodosCaptura.getCimbelesVerdecillo()));
         tv_DatosCapturasVerdecilloM.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloM()));
         tv_DatosCapturasVerdecilloH.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloH()));
-        tv_DatosReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerderonComun()));
-        tv_DatosCimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerderonComun()));
-        tv_DatosCapturasVerderonComunM.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunM()));
-        tv_DatosCapturasVerderonComunH.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunH()));
-        tv_DatosReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerderonSerrano()));
-        tv_DatosCimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerderonSerrano()));
-        tv_DatosCapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoM()));
-        tv_DatosCapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoM()));
+        tv_DatosReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerdComun()));
+        tv_DatosCimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerdComun()));
+        tv_DatosCapturasVerderonComunM.setText(String.valueOf(metodosCaptura.getCapturasVerdComunM()));
+        tv_DatosCapturasVerderonComunH.setText(String.valueOf(metodosCaptura.getCapturasVerdComunH()));
+        tv_DatosReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerdSerrano()));
+        tv_DatosCimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerdSerrano()));
+        tv_DatosCapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerdSerranoM()));
+        tv_DatosCapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerdSerranoM()));
 
         tv_DatosObservaciones.setText(String.valueOf(metodosCaptura.getObservaciones()));
     }

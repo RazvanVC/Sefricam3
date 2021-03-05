@@ -327,50 +327,68 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         docData.put("Longitud red",metodosCaptura.getLongitudRed());
         docData.put("Coto",metodosCaptura.isCoto());
 
-        //Control de Agentes
         docData.put("CA01", metodosCaptura.getControlAgentes().get(0));
         docData.put("CA02", metodosCaptura.getControlAgentes().get(1));
         docData.put("CA03", metodosCaptura.getControlAgentes().get(2));
         docData.put("CA04", metodosCaptura.getControlAgentes().get(3));
         docData.put("CA05", metodosCaptura.getControlAgentes().get(4));
         docData.put("CA06", metodosCaptura.getControlAgentes().get(5));
+        
+        docData.put("RecCamachuelo", metodosCaptura.getReclamosCamachuelo());
+        docData.put("CapCamachueloM", metodosCaptura.getCapturasCamachueloM());
+        docData.put("CapCamachueloH", metodosCaptura.getCapturasCamachueloH());
+        docData.put("CimCamachuelo", metodosCaptura.getCimbelesCamachuelo());
 
-        //Reclamos Capturas y Cimbeles
-        /*docData.put("RecCamichuelo", metodosCaptura.getReclamosCamachuelo());
-        docData.put("CapCamichuelo", metodosCaptura.getCapturasCamachueloM());
-        docData.put("CimCamichuelo", metodosCaptura.getCimbelesCamachuelo());
         docData.put("RecJilguero", metodosCaptura.getReclamosJilguero());
-        docData.put("CapJilguero", metodosCaptura.getCapturasJilguero());
+        docData.put("CapJilgueroM", metodosCaptura.getCapturasJilgueroM());
+        docData.put("CapJilgueroH", metodosCaptura.getCapturasJilgueroH());
         docData.put("CimJilguero", metodosCaptura.getCimbelesJilguero());
-        docData.put("RecLugano", metodosCaptura.getReclamosLugano());
-        docData.put("CapLugano", metodosCaptura.getCapturasLugano());
-        docData.put("CimLugano", metodosCaptura.getCimbelesLugano());
-        docData.put("RecPardComun", metodosCaptura.getReclamosPardilloComun());
-        docData.put("CapPardComun", metodosCaptura.getCapturasPardilloComun());
-        docData.put("CimPardComun", metodosCaptura.getCimbelesPardilloComun());
-        docData.put("RecPicogordo", metodosCaptura.getReclamosPicogordo());
-        docData.put("CapPicogordo", metodosCaptura.getCapturasPicogordo());
-        docData.put("CimPicogordo", metodosCaptura.getCimbelesPicogordo());
-        docData.put("RecPinzComun", metodosCaptura.getReclamosPinzonComun());
-        docData.put("CapPinzComun", metodosCaptura.getCapturasPinzonComun());
-        docData.put("CimPinzComun", metodosCaptura.getCimbelesPinzonComun());
-        docData.put("RecPinzReal", metodosCaptura.getReclamosPinzonReal());
-        docData.put("CapPinzReal", metodosCaptura.getCapturasPinzonReal());
-        docData.put("CimPinzReal", metodosCaptura.getCimbelesPinzonReal());
-        docData.put("RecPiquituerto", metodosCaptura.getReclamosPiquituerto());
-        docData.put("CapPiquituerto", metodosCaptura.getCapturasPiquituerto());
-        docData.put("CimPiquituerto", metodosCaptura.getCimbelesPiquituerto());
-        docData.put("RecVerdecillo", metodosCaptura.getReclamosVerdecillo());
-        docData.put("CapVerdecillo", metodosCaptura.getCapturasVerdecillo());
-        docData.put("CimVerdecillo", metodosCaptura.getCimbelesVerdecillo());
-        docData.put("RecVerdComun", metodosCaptura.getReclamosVerdonComun());
-        docData.put("CapVerdComun", metodosCaptura.getCapturasVerdonComun());
-        docData.put("CimVerdComun", metodosCaptura.getCimbelesVerdonComun());
-        docData.put("RecVerdSerrano", metodosCaptura.getReclamosVerdonSerrano());
-        docData.put("CapVerdSerrano", metodosCaptura.getCapturasVerdonSerrano());
-        docData.put("CimVerdSerrano", metodosCaptura.getCimbelesVerdonSerrano());*/
 
-        //Observaciones
+        docData.put("RecLugano", metodosCaptura.getReclamosLugano());
+        docData.put("CapLuganoM", metodosCaptura.getCapturasLuganoM());
+        docData.put("CapLuganoH", metodosCaptura.getCapturasLuganoH());
+        docData.put("CimLugano", metodosCaptura.getCimbelesLugano());
+
+        docData.put("RecPardComun", metodosCaptura.getReclamosPardComun());
+        docData.put("CapPardComunM", metodosCaptura.getCapturasPardComunM());
+        docData.put("CapPardComunH", metodosCaptura.getCapturasPardComunH());
+        docData.put("CimPardComun", metodosCaptura.getCimbelesPardComun());
+
+        docData.put("RecPicogordo", metodosCaptura.getReclamosPicogordo());
+        docData.put("CapPicogordoM", metodosCaptura.getCapturasPicogordoM());
+        docData.put("CapPicogordoH", metodosCaptura.getCapturasPicogordoH());
+        docData.put("CimPicogordo", metodosCaptura.getCimbelesPicogordo());
+
+        docData.put("RecPinzComun", metodosCaptura.getReclamosPinzonComun());
+        docData.put("CapPinzComunM", metodosCaptura.getCapturasPinzonComunM());
+        docData.put("CapPinzComunH", metodosCaptura.getCapturasPinzonComunH());
+        docData.put("CimPinzComun", metodosCaptura.getCimbelesPinzonComun());
+
+        docData.put("RecPinzReal", metodosCaptura.getReclamosPinzonReal());
+        docData.put("CapPinzRealM", metodosCaptura.getCapturasPinzonRealM());
+        docData.put("CapPinzRealH", metodosCaptura.getCapturasPinzonRealH());
+        docData.put("CimPinzReal", metodosCaptura.getCimbelesPinzonReal());
+
+        docData.put("RecPiquituerto", metodosCaptura.getReclamosPiquituerto());
+        docData.put("CapPiquituertoM", metodosCaptura.getCapturasPiquituertoM());
+        docData.put("CapPiquituertoH", metodosCaptura.getCapturasPiquituertoH());
+        docData.put("CimPiquituerto", metodosCaptura.getCimbelesPiquituerto());
+
+        docData.put("RecVerdecillo", metodosCaptura.getReclamosVerdecillo());
+        docData.put("CapVerdecilloM", metodosCaptura.getCapturasVerdecilloM());
+        docData.put("CapVerdecilloH", metodosCaptura.getCapturasVerdecilloH());
+        docData.put("CimVerdecillo", metodosCaptura.getCimbelesVerdecillo());
+
+        docData.put("RecVerdComun", metodosCaptura.getReclamosVerdComun());
+        docData.put("CapVerdComunM", metodosCaptura.getCapturasVerdComunM());
+        docData.put("CapVerdComunH", metodosCaptura.getCapturasVerdComunH());
+        docData.put("CimVerdComun", metodosCaptura.getCimbelesVerdComun());
+
+        docData.put("RecVerdSerrano", metodosCaptura.getReclamosVerdSerrano());
+        docData.put("CapVerdSerranoM", metodosCaptura.getCapturasVerdSerranoM());
+        docData.put("CapVerdSerranoH", metodosCaptura.getCapturasVerdSerranoH());
+        docData.put("CimVerdSerrano", metodosCaptura.getCimbelesVerdSerrano());
+
         docData.put("Observaciones",metodosCaptura.getObservaciones());
 
         //Datos Avistamiento

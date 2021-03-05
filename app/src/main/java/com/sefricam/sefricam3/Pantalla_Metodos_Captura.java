@@ -104,10 +104,10 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         etn_CapturasLuganoM.setText(String.valueOf(metodosCaptura.getCapturasLuganoM()));
         etn_CapturasLuganoH.setText(String.valueOf(metodosCaptura.getCapturasLuganoH()));
 
-        etn_CimbelesPardilloComun.setText(String.valueOf(metodosCaptura.getCimbelesPardilloComun()));
-        etn_ReclamosPardilloComun.setText(String.valueOf(metodosCaptura.getReclamosPardilloComun()));
-        etn_CapturasPardilloComunM.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunM()));
-        etn_CapturasPardilloComunH.setText(String.valueOf(metodosCaptura.getCapturasPardilloComunH()));
+        etn_CimbelesPardilloComun.setText(String.valueOf(metodosCaptura.getCimbelesPardComun()));
+        etn_ReclamosPardilloComun.setText(String.valueOf(metodosCaptura.getReclamosPardComun()));
+        etn_CapturasPardilloComunM.setText(String.valueOf(metodosCaptura.getCapturasPardComunM()));
+        etn_CapturasPardilloComunH.setText(String.valueOf(metodosCaptura.getCapturasPardComunH()));
 
         etn_CimbelesPicogordo.setText(String.valueOf(metodosCaptura.getCimbelesPicogordo()));
         etn_ReclamosPicogordo.setText(String.valueOf(metodosCaptura.getReclamosPicogordo()));
@@ -134,15 +134,15 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         etn_CapturasVerdecilloM.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloM()));
         etn_CapturasVerdecilloH.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloH()));
 
-        etn_CimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerderonComun()));
-        etn_ReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerderonComun()));
-        etn_CapturasVerderonComunM.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunM()));
-        etn_CapturasVerderonComunH.setText(String.valueOf(metodosCaptura.getCapturasVerderonComunH()));
+        etn_CimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerdComun()));
+        etn_ReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerdComun()));
+        etn_CapturasVerderonComunM.setText(String.valueOf(metodosCaptura.getCapturasVerdComunM()));
+        etn_CapturasVerderonComunH.setText(String.valueOf(metodosCaptura.getCapturasVerdComunH()));
 
-        etn_CimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerderonSerrano()));
-        etn_ReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerderonSerrano()));
-        etn_CapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoM()));
-        etn_CapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerderonSerranoH()));
+        etn_CimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerdSerrano()));
+        etn_ReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerdSerrano()));
+        etn_CapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerdSerranoM()));
+        etn_CapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerdSerranoH()));
 
         et_Observaciones.setText(metodosCaptura.getObservaciones());
     }

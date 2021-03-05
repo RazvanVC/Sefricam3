@@ -25,10 +25,10 @@ public class MetodosCaptura implements Serializable {
     private final int CapturasLuganoM;
     private final int CapturasLuganoH;
 
-    private final int ReclamosPardilloComun;
-    private final int CimbelesPardilloComun;
-    private final int CapturasPardilloComunM;
-    private final int CapturasPardilloComunH;
+    private final int ReclamosPardComun;
+    private final int CimbelesPardComun;
+    private final int CapturasPardComunM;
+    private final int CapturasPardComunH;
 
     private final int ReclamosPicogordo;
     private final int CimbelesPicogordo;
@@ -55,19 +55,19 @@ public class MetodosCaptura implements Serializable {
     private final int CapturasVerdecilloM;
     private final int CapturasVerdecilloH;
 
-    private final int ReclamosVerderonComun;
-    private final int CimbelesVerderonComun;
-    private final int CapturasVerderonComunM;
-    private final int CapturasVerderonComunH;
+    private final int ReclamosVerdComun;
+    private final int CimbelesVerdComun;
+    private final int CapturasVerdComunM;
+    private final int CapturasVerdComunH;
 
-    private final int ReclamosVerderonSerrano;
-    private final int CimbelesVerderonSerrano;
-    private final int CapturasVerderonSerranoM;
-    private final int CapturasVerderonSerranoH;
+    private final int ReclamosVerdSerrano;
+    private final int CimbelesVerdSerrano;
+    private final int CapturasVerdSerranoM;
+    private final int CapturasVerdSerranoH;
 
     private final String Observaciones;
 
-    public MetodosCaptura(int numeroMallas, int longitudRed, boolean coto, ArrayList<Boolean> controlAgentes, int reclamosCamachuelo, int cimbelesCamachuelo, int capturasCamachueloM, int capturasCamachueloH, int reclamosJilguero, int cimbelesJilguero, int capturasJilgueroM, int capturasJilgueroH, int reclamosLugano, int cimbelesLugano, int capturasLuganoM, int capturasLuganoH, int reclamosPardilloComun, int cimbelesPardilloComun, int capturasPardilloComunM, int capturasPardilloComunH, int reclamosPicogordo, int cimbelesPicogordo, int capturasPicogordoM, int capturasPicogordoH, int reclamosPinzonComun, int cimbelesPinzonComun, int capturasPinzonComunM, int capturasPinzonComunH, int reclamosPinzonReal, int cimbelesPinzonReal, int capturasPinzonRealM, int capturasPinzonRealH, int reclamosPiquituerto, int cimbelesPiquituerto, int capturasPiquituertoM, int capturasPiquituertoH, int reclamosVerdecillo, int cimbelesVerdecillo, int capturasVerdecilloM, int capturasVerdecilloH, int reclamosVerderonComun, int cimbelesVerderonComun, int capturasVerderonComunM, int capturasVerderonComunH, int reclamosVerderonSerrano, int cimbelesVerderonSerrano, int capturasVerderonSerranoM, int capturasVerderonSerranoH, String observaciones) {
+    public MetodosCaptura(int numeroMallas, int longitudRed, boolean coto, ArrayList<Boolean> controlAgentes, int reclamosCamachuelo, int cimbelesCamachuelo, int capturasCamachueloM, int capturasCamachueloH, int reclamosJilguero, int cimbelesJilguero, int capturasJilgueroM, int capturasJilgueroH, int reclamosLugano, int cimbelesLugano, int capturasLuganoM, int capturasLuganoH, int reclamosPardComun, int cimbelesPardComun, int capturasPardComunM, int capturasPardComunH, int reclamosPicogordo, int cimbelesPicogordo, int capturasPicogordoM, int capturasPicogordoH, int reclamosPinzonComun, int cimbelesPinzonComun, int capturasPinzonComunM, int capturasPinzonComunH, int reclamosPinzonReal, int cimbelesPinzonReal, int capturasPinzonRealM, int capturasPinzonRealH, int reclamosPiquituerto, int cimbelesPiquituerto, int capturasPiquituertoM, int capturasPiquituertoH, int reclamosVerdecillo, int cimbelesVerdecillo, int capturasVerdecilloM, int capturasVerdecilloH, int reclamosVerdComun, int cimbelesVerdComun, int capturasVerdComunM, int capturasVerdComunH, int reclamosVerdSerrano, int cimbelesVerdSerrano, int capturasVerdSerranoM, int capturasVerdSerranoH, String observaciones) {
         NumeroMallas = numeroMallas;
         LongitudRed = longitudRed;
         Coto = coto;
@@ -84,10 +84,10 @@ public class MetodosCaptura implements Serializable {
         CimbelesLugano = cimbelesLugano;
         CapturasLuganoM = capturasLuganoM;
         CapturasLuganoH = capturasLuganoH;
-        ReclamosPardilloComun = reclamosPardilloComun;
-        CimbelesPardilloComun = cimbelesPardilloComun;
-        CapturasPardilloComunM = capturasPardilloComunM;
-        CapturasPardilloComunH = capturasPardilloComunH;
+        ReclamosPardComun = reclamosPardComun;
+        CimbelesPardComun = cimbelesPardComun;
+        CapturasPardComunM = capturasPardComunM;
+        CapturasPardComunH = capturasPardComunH;
         ReclamosPicogordo = reclamosPicogordo;
         CimbelesPicogordo = cimbelesPicogordo;
         CapturasPicogordoM = capturasPicogordoM;
@@ -108,14 +108,14 @@ public class MetodosCaptura implements Serializable {
         CimbelesVerdecillo = cimbelesVerdecillo;
         CapturasVerdecilloM = capturasVerdecilloM;
         CapturasVerdecilloH = capturasVerdecilloH;
-        ReclamosVerderonComun = reclamosVerderonComun;
-        CimbelesVerderonComun = cimbelesVerderonComun;
-        CapturasVerderonComunM = capturasVerderonComunM;
-        CapturasVerderonComunH = capturasVerderonComunH;
-        ReclamosVerderonSerrano = reclamosVerderonSerrano;
-        CimbelesVerderonSerrano = cimbelesVerderonSerrano;
-        CapturasVerderonSerranoM = capturasVerderonSerranoM;
-        CapturasVerderonSerranoH = capturasVerderonSerranoH;
+        ReclamosVerdComun = reclamosVerdComun;
+        CimbelesVerdComun = cimbelesVerdComun;
+        CapturasVerdComunM = capturasVerdComunM;
+        CapturasVerdComunH = capturasVerdComunH;
+        ReclamosVerdSerrano = reclamosVerdSerrano;
+        CimbelesVerdSerrano = cimbelesVerdSerrano;
+        CapturasVerdSerranoM = capturasVerdSerranoM;
+        CapturasVerdSerranoH = capturasVerdSerranoH;
         Observaciones = observaciones;
     }
 
@@ -183,20 +183,20 @@ public class MetodosCaptura implements Serializable {
         return CapturasLuganoH;
     }
 
-    public int getReclamosPardilloComun() {
-        return ReclamosPardilloComun;
+    public int getReclamosPardComun() {
+        return ReclamosPardComun;
     }
 
-    public int getCimbelesPardilloComun() {
-        return CimbelesPardilloComun;
+    public int getCimbelesPardComun() {
+        return CimbelesPardComun;
     }
 
-    public int getCapturasPardilloComunM() {
-        return CapturasPardilloComunM;
+    public int getCapturasPardComunM() {
+        return CapturasPardComunM;
     }
 
-    public int getCapturasPardilloComunH() {
-        return CapturasPardilloComunH;
+    public int getCapturasPardComunH() {
+        return CapturasPardComunH;
     }
 
     public int getReclamosPicogordo() {
@@ -279,36 +279,36 @@ public class MetodosCaptura implements Serializable {
         return CapturasVerdecilloH;
     }
 
-    public int getReclamosVerderonComun() {
-        return ReclamosVerderonComun;
+    public int getReclamosVerdComun() {
+        return ReclamosVerdComun;
     }
 
-    public int getCimbelesVerderonComun() {
-        return CimbelesVerderonComun;
+    public int getCimbelesVerdComun() {
+        return CimbelesVerdComun;
     }
 
-    public int getCapturasVerderonComunM() {
-        return CapturasVerderonComunM;
+    public int getCapturasVerdComunM() {
+        return CapturasVerdComunM;
     }
 
-    public int getCapturasVerderonComunH() {
-        return CapturasVerderonComunH;
+    public int getCapturasVerdComunH() {
+        return CapturasVerdComunH;
     }
 
-    public int getReclamosVerderonSerrano() {
-        return ReclamosVerderonSerrano;
+    public int getReclamosVerdSerrano() {
+        return ReclamosVerdSerrano;
     }
 
-    public int getCimbelesVerderonSerrano() {
-        return CimbelesVerderonSerrano;
+    public int getCimbelesVerdSerrano() {
+        return CimbelesVerdSerrano;
     }
 
-    public int getCapturasVerderonSerranoM() {
-        return CapturasVerderonSerranoM;
+    public int getCapturasVerdSerranoM() {
+        return CapturasVerdSerranoM;
     }
 
-    public int getCapturasVerderonSerranoH() {
-        return CapturasVerderonSerranoH;
+    public int getCapturasVerdSerranoH() {
+        return CapturasVerdSerranoH;
     }
 
     public String getObservaciones() {
