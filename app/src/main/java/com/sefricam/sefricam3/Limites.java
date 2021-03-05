@@ -12,7 +12,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Limites implements Serializable {
-    private int minLat, maxLat, minLon, maxLon, minTemp, maxTemp, minNAnilla, maxNAnilla;
+    private double minLat, maxLat, minLon, maxLon;
+    private int minTemp, maxTemp, minNAnilla, maxNAnilla;
 
     //Camachuelo
     private int maxRecCamachuelo, maxCimCamachuelo;
@@ -63,10 +64,10 @@ public class Limites implements Serializable {
             public void done(ParseObject result, ParseException e) {
                 if (e == null) {
                     //Datos Generales
-                    minLat = result.getInt("MinLat");
-                    maxLat = result.getInt("MaxLat");
-                    minLon = result.getInt("MinLon");
-                    maxLon = result.getInt("MaxLon");
+                    minLat = result.getDouble("MinLat");
+                    maxLat = result.getDouble("MaxLat");
+                    minLon = result.getDouble("MinLon");
+                    maxLon = result.getDouble("MaxLon");
                     minTemp = result.getInt("MinTemp");
                     maxTemp = result.getInt("MaxTemp");
 
@@ -212,7 +213,7 @@ public class Limites implements Serializable {
         });
     }
 
-    public int getMinLat() {
+    public double getMinLat() {
         return minLat;
     }
 
@@ -220,7 +221,7 @@ public class Limites implements Serializable {
         this.minLat = minLat;
     }
 
-    public int getMaxLat() {
+    public double getMaxLat() {
         return maxLat;
     }
 
@@ -228,7 +229,7 @@ public class Limites implements Serializable {
         this.maxLat = maxLat;
     }
 
-    public int getMinLon() {
+    public double getMinLon() {
         return minLon;
     }
 
@@ -236,7 +237,7 @@ public class Limites implements Serializable {
         this.minLon = minLon;
     }
 
-    public int getMaxLon() {
+    public double getMaxLon() {
         return maxLon;
     }
 

@@ -79,12 +79,12 @@
             android:layout_weight="2"
 
             android:ems="10"
+            android:enabled="false"
             android:hint="@string/hint_Latitud"
             android:importantForAutofill="no"
-            android:inputType="numberDecimal"
+            android:inputType="numberSigned|numberDecimal"
             android:textAlignment="center"
-            android:textSize="@dimen/_15ssp"
-            android:enabled="false"/>
+            android:textSize="@dimen/_15ssp" />
 
         <Space
             android:id="@+id/dpSpace_linLHCoords"

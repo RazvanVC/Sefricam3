@@ -24,7 +24,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -223,9 +225,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         }
         if (view == btn_Enviar){
-            /*
+
             if (comprobarValores()){
-                db = FirebaseFirestore.getInstance();
                 actualizarDatosEnviados();
                 tv_Fecha.setClickable(false);
                 etnd_Latitud.setEnabled(false);
@@ -236,7 +237,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
             } else {
                 Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
-            }*/
+            }
         }
         if (view == btn_Volver){
             Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
@@ -263,7 +264,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private void envioDatos() {
 
         //Parse Send
-        ParseObject docData = new ParseObject("DatosEntorno");
+        ParseObject docData = new ParseObject("Datos_Entorno");
 
         //General
 
@@ -333,7 +334,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         docData.put("CA04", metodosCaptura.getControlAgentes().get(3));
         docData.put("CA05", metodosCaptura.getControlAgentes().get(4));
         docData.put("CA06", metodosCaptura.getControlAgentes().get(5));
-        
+
         docData.put("RecCamachuelo", metodosCaptura.getReclamosCamachuelo());
         docData.put("CapCamachueloM", metodosCaptura.getCapturasCamachueloM());
         docData.put("CapCamachueloH", metodosCaptura.getCapturasCamachueloH());
@@ -441,40 +442,67 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         docData.put("Pic14", datosAvistamiento.getHora14().get(4));
 
         //Avistamientos
+        docData.put("PinC08", datosAvistamiento.getHora08().get(5));
+        docData.put("PinC09", datosAvistamiento.getHora09().get(5));
+        docData.put("PinC10", datosAvistamiento.getHora10().get(5));
+        docData.put("PinC11", datosAvistamiento.getHora11().get(5));
+        docData.put("PinC12", datosAvistamiento.getHora12().get(5));
+        docData.put("PinC13", datosAvistamiento.getHora13().get(5));
+        docData.put("PinC14", datosAvistamiento.getHora14().get(5));
 
+        //Avistamientos
+        docData.put("PinR08", datosAvistamiento.getHora08().get(6));
+        docData.put("PinR09", datosAvistamiento.getHora09().get(6));
+        docData.put("PinR10", datosAvistamiento.getHora10().get(6));
+        docData.put("PinR11", datosAvistamiento.getHora11().get(6));
+        docData.put("PinR12", datosAvistamiento.getHora12().get(6));
+        docData.put("PinR13", datosAvistamiento.getHora13().get(6));
+        docData.put("PinR14", datosAvistamiento.getHora14().get(6));
 
-        modeladoAvisamientos();
-        docData.put("Avistamientos",avistamientos);
+        //Avistamientos
+        docData.put("Piq08", datosAvistamiento.getHora08().get(7));
+        docData.put("Piq09", datosAvistamiento.getHora09().get(7));
+        docData.put("Piq10", datosAvistamiento.getHora10().get(7));
+        docData.put("Piq11", datosAvistamiento.getHora11().get(7));
+        docData.put("Piq12", datosAvistamiento.getHora12().get(7));
+        docData.put("Piq13", datosAvistamiento.getHora13().get(7));
+        docData.put("Piq14", datosAvistamiento.getHora14().get(7));
 
-        String documento = DNI+fecha;
+        //Avistamientos
+        docData.put("Verd08", datosAvistamiento.getHora08().get(8));
+        docData.put("Verd09", datosAvistamiento.getHora09().get(8));
+        docData.put("Verd10", datosAvistamiento.getHora10().get(8));
+        docData.put("Verd11", datosAvistamiento.getHora11().get(8));
+        docData.put("Verd12", datosAvistamiento.getHora12().get(8));
+        docData.put("Verd13", datosAvistamiento.getHora13().get(8));
+        docData.put("Verd14", datosAvistamiento.getHora14().get(8));
 
-        System.out.println(documento);
-        db.collection("data").document(documento)
-                .set(docData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Los datos han sido enviados", Toast.LENGTH_SHORT).show();
+        //Avistamientos
+        docData.put("VerdC08", datosAvistamiento.getHora08().get(9));
+        docData.put("VerdC09", datosAvistamiento.getHora09().get(9));
+        docData.put("VerdC10", datosAvistamiento.getHora10().get(9));
+        docData.put("VerdC11", datosAvistamiento.getHora11().get(9));
+        docData.put("VerdC12", datosAvistamiento.getHora12().get(9));
+        docData.put("VerdC13", datosAvistamiento.getHora13().get(9));
+        docData.put("VerdC14", datosAvistamiento.getHora14().get(9));
 
-                        desactivarBotonesDatos();
+        //Avistamientos
+        docData.put("VerdS08", datosAvistamiento.getHora08().get(10));
+        docData.put("VerdS09", datosAvistamiento.getHora09().get(10));
+        docData.put("VerdS10", datosAvistamiento.getHora10().get(10));
+        docData.put("VerdS11", datosAvistamiento.getHora11().get(10));
+        docData.put("VerdS12", datosAvistamiento.getHora12().get(10));
+        docData.put("VerdS13", datosAvistamiento.getHora13().get(10));
+        docData.put("VerdS14", datosAvistamiento.getHora14().get(10));
 
+        //ENVIAR OBJETO
 
-                        DocumentReference userRef = db.collection("users").document(DNI);
-                        datosEnviados++;
-                        userRef.update("Datos Enviados",datosEnviados);
-                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Ya puedes enviar tu registro de aves", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+        docData.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
 
-                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Algo no ha ido bien, vuelva a intentarlo.\nSi ve que el error persiste póngase en contacto con un administrador", Toast.LENGTH_LONG).show();
-                        tv_Fecha.setClickable(true);
-                        etnd_Latitud.setEnabled(true);
-                        etnd_Longitud.setEnabled(true);
-                    }
-                });
+            }
+        });
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -496,6 +524,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     private void actualizarDatosEnviados() {
+        /*
         db.collection("users")
                 .whereEqualTo("Email",email)
                 .get()
@@ -508,7 +537,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                             }
                         }
                     }
-                });
+                });*/
     }
 
     private void modeladoAvisamientos() {
@@ -531,6 +560,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         if (tv_Fecha.getText().toString().equals("-- / -- / ----")) return false;
         if (etnd_Longitud.getText().toString().isEmpty()) return false;
+        if (etnd_Latitud.getText().toString().isEmpty()) return false;
         try {
             Double.parseDouble(etnd_Longitud.getText().toString());
             Double.parseDouble(etnd_Latitud.getText().toString());
@@ -539,11 +569,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         }
         if (Double.parseDouble(etnd_Longitud.getText().toString())>limites.getMaxLat()) return false;
         if (Double.parseDouble(etnd_Longitud.getText().toString())<limites.getMinLat()) return false;
-        if (etnd_Latitud.getText().toString().isEmpty()) return false;
+
         if (Double.parseDouble(etnd_Latitud.getText().toString())>limites.getMaxLon()) return false;
         //noinspection RedundantIfStatement
         if (Double.parseDouble(etnd_Latitud.getText().toString())<limites.getMinLon()) return false;
-
         return true;
     }
 
