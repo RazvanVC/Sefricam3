@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/Negro"/>
+                android:background="@color/VerdePrimario"/>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_7sdp"/>
