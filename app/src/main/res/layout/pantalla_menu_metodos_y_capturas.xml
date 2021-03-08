@@ -82,7 +82,7 @@
             android:enabled="false"
             android:hint="@string/hint_Latitud"
             android:importantForAutofill="no"
-            android:inputType="numberSigned|numberDecimal"
+            android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textSize="@dimen/_15ssp" />
 
