@@ -107,6 +107,18 @@
                     android:layout_marginEnd="@dimen/_5sdp"/>
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/VerdePrimario"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_7sdp"/>
+
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="match_parent"
