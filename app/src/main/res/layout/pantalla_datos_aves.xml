@@ -55,6 +55,18 @@
                     android:textSize="@dimen/_15ssp" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/Negro"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_7sdp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -513,11 +525,12 @@
             </RadioGroup>
 
             <TextView
+                android:id="@+id/tv_PlacaInc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/VerdePrimario"
+                android:textColor="@color/Gris"
                 android:textSize="@dimen/_15ssp"
-                android:text="(SI HEMBRA) Placa incubatriz"/>
+                android:text="Placa incubatriz"/>
             <RadioGroup
                 android:id="@+id/rbg_PlacaInc"
                 android:layout_width="match_parent"
@@ -528,23 +541,26 @@
                     android:id="@+id/rb_PlacaIncNoEvidencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/VerdePrimario"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_15ssp"
-                    android:text="No evidencia"/>
+                    android:text="No evidencia"
+                    android:clickable="false"/>
                 <RadioButton
                     android:id="@+id/rb_PlacaIncIncompleta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/VerdePrimario"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Incompleta"/>
+                    android:text="Incompleta"
+                    android:clickable="false"/>
                 <RadioButton
                     android:id="@+id/rb_PlacaIncMEvidente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/VerdePrimario"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Muy evidente"/>
+                    android:text="Muy evidente"
+                    android:clickable="false"/>
             </RadioGroup>
 
         </LinearLayout>

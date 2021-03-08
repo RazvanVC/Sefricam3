@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -33,11 +35,14 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     //Datos
     private String hora,anillaPreexistente;
-    private int especie, numeroAnilla,localizacion,sexo,edad,nEjemplares,condicionFisica,grasa,musculoPectoral,muda,placaIncubatriz;
-    private Double peso, longitudTarso, longitudPico, longitudTerceraPrimaria, capturasEnviadas;
+    private int especie, numeroAnilla, localizacion, sexo, edad, nEjemplares, condicionFisica, grasa, musculoPectoral, muda, placaIncubatriz;
+    private Double peso, longitudTarso, longitudPico, longitudTerceraPrimaria;
 
     private EditText etn_EjemplaresCapturados, etn_NumeroAnilla, et_NumeroAnillaPreexistente, etnd_Peso, etnd_LongitudTarso, etnd_LongitudPico, etnd_LongitudTerceraPrimaria;
     private RadioGroup rbg_Localizacion, rbg_Sexo, rbg_Edad, rbg_CondicionFisica, rbg_Grasa, rbg_MusculoPectoral,rbg_Muda,rbg_PlacaInc, rbg_EspeciesAves;
+    private RadioButton rb_SexoMacho, rb_SexoHembra, rb_SexoIndeterminado;
+    private TextView tv_PlacaInc;
+    private RadioButton rb_PlacaIncNoEvidencia, rb_PlacaIncIncompleta, rb_PlacaIncMEvidente;
 
     //Parametros
     private boolean envioCompletado;
@@ -73,11 +78,14 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         btn_Enviar.setOnClickListener(this);
         btn_Volver.setOnClickListener(this);
         tv_Hora.setOnClickListener(this);
-
+        rb_SexoIndeterminado.setOnClickListener(this);
+        rb_SexoHembra.setOnClickListener(this);
+        rb_SexoMacho.setOnClickListener(this);
 
     }
 
     private void iniciarFindView() {
+
         //Text View Hora Captura
         tv_Hora = findViewById(R.id.tv_HoraCapturaAve);
 
@@ -97,7 +105,11 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         //Radio Button Group Ave Local
         rbg_Localizacion = findViewById(R.id.rbg_Localizacion);
 
+        //Sexo
         rbg_Sexo = findViewById(R.id.rbg_Sexo);
+        rb_SexoMacho = findViewById(R.id.rb_SexoMacho);
+        rb_SexoHembra = findViewById(R.id.rb_SexoHembra);
+        rb_SexoIndeterminado = findViewById(R.id.rb_SexoIndeterminado);
 
         rbg_Edad = findViewById(R.id.rbg_Edad);
 
@@ -110,7 +122,12 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         rbg_Muda = findViewById(R.id.rbg_Muda);
 
+        //Placa Incubatriz
+        tv_PlacaInc = findViewById(R.id.tv_PlacaInc);
         rbg_PlacaInc = findViewById(R.id.rbg_PlacaInc);
+        rb_PlacaIncNoEvidencia = findViewById(R.id.rb_PlacaIncNoEvidencia);
+        rb_PlacaIncIncompleta = findViewById(R.id.rb_PlacaIncIncompleta);
+        rb_PlacaIncMEvidente = findViewById(R.id.rb_PlacaIncMEvidente);
 
         btn_Volver = findViewById(R.id.btn_VolverAves);
         btn_Enviar = findViewById(R.id.btn_EnviarAves);
@@ -159,7 +176,39 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             }, 7, 0, true);
             recogerHora.show();
         }
-
+        if (v == rb_SexoHembra){
+            tv_PlacaInc.setTextColor(getColor(R.color.VerdePrimario));
+            rb_PlacaIncMEvidente.setTextColor(getColor(R.color.VerdePrimario));
+            rb_PlacaIncIncompleta.setTextColor(getColor(R.color.VerdePrimario));
+            rb_PlacaIncNoEvidencia.setTextColor(getColor(R.color.VerdePrimario));
+            rb_PlacaIncMEvidente.setClickable(true);
+            rb_PlacaIncIncompleta.setClickable(true);
+            rb_PlacaIncNoEvidencia.setClickable(true);
+        }
+        if (v == rb_SexoMacho){
+            tv_PlacaInc.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncMEvidente.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncIncompleta.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncNoEvidencia.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncMEvidente.setClickable(false);
+            rb_PlacaIncIncompleta.setClickable(false);
+            rb_PlacaIncNoEvidencia.setClickable(false);
+            rb_PlacaIncMEvidente.setChecked(false);
+            rb_PlacaIncIncompleta.setChecked(false);
+            rb_PlacaIncNoEvidencia.setChecked(false);
+        }
+        if (v == rb_SexoIndeterminado){
+            tv_PlacaInc.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncMEvidente.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncIncompleta.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncNoEvidencia.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncMEvidente.setClickable(false);
+            rb_PlacaIncIncompleta.setClickable(false);
+            rb_PlacaIncNoEvidencia.setClickable(false);
+            rb_PlacaIncMEvidente.setChecked(false);
+            rb_PlacaIncIncompleta.setChecked(false);
+            rb_PlacaIncNoEvidencia.setChecked(false);
+        }
     }
 
     public void envioDatos() {
