@@ -19,6 +19,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
@@ -28,7 +29,6 @@ import java.util.List;
 public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListener{
 
     private Button btn_Enviar, btn_Volver;
-    private Spinner sp_Especies, sp_Capturas;
     private TextView tv_Hora;
 
     //Datos
@@ -48,7 +48,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email,DNI;
     private String fecha;
-    private int numAves;
     private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico, latitud, longitud;;
 
 
@@ -74,6 +73,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         btn_Enviar.setOnClickListener(this);
         btn_Volver.setOnClickListener(this);
         tv_Hora.setOnClickListener(this);
+
 
     }
 
@@ -192,11 +192,38 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         entity.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                // Here you can handle errors, if thrown. Otherwise, "e" should be null
+                if (e==null){
+                    //Save was done
+                    actualizarDatosEnviados();
+                    Toast.makeText(Pantalla_Datos_Aves.this, "Se ha realizado el envío correctamente", Toast.LENGTH_SHORT).show();
+                }else{
+                    //Something went wrong
+                    Toast.makeText(Pantalla_Datos_Aves.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
+    private void actualizarDatosEnviados() {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser!= null){
+            int avesEnviadas  = currentUser.getInt("NumAves");
+            avesEnviadas++;
+            currentUser.put("NumAves", avesEnviadas);
+            currentUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if(e==null){
+                        //Save successfull
+                        Toast.makeText(Pantalla_Datos_Aves.this, "Save Successful", Toast.LENGTH_SHORT).show();
+                    }else{
+                        // Something went wrong while saving
+                        Toast.makeText(Pantalla_Datos_Aves.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
 
 
     @SuppressLint("NonConstantResourceId")
