@@ -26,6 +26,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.Serializable;
@@ -498,6 +499,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             public void done(ParseException e) {
                 if (e==null){
                     //Save was done
+                    actualizarDatosEnviados();
+                    Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Se ha realizado el envío correctamente", Toast.LENGTH_SHORT).show();
+                    desactivarBotonesDatos();
+
                 }else{
                     //Something went wrong
                     Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -526,20 +531,24 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     private void actualizarDatosEnviados() {
-        /*
-        db.collection("users")
-                .whereEqualTo("Email",email)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                datosEnviados = Double.parseDouble(Objects.requireNonNull(document.getData().get("Datos Enviados")).toString());
-                            }
-                        }
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser!= null){
+            int fichasEnviadas  = currentUser.getInt("NumFichas");
+            fichasEnviadas++;
+            currentUser.put("NumFichas", fichasEnviadas);
+            currentUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if(e==null){
+                        //Save successfull
+                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Save Successful", Toast.LENGTH_SHORT).show();
+                    }else{
+                        // Something went wrong while saving
+                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });*/
+                }
+            });
+        }
     }
 
 
@@ -626,8 +635,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Codigo roto
-     * @return
+     * Asignacion de cuadrícula
+     * @return código de cuadricula según coordenadas
      */
     private String cuadricula(){
         //Primer valor
