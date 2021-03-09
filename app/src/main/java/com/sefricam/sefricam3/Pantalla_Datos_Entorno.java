@@ -207,6 +207,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             finish();
         }
         if (v == rb_VientoCalma){
+            tv_DireccionViento.setTextColor(getColor(R.color.Gris));
             rb_DirVientoN.setChecked(false);
             rb_DirVientoN.setClickable(false);
             rb_DirVientoN.setTextColor(getColor(R.color.Gris));
@@ -233,6 +234,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             rb_DirVientoO.setTextColor(getColor(R.color.Gris));
         }
         if (v == rb_VientoLigero){
+            tv_DireccionViento.setTextColor(getColor(R.color.VerdePrimario));
             rb_DirVientoN.setChecked(false);
             rb_DirVientoN.setClickable(true);
             rb_DirVientoN.setTextColor(getColor(R.color.VerdePrimario));
@@ -259,6 +261,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             rb_DirVientoO.setTextColor(getColor(R.color.VerdePrimario));
         }
         if (v == rb_VientoFuerte){
+            tv_DireccionViento.setTextColor(getColor(R.color.VerdePrimario));
             rb_DirVientoN.setChecked(false);
             rb_DirVientoN.setClickable(true);
             rb_DirVientoN.setTextColor(getColor(R.color.VerdePrimario));
@@ -291,7 +294,9 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         double temperaturaMaxima = limites.getMaxTemp();
         if (rbg_Zonificacion.getCheckedRadioButtonId()==-1) return false;
         if (rbg_FuerzaViento.getCheckedRadioButtonId()==-1) return false;
-        if (rbg_DireccionViento.getCheckedRadioButtonId()==-1) return false;
+        if (!rb_VientoCalma.isChecked()){
+            if (rbg_DireccionViento.getCheckedRadioButtonId()==-1) return false;
+        }
         if (rbg_Nubes.getCheckedRadioButtonId()==-1) return false;
         if (rbg_Lluvia.getCheckedRadioButtonId()==-1) return false;
         try {
@@ -318,7 +323,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         //Declaracion
         int zonificacion = 0;
         int viento = 0;
-        String direccionViento = "N";
+        String direccionViento = "0";
         int nubes = 0;
         int lluvia = 0;
 
@@ -375,32 +380,35 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 break;
         }
 
-        switch (rbg_DireccionViento.getCheckedRadioButtonId()){
-            case R.id.rb_DirN:
-                direccionViento = "N";
-                break;
-            case R.id.rb_DirS:
-                direccionViento = "S";
-                break;
-            case R.id.rb_DirE:
-                direccionViento = "E";
-                break;
-            case R.id.rb_DirO:
-                direccionViento = "O";
-                break;
-            case R.id.rb_DirNE:
-                direccionViento = "NE";
-                break;
-            case R.id.rb_DirNO:
-                direccionViento = "NO";
-                break;
-            case R.id.rb_DirSE:
-                direccionViento = "SE";
-                break;
-            case R.id.rb_DirSO:
-                direccionViento = "SO";
-                break;
-        }
+        if (rb_VientoLigero.isChecked() || rb_VientoFuerte.isChecked()){
+            switch (rbg_DireccionViento.getCheckedRadioButtonId()){
+                case R.id.rb_DirN:
+                    direccionViento = "N";
+                    break;
+                case R.id.rb_DirS:
+                    direccionViento = "S";
+                    break;
+                case R.id.rb_DirE:
+                    direccionViento = "E";
+                    break;
+                case R.id.rb_DirO:
+                    direccionViento = "O";
+                    break;
+                case R.id.rb_DirNE:
+                    direccionViento = "NE";
+                    break;
+                case R.id.rb_DirNO:
+                    direccionViento = "NO";
+                    break;
+                case R.id.rb_DirSE:
+                    direccionViento = "SE";
+                    break;
+                case R.id.rb_DirSO:
+                    direccionViento = "SO";
+                    break;
+            }
+        } else direccionViento = "0";
+
 
         switch (rbg_Nubes.getCheckedRadioButtonId()){
             case R.id.rb_NubesAusente:
@@ -949,11 +957,10 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 break;
         }
 
-        cargarDireccionViento();
-
         switch (datosEntorno.getViento()) {
             case 1:
                 rb_VientoCalma.setChecked(true);
+                tv_DireccionViento.setTextColor(getColor(R.color.Gris));
                 rb_DirVientoN.setChecked(false);
                 rb_DirVientoN.setClickable(false);
                 rb_DirVientoN.setTextColor(getColor(R.color.Gris));
@@ -981,11 +988,50 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 break;
             case 2:
                 rb_VientoLigero.setChecked(true);
+
+                tv_DireccionViento.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoN.setClickable(true);
+                rb_DirVientoN.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoNO.setClickable(true);
+                rb_DirVientoNO.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoNE.setClickable(true);
+                rb_DirVientoNE.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoS.setClickable(true);
+                rb_DirVientoS.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoSE.setClickable(true);
+                rb_DirVientoSE.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoSO.setClickable(true);
+                rb_DirVientoSO.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoE.setClickable(true);
+                rb_DirVientoE.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoO.setClickable(true);
+                rb_DirVientoO.setTextColor(getColor(R.color.VerdePrimario));
                 break;
             case 3:
                 rb_VientoFuerte.setChecked(true);
+
+                tv_DireccionViento.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoN.setClickable(true);
+                rb_DirVientoN.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoNO.setClickable(true);
+                rb_DirVientoNO.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoNE.setClickable(true);
+                rb_DirVientoNE.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoS.setClickable(true);
+                rb_DirVientoS.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoSE.setClickable(true);
+                rb_DirVientoSE.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoSO.setClickable(true);
+                rb_DirVientoSO.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoE.setClickable(true);
+                rb_DirVientoE.setTextColor(getColor(R.color.VerdePrimario));
+                rb_DirVientoO.setClickable(true);
+                rb_DirVientoO.setTextColor(getColor(R.color.VerdePrimario));
                 break;
         }
+
+        cargarDireccionViento();
+
         switch (datosEntorno.getNubes()){
             case 1:
                 rb_NubesAusente.setChecked(true);
@@ -1058,6 +1104,8 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 break;
             case "SO":
                 rb_DirVientoSO.setChecked(true);
+                break;
+            case "0":
                 break;
         }
     }
