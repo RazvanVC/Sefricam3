@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Blanco">
@@ -21,15 +19,15 @@
         android:id="@+id/sv_DatosMetodos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="2"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/LinLH_BotonesGSMetodos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/LinLH_BotonesGSMetodos"
-        app:layout_constraintTop_toBottomOf="@+id/iv_LogoGrandeMetodos">
+        app:layout_constraintTop_toBottomOf="@+id/iv_LogoGrandeMetodos"
+        app:layout_constraintVertical_weight="2">
 
         <LinearLayout
             android:id="@+id/linLV_ScrollMetodosCaptura"
@@ -52,15 +50,16 @@
                 android:ems="10"
                 android:inputType="number"
                 android:text=""
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/Negro"/>
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+
             <TextView
                 android:id="@+id/tv_IntroduceLongitudRed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_15ssp"
+                android:text="Introduzca la longitud de la red:"
                 android:textColor="@color/VerdePrimario"
-                android:text="Introduzca la longitud de la red:"/>
+                android:textSize="@dimen/_15ssp" />
 
             <EditText
                 android:id="@+id/etn_LongitudRed"
@@ -68,9 +67,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
+                android:text=""
                 android:textColor="@color/Negro"
-                android:textSize="@dimen/_15ssp"
-                android:text=""/>
+                android:textSize="@dimen/_15ssp" />
 
 
             <LinearLayout
@@ -86,126 +85,140 @@
                     android:text="Coto:"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp" />
+
                 <RadioGroup
                     android:id="@+id/rbg_Coto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:orientation="horizontal">
+
                     <RadioButton
                         android:id="@+id/rb_CotoSI"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="@dimen/_15ssp"
+                        android:text="Sí"
                         android:textColor="@color/VerdePrimario"
-                        android:text="Sí"/>
+                        android:textSize="@dimen/_15ssp" />
+
                     <RadioButton
                         android:id="@+id/rb_CotoNO"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_15ssp"
                         android:layout_weight="1"
+                        android:text="No"
                         android:textColor="@color/VerdePrimario"
-                        android:text="No"/>
+                        android:textSize="@dimen/_15ssp" />
                 </RadioGroup>
             </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_2sdp"/>
+                android:layout_height="@dimen/_2sdp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/VerdePrimario"/>
+                android:background="@color/VerdePrimario" />
+
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_7sdp"/>
+                android:layout_height="@dimen/_7sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/_15ssp"
+                    android:text="Control de agentes"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Control de agentes"/>
+                    android:textSize="@dimen/_15ssp" />
+
                 <RadioGroup
                     android:id="@+id/rbg_ControlAgentes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <RadioButton
                         android:id="@+id/rb_SiControlAgentes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_15ssp"
+                        android:text="Si (seleccione los correspondientes)"
                         android:textColor="@color/VerdePrimario"
-                        android:text="Si (seleccione los correspondientes)"/>
+                        android:textSize="@dimen/_15ssp" />
+
                     <CheckBox
                         android:id="@+id/cb_ControlAgentesSeprona"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:clickable="false"
-                        android:textSize="@dimen/_15ssp"
+                        android:text="Seprona"
                         android:textColor="@color/VerdePrimario"
-                        android:text="Seprona"/>
+                        android:textSize="@dimen/_15ssp" />
+
                     <CheckBox
                         android:id="@+id/cb_ControlAgentesForestales"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:textSize="@dimen/_15ssp"
+                        android:clickable="false"
+                        android:text="Agentes Forestales"
                         android:textColor="@color/VerdePrimario"
-                        android:text="Agentes Forestales"/>
+                        android:textSize="@dimen/_15ssp" />
+
                     <CheckBox
                         android:id="@+id/cb_ControlAgentesPoliciaMunicipal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:textSize="@dimen/_15ssp"
+                        android:clickable="false"
+                        android:text="Policia Municipal"
                         android:textColor="@color/VerdePrimario"
-                        android:text="Policia Municipal"/>
+                        android:textSize="@dimen/_15ssp" />
+
                     <CheckBox
                         android:id="@+id/cb_ControlAgentesPoliciaNacional"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:textSize="@dimen/_15ssp"
+                        android:clickable="false"
+                        android:text="Policia Nacional"
                         android:textColor="@color/VerdePrimario"
-                        android:text="Policia Nacional"/>
+                        android:textSize="@dimen/_15ssp" />
+
                     <CheckBox
                         android:id="@+id/cb_ControlAgentesOtros"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:textSize="@dimen/_15ssp"
+                        android:clickable="false"
+                        android:text="Otros"
                         android:textColor="@color/VerdePrimario"
-                        android:text="Otros"/>
+                        android:textSize="@dimen/_15ssp" />
+
                     <RadioButton
                         android:id="@+id/rb_NoControlAgentes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_15ssp"
+                        android:text="No"
                         android:textColor="@color/VerdePrimario"
-                        android:text="No"/>
+                        android:textSize="@dimen/_15ssp" />
                 </RadioGroup>
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/_10sdp"
                 android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
                 android:text="Capturas y métodos de captura:"
                 android:textColor="@color/VerdePrimario"
-                android:textSize="@dimen/_15ssp"/>
+                android:textSize="@dimen/_15ssp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -215,18 +228,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:id="@+id/linLH_tvERCC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/tv_EspecieMetodos"
                             android:layout_width="@dimen/_110sdp"
                             android:layout_height="wrap_content"
                             android:text="Especie:"
                             android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp"/>
+                            android:textSize="@dimen/_15ssp" />
+
                         <TextView
                             android:id="@+id/tv_Reclamos"
                             android:layout_width="@dimen/_70sdp"
@@ -235,6 +251,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" />
+
                         <TextView
                             android:id="@+id/tv_Cimbeles"
                             android:layout_width="@dimen/_70sdp"
@@ -242,30 +259,32 @@
                             android:text="Cim."
                             android:textAlignment="center"
                             android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp"/>
+                            android:textSize="@dimen/_15ssp" />
+
                         <TextView
                             android:id="@+id/tv_NCapturas"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_15ssp"
-                            android:textColor="@color/VerdePrimario"
                             android:text="Cap. M."
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
                         <TextView
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_15ssp"
-                            android:textColor="@color/VerdePrimario"
                             android:text="Cap. H."
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosCamachuelo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -277,51 +296,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosCamachuelo"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesCamachuelo"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasCamachueloM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasCamachueloH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosJilguero"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -333,51 +356,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosJilguero"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesJilguero"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasJilgueroM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasJilgueroH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosLugano"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -389,51 +416,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosLugano"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesLugano"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasLuganoM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasLuganoH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosPardilloComun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -445,54 +476,58 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosPardilloComun"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:nextFocusDown="@id/etn_CimbelesCamachuelo"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"
-                            android:nextFocusDown="@id/etn_CimbelesCamachuelo" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesPardilloComun"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:nextFocusForward="@id/etn_CapturasCamachueloM"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"
-                            android:nextFocusForward="@id/etn_CapturasCamachueloM"/>
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPardilloComunM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:nextFocusForward="@id/etn_CapturasCamachueloH"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"
-                            android:nextFocusForward="@id/etn_CapturasCamachueloH"/>
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPardilloComunH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosPicogordo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -504,51 +539,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosPicogordo"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesPicogordo"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPicogordoM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPicogordoH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosPinzonComun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -560,51 +599,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosPinzonComun"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesPinzonComun"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPinzonComunM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPinzonComunH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosPinzonReal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -616,51 +659,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosPinzonReal"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesPinzonReal"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPinzonRealM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPinzonRealH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosPiquituerto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -672,51 +719,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosPiquituerto"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesPiquituerto"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPiquituertoM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasPiquituertoH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosVerdecillo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -728,51 +779,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosVerdecillo"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesVerdecillo"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasVerdecilloM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasVerdecilloH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosVerderonComun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -784,51 +839,55 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosVerderonComun"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesVerderonComun"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasVerderonComunM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasVerderonComunH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosVerderonSerrano"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical">
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="@dimen/_110sdp"
@@ -840,43 +899,47 @@
 
                         <EditText
                             android:id="@+id/etn_ReclamosVerderonSerrano"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CimbelesVerderonSerrano"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasVerderonSerranoM"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0" />
+                            android:textSize="@dimen/_15ssp" />
 
                         <EditText
                             android:id="@+id/etn_CapturasVerderonSerranoH"
-                            android:inputType="number"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="match_parent"
-                            android:textSize="@dimen/_15ssp"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
-                            android:text="@string/et_ValorPredeterminado0"/>
+                            android:textSize="@dimen/_15ssp" />
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>
@@ -885,14 +948,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Observaciones:"
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/VerdePrimario"/>
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
             <EditText
                 android:id="@+id/et_ObservacionesMetodos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/Negro"/>
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
         </LinearLayout>
     </ScrollView>
 
@@ -900,15 +964,15 @@
         android:id="@+id/LinLH_BotonesGSMetodos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintVertical_weight="1">
 
         <Button
             android:id="@+id/btn_GuardarMetodos"
@@ -934,7 +998,7 @@
             android:text="@string/btn_Volver"
             android:textAlignment="center"
             android:textColor="@color/Blanco"
-            android:textSize="@dimen/_18ssp"/>
+            android:textSize="@dimen/_18ssp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
