@@ -503,6 +503,9 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private void iniciarOnClickListeners() {
         btn_Volver.setOnClickListener(this);
         btn_Guardar.setOnClickListener(this);
+        rb_VientoCalma.setOnClickListener(this);
+        rb_VientoFuerte.setOnClickListener(this);
+        rb_VientoLigero.setOnClickListener(this);
     }
 
     private void iniciarFindView() {
@@ -626,6 +629,15 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
             startActivity(activity);
             finish();
+        }
+        if (v == rb_VientoCalma){
+
+        }
+        if (v == rb_VientoLigero){
+
+        }
+        if (v == rb_VientoFuerte){
+
         }
     }
 
