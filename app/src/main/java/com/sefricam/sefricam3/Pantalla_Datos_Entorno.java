@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private RadioGroup rbg_Especie31, rbg_Especie32, rbg_Especie33, rbg_Especie34, rbg_Especie35, rbg_Especie36;
 
     private EditText et_Especie37, et_Especie38;
+
+    private TextView tv_DireccionViento;
 
 
     //Parametros
@@ -70,434 +73,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             cargarDatos();
         }
 
-    }
-
-    private void cargarDatos() {
-
-        etnd_TemperaturaInicio.setText(String.valueOf(datosEntorno.gettInicio()));
-        etnd_TemperaturaFin.setText(String.valueOf(datosEntorno.gettFin()));
-
-        switch (datosEntorno.getZonificacion()){
-            case 1:
-                rb_Zonficacion01.setChecked(true);
-                break;
-            case 2:
-                rb_Zonficacion02.setChecked(true);
-                break;
-            case 3:
-                rb_Zonficacion03.setChecked(true);
-                break;
-            case 4:
-                rb_Zonficacion04.setChecked(true);
-                break;
-            case 5:
-                rb_Zonficacion05.setChecked(true);
-                break;
-            case 6:
-                rb_Zonficacion06.setChecked(true);
-                break;
-            case 7:
-                rb_Zonficacion07.setChecked(true);
-                break;
-            case 8:
-                rb_Zonficacion08.setChecked(true);
-                break;
-            case 9:
-                rb_Zonficacion09.setChecked(true);
-                break;
-            case 10:
-                rb_Zonficacion10.setChecked(true);
-                break;
-            case 11:
-                rb_Zonficacion11.setChecked(true);
-                break;
-        }
-
-        cargarDireccionViento();
-
-        switch (datosEntorno.getViento()) {
-            case 1:
-                rb_VientoCalma.setChecked(true);
-                break;
-            case 2:
-                rb_VientoLigero.setChecked(true);
-                break;
-            case 3:
-                rb_VientoFuerte.setChecked(true);
-                break;
-        }
-        switch (datosEntorno.getNubes()){
-            case 1:
-                rb_NubesAusente.setChecked(true);
-                break;
-            case 2:
-                rb_NubesNYC.setChecked(true);
-                break;
-            case 3:
-                rb_NubesCubierto.setChecked(true);
-                break;
-            case 4:
-                rb_NubesMCubierto.setChecked(true);
-                break;
-        }
-        switch (datosEntorno.getLluvia()){
-            case 1:
-                rb_LluviaAusente.setChecked(true);
-                break;
-            case 2:
-                rb_LluviaIntermitente.setChecked(true);
-                break;
-            case 3:
-                rb_LluviaLigera.setChecked(true);
-                break;
-            case 4:
-                rb_LluviaFuerte.setChecked(true);
-                break;
-            case 5:
-                rb_LluviaMFuerte.setChecked(true);
-                break;
-        }
-
-
-        int i = 0;
-        while (i < datosEntorno.getPlantas().size()) {
-            int planta = datosEntorno.getPlantas().get(i);
-            marcarPlanta(i, planta);
-            i++;
-        }
-
-        et_Especie37.setText(datosEntorno.getEP37());
-        et_Especie38.setText(datosEntorno.getEP38());
-    }
-
-
-    private void marcarPlanta(int numero, int planta) {
-        switch (numero) {
-            case 0:
-                if (planta == 0) {
-                    rbg_Especie01.check(R.id.rb_Especie01N);
-                } else if (planta == 1) {
-                    rbg_Especie01.check(R.id.rb_Especie01S);
-                } else if (planta == 2) {
-                    rbg_Especie01.check(R.id.rb_Especie01A);
-                }
-                break;
-            case 1:
-                if (planta == 0) {
-                    rbg_Especie02.check(R.id.rb_Especie02N);
-                } else if (planta == 1) {
-                    rbg_Especie02.check(R.id.rb_Especie02S);
-                } else if (planta == 2) {
-                    rbg_Especie02.check(R.id.rb_Especie02A);
-                }
-                break;
-            case 2:
-                if (planta == 0) {
-                    rbg_Especie03.check(R.id.rb_Especie03N);
-                } else if (planta == 1) {
-                    rbg_Especie03.check(R.id.rb_Especie03S);
-                } else if (planta == 2) {
-                    rbg_Especie03.check(R.id.rb_Especie03A);
-                }
-                break;
-            case 3:
-                if (planta == 0) {
-                    rbg_Especie04.check(R.id.rb_Especie04N);
-                } else if (planta == 1) {
-                    rbg_Especie04.check(R.id.rb_Especie04S);
-                } else if (planta == 2) {
-                    rbg_Especie04.check(R.id.rb_Especie04A);
-                }
-                break;
-            case 4:
-                if (planta == 0) {
-                    rbg_Especie05.check(R.id.rb_Especie05N);
-                } else if (planta == 1) {
-                    rbg_Especie05.check(R.id.rb_Especie05S);
-                } else if (planta == 2) {
-                    rbg_Especie05.check(R.id.rb_Especie05A);
-                }
-                break;
-            case 5:
-                if (planta == 0) {
-                    rbg_Especie06.check(R.id.rb_Especie06N);
-                } else if (planta == 1) {
-                    rbg_Especie06.check(R.id.rb_Especie06S);
-                } else if (planta == 2) {
-                    rbg_Especie06.check(R.id.rb_Especie06A);
-                }
-                break;
-            case 6:
-                if (planta == 0) {
-                    rbg_Especie07.check(R.id.rb_Especie07N);
-                } else if (planta == 1) {
-                    rbg_Especie07.check(R.id.rb_Especie07S);
-                } else if (planta == 2) {
-                    rbg_Especie07.check(R.id.rb_Especie07A);
-                }
-                break;
-            case 7:
-                if (planta == 0) {
-                    rbg_Especie08.check(R.id.rb_Especie08N);
-                } else if (planta == 1) {
-                    rbg_Especie08.check(R.id.rb_Especie08S);
-                } else if (planta == 2) {
-                    rbg_Especie08.check(R.id.rb_Especie08A);
-                }
-                break;
-            case 8:
-                if (planta == 0) {
-                    rbg_Especie09.check(R.id.rb_Especie09N);
-                } else if (planta == 1) {
-                    rbg_Especie09.check(R.id.rb_Especie09S);
-                } else if (planta == 2) {
-                    rbg_Especie09.check(R.id.rb_Especie09A);
-                }
-                break;
-            case 9:
-                if (planta == 0) {
-                    rbg_Especie10.check(R.id.rb_Especie10N);
-                } else if (planta == 1) {
-                    rbg_Especie10.check(R.id.rb_Especie10S);
-                } else if (planta == 2) {
-                    rbg_Especie10.check(R.id.rb_Especie10A);
-                }
-                break;
-            case 10:
-                if (planta == 0) {
-                    rbg_Especie11.check(R.id.rb_Especie11N);
-                } else if (planta == 1) {
-                    rbg_Especie11.check(R.id.rb_Especie11S);
-                } else if (planta == 2) {
-                    rbg_Especie11.check(R.id.rb_Especie11A);
-                }
-                break;
-            case 11:
-                if (planta == 0) {
-                    rbg_Especie12.check(R.id.rb_Especie12N);
-                } else if (planta == 1) {
-                    rbg_Especie12.check(R.id.rb_Especie12S);
-                } else if (planta == 2) {
-                    rbg_Especie12.check(R.id.rb_Especie12A);
-                }
-                break;
-            case 12:
-                if (planta == 0) {
-                    rbg_Especie13.check(R.id.rb_Especie13N);
-                } else if (planta == 1) {
-                    rbg_Especie13.check(R.id.rb_Especie13S);
-                } else if (planta == 2) {
-                    rbg_Especie13.check(R.id.rb_Especie13A);
-                }
-                break;
-            case 13:
-                if (planta == 0) {
-                    rbg_Especie14.check(R.id.rb_Especie14N);
-                } else if (planta == 1) {
-                    rbg_Especie14.check(R.id.rb_Especie14S);
-                } else if (planta == 2) {
-                    rbg_Especie14.check(R.id.rb_Especie14A);
-                }
-                break;
-            case 14:
-                if (planta == 0) {
-                    rbg_Especie15.check(R.id.rb_Especie15N);
-                } else if (planta == 1) {
-                    rbg_Especie15.check(R.id.rb_Especie15S);
-                } else if (planta == 2) {
-                    rbg_Especie15.check(R.id.rb_Especie15A);
-                }
-                break;
-            case 15:
-                if (planta == 0) {
-                    rbg_Especie16.check(R.id.rb_Especie16N);
-                } else if (planta == 1) {
-                    rbg_Especie16.check(R.id.rb_Especie16S);
-                } else if (planta == 2) {
-                    rbg_Especie16.check(R.id.rb_Especie16A);
-                }
-                break;
-            case 16:
-                if (planta == 0) {
-                    rbg_Especie17.check(R.id.rb_Especie17N);
-                } else if (planta == 1) {
-                    rbg_Especie17.check(R.id.rb_Especie17S);
-                } else if (planta == 2) {
-                    rbg_Especie17.check(R.id.rb_Especie17A);
-                }
-                break;
-            case 17:
-                if (planta == 0) {
-                    rbg_Especie18.check(R.id.rb_Especie18N);
-                } else if (planta == 1) {
-                    rbg_Especie18.check(R.id.rb_Especie18S);
-                } else if (planta == 2) {
-                    rbg_Especie18.check(R.id.rb_Especie18A);
-                }
-                break;
-            case 18:
-                if (planta == 0) {
-                    rbg_Especie19.check(R.id.rb_Especie19N);
-                } else if (planta == 1) {
-                    rbg_Especie19.check(R.id.rb_Especie19S);
-                } else if (planta == 2) {
-                    rbg_Especie19.check(R.id.rb_Especie19A);
-                }
-                break;
-            case 19:
-                if (planta == 0) {
-                    rbg_Especie20.check(R.id.rb_Especie20N);
-                } else if (planta == 1) {
-                    rbg_Especie20.check(R.id.rb_Especie20S);
-                } else if (planta == 2) {
-                    rbg_Especie20.check(R.id.rb_Especie20A);
-                }
-                break;
-            case 20:
-                if (planta == 0) {
-                    rbg_Especie21.check(R.id.rb_Especie21N);
-                } else if (planta == 1) {
-                    rbg_Especie21.check(R.id.rb_Especie21S);
-                } else if (planta == 2) {
-                    rbg_Especie21.check(R.id.rb_Especie21A);
-                }
-                break;
-            case 21:
-                if (planta == 0) {
-                    rbg_Especie22.check(R.id.rb_Especie22N);
-                } else if (planta == 1) {
-                    rbg_Especie22.check(R.id.rb_Especie22S);
-                } else if (planta == 2) {
-                    rbg_Especie22.check(R.id.rb_Especie22A);
-                }
-                break;
-            case 22:
-                if (planta == 0) {
-                    rbg_Especie23.check(R.id.rb_Especie23N);
-                } else if (planta == 1) {
-                    rbg_Especie23.check(R.id.rb_Especie23S);
-                } else if (planta == 2) {
-                    rbg_Especie23.check(R.id.rb_Especie23A);
-                }
-                break;
-            case 23:
-                if (planta == 0) {
-                    rbg_Especie24.check(R.id.rb_Especie24N);
-                } else if (planta == 1) {
-                    rbg_Especie24.check(R.id.rb_Especie24S);
-                } else if (planta == 2) {
-                    rbg_Especie24.check(R.id.rb_Especie24A);
-                }
-                break;
-            case 24:
-                if (planta == 0) {
-                    rbg_Especie25.check(R.id.rb_Especie25N);
-                } else if (planta == 1) {
-                    rbg_Especie25.check(R.id.rb_Especie25S);
-                } else if (planta == 2) {
-                    rbg_Especie25.check(R.id.rb_Especie25A);
-                }
-                break;
-            case 25:
-                if (planta == 0) {
-                    rbg_Especie26.check(R.id.rb_Especie26N);
-                } else if (planta == 1) {
-                    rbg_Especie26.check(R.id.rb_Especie26S);
-                } else if (planta == 2) {
-                    rbg_Especie26.check(R.id.rb_Especie26A);
-                }
-                break;
-            case 26:
-                if (planta == 0) {
-                    rbg_Especie27.check(R.id.rb_Especie27N);
-                } else if (planta == 1) {
-                    rbg_Especie27.check(R.id.rb_Especie27S);
-                } else if (planta == 2) {
-                    rbg_Especie27.check(R.id.rb_Especie27A);
-                }
-                break;
-            case 27:
-                if (planta == 0) {
-                    rbg_Especie28.check(R.id.rb_Especie28N);
-                } else if (planta == 1) {
-                    rbg_Especie28.check(R.id.rb_Especie28S);
-                } else if (planta == 2) {
-                    rbg_Especie28.check(R.id.rb_Especie28A);
-                }
-                break;
-            case 28:
-                if (planta == 0) {
-                    rbg_Especie29.check(R.id.rb_Especie29N);
-                } else if (planta == 1) {
-                    rbg_Especie29.check(R.id.rb_Especie29S);
-                } else if (planta == 2) {
-                    rbg_Especie29.check(R.id.rb_Especie29A);
-                }
-                break;
-            case 29:
-                if (planta == 0) {
-                    rbg_Especie30.check(R.id.rb_Especie30N);
-                } else if (planta == 1) {
-                    rbg_Especie30.check(R.id.rb_Especie30S);
-                } else if (planta == 2) {
-                    rbg_Especie30.check(R.id.rb_Especie30A);
-                }
-                break;
-            case 30:
-                if (planta == 0) {
-                    rbg_Especie31.check(R.id.rb_Especie31N);
-                } else if (planta == 1) {
-                    rbg_Especie31.check(R.id.rb_Especie31S);
-                } else if (planta == 2) {
-                    rbg_Especie31.check(R.id.rb_Especie31A);
-                }
-                break;
-            case 31:
-                if (planta == 0) {
-                    rbg_Especie32.check(R.id.rb_Especie32N);
-                } else if (planta == 1) {
-                    rbg_Especie32.check(R.id.rb_Especie32S);
-                } else if (planta == 2) {
-                    rbg_Especie32.check(R.id.rb_Especie32A);
-                }
-                break;
-            case 32:
-                if (planta == 0) {
-                    rbg_Especie33.check(R.id.rb_Especie33N);
-                } else if (planta == 1) {
-                    rbg_Especie33.check(R.id.rb_Especie33S);
-                } else if (planta == 2) {
-                    rbg_Especie33.check(R.id.rb_Especie33A);
-                }
-                break;
-            case 33:
-                if (planta == 0) {
-                    rbg_Especie34.check(R.id.rb_Especie34N);
-                } else if (planta == 1) {
-                    rbg_Especie34.check(R.id.rb_Especie34S);
-                } else if (planta == 2) {
-                    rbg_Especie34.check(R.id.rb_Especie34A);
-                }
-                break;
-            case 34:
-                if (planta == 0) {
-                    rbg_Especie35.check(R.id.rb_Especie35N);
-                } else if (planta == 1) {
-                    rbg_Especie35.check(R.id.rb_Especie35S);
-                } else if (planta == 2) {
-                    rbg_Especie35.check(R.id.rb_Especie35A);
-                }
-                break;
-            case 35:
-                if (planta == 0) {
-                    rbg_Especie36.check(R.id.rb_Especie36N);
-                } else if (planta == 1) {
-                    rbg_Especie36.check(R.id.rb_Especie36S);
-                } else if (planta == 2) {
-                    rbg_Especie36.check(R.id.rb_Especie36A);
-                }
-                break;
-        }
     }
 
     private void iniciarOnClickListeners() {
@@ -534,6 +109,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_VientoFuerte = findViewById(R.id.rb_VientoFuerte);
 
         //Radio Button Group Direccion Viento
+        tv_DireccionViento = findViewById(R.id.tv_DireccionViento);
         rbg_DireccionViento = findViewById(R.id.rbg_DireccionViento);
         rb_DirVientoN = findViewById(R.id.rb_DirN);
         rb_DirVientoS = findViewById(R.id.rb_DirS);
@@ -1263,6 +839,104 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         System.out.println("____________________________________________________");
     }
 
+    private void cargarDatos() {
+
+        etnd_TemperaturaInicio.setText(String.valueOf(datosEntorno.gettInicio()));
+        etnd_TemperaturaFin.setText(String.valueOf(datosEntorno.gettFin()));
+
+        switch (datosEntorno.getZonificacion()){
+            case 1:
+                rb_Zonficacion01.setChecked(true);
+                break;
+            case 2:
+                rb_Zonficacion02.setChecked(true);
+                break;
+            case 3:
+                rb_Zonficacion03.setChecked(true);
+                break;
+            case 4:
+                rb_Zonficacion04.setChecked(true);
+                break;
+            case 5:
+                rb_Zonficacion05.setChecked(true);
+                break;
+            case 6:
+                rb_Zonficacion06.setChecked(true);
+                break;
+            case 7:
+                rb_Zonficacion07.setChecked(true);
+                break;
+            case 8:
+                rb_Zonficacion08.setChecked(true);
+                break;
+            case 9:
+                rb_Zonficacion09.setChecked(true);
+                break;
+            case 10:
+                rb_Zonficacion10.setChecked(true);
+                break;
+            case 11:
+                rb_Zonficacion11.setChecked(true);
+                break;
+        }
+
+        cargarDireccionViento();
+
+        switch (datosEntorno.getViento()) {
+            case 1:
+                rb_VientoCalma.setChecked(true);
+                break;
+            case 2:
+                rb_VientoLigero.setChecked(true);
+                break;
+            case 3:
+                rb_VientoFuerte.setChecked(true);
+                break;
+        }
+        switch (datosEntorno.getNubes()){
+            case 1:
+                rb_NubesAusente.setChecked(true);
+                break;
+            case 2:
+                rb_NubesNYC.setChecked(true);
+                break;
+            case 3:
+                rb_NubesCubierto.setChecked(true);
+                break;
+            case 4:
+                rb_NubesMCubierto.setChecked(true);
+                break;
+        }
+        switch (datosEntorno.getLluvia()){
+            case 1:
+                rb_LluviaAusente.setChecked(true);
+                break;
+            case 2:
+                rb_LluviaIntermitente.setChecked(true);
+                break;
+            case 3:
+                rb_LluviaLigera.setChecked(true);
+                break;
+            case 4:
+                rb_LluviaFuerte.setChecked(true);
+                break;
+            case 5:
+                rb_LluviaMFuerte.setChecked(true);
+                break;
+        }
+
+
+        int i = 0;
+        while (i < datosEntorno.getPlantas().size()) {
+            int planta = datosEntorno.getPlantas().get(i);
+            marcarPlanta(i, planta);
+            i++;
+        }
+
+        et_Especie37.setText(datosEntorno.getEP37());
+        et_Especie38.setText(datosEntorno.getEP38());
+    }
+
     /**
      * Carga los datos de direccion de viento en el Spinner
      */
@@ -1291,6 +965,335 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
                 break;
             case "SO":
                 rb_DirVientoSO.setChecked(true);
+                break;
+        }
+    }
+
+    private void marcarPlanta(int numero, int planta) {
+        switch (numero) {
+            case 0:
+                if (planta == 0) {
+                    rbg_Especie01.check(R.id.rb_Especie01N);
+                } else if (planta == 1) {
+                    rbg_Especie01.check(R.id.rb_Especie01S);
+                } else if (planta == 2) {
+                    rbg_Especie01.check(R.id.rb_Especie01A);
+                }
+                break;
+            case 1:
+                if (planta == 0) {
+                    rbg_Especie02.check(R.id.rb_Especie02N);
+                } else if (planta == 1) {
+                    rbg_Especie02.check(R.id.rb_Especie02S);
+                } else if (planta == 2) {
+                    rbg_Especie02.check(R.id.rb_Especie02A);
+                }
+                break;
+            case 2:
+                if (planta == 0) {
+                    rbg_Especie03.check(R.id.rb_Especie03N);
+                } else if (planta == 1) {
+                    rbg_Especie03.check(R.id.rb_Especie03S);
+                } else if (planta == 2) {
+                    rbg_Especie03.check(R.id.rb_Especie03A);
+                }
+                break;
+            case 3:
+                if (planta == 0) {
+                    rbg_Especie04.check(R.id.rb_Especie04N);
+                } else if (planta == 1) {
+                    rbg_Especie04.check(R.id.rb_Especie04S);
+                } else if (planta == 2) {
+                    rbg_Especie04.check(R.id.rb_Especie04A);
+                }
+                break;
+            case 4:
+                if (planta == 0) {
+                    rbg_Especie05.check(R.id.rb_Especie05N);
+                } else if (planta == 1) {
+                    rbg_Especie05.check(R.id.rb_Especie05S);
+                } else if (planta == 2) {
+                    rbg_Especie05.check(R.id.rb_Especie05A);
+                }
+                break;
+            case 5:
+                if (planta == 0) {
+                    rbg_Especie06.check(R.id.rb_Especie06N);
+                } else if (planta == 1) {
+                    rbg_Especie06.check(R.id.rb_Especie06S);
+                } else if (planta == 2) {
+                    rbg_Especie06.check(R.id.rb_Especie06A);
+                }
+                break;
+            case 6:
+                if (planta == 0) {
+                    rbg_Especie07.check(R.id.rb_Especie07N);
+                } else if (planta == 1) {
+                    rbg_Especie07.check(R.id.rb_Especie07S);
+                } else if (planta == 2) {
+                    rbg_Especie07.check(R.id.rb_Especie07A);
+                }
+                break;
+            case 7:
+                if (planta == 0) {
+                    rbg_Especie08.check(R.id.rb_Especie08N);
+                } else if (planta == 1) {
+                    rbg_Especie08.check(R.id.rb_Especie08S);
+                } else if (planta == 2) {
+                    rbg_Especie08.check(R.id.rb_Especie08A);
+                }
+                break;
+            case 8:
+                if (planta == 0) {
+                    rbg_Especie09.check(R.id.rb_Especie09N);
+                } else if (planta == 1) {
+                    rbg_Especie09.check(R.id.rb_Especie09S);
+                } else if (planta == 2) {
+                    rbg_Especie09.check(R.id.rb_Especie09A);
+                }
+                break;
+            case 9:
+                if (planta == 0) {
+                    rbg_Especie10.check(R.id.rb_Especie10N);
+                } else if (planta == 1) {
+                    rbg_Especie10.check(R.id.rb_Especie10S);
+                } else if (planta == 2) {
+                    rbg_Especie10.check(R.id.rb_Especie10A);
+                }
+                break;
+            case 10:
+                if (planta == 0) {
+                    rbg_Especie11.check(R.id.rb_Especie11N);
+                } else if (planta == 1) {
+                    rbg_Especie11.check(R.id.rb_Especie11S);
+                } else if (planta == 2) {
+                    rbg_Especie11.check(R.id.rb_Especie11A);
+                }
+                break;
+            case 11:
+                if (planta == 0) {
+                    rbg_Especie12.check(R.id.rb_Especie12N);
+                } else if (planta == 1) {
+                    rbg_Especie12.check(R.id.rb_Especie12S);
+                } else if (planta == 2) {
+                    rbg_Especie12.check(R.id.rb_Especie12A);
+                }
+                break;
+            case 12:
+                if (planta == 0) {
+                    rbg_Especie13.check(R.id.rb_Especie13N);
+                } else if (planta == 1) {
+                    rbg_Especie13.check(R.id.rb_Especie13S);
+                } else if (planta == 2) {
+                    rbg_Especie13.check(R.id.rb_Especie13A);
+                }
+                break;
+            case 13:
+                if (planta == 0) {
+                    rbg_Especie14.check(R.id.rb_Especie14N);
+                } else if (planta == 1) {
+                    rbg_Especie14.check(R.id.rb_Especie14S);
+                } else if (planta == 2) {
+                    rbg_Especie14.check(R.id.rb_Especie14A);
+                }
+                break;
+            case 14:
+                if (planta == 0) {
+                    rbg_Especie15.check(R.id.rb_Especie15N);
+                } else if (planta == 1) {
+                    rbg_Especie15.check(R.id.rb_Especie15S);
+                } else if (planta == 2) {
+                    rbg_Especie15.check(R.id.rb_Especie15A);
+                }
+                break;
+            case 15:
+                if (planta == 0) {
+                    rbg_Especie16.check(R.id.rb_Especie16N);
+                } else if (planta == 1) {
+                    rbg_Especie16.check(R.id.rb_Especie16S);
+                } else if (planta == 2) {
+                    rbg_Especie16.check(R.id.rb_Especie16A);
+                }
+                break;
+            case 16:
+                if (planta == 0) {
+                    rbg_Especie17.check(R.id.rb_Especie17N);
+                } else if (planta == 1) {
+                    rbg_Especie17.check(R.id.rb_Especie17S);
+                } else if (planta == 2) {
+                    rbg_Especie17.check(R.id.rb_Especie17A);
+                }
+                break;
+            case 17:
+                if (planta == 0) {
+                    rbg_Especie18.check(R.id.rb_Especie18N);
+                } else if (planta == 1) {
+                    rbg_Especie18.check(R.id.rb_Especie18S);
+                } else if (planta == 2) {
+                    rbg_Especie18.check(R.id.rb_Especie18A);
+                }
+                break;
+            case 18:
+                if (planta == 0) {
+                    rbg_Especie19.check(R.id.rb_Especie19N);
+                } else if (planta == 1) {
+                    rbg_Especie19.check(R.id.rb_Especie19S);
+                } else if (planta == 2) {
+                    rbg_Especie19.check(R.id.rb_Especie19A);
+                }
+                break;
+            case 19:
+                if (planta == 0) {
+                    rbg_Especie20.check(R.id.rb_Especie20N);
+                } else if (planta == 1) {
+                    rbg_Especie20.check(R.id.rb_Especie20S);
+                } else if (planta == 2) {
+                    rbg_Especie20.check(R.id.rb_Especie20A);
+                }
+                break;
+            case 20:
+                if (planta == 0) {
+                    rbg_Especie21.check(R.id.rb_Especie21N);
+                } else if (planta == 1) {
+                    rbg_Especie21.check(R.id.rb_Especie21S);
+                } else if (planta == 2) {
+                    rbg_Especie21.check(R.id.rb_Especie21A);
+                }
+                break;
+            case 21:
+                if (planta == 0) {
+                    rbg_Especie22.check(R.id.rb_Especie22N);
+                } else if (planta == 1) {
+                    rbg_Especie22.check(R.id.rb_Especie22S);
+                } else if (planta == 2) {
+                    rbg_Especie22.check(R.id.rb_Especie22A);
+                }
+                break;
+            case 22:
+                if (planta == 0) {
+                    rbg_Especie23.check(R.id.rb_Especie23N);
+                } else if (planta == 1) {
+                    rbg_Especie23.check(R.id.rb_Especie23S);
+                } else if (planta == 2) {
+                    rbg_Especie23.check(R.id.rb_Especie23A);
+                }
+                break;
+            case 23:
+                if (planta == 0) {
+                    rbg_Especie24.check(R.id.rb_Especie24N);
+                } else if (planta == 1) {
+                    rbg_Especie24.check(R.id.rb_Especie24S);
+                } else if (planta == 2) {
+                    rbg_Especie24.check(R.id.rb_Especie24A);
+                }
+                break;
+            case 24:
+                if (planta == 0) {
+                    rbg_Especie25.check(R.id.rb_Especie25N);
+                } else if (planta == 1) {
+                    rbg_Especie25.check(R.id.rb_Especie25S);
+                } else if (planta == 2) {
+                    rbg_Especie25.check(R.id.rb_Especie25A);
+                }
+                break;
+            case 25:
+                if (planta == 0) {
+                    rbg_Especie26.check(R.id.rb_Especie26N);
+                } else if (planta == 1) {
+                    rbg_Especie26.check(R.id.rb_Especie26S);
+                } else if (planta == 2) {
+                    rbg_Especie26.check(R.id.rb_Especie26A);
+                }
+                break;
+            case 26:
+                if (planta == 0) {
+                    rbg_Especie27.check(R.id.rb_Especie27N);
+                } else if (planta == 1) {
+                    rbg_Especie27.check(R.id.rb_Especie27S);
+                } else if (planta == 2) {
+                    rbg_Especie27.check(R.id.rb_Especie27A);
+                }
+                break;
+            case 27:
+                if (planta == 0) {
+                    rbg_Especie28.check(R.id.rb_Especie28N);
+                } else if (planta == 1) {
+                    rbg_Especie28.check(R.id.rb_Especie28S);
+                } else if (planta == 2) {
+                    rbg_Especie28.check(R.id.rb_Especie28A);
+                }
+                break;
+            case 28:
+                if (planta == 0) {
+                    rbg_Especie29.check(R.id.rb_Especie29N);
+                } else if (planta == 1) {
+                    rbg_Especie29.check(R.id.rb_Especie29S);
+                } else if (planta == 2) {
+                    rbg_Especie29.check(R.id.rb_Especie29A);
+                }
+                break;
+            case 29:
+                if (planta == 0) {
+                    rbg_Especie30.check(R.id.rb_Especie30N);
+                } else if (planta == 1) {
+                    rbg_Especie30.check(R.id.rb_Especie30S);
+                } else if (planta == 2) {
+                    rbg_Especie30.check(R.id.rb_Especie30A);
+                }
+                break;
+            case 30:
+                if (planta == 0) {
+                    rbg_Especie31.check(R.id.rb_Especie31N);
+                } else if (planta == 1) {
+                    rbg_Especie31.check(R.id.rb_Especie31S);
+                } else if (planta == 2) {
+                    rbg_Especie31.check(R.id.rb_Especie31A);
+                }
+                break;
+            case 31:
+                if (planta == 0) {
+                    rbg_Especie32.check(R.id.rb_Especie32N);
+                } else if (planta == 1) {
+                    rbg_Especie32.check(R.id.rb_Especie32S);
+                } else if (planta == 2) {
+                    rbg_Especie32.check(R.id.rb_Especie32A);
+                }
+                break;
+            case 32:
+                if (planta == 0) {
+                    rbg_Especie33.check(R.id.rb_Especie33N);
+                } else if (planta == 1) {
+                    rbg_Especie33.check(R.id.rb_Especie33S);
+                } else if (planta == 2) {
+                    rbg_Especie33.check(R.id.rb_Especie33A);
+                }
+                break;
+            case 33:
+                if (planta == 0) {
+                    rbg_Especie34.check(R.id.rb_Especie34N);
+                } else if (planta == 1) {
+                    rbg_Especie34.check(R.id.rb_Especie34S);
+                } else if (planta == 2) {
+                    rbg_Especie34.check(R.id.rb_Especie34A);
+                }
+                break;
+            case 34:
+                if (planta == 0) {
+                    rbg_Especie35.check(R.id.rb_Especie35N);
+                } else if (planta == 1) {
+                    rbg_Especie35.check(R.id.rb_Especie35S);
+                } else if (planta == 2) {
+                    rbg_Especie35.check(R.id.rb_Especie35A);
+                }
+                break;
+            case 35:
+                if (planta == 0) {
+                    rbg_Especie36.check(R.id.rb_Especie36N);
+                } else if (planta == 1) {
+                    rbg_Especie36.check(R.id.rb_Especie36S);
+                } else if (planta == 2) {
+                    rbg_Especie36.check(R.id.rb_Especie36A);
+                }
                 break;
         }
     }

@@ -226,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="55"
                     android:text="Direccion del viento:"
-                    android:textColor="@color/VerdePrimario"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_15ssp" />
 
                 <RadioGroup
@@ -242,7 +242,8 @@
                         android:layout_height="wrap_content"
                         android:text="[N]  Norte"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
 
                     <RadioButton
                         android:id="@+id/rb_DirNE"
@@ -250,7 +251,8 @@
                         android:layout_height="wrap_content"
                         android:text="[NE] Nordeste"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
 
                     <RadioButton
                         android:id="@+id/rb_DirE"
@@ -258,7 +260,8 @@
                         android:layout_height="wrap_content"
                         android:text="[E]  Este"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
 
                     <RadioButton
                         android:id="@+id/rb_DirSE"
@@ -266,7 +269,8 @@
                         android:layout_height="wrap_content"
                         android:text="[SE] Sudeste"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
 
                     <RadioButton
                         android:id="@+id/rb_DirS"
@@ -274,7 +278,8 @@
                         android:layout_height="wrap_content"
                         android:text="[S]  Sur"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
 
                     <RadioButton
                         android:id="@+id/rb_DirSO"
@@ -282,7 +287,8 @@
                         android:layout_height="wrap_content"
                         android:text="[SO] Sudoeste"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
 
                     <RadioButton
                         android:id="@+id/rb_DirO"
@@ -290,7 +296,8 @@
                         android:layout_height="wrap_content"
                         android:text="[O]  Oeste"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
 
                     <RadioButton
                         android:id="@+id/rb_DirNO"
@@ -298,7 +305,8 @@
                         android:layout_height="wrap_content"
                         android:text="[NO] Nordoeste"
                         android:textSize="@dimen/_13ssp"
-                        android:textColor="@color/VerdePrimario"/>
+                        android:textColor="@color/Gris"
+                        android:clickable="false"/>
                 </RadioGroup>
 
             </LinearLayout>
