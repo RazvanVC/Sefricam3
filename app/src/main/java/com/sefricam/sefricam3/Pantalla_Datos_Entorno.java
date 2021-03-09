@@ -207,13 +207,82 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             finish();
         }
         if (v == rb_VientoCalma){
-
+            rb_DirVientoN.setChecked(false);
+            rb_DirVientoN.setClickable(false);
+            rb_DirVientoN.setTextColor(getColor(R.color.Gris));
+            rb_DirVientoNO.setChecked(false);
+            rb_DirVientoNO.setClickable(false);
+            rb_DirVientoNO.setTextColor(getColor(R.color.Gris));
+            rb_DirVientoNE.setChecked(false);
+            rb_DirVientoNE.setClickable(false);
+            rb_DirVientoNE.setTextColor(getColor(R.color.Gris));
+            rb_DirVientoS.setChecked(false);
+            rb_DirVientoS.setClickable(false);
+            rb_DirVientoS.setTextColor(getColor(R.color.Gris));
+            rb_DirVientoSE.setChecked(false);
+            rb_DirVientoSE.setClickable(false);
+            rb_DirVientoSE.setTextColor(getColor(R.color.Gris));
+            rb_DirVientoSO.setChecked(false);
+            rb_DirVientoSO.setClickable(false);
+            rb_DirVientoSO.setTextColor(getColor(R.color.Gris));
+            rb_DirVientoE.setChecked(false);
+            rb_DirVientoE.setClickable(false);
+            rb_DirVientoE.setTextColor(getColor(R.color.Gris));
+            rb_DirVientoO.setChecked(false);
+            rb_DirVientoO.setClickable(false);
+            rb_DirVientoO.setTextColor(getColor(R.color.Gris));
         }
         if (v == rb_VientoLigero){
-
+            rb_DirVientoN.setChecked(false);
+            rb_DirVientoN.setClickable(true);
+            rb_DirVientoN.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoNO.setChecked(false);
+            rb_DirVientoNO.setClickable(true);
+            rb_DirVientoNO.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoNE.setChecked(false);
+            rb_DirVientoNE.setClickable(true);
+            rb_DirVientoNE.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoS.setChecked(false);
+            rb_DirVientoS.setClickable(true);
+            rb_DirVientoS.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoSE.setChecked(false);
+            rb_DirVientoSE.setClickable(true);
+            rb_DirVientoSE.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoSO.setChecked(false);
+            rb_DirVientoSO.setClickable(true);
+            rb_DirVientoSO.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoE.setChecked(false);
+            rb_DirVientoE.setClickable(true);
+            rb_DirVientoE.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoO.setChecked(false);
+            rb_DirVientoO.setClickable(true);
+            rb_DirVientoO.setTextColor(getColor(R.color.VerdePrimario));
         }
         if (v == rb_VientoFuerte){
-
+            rb_DirVientoN.setChecked(false);
+            rb_DirVientoN.setClickable(true);
+            rb_DirVientoN.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoNO.setChecked(false);
+            rb_DirVientoNO.setClickable(true);
+            rb_DirVientoNO.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoNE.setChecked(false);
+            rb_DirVientoNE.setClickable(true);
+            rb_DirVientoNE.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoS.setChecked(false);
+            rb_DirVientoS.setClickable(true);
+            rb_DirVientoS.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoSE.setChecked(false);
+            rb_DirVientoSE.setClickable(true);
+            rb_DirVientoSE.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoSO.setChecked(false);
+            rb_DirVientoSO.setClickable(true);
+            rb_DirVientoSO.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoE.setChecked(false);
+            rb_DirVientoE.setClickable(true);
+            rb_DirVientoE.setTextColor(getColor(R.color.VerdePrimario));
+            rb_DirVientoO.setChecked(false);
+            rb_DirVientoO.setClickable(true);
+            rb_DirVientoO.setTextColor(getColor(R.color.VerdePrimario));
         }
     }
 
@@ -885,6 +954,30 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         switch (datosEntorno.getViento()) {
             case 1:
                 rb_VientoCalma.setChecked(true);
+                rb_DirVientoN.setChecked(false);
+                rb_DirVientoN.setClickable(false);
+                rb_DirVientoN.setTextColor(getColor(R.color.Gris));
+                rb_DirVientoNO.setChecked(false);
+                rb_DirVientoNO.setClickable(false);
+                rb_DirVientoNO.setTextColor(getColor(R.color.Gris));
+                rb_DirVientoNE.setChecked(false);
+                rb_DirVientoNE.setClickable(false);
+                rb_DirVientoNE.setTextColor(getColor(R.color.Gris));
+                rb_DirVientoS.setChecked(false);
+                rb_DirVientoS.setClickable(false);
+                rb_DirVientoS.setTextColor(getColor(R.color.Gris));
+                rb_DirVientoSE.setChecked(false);
+                rb_DirVientoSE.setClickable(false);
+                rb_DirVientoSE.setTextColor(getColor(R.color.Gris));
+                rb_DirVientoSO.setChecked(false);
+                rb_DirVientoSO.setClickable(false);
+                rb_DirVientoSO.setTextColor(getColor(R.color.Gris));
+                rb_DirVientoE.setChecked(false);
+                rb_DirVientoE.setClickable(false);
+                rb_DirVientoE.setTextColor(getColor(R.color.Gris));
+                rb_DirVientoO.setChecked(false);
+                rb_DirVientoO.setClickable(false);
+                rb_DirVientoO.setTextColor(getColor(R.color.Gris));
                 break;
             case 2:
                 rb_VientoLigero.setChecked(true);
