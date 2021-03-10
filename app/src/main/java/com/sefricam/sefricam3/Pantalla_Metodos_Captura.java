@@ -303,6 +303,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         int reclamosVerdecillo;
         int reclamosVerderonComun;
         int reclamosVerderonSerrano;
+
         int cimbelesCamachuelo;
         int cimbelesJilguero;
         int cimbelesLugano;
@@ -314,6 +315,31 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         int cimbelesVerdecillo;
         int cimbelesVerderonComun;
         int cimbelesVerderonSerrano;
+
+        int capturasCamachueloH;
+        int capturasJilgueroH;
+        int capturasLuganoH;
+        int capturasPardilloComunH;
+        int capturasPicogordoH;
+        int capturasPinzonComunH;
+        int capturasPinzonRealH;
+        int capturasPiquituertoH;
+        int capturasVerdecilloH;
+        int capturasVerderonComunH;
+        int capturasVerderonSerranoH;
+
+        int capturasCamachueloM;
+        int capturasJilgueroM;
+        int capturasLuganoM;
+        int capturasPardilloComunM;
+        int capturasPicogordoM;
+        int capturasPinzonComunM;
+        int capturasPinzonRealM;
+        int capturasPiquituertoM;
+        int capturasVerdecilloM;
+        int capturasVerderonComunM;
+        int capturasVerderonSerranoM;
+
 
         int numeroMallas = parseInt(etn_NumeroMallas.getText().toString());
         int longitudRed = parseInt(etn_LongitudRed.getText().toString());
@@ -415,30 +441,95 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         } else cimbelesVerderonSerrano = parseInt(etn_CimbelesVerderonSerrano.getText().toString());
 
         //EditText Capturas
+        if (etn_CapturasCamachueloM.getText().toString().equals("")){
+            capturasCamachueloM = 0;
+        } else capturasCamachueloM = Integer.parseInt(etn_CapturasCamachueloM.getText().toString());
 
-        int capturasCamachueloM = Integer.parseInt(etn_CapturasCamachueloM.getText().toString());
-        int capturasJilgueroM = Integer.parseInt(etn_CapturasJilgueroM.getText().toString());
-        int capturasLuganoM = Integer.parseInt(etn_CapturasLuganoM.getText().toString());
-        int capturasPardilloComunM = Integer.parseInt(etn_CapturasPardilloComunM.getText().toString());
-        int capturasPicogordoM = Integer.parseInt(etn_CapturasPicogordoM.getText().toString());
-        int capturasPinzonComunM = Integer.parseInt(etn_CapturasPinzonComunM.getText().toString());
-        int capturasPinzonRealM = Integer.parseInt(etn_CapturasPinzonRealM.getText().toString());
-        int capturasPiquituertoM = Integer.parseInt(etn_CapturasPiquituertoM.getText().toString());
-        int capturasVerdecilloM = Integer.parseInt(etn_CapturasVerdecilloM.getText().toString());
-        int capturasVerdonComunM = Integer.parseInt(etn_CapturasVerderonComunM.getText().toString());
-        int capturasVerdonSerranoM = Integer.parseInt(etn_CapturasVerderonSerranoM.getText().toString());
+        if (etn_CapturasJilgueroM.getText().toString().equals("")){
+            capturasJilgueroM = 0;
+        } else capturasJilgueroM = Integer.parseInt(etn_CapturasJilgueroM.getText().toString());
 
-        int capturasCamachueloH = Integer.parseInt(etn_CapturasCamachueloH.getText().toString());
-        int capturasJilgueroH = Integer.parseInt(etn_CapturasJilgueroH.getText().toString());
-        int capturasLuganoH = Integer.parseInt(etn_CapturasLuganoH.getText().toString());
-        int capturasPardilloComunH = Integer.parseInt(etn_CapturasPardilloComunH.getText().toString());
-        int capturasPicogordoH = Integer.parseInt(etn_CapturasPicogordoH.getText().toString());
-        int capturasPinzonComunH = Integer.parseInt(etn_CapturasPinzonComunH.getText().toString());
-        int capturasPinzonRealH = Integer.parseInt(etn_CapturasPinzonRealH.getText().toString());
-        int capturasPiquituertoH = Integer.parseInt(etn_CapturasPiquituertoH.getText().toString());
-        int capturasVerdecilloH = Integer.parseInt(etn_CapturasVerdecilloH.getText().toString());
-        int capturasVerdonComunH = Integer.parseInt(etn_CapturasVerderonComunH.getText().toString());
-        int capturasVerdonSerranoH = Integer.parseInt(etn_CapturasVerderonSerranoH.getText().toString());
+        if (etn_CapturasLuganoM.getText().toString().equals("")){
+            capturasLuganoM = 0;
+        } else capturasLuganoM = Integer.parseInt(etn_CapturasLuganoM.getText().toString());
+
+        if (etn_CapturasPardilloComunM.getText().toString().equals("")){
+            capturasPardilloComunM = 0;
+        } else capturasPardilloComunM = Integer.parseInt(etn_CapturasPardilloComunM.getText().toString());
+
+        if (etn_CapturasPicogordoM.getText().toString().equals("")){
+            capturasPicogordoM = 0;
+        } else capturasPicogordoM = Integer.parseInt(etn_CapturasPicogordoM.getText().toString());
+
+        if (etn_CapturasPinzonComunM.getText().toString().equals("")){
+            capturasPinzonComunM = 0;
+        } else capturasPinzonComunM = Integer.parseInt(etn_CapturasPinzonComunM.getText().toString());
+
+        if (etn_CapturasPinzonRealM.getText().toString().equals("")){
+            capturasPinzonRealM = 0;
+        } else capturasPinzonRealM = Integer.parseInt(etn_CapturasPinzonRealM.getText().toString());
+
+        if (etn_CapturasPiquituertoM.getText().toString().equals("")){
+            capturasPiquituertoM = 0;
+        } else capturasPiquituertoM = Integer.parseInt(etn_CapturasPiquituertoM.getText().toString());
+
+        if (etn_CapturasVerdecilloM.getText().toString().equals("")){
+            capturasVerdecilloM = 0;
+        } else capturasVerdecilloM = Integer.parseInt(etn_CapturasVerdecilloM.getText().toString());
+
+        if (etn_CapturasVerderonComunM.getText().toString().equals("")){
+            capturasVerderonComunM = 0;
+        } else capturasVerderonComunM = Integer.parseInt(etn_CapturasVerderonComunM.getText().toString());
+
+        if (etn_CapturasVerderonSerranoM.getText().toString().equals("")){
+            capturasVerderonSerranoM = 0;
+        } else capturasVerderonSerranoM = Integer.parseInt(etn_CapturasVerderonSerranoM.getText().toString());
+
+        //EditText Capturas
+        if (etn_CapturasCamachueloH.getText().toString().equals("")){
+            capturasCamachueloH = 0;
+        } else capturasCamachueloH = Integer.parseInt(etn_CapturasCamachueloH.getText().toString());
+
+        if (etn_CapturasJilgueroH.getText().toString().equals("")){
+            capturasJilgueroH = 0;
+        } else capturasJilgueroH = Integer.parseInt(etn_CapturasJilgueroH.getText().toString());
+
+        if (etn_CapturasLuganoH.getText().toString().equals("")){
+            capturasLuganoH = 0;
+        } else capturasLuganoH = Integer.parseInt(etn_CapturasLuganoH.getText().toString());
+
+        if (etn_CapturasPardilloComunH.getText().toString().equals("")){
+            capturasPardilloComunH = 0;
+        } else capturasPardilloComunH = Integer.parseInt(etn_CapturasPardilloComunH.getText().toString());
+
+        if (etn_CapturasPicogordoH.getText().toString().equals("")){
+            capturasPicogordoH = 0;
+        } else capturasPicogordoH = Integer.parseInt(etn_CapturasPicogordoH.getText().toString());
+
+        if (etn_CapturasPinzonComunH.getText().toString().equals("")){
+            capturasPinzonComunH = 0;
+        } else capturasPinzonComunH = Integer.parseInt(etn_CapturasPinzonComunH.getText().toString());
+
+        if (etn_CapturasPinzonRealH.getText().toString().equals("")){
+            capturasPinzonRealH = 0;
+        } else capturasPinzonRealH = Integer.parseInt(etn_CapturasPinzonRealH.getText().toString());
+
+        if (etn_CapturasPiquituertoH.getText().toString().equals("")){
+            capturasPiquituertoH = 0;
+        } else capturasPiquituertoH = Integer.parseInt(etn_CapturasPiquituertoH.getText().toString());
+
+        if (etn_CapturasVerdecilloH.getText().toString().equals("")){
+            capturasVerdecilloH = 0;
+        } else capturasVerdecilloH = Integer.parseInt(etn_CapturasVerdecilloH.getText().toString());
+
+        if (etn_CapturasVerderonComunH.getText().toString().equals("")){
+            capturasVerderonComunH = 0;
+        } else capturasVerderonComunH = Integer.parseInt(etn_CapturasVerderonComunH.getText().toString());
+
+        if (etn_CapturasVerderonSerranoH.getText().toString().equals("")){
+            capturasVerderonSerranoH = 0;
+        } else capturasVerderonSerranoH = Integer.parseInt(etn_CapturasVerderonSerranoH.getText().toString());
+
 
         String observaciones = et_Observaciones.getText().toString();
 
@@ -452,8 +543,8 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
                 reclamosPinzonReal, cimbelesPinzonReal, capturasPinzonRealM, capturasPinzonRealH,
                 reclamosPiquituerto, cimbelesPiquituerto, capturasPiquituertoM, capturasPiquituertoH,
                 reclamosVerdecillo, cimbelesVerdecillo, capturasVerdecilloM, capturasVerdecilloH,
-                reclamosVerderonComun, cimbelesVerderonComun, capturasVerdonComunM, capturasVerdonComunH,
-                reclamosVerderonSerrano, cimbelesVerderonSerrano, capturasVerdonSerranoM, capturasVerdonSerranoH,
+                reclamosVerderonComun, cimbelesVerderonComun, capturasVerderonComunM, capturasVerderonComunH,
+                reclamosVerderonSerrano, cimbelesVerderonSerrano, capturasVerderonSerranoM, capturasVerderonSerranoH,
                 observaciones);
     }
 
@@ -478,161 +569,196 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         if (TextUtils.isEmpty(etn_LongitudRed.getText().toString())) comprobado = false;
         if (!comprobado) return comprobado;
 
-        /*
+
         comprobado = comprobarCimbeles();
         if (!comprobado) return comprobado;
 
         comprobado = comprobarReclamos();
         if (!comprobado) return comprobado;
-        ;*/
+
 
         if (rbg_Coto.getCheckedRadioButtonId()==-1) comprobado =false;
         if (!comprobado) return comprobado;
 
         if (rbg_ControlAgentes.getCheckedRadioButtonId()==-1) comprobado=false;
         if (!comprobado) return comprobado;
-        if (rbg_ControlAgentes.getCheckedRadioButtonId()!=-1)
-            if (rbg_ControlAgentes.getCheckedRadioButtonId()==R.id.rb_SiControlAgentes){
+        if (rbg_ControlAgentes.getCheckedRadioButtonId()!=-1) {
+            if (rbg_ControlAgentes.getCheckedRadioButtonId() == R.id.rb_SiControlAgentes) {
                 if (
-                    !cb_ControlOtros.isChecked()
-                    &&!cb_ControlPoliciaNacional.isChecked()
-                    &&!cb_ControlPoliciaMunicipal.isChecked()
-                    &&!cb_ControlForestales.isChecked()
-                    &&!cb_ControlSeprona.isChecked()
+                        !cb_ControlOtros.isChecked()
+                                && !cb_ControlPoliciaNacional.isChecked()
+                                && !cb_ControlPoliciaMunicipal.isChecked()
+                                && !cb_ControlForestales.isChecked()
+                                && !cb_ControlSeprona.isChecked()
                 )
-                comprobado=false;
+                    comprobado = false;
             }
-        if (!comprobado) {
-            Toast.makeText(this, "Los valores introducidos son erroneos", Toast.LENGTH_SHORT).show();
-        }
-        return comprobado;
-    }
-
-    private boolean comprobarCapturasM() {
-        boolean comprobado = true;
-        try {
-            valueOf(etn_CapturasCamachueloM.getText().toString());
-            valueOf(etn_CapturasJilgueroM.getText().toString());
-            valueOf(etn_CapturasLuganoM.getText().toString());
-            valueOf(etn_CapturasPardilloComunM.getText().toString());
-            valueOf(etn_CapturasPicogordoM.getText().toString());
-            valueOf(etn_CapturasPinzonComunM.getText().toString());
-            valueOf(etn_CapturasPinzonRealM.getText().toString());
-            valueOf(etn_CapturasPiquituertoM.getText().toString());
-            valueOf(etn_CapturasVerdecilloM.getText().toString());
-            valueOf(etn_CapturasVerderonComunM.getText().toString());
-            valueOf(etn_CapturasVerderonSerranoM.getText().toString());
-        } catch (Exception e){
-            comprobado = false;
-            /*Toast.makeText*/System.out.println(/*this,*/ "Los valores de la columna capturas machos tienen que estar rellenos"/*, Toast.LENGTH_LONG).show();*/);
-        }
-        return comprobado;
-    }
-
-    private boolean comprobarCapturasH() {
-        boolean comprobado = true;
-        try {
-            valueOf(etn_CapturasCamachueloH.getText().toString());
-            valueOf(etn_CapturasJilgueroH.getText().toString());
-            valueOf(etn_CapturasLuganoH.getText().toString());
-            valueOf(etn_CapturasPardilloComunH.getText().toString());
-            valueOf(etn_CapturasPicogordoH.getText().toString());
-            valueOf(etn_CapturasPinzonComunH.getText().toString());
-            valueOf(etn_CapturasPinzonRealH.getText().toString());
-            valueOf(etn_CapturasPiquituertoH.getText().toString());
-            valueOf(etn_CapturasVerdecilloH.getText().toString());
-            valueOf(etn_CapturasVerderonComunH.getText().toString());
-            valueOf(etn_CapturasVerderonSerranoH.getText().toString());
-        } catch (Exception e){
-            comprobado = false;
-            Toast.makeText(this, "Los valores de la columna capturas hembra tienen que estar rellenos", Toast.LENGTH_LONG).show();
         }
         return comprobado;
     }
 
     private boolean comprobarReclamos() {
-        boolean comprobado = true;
-        try {
-            valueOf(etn_ReclamosCamachuelo.getText().toString());
-            valueOf(etn_ReclamosJilguero.getText().toString());
-            valueOf(etn_ReclamosLugano.getText().toString());
-            valueOf(etn_ReclamosPardilloComun.getText().toString());
-            valueOf(etn_ReclamosPicogordo.getText().toString());
-            valueOf(etn_ReclamosPinzonComun.getText().toString());
-            valueOf(etn_ReclamosPinzonReal.getText().toString());
-            valueOf(etn_ReclamosPiquituerto.getText().toString());
-            valueOf(etn_ReclamosVerdecillo.getText().toString());
-            valueOf(etn_ReclamosVerderonComun.getText().toString());
-            valueOf(etn_ReclamosVerderonSerrano.getText().toString());
-        } catch (Exception e){
-            Toast.makeText(this, "Los valores de la columna reclamos tienen que estar rellenos", Toast.LENGTH_LONG).show();
-            return false;
+
+        if (!etn_ReclamosCamachuelo.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosCamachuelo.getText().toString())>limites.getMaxRecCamachuelo()) {
+                Toast.makeText(this, "Los reclamos de Camachuelo no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        System.out.println("Max Rec Camachuelo => "+limites.getMaxRecCamachuelo());
-        System.out.println("Max Rec Jilguero   => "+limites.getMaxRecJilguero());
-        System.out.println("Max Rec Lugano     => "+limites.getMaxRecLugano());
-
-
-        if (parseInt(etn_ReclamosCamachuelo.getText().toString())>limites.getMaxRecCamachuelo()) comprobado = false;
-        if (parseInt(etn_ReclamosJilguero.getText().toString())>limites.getMaxRecJilguero()) comprobado = false;
-        if (parseInt(etn_ReclamosLugano.getText().toString())>limites.getMaxRecLugano()) comprobado = false;
-        if (parseInt(etn_ReclamosPardilloComun.getText().toString())>limites.getMaxRecPardComun()) comprobado = false;
-        if (parseInt(etn_ReclamosPicogordo.getText().toString())>limites.getMaxRecPicogordo()) comprobado = false;
-        if (parseInt(etn_ReclamosPinzonComun.getText().toString())>limites.getMaxRecPinzComun()) comprobado = false;
-        if (parseInt(etn_ReclamosPinzonReal.getText().toString())>limites.getMaxRecPinzReal()) comprobado = false;
-        if (parseInt(etn_ReclamosPiquituerto.getText().toString())>limites.getMaxRecPiquituerto()) comprobado = false;
-        if (parseInt(etn_ReclamosVerdecillo.getText().toString())>limites.getMaxRecVerdecillo()) comprobado = false;
-        if (parseInt(etn_ReclamosVerderonComun.getText().toString())>limites.getMaxRecVerdComun()) comprobado = false;
-        if (parseInt(etn_ReclamosVerderonSerrano.getText().toString())>limites.getMaxRecVerdSerrano()) comprobado = false;
-
-        if (!comprobado) {
-            Toast.makeText(this, "Los valores que ha metido en los reclamos no se corresponden con los permitidos", Toast.LENGTH_LONG).show();
+        if (!etn_ReclamosJilguero.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosJilguero.getText().toString())>limites.getMaxRecJilguero()) {
+                Toast.makeText(this, "Los reclamos de Jilguero no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        return comprobado;
+        if (!etn_ReclamosJilguero.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosLugano.getText().toString())>limites.getMaxRecLugano()) {
+                Toast.makeText(this, "Los reclamos de Lugano no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosPardilloComun.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosPardilloComun.getText().toString())>limites.getMaxRecPardComun()) {
+                Toast.makeText(this, "Los reclamos de PardilloComun no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosPicogordo.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosPicogordo.getText().toString())>limites.getMaxRecPicogordo()) {
+                Toast.makeText(this, "Los reclamos de Picogordo no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosPinzonComun.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosPinzonComun.getText().toString())>limites.getMaxRecPinzComun()) {
+                Toast.makeText(this, "Los reclamos de PinzonComun no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosPinzonReal.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosPinzonReal.getText().toString())>limites.getMaxRecPinzReal()) {
+                Toast.makeText(this, "Los reclamos de PinzonReal no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosPiquituerto.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosPiquituerto.getText().toString())>limites.getMaxRecPiquituerto()) {
+                Toast.makeText(this, "Los reclamos de Piquituerto no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosVerdecillo.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosVerdecillo.getText().toString())>limites.getMaxRecVerdecillo()) {
+                Toast.makeText(this, "Los reclamos de Verdecillo no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosVerderonComun.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosVerderonComun.getText().toString())>limites.getMaxRecVerdComun()) {
+                Toast.makeText(this, "Los reclamos de VerderonComun no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_ReclamosVerderonSerrano.getText().toString().equals("")){
+            if (parseInt(etn_ReclamosVerderonSerrano.getText().toString())>limites.getMaxRecVerdSerrano()) {
+                Toast.makeText(this, "Los reclamos de VerderonSerrano no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private boolean comprobarCimbeles() {
-        boolean comprobado = true;
-        try {
-            valueOf(etn_CimbelesCamachuelo.getText().toString());
-            valueOf(etn_CimbelesJilguero.getText().toString());
-            valueOf(etn_CimbelesLugano.getText().toString());
-            valueOf(etn_CimbelesPardilloComun.getText().toString());
-            valueOf(etn_CimbelesPicogordo.getText().toString());
-            valueOf(etn_CimbelesPinzonComun.getText().toString());
-            valueOf(etn_CimbelesPinzonReal.getText().toString());
-            valueOf(etn_CimbelesPiquituerto.getText().toString());
-            valueOf(etn_CimbelesVerdecillo.getText().toString());
-            valueOf(etn_CimbelesVerderonComun.getText().toString());
-            valueOf(etn_CimbelesVerderonSerrano.getText().toString());
-        } catch (Exception e){
-            Toast.makeText(this, "Los valores de la columna cimbeles tienen que estar rellenos", Toast.LENGTH_LONG).show();
-            return false;
+
+        if (!etn_CimbelesCamachuelo.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesCamachuelo.getText().toString())>limites.getMaxCimCamachuelo()) {
+                Toast.makeText(this, "Los cimbeles de Camachuelo no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        System.out.println("Max Cim Camachuelo => "+limites.getMaxCimCamachuelo());
-        System.out.println("Max Cim Jilguero   => "+limites.getMaxCimJilguero());
-        System.out.println("Max Cim Lugano     => "+limites.getMaxCimLugano());
-
-        if (parseInt(etn_CimbelesCamachuelo.getText().toString())>limites.getMaxCimCamachuelo()) comprobado = false;
-        if (parseInt(etn_CimbelesJilguero.getText().toString())>limites.getMaxCimJilguero()) comprobado = false;
-        if (parseInt(etn_CimbelesLugano.getText().toString())>limites.getMaxCimLugano()) comprobado = false;
-        if (parseInt(etn_CimbelesPardilloComun.getText().toString())>limites.getMaxCimPardComun()) comprobado = false;
-        if (parseInt(etn_CimbelesPicogordo.getText().toString())>limites.getMaxCimPicogordo()) comprobado = false;
-        if (parseInt(etn_CimbelesPinzonComun.getText().toString())>limites.getMaxCimPinzComun()) comprobado = false;
-        if (parseInt(etn_CimbelesPinzonReal.getText().toString())>limites.getMaxCimPinzReal()) comprobado = false;
-        if (parseInt(etn_CimbelesPiquituerto.getText().toString())>limites.getMaxCimPiquituerto()) comprobado = false;
-        if (parseInt(etn_CimbelesVerdecillo.getText().toString())>limites.getMaxCimVerdecillo()) comprobado = false;
-        if (parseInt(etn_CimbelesVerderonComun.getText().toString())>limites.getMaxCimVerdComun()) comprobado = false;
-        if (parseInt(etn_CimbelesVerderonSerrano.getText().toString())>limites.getMaxCimVerdSerrano()) comprobado = false;
-
-        if (!comprobado) {
-            Toast.makeText(this, "Los valores que ha metido en los cimbeles no se corresponden con los permitidos", Toast.LENGTH_LONG).show();
+        if (!etn_CimbelesJilguero.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesJilguero.getText().toString())>limites.getMaxCimJilguero()) {
+                Toast.makeText(this, "Los cimbeles de Jilguero no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        return comprobado;
+        if (!etn_CimbelesJilguero.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesLugano.getText().toString())>limites.getMaxCimLugano()) {
+                Toast.makeText(this, "Los cimbeles de Lugano no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesPardilloComun.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesPardilloComun.getText().toString())>limites.getMaxCimPardComun()) {
+                Toast.makeText(this, "Los cimbeles de Pardillo Comun no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesPicogordo.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesPicogordo.getText().toString())>limites.getMaxCimPicogordo()) {
+                Toast.makeText(this, "Los cimbeles de Picogordo no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesPinzonComun.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesPinzonComun.getText().toString())>limites.getMaxCimPinzComun()) {
+                Toast.makeText(this, "Los cimbeles de Pinzon Comun no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesPinzonReal.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesPinzonReal.getText().toString())>limites.getMaxCimPinzReal()) {
+                Toast.makeText(this, "Los cimbeles de Pinzon Real no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesPiquituerto.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesPiquituerto.getText().toString())>limites.getMaxCimPiquituerto()) {
+                Toast.makeText(this, "Los cimbeles de Piquituerto no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesVerdecillo.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesVerdecillo.getText().toString())>limites.getMaxCimVerdecillo()) {
+                Toast.makeText(this, "Los cimbeles de Verdecillo no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesVerderonComun.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesVerderonComun.getText().toString())>limites.getMaxCimVerdComun()) {
+                Toast.makeText(this, "Los cimbeles de Verderon Comun no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!etn_CimbelesVerderonSerrano.getText().toString().equals("")){
+            if (parseInt(etn_CimbelesVerderonSerrano.getText().toString())>limites.getMaxCimVerdSerrano()) {
+                Toast.makeText(this, "Los cimbeles de Verderon Serrano no coinciden con los límites", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void guardarParametros(Intent actividadDestino) {
