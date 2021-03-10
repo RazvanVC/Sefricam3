@@ -593,12 +593,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
     }
 
     private boolean comprobarCampos() {
-        boolean comprobado = true;
-        if (sp_HoraInicio.getSelectedItemPosition()==0) comprobado=false;
-        if (sp_HoraFin.getSelectedItemPosition()==0) comprobado=false;
+        if (sp_HoraInicio.getSelectedItemPosition()==0) return false;
+        if (sp_HoraFin.getSelectedItemPosition()==0) return false;
         //COMPROBACION DE TODOS LOS CAMPOS
 
-        return comprobado;
+        return true;
     }
 
     private void asignacionValores(){
@@ -620,95 +619,242 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
     }
 
     private void asignarHora08() {
-        hora08.add(Integer.parseInt(etn_Camachuelo08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_Jilguero08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_Lugano08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_PardilloComun08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_Picogordo08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_PinzonComun08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_PinzonReal08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_Piquituerto08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_Verdecillo08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_VerdonComun08.getText().toString()));
-        hora08.add(Integer.parseInt(etn_VerdonSerrano08.getText().toString()));
+        if (etn_Camachuelo08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_Camachuelo08.getText().toString()));
+
+        if (etn_Jilguero08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_Jilguero08.getText().toString()));
+
+        if (etn_Lugano08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_Lugano08.getText().toString()));
+
+        if (etn_PardilloComun08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_PardilloComun08.getText().toString()));
+
+        if (etn_Picogordo08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_Picogordo08.getText().toString()));
+
+        if (etn_PinzonComun08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_PinzonComun08.getText().toString()));
+
+        if (etn_PinzonReal08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_PinzonReal08.getText().toString()));
+
+        if (etn_Piquituerto08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_Piquituerto08.getText().toString()));
+
+        if (etn_Verdecillo08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_Verdecillo08.getText().toString()));
+
+        if (etn_VerdonComun08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_VerdonComun08.getText().toString()));
+
+        if (etn_VerdonSerrano08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_VerdonSerrano08.getText().toString()));
     }
     private void asignarHora09() {
-        hora09.add(Integer.parseInt(etn_Camachuelo09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_Jilguero09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_Lugano09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_PardilloComun09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_Picogordo09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_PinzonComun09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_PinzonReal09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_Piquituerto09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_Verdecillo09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_VerdonComun09.getText().toString()));
-        hora09.add(Integer.parseInt(etn_VerdonSerrano09.getText().toString()));
+        if (etn_Camachuelo09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_Camachuelo09.getText().toString()));
+
+        if (etn_Jilguero09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_Jilguero09.getText().toString()));
+
+        if (etn_Lugano09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_Lugano09.getText().toString()));
+
+        if (etn_PardilloComun09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_PardilloComun09.getText().toString()));
+
+        if (etn_Picogordo09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_Picogordo09.getText().toString()));
+
+        if (etn_PinzonComun09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_PinzonComun09.getText().toString()));
+
+        if (etn_PinzonReal09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_PinzonReal09.getText().toString()));
+
+        if (etn_Piquituerto09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_Piquituerto09.getText().toString()));
+
+        if (etn_Verdecillo09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_Verdecillo09.getText().toString()));
+
+        if (etn_VerdonComun09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_VerdonComun09.getText().toString()));
+
+        if (etn_VerdonSerrano09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_VerdonSerrano09.getText().toString()));
     }
     private void asignarHora10() {
-        hora10.add(Integer.parseInt(etn_Camachuelo10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_Jilguero10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_Lugano10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_PardilloComun10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_Picogordo10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_PinzonComun10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_PinzonReal10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_Piquituerto10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_Verdecillo10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_VerdonComun10.getText().toString()));
-        hora10.add(Integer.parseInt(etn_VerdonSerrano10.getText().toString()));
+        if (etn_Camachuelo10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_Camachuelo10.getText().toString()));
+
+        if (etn_Jilguero10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_Jilguero10.getText().toString()));
+
+        if (etn_Lugano10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_Lugano10.getText().toString()));
+
+        if (etn_PardilloComun10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_PardilloComun10.getText().toString()));
+
+        if (etn_Picogordo10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_Picogordo10.getText().toString()));
+
+        if (etn_PinzonComun10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_PinzonComun10.getText().toString()));
+
+        if (etn_PinzonReal10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_PinzonReal10.getText().toString()));
+
+        if (etn_Piquituerto10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_Piquituerto10.getText().toString()));
+
+        if (etn_Verdecillo10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_Verdecillo10.getText().toString()));
+
+        if (etn_VerdonComun10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_VerdonComun10.getText().toString()));
+
+        if (etn_VerdonSerrano10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_VerdonSerrano10.getText().toString()));
     }
     private void asignarHora11() {
-        hora11.add(Integer.parseInt(etn_Camachuelo11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_Jilguero11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_Lugano11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_PardilloComun11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_Picogordo11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_PinzonComun11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_PinzonReal11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_Piquituerto11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_Verdecillo11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_VerdonComun11.getText().toString()));
-        hora11.add(Integer.parseInt(etn_VerdonSerrano11.getText().toString()));
+        if (etn_Camachuelo11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_Camachuelo11.getText().toString()));
+
+        if (etn_Jilguero11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_Jilguero11.getText().toString()));
+
+        if (etn_Lugano11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_Lugano11.getText().toString()));
+
+        if (etn_PardilloComun11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_PardilloComun11.getText().toString()));
+
+        if (etn_Picogordo11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_Picogordo11.getText().toString()));
+
+        if (etn_PinzonComun11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_PinzonComun11.getText().toString()));
+
+        if (etn_PinzonReal11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_PinzonReal11.getText().toString()));
+
+        if (etn_Piquituerto11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_Piquituerto11.getText().toString()));
+
+        if (etn_Verdecillo11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_Verdecillo11.getText().toString()));
+
+        if (etn_VerdonComun11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_VerdonComun11.getText().toString()));
+
+        if (etn_VerdonSerrano11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_VerdonSerrano11.getText().toString()));
     }
     private void asignarHora12() {
-        hora12.add(Integer.parseInt(etn_Camachuelo12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_Jilguero12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_Lugano12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_PardilloComun12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_Picogordo12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_PinzonComun12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_PinzonReal12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_Piquituerto12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_Verdecillo12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_VerdonComun12.getText().toString()));
-        hora12.add(Integer.parseInt(etn_VerdonSerrano12.getText().toString()));
+        if (etn_Camachuelo12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_Camachuelo12.getText().toString()));
+
+        if (etn_Jilguero12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_Jilguero12.getText().toString()));
+
+        if (etn_Lugano12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_Lugano12.getText().toString()));
+
+        if (etn_PardilloComun12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_PardilloComun12.getText().toString()));
+
+        if (etn_Picogordo12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_Picogordo12.getText().toString()));
+
+        if (etn_PinzonComun12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_PinzonComun12.getText().toString()));
+
+        if (etn_PinzonReal12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_PinzonReal12.getText().toString()));
+
+        if (etn_Piquituerto12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_Piquituerto12.getText().toString()));
+
+        if (etn_Verdecillo12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_Verdecillo12.getText().toString()));
+
+        if (etn_VerdonComun12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_VerdonComun12.getText().toString()));
+
+        if (etn_VerdonSerrano12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_VerdonSerrano12.getText().toString()));
     }
     private void asignarHora13() {
-        hora13.add(Integer.parseInt(etn_Camachuelo13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_Jilguero13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_Lugano13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_PardilloComun13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_Picogordo13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_PinzonComun13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_PinzonReal13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_Piquituerto13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_Verdecillo13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_VerdonComun13.getText().toString()));
-        hora13.add(Integer.parseInt(etn_VerdonSerrano13.getText().toString()));
+        if (etn_Camachuelo13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_Camachuelo13.getText().toString()));
+
+        if (etn_Jilguero13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_Jilguero13.getText().toString()));
+
+        if (etn_Lugano13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_Lugano13.getText().toString()));
+
+        if (etn_PardilloComun13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_PardilloComun13.getText().toString()));
+
+        if (etn_Picogordo13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_Picogordo13.getText().toString()));
+
+        if (etn_PinzonComun13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_PinzonComun13.getText().toString()));
+
+        if (etn_PinzonReal13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_PinzonReal13.getText().toString()));
+
+        if (etn_Piquituerto13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_Piquituerto13.getText().toString()));
+
+        if (etn_Verdecillo13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_Verdecillo13.getText().toString()));
+
+        if (etn_VerdonComun13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_VerdonComun13.getText().toString()));
+
+        if (etn_VerdonSerrano13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_VerdonSerrano13.getText().toString()));
     }
     private void asignarHora14() {
-        hora14.add(Integer.parseInt(etn_Camachuelo14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_Jilguero14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_Lugano14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_PardilloComun14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_Picogordo14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_PinzonComun14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_PinzonReal14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_Piquituerto14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_Verdecillo14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_VerdonComun14.getText().toString()));
-        hora14.add(Integer.parseInt(etn_VerdonSerrano14.getText().toString()));
+        if (etn_Camachuelo14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_Camachuelo14.getText().toString()));
+
+        if (etn_Jilguero14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_Jilguero14.getText().toString()));
+
+        if (etn_Lugano14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_Lugano14.getText().toString()));
+
+        if (etn_PardilloComun14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_PardilloComun14.getText().toString()));
+
+        if (etn_Picogordo14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_Picogordo14.getText().toString()));
+
+        if (etn_PinzonComun14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_PinzonComun14.getText().toString()));
+
+        if (etn_PinzonReal14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_PinzonReal14.getText().toString()));
+
+        if (etn_Piquituerto14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_Piquituerto14.getText().toString()));
+
+        if (etn_Verdecillo14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_Verdecillo14.getText().toString()));
+
+        if (etn_VerdonComun14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_VerdonComun14.getText().toString()));
+
+        if (etn_VerdonSerrano14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_VerdonSerrano14.getText().toString()));
     }
 
     private void guardarParametros(Intent actividadDestino) {
