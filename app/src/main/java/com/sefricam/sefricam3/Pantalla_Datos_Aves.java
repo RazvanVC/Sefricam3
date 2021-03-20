@@ -452,17 +452,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             return false;
         }
 
-        //Comprobacion de que los parámetros no estén vacios
 
-        if (
-                etnd_LongitudPico.getText().toString().equals("") ||
-                etnd_LongitudTarso.getText().toString().equals("") ||
-                etnd_LongitudTerceraPrimaria.getText().toString().equals("") ||
-                etnd_Peso.getText().toString().equals("")
-        ){
-            Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
-            return false;
-        }
 
         //Comprobacion de parámetros dentro de límites
         if (!etn_NumeroAnilla.getText().toString().isEmpty()){
@@ -470,6 +460,11 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 Toast.makeText(this, "No se puede anillar a un ave ya anillada", Toast.LENGTH_SHORT).show();
                 return false;
             }
+            /*
+            System.out.println("MaxNAnilla => "+ limites.getMaxNAnilla());
+            System.out.println("MinNAnilla => "+ limites.getMinNAnilla());
+            System.out.println("AnillaActu => "+etn_NumeroAnilla.getText().toString());
+            limites.imprimirDatosAnillamiento();*/
             if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
                 Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
                 return false;
@@ -482,6 +477,18 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             }
         } else {
             Toast.makeText(this, "Se tiene que introducir al menos un tipo de anilla", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //Comprobacion de que los parámetros no estén vacios
+
+        if (
+                etnd_LongitudPico.getText().toString().equals("") ||
+                        etnd_LongitudTarso.getText().toString().equals("") ||
+                        etnd_LongitudTerceraPrimaria.getText().toString().equals("") ||
+                        etnd_Peso.getText().toString().equals("")
+        ){
+            Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
             return false;
         }
 

@@ -41,6 +41,8 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         iniciarFindView();
         iniciarOnClickListener();
 
+
+
         //Carga de datos recuperados de la BD
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
@@ -68,6 +70,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
                         tv_Bienvenida.append(obj.getString("Nombre")+"!");
                         tv_DNI.setText(obj.getString("DNI"));
                         tv_NGrupo.setText(obj.getNumber("NumGrupo").toString());
+                        limites = new Limites(obj.getInt("NumGrupo"));
                     } catch (Exception x){
                         Toast.makeText(Pantalla_Menu_Intermedio.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
                     }

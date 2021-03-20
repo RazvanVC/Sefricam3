@@ -50,7 +50,9 @@ public class Limites implements Serializable {
     private double minAlaVerdSerrano, maxAlaVerdSerrano, minPicoVerdSerrano, maxPicoVerdSerrano, minTarsoVerdSerrano, maxTarsoVerdSerrano, minPesoVerdSerrano, maxPesoVerdSerrano;
     private int numeroGrupo;
 
-    public Limites() {
+    public Limites(int numGrupo) {
+        this.numeroGrupo = numGrupo;
+        readObject(numGrupo);
         readObject();
     }
 
@@ -262,7 +264,7 @@ public class Limites implements Serializable {
     }
 
     public int getMinNAnilla() {
-        return minNAnilla;
+        return this.minNAnilla;
     }
 
     public void setMinNAnilla(int minNAnilla) {
@@ -270,7 +272,7 @@ public class Limites implements Serializable {
     }
 
     public int getMaxNAnilla() {
-        return maxNAnilla;
+        return this.maxNAnilla;
     }
 
     public void setMaxNAnilla(int maxNAnilla) {
@@ -1313,27 +1315,25 @@ public class Limites implements Serializable {
         System.out.println("___________________________________");
     }
 
-    public void findGrupo(int numGrupo) {
-        this.numeroGrupo = numGrupo;
-        ParseQuery<ParseObject> query= ParseQuery.getQuery("Limites_Anillamiento");
+
+    public void readObject(int numGrupo) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Limites_Anillamiento");
+
         query.whereEqualTo("NumGrupo", numGrupo);
+
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null){
-                    ParseObject obj = null;
-                    for (int i = 0; i<objects.size(); i++){
-                        obj = objects.get(i);
-                    }
-                    try {
-                        if (obj != null){
-                            minNAnilla = obj.getInt("NAnillaMin");
-                            maxNAnilla = obj.getInt("NAnillaMax");
-                        }
-                    } catch (Exception x){
-                        System.out.println("ERROR EN LA RECUPERACION DE DATOS");
-                    }
+                    ParseObject  obj = objects.get(0);
+
+                    minNAnilla = obj.getInt("NAnillaMin");
+                    maxNAnilla = obj.getInt("NAnillaMax");
+
+                    numeroGrupo  = obj.getInt("NumGrupo");
+                    imprimirDatosAnillamiento();
                 }
+                imprimirDatosAnillamiento();
             }
         });
     }
