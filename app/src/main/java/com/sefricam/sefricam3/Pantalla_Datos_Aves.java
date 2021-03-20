@@ -591,11 +591,12 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     private Date convertStringToData(String getDate){
         //Test Feature
+        /*
         if (getDate == null){
             getDate = "16/01/2021";
             latitud = 0;
             longitud = 0;
-        }
+        }*/
 
         Date today = null;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
