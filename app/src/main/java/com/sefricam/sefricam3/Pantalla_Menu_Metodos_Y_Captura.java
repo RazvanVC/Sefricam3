@@ -67,7 +67,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         iniciarFindView();
         iniciarOnClickListener();
 
-        btn_DatosAves.setEnabled(true);
+        //btn_DatosAves.setEnabled(true);
 
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
@@ -94,9 +94,16 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             etnd_Latitud.setEnabled(true);
             etnd_Longitud.setEnabled(true);
             btn_Enviar.setEnabled(true);
-            etnd_Latitud.setText(datos.getString("LATITUD"));
-            etnd_Longitud.setText(datos.getString("LONGITUD"));
-            tv_Fecha.setText(datos.getString("FECHA"));
+            try {
+                etnd_Latitud.setText(datos.getString("LATITUD"));
+                etnd_Longitud.setText(datos.getString("LONGITUD"));
+                tv_Fecha.setText(datos.getString("FECHA"));
+            } catch (Exception e){
+                etnd_Longitud.setText("");
+                etnd_Longitud.setText("");
+                tv_Fecha.setText("--/--/---");
+            }
+
             btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
         }
     }
