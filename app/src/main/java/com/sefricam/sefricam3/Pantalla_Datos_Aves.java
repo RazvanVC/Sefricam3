@@ -465,19 +465,24 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         }
 
         //Comprobacion de parámetros dentro de límites
-
-        if (!etn_NumeroAnilla.getText().toString().equals("")&&et_NumeroAnillaPreexistente.getText().toString().equals("")){
-            System.out.println("NUMERO ANILLA =>" + Integer.parseInt(etn_NumeroAnilla.getText().toString()));
-
-            if (Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMinNAnilla() && Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMaxNAnilla()){
+        if (!etn_NumeroAnilla.getText().toString().isEmpty()){
+            if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) {
+                Toast.makeText(this, "No se puede anillar a un ave ya anillada", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
                 Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
                 return false;
             }
-        } else {
-            if (et_NumeroAnillaPreexistente.getText().length()>30){
-                Toast.makeText(this, "La anilla preexistente es demasiado larga", Toast.LENGTH_SHORT).show();
+
+        } else if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) {
+            if (!etn_NumeroAnilla.getText().toString().isEmpty()){
+                Toast.makeText(this, "No se puede anillar a un ave ya anillada", Toast.LENGTH_SHORT).show();
                 return false;
             }
+        } else {
+            Toast.makeText(this, "Se tiene que introducir al menos un tipo de anilla", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         asignacionParametrosAves();
