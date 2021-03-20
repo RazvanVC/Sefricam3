@@ -78,11 +78,11 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 etnd_Longitud.setText(String.valueOf(datos.getDouble("LONGITUD")));
                 etnd_Latitud.setText(String.valueOf(datos.getDouble("LATITUD")));
                 tv_Fecha.setClickable(false);
-                //etnd_Latitud.setEnabled(false);
-                //etnd_Longitud.setEnabled(false);
+                etnd_Latitud.setEnabled(false);
+                etnd_Longitud.setEnabled(false);
 
                 //Desactivacion de botones
-                //desactivarBotonesDatos();
+                desactivarBotonesDatos();
 
             }
             System.out.println("Datos recibidos en Main Menu");
