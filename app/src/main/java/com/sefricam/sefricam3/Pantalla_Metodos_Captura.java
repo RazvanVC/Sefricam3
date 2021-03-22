@@ -16,7 +16,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
-import static java.lang.Integer.valueOf;
 
 public class Pantalla_Metodos_Captura extends Activity implements View.OnClickListener{
 
@@ -524,8 +523,8 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
             }
         }
 
-        if (!etn_ReclamosJilguero.getText().toString().isEmpty()){
-            if (parseInt(etn_ReclamosLugano.getText().toString())>limites.getMaxRecLugano()) {
+        if (!etn_ReclamosLugano.getText().toString().isEmpty()) {
+            if (parseInt(etn_ReclamosLugano.getText().toString()) > limites.getMaxRecLugano()) {
                 Toast.makeText(this, "Los reclamos de Lugano no coinciden con los límites", Toast.LENGTH_SHORT).show();
                 return false;
             }
