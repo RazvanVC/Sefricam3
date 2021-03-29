@@ -35,13 +35,13 @@ public class Pantalla_LogIn extends Activity {
         password = findViewById(R.id.etp_ContrasenaIncio);
 
         Button btn_Login = findViewById(R.id.btn_IniciarSesion);
-        TextView tv_RecuperarContrasena = findViewById(R.id.tv_RecuperarContrasena);
+        //TextView tv_RecuperarContrasena = findViewById(R.id.tv_RecuperarContrasena);
 
-        tv_RecuperarContrasena.setOnClickListener(new View.OnClickListener() {
+        /*tv_RecuperarContrasena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Pantalla_LogIn.this, Pantalla_Recuperar_Pass.class)); }
-        });
+        });*/
 
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
