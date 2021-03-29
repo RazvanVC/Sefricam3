@@ -56,7 +56,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     private String email;
     private String DNI;
     //Solo usados una vez completado el envío
-    private String latitud,longitud;
+    private double latitud,longitud;
     private String fecha;
 
     @Override
@@ -79,12 +79,6 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         if (mCapturasCompletado) cargarDatosMCapturas();
 
         if (avistamientoCompletado) cargarDatosAvistamiento();
-
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getString("LATITUD");
-            longitud = datos.getString("LONGITUD");
-        }
 
     }
 
@@ -757,9 +751,9 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         actividadDestino.putExtra("EMAIL",email);
         actividadDestino.putExtra("DNI",DNI);
         actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", (Serializable) datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", (Serializable) datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", (Serializable) metodosCaptura);
+        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
+        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
+        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
@@ -770,7 +764,6 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
             actividadDestino.putExtra("LATITUD", latitud);
             actividadDestino.putExtra("LONGITUD", longitud);
         }
-
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
@@ -784,6 +777,12 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
         limites = (Limites) datos.getSerializable("LIMITES");
+
+        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
+            fecha = datos.getString("FECHA");
+            latitud = datos.getDouble("LATITUD");
+            longitud = datos.getDouble("LONGITUD");
+        }
     }
 
     private void imprimirDatosRecibidos() {

@@ -610,6 +610,9 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             longitud = 0;
         }*/
 
+        System.out.println("LONG =>" + longitud);
+        System.out.println("LAT =>" + latitud);
+
         Date today = null;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
 

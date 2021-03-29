@@ -277,6 +277,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("Longitud",longitud);
         entity.put("Cuadricula", cuadricula());
         entity.put("DNI",DNI);
+        entity.put("NumGrupo", limites.getNumeroGrupo());
 
         //Entorno
         entity.put("TempInicial",datosEntorno.gettInicio());
@@ -329,7 +330,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         //Metodos Captura
         entity.put("NumMallas", metodosCaptura.getNumeroMallas());
-        entity.put("Longred",metodosCaptura.getLongitudRed());
+        entity.put("LongRed",metodosCaptura.getLongitudRed());
         entity.put("Coto",metodosCaptura.isCoto());
 
         entity.put("CA01", metodosCaptura.getControlAgentes().get(0));
@@ -607,8 +608,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         actividadDestino.putExtra("LIMITES", limites);
 
         if (entornoCompletado && mCapturasCompletado && avistamientoCompletado){
-            actividadDestino.putExtra("LATITUD", etnd_Latitud.getText().toString());
-            actividadDestino.putExtra("LONGITUD", etnd_Longitud.getText().toString());
+            actividadDestino.putExtra("LATITUD", Double.parseDouble(etnd_Latitud.getText().toString()));
+            actividadDestino.putExtra("LONGITUD", Double.parseDouble(etnd_Longitud.getText().toString()));
             actividadDestino.putExtra("FECHA", tv_Fecha.getText().toString());
         }
     }
