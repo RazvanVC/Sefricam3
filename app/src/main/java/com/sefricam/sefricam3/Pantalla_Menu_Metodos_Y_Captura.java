@@ -94,15 +94,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             etnd_Latitud.setEnabled(true);
             etnd_Longitud.setEnabled(true);
             btn_Enviar.setEnabled(true);
-            try {
-                etnd_Latitud.setText(datos.getString("LATITUD"));
-                etnd_Longitud.setText(datos.getString("LONGITUD"));
-                tv_Fecha.setText(datos.getString("FECHA"));
-            } catch (Exception e){
-                etnd_Longitud.setText("");
-                etnd_Longitud.setText("");
-                tv_Fecha.setText("--/--/---");
-            }
 
             btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
         }
@@ -607,7 +598,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
         actividadDestino.putExtra("LIMITES", limites);
 
-        if (entornoCompletado && mCapturasCompletado && avistamientoCompletado){
+        if (envioCompletado){
             actividadDestino.putExtra("LATITUD", Double.parseDouble(etnd_Latitud.getText().toString()));
             actividadDestino.putExtra("LONGITUD", Double.parseDouble(etnd_Longitud.getText().toString()));
             actividadDestino.putExtra("FECHA", tv_Fecha.getText().toString());
