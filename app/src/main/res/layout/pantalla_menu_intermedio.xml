@@ -102,6 +102,24 @@
         app:layout_constraintTop_toBottomOf="@id/LinLV_TextosBienvenida">
 
         <Button
+            android:id="@+id/btn_Mi_Cuadricula"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:maxHeight="@dimen/_30sdp"
+            android:background="@drawable/boton_semiredondeado"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:text="Mi Cuadricula"
+            android:textAlignment="textStart"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_15ssp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp" />
+
+        <Button
             android:id="@+id/btn_Menu_Capturas_Entorno"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
@@ -111,6 +129,24 @@
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_30sdp"
             android:text="Datos de capturas y entorno"
+            android:textAlignment="textStart"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_15ssp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp" />
+
+        <Button
+            android:id="@+id/btn_Modificacion_Envio"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:maxHeight="@dimen/_30sdp"
+            android:background="@drawable/boton_semiredondeado"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:text="Modificar un envio"
             android:textAlignment="textStart"
             android:textColor="@color/Blanco"
             android:textSize="@dimen/_15ssp" />

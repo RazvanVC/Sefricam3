@@ -25,7 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_LogoGrandeIncio"
-
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/boton_semiredondeado"
         android:paddingStart="@dimen/_10sdp"
