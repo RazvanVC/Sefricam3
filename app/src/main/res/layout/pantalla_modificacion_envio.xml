@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blanco">
+
+    <ImageView
+        android:id="@+id/iv_LogoGrandeModificacionEnvio"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_90sdp"
+        app:layout_constraintVertical_weight="1"
+        android:background="@drawable/iconofedcaza"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_ModificacionEnvio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_LogoGrandeModificacionEnvio"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/boton_semiredondeado"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:text="Modificar mi envio"
+        android:textAlignment="textStart"
+        android:textColor="@color/Blanco"
+        android:textSize="@dimen/_20ssp" />
+
+    <LinearLayout
+        android:id="@+id/linLV_ScrollMetodosCaptura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linLH_BotonesVCModificacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ModificacionEnvio"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seleccione el envio que desee modificar"
+            android:textAlignment="center"
+            android:textColor="@color/VerdePrimario"
+            android:textSize="@dimen/_15sdp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp"/>
+
+        <Spinner
+            android:id="@+id/sp_EnvioSeleccionado"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_15sdp"
+            android:textAlignment="textStart"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLH_BotonesVCModificacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="linLV_ScrollMetodosCaptura">
+
+        <Button
+            android:id="@+id/btn_VolverModificacionEnvio"
+            android:layout_width="0"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_redondeado"
+            android:text="@string/btn_Volver"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Space
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/btn_ContinuarModificacionEnvio"
+            android:layout_width="0"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boton_redondeado"
+            android:text="Continuar"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

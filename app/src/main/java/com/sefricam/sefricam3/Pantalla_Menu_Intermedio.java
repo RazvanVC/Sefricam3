@@ -27,8 +27,7 @@ import java.util.List;
 
 public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickListener{
 
-    public FirebaseFirestore db;
-    private Button btn_Salir, btn_MenuCapturasEntorno, btn_Envios;
+    private Button btn_Salir, btn_MenuCapturasEntorno, btn_Envios, btn_Modificacion_Envio, btn_Mi_Cuadricula;
     public String email;
     private TextView tv_NGrupo, tv_DNI, tv_Bienvenida;
     private Limites limites;
@@ -40,8 +39,6 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         //Inicio de los Elementos del layout
         iniciarFindView();
         iniciarOnClickListener();
-
-
 
         //Carga de datos recuperados de la BD
         Bundle datos = this.getIntent().getExtras();
@@ -89,7 +86,9 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         tv_Bienvenida = (TextView) findViewById(R.id.tv_Bienvenida);
         btn_Salir = (Button) findViewById(R.id.btn_Salir);
         btn_MenuCapturasEntorno = (Button) findViewById(R.id.btn_Menu_Capturas_Entorno);
+        btn_Modificacion_Envio = findViewById(R.id.btn_Modificacion_Envio);
         btn_Envios = (Button) findViewById(R.id.btn_Consular_Envios);
+        btn_Mi_Cuadricula = findViewById(R.id.btn_Mi_Cuadricula);
     }
 
     /**
@@ -98,6 +97,8 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
     public void iniciarOnClickListener(){
         btn_Salir.setOnClickListener(this);
         btn_Envios.setOnClickListener(this);
+        btn_Modificacion_Envio.setOnClickListener(this);
+        btn_Mi_Cuadricula.setOnClickListener(this);
         btn_MenuCapturasEntorno.setOnClickListener(this);
     }
 
@@ -119,6 +120,21 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             activity.putExtra("MCAPTURAS_COMPLETADO", false);
             activity.putExtra("AVISTAMIENTO_COMPLETADO", false);
             activity.putExtra("ENVIO_COMPLETADO",false);
+            activity.putExtra("LIMITES", limites);
+            finish();
+            startActivity(activity);
+        }
+        if (view == btn_Modificacion_Envio) {
+            Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
+            activity.putExtra("EMAIL",email);
+            activity.putExtra("DNI",tv_DNI.getText().toString());
+            activity.putExtra("LIMITES", limites);
+            finish();
+            startActivity(activity);
+        }
+        if (view == btn_Mi_Cuadricula) {
+            Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
+            activity.putExtra("EMAIL",email);
             activity.putExtra("LIMITES", limites);
             finish();
             startActivity(activity);

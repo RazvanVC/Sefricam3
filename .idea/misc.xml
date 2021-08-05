@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.31851851851851853" />
+        <entry key="app/src/main/res/layout/pantalla_datos_aves.xml" value="3.546875" />
+        <entry key="app/src/main/res/layout/pantalla_datos_avistamiento.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/pantalla_datos_entorno.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/pantalla_login.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/pantalla_menu_intermedio.xml" value="1.8661877322989162" />
+        <entry key="app/src/main/res/layout/pantalla_menu_metodos_y_capturas.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/pantalla_metodos_captura.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/pantalla_mi_cuadricula.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/pantalla_modificacion_envio.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/spinner.xml" value="3.546875" />
+      </map>
+    </option>
+  </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../Documentacion Java" />
     <option name="OPTION_SCOPE" value="public" />
