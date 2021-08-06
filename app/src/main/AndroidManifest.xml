@@ -62,6 +62,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Pantalla_Mi_Cuadricula"
             android:screenOrientation="portrait"/>
+        <activity android:name=".Pantalla_Modificacion_Envio"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

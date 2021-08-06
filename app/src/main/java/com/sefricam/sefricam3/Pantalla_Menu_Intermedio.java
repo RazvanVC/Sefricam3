@@ -125,7 +125,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             startActivity(activity);
         }
         if (view == btn_Modificacion_Envio) {
-            Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
+            Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Modificacion_Envio.class);
             activity.putExtra("EMAIL",email);
             activity.putExtra("DNI",tv_DNI.getText().toString());
             activity.putExtra("LIMITES", limites);
