@@ -22,7 +22,7 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pantalla_menu_intermedio);
+        setContentView(R.layout.pantalla_mi_cuadricula);
 
         //Inicio de los Elementos del layout
         iniciarFindView();

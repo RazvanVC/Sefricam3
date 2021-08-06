@@ -42,29 +42,25 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Datos_Aves"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Datos_Avistamiento"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Datos_Entorno"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Metodos_Captura"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Menu_Intermedio"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pantalla_Mis_Datos"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".Pantalla_Mi_Envio"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Pantalla_Mi_Cuadricula"
             android:screenOrientation="portrait"/>
     </application>
 

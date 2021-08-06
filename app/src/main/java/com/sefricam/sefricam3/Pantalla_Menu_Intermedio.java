@@ -133,7 +133,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             startActivity(activity);
         }
         if (view == btn_Mi_Cuadricula) {
-            Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
+            Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Mi_Cuadricula.class);
             activity.putExtra("EMAIL",email);
             activity.putExtra("LIMITES", limites);
             finish();
