@@ -51,6 +51,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
 
     //PARAMETROS QUE VAN ROTANDO
+    private Envio envio;
     private boolean envioCompletado;
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
@@ -587,6 +588,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         imprimirDatosRecibidos();
 
+        actividadDestino.putExtra("ENVIO", envio);
+
+        // /* Delete after full implementation from here
         actividadDestino.putExtra("EMAIL",email);
         actividadDestino.putExtra("DNI",DNI);
         actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
@@ -596,6 +600,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
         actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
         actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+
         actividadDestino.putExtra("LIMITES", limites);
 
         if (envioCompletado){
@@ -606,8 +611,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
-        email = datos.getString("EMAIL");
+        envio = (Envio) datos.getSerializable("ENVIO");
+        // /* Delete after full implementation from here
         DNI = datos.getString("DNI");
+        email = datos.getString("EMAIL");
         envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
         mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
         avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
@@ -615,6 +622,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
         datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
         datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
+        // Until here */
         limites = (Limites) datos.getSerializable("LIMITES");
     }
 

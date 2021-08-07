@@ -111,6 +111,9 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         }
         if (view == btn_MenuCapturasEntorno){
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
+
+            activity.putExtra("ENVIO", new Envio(tv_DNI.getText().toString(), email));
+            // Delete after full implementation from here
             activity.putExtra("EMAIL",email);
             activity.putExtra("DNI",tv_DNI.getText().toString());
             activity.putExtra("DATOS_AVES", (Serializable) null);
@@ -120,6 +123,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             activity.putExtra("MCAPTURAS_COMPLETADO", false);
             activity.putExtra("AVISTAMIENTO_COMPLETADO", false);
             activity.putExtra("ENVIO_COMPLETADO",false);
+            // Until here
             activity.putExtra("LIMITES", limites);
             finish();
             startActivity(activity);
