@@ -52,6 +52,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     //PARAMETROS QUE VAN ROTANDO
     private Envio envio;
+
     private boolean envioCompletado;
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
@@ -585,44 +586,25 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     private void guardarParametros(Intent actividadDestino) {
-
         imprimirDatosRecibidos();
 
         actividadDestino.putExtra("ENVIO", envio);
-
-        // /* Delete after full implementation from here
-        actividadDestino.putExtra("EMAIL",email);
-        actividadDestino.putExtra("DNI",DNI);
-        actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", (Serializable) datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", (Serializable) datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", (Serializable) metodosCaptura);
-        actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
-        actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
-        actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
-
         actividadDestino.putExtra("LIMITES", limites);
-
-        if (envioCompletado){
-            actividadDestino.putExtra("LATITUD", Double.parseDouble(etnd_Latitud.getText().toString()));
-            actividadDestino.putExtra("LONGITUD", Double.parseDouble(etnd_Longitud.getText().toString()));
-            actividadDestino.putExtra("FECHA", tv_Fecha.getText().toString());
-        }
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
         envio = (Envio) datos.getSerializable("ENVIO");
-        // /* Delete after full implementation from here
-        DNI = datos.getString("DNI");
-        email = datos.getString("EMAIL");
-        envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
-        mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
-        avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
-        entornoCompletado = datos.getBoolean("ENTORNO_COMPLETADO");
-        metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
-        datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
-        datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
-        // Until here */
+
+        DNI = envio.getDNI();
+        email = envio.getEmail();
+        envioCompletado = envio.isEnvioCompletado();
+        mCapturasCompletado = envio.isMCapturaCompletado();
+        avistamientoCompletado = envio.isAvistamientoCompletado();
+        entornoCompletado = envio.isEntornoCompletado();
+        metodosCaptura = envio.getMetodosCaptura();
+        datosAvistamiento = envio.getDatosAvistamiento();
+        datosEntorno = envio.getDatosEntorno();
+
         limites = (Limites) datos.getSerializable("LIMITES");
     }
 

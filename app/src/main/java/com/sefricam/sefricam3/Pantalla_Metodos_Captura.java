@@ -43,7 +43,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     private final ArrayList<Boolean> ControlAgentes = new ArrayList<>();
 
     //Parametros
-    private boolean envioCompletado;
+    private Envio envio;
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
@@ -51,8 +51,6 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
-    private String fecha, latitud, longitud;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +171,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         if (v == btn_Guardar){
             if (comprobarCampos()){
                 asignacionValores();
-                mCapturasCompletado = true;
+                envio.setMCapturaCompletado(true);
                 Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
                 guardarParametros(activity);
 
@@ -446,7 +444,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
         String observaciones = et_Observaciones.getText().toString();
 
-        metodosCaptura = new MetodosCaptura(numeroMallas, longitudRed, coto, ControlAgentes,
+        envio.setMetodosCaptura(new MetodosCaptura(numeroMallas, longitudRed, coto, ControlAgentes,
                 reclamosCamachuelo, cimbelesCamachuelo, capturasCamachueloM, capturasCamachueloH,
                 reclamosJilguero, cimbelesJilguero, capturasJilgueroM, capturasJilgueroH,
                 reclamosLugano, cimbelesLugano, capturasLuganoM, capturasLuganoH,
@@ -458,7 +456,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
                 reclamosVerdecillo, cimbelesVerdecillo, capturasVerdecilloM, capturasVerdecilloH,
                 reclamosVerderonComun, cimbelesVerderonComun, capturasVerderonComunM, capturasVerderonComunH,
                 reclamosVerderonSerrano, cimbelesVerderonSerrano, capturasVerderonSerranoM, capturasVerderonSerranoH,
-                observaciones);
+                observaciones));
     }
 
     private void asignarControlAgentes() {
@@ -676,25 +674,8 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
     private void guardarParametros(Intent actividadDestino) {
 
-        imprimirDatos();
-
-        actividadDestino.putExtra("EMAIL",email);
-        actividadDestino.putExtra("DNI",DNI);
-        actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", (Serializable) datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", (Serializable) datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", (Serializable) metodosCaptura);
-        actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
-        actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
-        actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
-
-        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
-            actividadDestino.putExtra("FECHA", fecha);
-            actividadDestino.putExtra("LATITUD", latitud);
-            actividadDestino.putExtra("LONGITUD", longitud);
-        }
-
     }
 
     private void cargarDatos() {
@@ -784,22 +765,18 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
-        email = datos.getString("EMAIL");
-        DNI = datos.getString("DNI");
-        envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
-        mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
-        avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
-        entornoCompletado = datos.getBoolean("ENTORNO_COMPLETADO");
-        metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
-        datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
-        datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
-        limites = (Limites) datos.getSerializable("LIMITES");
+        envio = (Envio) datos.getSerializable("ENVIO");
 
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getString("LATITUD");
-            longitud = datos.getString("LONGITUD");
-        }
+        DNI = envio.getDNI();
+        email = envio.getEmail();
+        mCapturasCompletado = envio.isMCapturaCompletado();
+        avistamientoCompletado = envio.isAvistamientoCompletado();
+        entornoCompletado = envio.isEntornoCompletado();
+        metodosCaptura = envio.getMetodosCaptura();
+        datosAvistamiento = envio.getDatosAvistamiento();
+        datosEntorno = envio.getDatosEntorno();
+
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
 

@@ -17,11 +17,10 @@ import java.util.ArrayList;
 public class Pantalla_Modificacion_Envio extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
 
 
-    public String email, DNI;
+    private Envio envio;
     private Limites limites;
     private Spinner sp_EnvioSeleccionado;
     private Button btn_ContinuarModificacionEnvio, btn_VolverModificacionEnvio;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +34,7 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
         //Carga de datos recuperados de la BD
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
-            DNI = datos.getString("DNI");
-            email = datos.getString("EMAIL");
+            envio = (Envio) datos.getSerializable("ENVIO");
             limites = (Limites) datos.getSerializable("LIMITES");
         }
     }
@@ -81,15 +79,9 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
     public void onClick(View v) {
         if (v == btn_ContinuarModificacionEnvio){
             Intent activity = new Intent(Pantalla_Modificacion_Envio.this,Pantalla_Menu_Metodos_Y_Captura.class);
-            activity.putExtra("EMAIL",email);
-            activity.putExtra("DNI",DNI);
-            activity.putExtra("DATOS_AVES", (Serializable) null);
-            activity.putExtra("DATOS_ENTORNO", (Serializable) null);
-            activity.putExtra("DATOS_CAPTURA", (Serializable) null);
-            activity.putExtra("ENTORNO_COMPLETADO", false);
-            activity.putExtra("MCAPTURAS_COMPLETADO", false);
-            activity.putExtra("AVISTAMIENTO_COMPLETADO", false);
-            activity.putExtra("ENVIO_COMPLETADO",false);
+
+            activity.putExtra("ENVIO", envio);
+
             activity.putExtra("LIMITES", limites);
             finish();
             startActivity(activity);
@@ -97,7 +89,7 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
         }
         if (v == btn_VolverModificacionEnvio){
             Intent activity = new Intent(Pantalla_Modificacion_Envio.this,Pantalla_Menu_Intermedio.class);
-            activity.putExtra("EMAIL",email);
+            activity.putExtra("EMAIL",envio.getEmail());
             activity.putExtra("LIMITES", limites);
             startActivity(activity);
         }

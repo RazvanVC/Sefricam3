@@ -47,7 +47,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     //Buttons
     Button btn_VolverDatos;
     //Parametros
-    private boolean envioCompletado;
+    private Envio envio;
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
@@ -55,9 +55,6 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
-    //Solo usados una vez completado el envío
-    private double latitud,longitud;
-    private String fecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -735,54 +732,31 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
             Intent activity = new Intent(this,Pantalla_Menu_Metodos_Y_Captura.class);
             guardarParametros(activity);
 
-            activity.putExtra("FECHA",fecha);
-            activity.putExtra("LATITUD", latitud);
-            activity.putExtra("LONGITUD", longitud);
-
             startActivity(activity);
             finish();
         }
     }
 
     private void guardarParametros(Intent actividadDestino) {
-
         imprimirDatosRecibidos();
 
-        actividadDestino.putExtra("EMAIL",email);
-        actividadDestino.putExtra("DNI",DNI);
-        actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
-        actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
-        actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
-        actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
-
-        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
-            actividadDestino.putExtra("FECHA", fecha);
-            actividadDestino.putExtra("LATITUD", latitud);
-            actividadDestino.putExtra("LONGITUD", longitud);
-        }
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
-        email = datos.getString("EMAIL");
-        DNI = datos.getString("DNI");
-        envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
-        mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
-        avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
-        entornoCompletado = datos.getBoolean("ENTORNO_COMPLETADO");
-        metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
-        datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
-        datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
-        limites = (Limites) datos.getSerializable("LIMITES");
+        envio = (Envio) datos.getSerializable("ENVIO");
 
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getDouble("LATITUD");
-            longitud = datos.getDouble("LONGITUD");
-        }
+        DNI = envio.getDNI();
+        email = envio.getEmail();
+        mCapturasCompletado = envio.isMCapturaCompletado();
+        avistamientoCompletado = envio.isAvistamientoCompletado();
+        entornoCompletado = envio.isEntornoCompletado();
+        metodosCaptura = envio.getMetodosCaptura();
+        datosAvistamiento = envio.getDatosAvistamiento();
+        datosEntorno = envio.getDatosEntorno();
+
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
     private void imprimirDatosRecibidos() {

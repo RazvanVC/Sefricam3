@@ -21,8 +21,8 @@ public class Envio implements Serializable {
         this.MCapturaCompletado = false;
         this.AvistamientoCompletado = false;
         this.EnvioCompletado = false;
-        this.latitud = Double.parseDouble(null);
-        this.longitud = Double.parseDouble(null);
+        this.latitud = 0;
+        this.longitud = 0;
         this.fecha = null;
         this.DNI = DNI;
         this.email = email;

@@ -113,25 +113,13 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
 
             activity.putExtra("ENVIO", new Envio(tv_DNI.getText().toString(), email));
-            // Delete after full implementation from here
-            activity.putExtra("EMAIL",email);
-            activity.putExtra("DNI",tv_DNI.getText().toString());
-            activity.putExtra("DATOS_AVES", (Serializable) null);
-            activity.putExtra("DATOS_ENTORNO", (Serializable) null);
-            activity.putExtra("DATOS_CAPTURA", (Serializable) null);
-            activity.putExtra("ENTORNO_COMPLETADO", false);
-            activity.putExtra("MCAPTURAS_COMPLETADO", false);
-            activity.putExtra("AVISTAMIENTO_COMPLETADO", false);
-            activity.putExtra("ENVIO_COMPLETADO",false);
-            // Until here
             activity.putExtra("LIMITES", limites);
             finish();
             startActivity(activity);
         }
         if (view == btn_Modificacion_Envio) {
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Modificacion_Envio.class);
-            activity.putExtra("EMAIL",email);
-            activity.putExtra("DNI",tv_DNI.getText().toString());
+            activity.putExtra("ENVIO", new Envio(tv_DNI.getText().toString(), email));
             activity.putExtra("LIMITES", limites);
             finish();
             startActivity(activity);

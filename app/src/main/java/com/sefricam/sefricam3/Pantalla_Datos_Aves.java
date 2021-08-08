@@ -45,14 +45,13 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private RadioButton rb_PlacaIncNoEvidencia, rb_PlacaIncIncompleta, rb_PlacaIncMEvidente;
 
     //Parametros
-    private boolean envioCompletado;
+    private Envio envio;
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
     private Limites limites;
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email,DNI;
-    private String fecha;
     private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico, latitud, longitud;;
 
 
@@ -142,10 +141,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
                 guardarParametros(activity);
 
-                activity.putExtra("FECHA",fecha);
-                activity.putExtra("LATITUD", latitud);
-                activity.putExtra("LONGITUD", longitud);
-
                 envioDatos();
                 startActivity(activity);
                 finish();
@@ -154,10 +149,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         if (v == btn_Volver){
             Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
             guardarParametros(activity);
-
-            activity.putExtra("FECHA",fecha);
-            activity.putExtra("LATITUD", latitud);
-            activity.putExtra("LONGITUD", longitud);
 
             startActivity(activity);
             finish();
@@ -215,7 +206,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         ParseObject entity = new ParseObject("Datos_Aves");
 
         entity.put("NumGrupo",limites.getNumeroGrupo());
-        entity.put("FechaCap", convertStringToData(fecha));
+        entity.put("FechaCap", envio.getFecha());
         entity.put("Latitud", latitud);
         entity.put("Longitud", longitud);
         entity.put("HoraCap", hora);
@@ -559,44 +550,23 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     }
 
     private void guardarParametros(Intent actividadDestino) {
-
-        imprimirDatosRecibidos();
-
-        actividadDestino.putExtra("EMAIL",email);
-        actividadDestino.putExtra("DNI",DNI);
-        actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
-        actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
-        actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
-        actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
+        actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
-
-        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
-            actividadDestino.putExtra("FECHA", fecha);
-            actividadDestino.putExtra("LATITUD", latitud);
-            actividadDestino.putExtra("LONGITUD", longitud);
-        }
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
-        email = datos.getString("EMAIL");
-        DNI = datos.getString("DNI");
-        envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
-        mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
-        avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
-        entornoCompletado = datos.getBoolean("ENTORNO_COMPLETADO");
-        metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
-        datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
-        datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
-        limites = (Limites) datos.getSerializable("LIMITES");
+        envio = (Envio) datos.getSerializable("ENVIO");
 
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getDouble("LATITUD");
-            longitud = datos.getDouble("LONGITUD");
-        }
+        DNI = envio.getDNI();
+        email = envio.getEmail();
+        mCapturasCompletado = envio.isMCapturaCompletado();
+        avistamientoCompletado = envio.isAvistamientoCompletado();
+        entornoCompletado = envio.isEntornoCompletado();
+        metodosCaptura = envio.getMetodosCaptura();
+        datosAvistamiento = envio.getDatosAvistamiento();
+        datosEntorno = envio.getDatosEntorno();
+
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
 
@@ -764,7 +734,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
         System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
         System.out.println("____________________________________________________");
-        System.out.println("FECHA                  => " + fecha);
         System.out.println("LATITUD                => " + latitud);
         System.out.println("LONGITUD               => " + longitud);
     }

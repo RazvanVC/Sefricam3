@@ -43,7 +43,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
 
     //Parametros
-    private boolean envioCompletado;
+    private Envio envio;
     private MetodosCaptura metodosCaptura;
     private DatosAvistamiento datosAvistamiento;
     private DatosEntorno datosEntorno;
@@ -51,7 +51,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email;
     private String DNI;
-    private String fecha, latitud, longitud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,7 +188,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         if (v == btn_Guardar){
             if (comprobarCampos()){
                 asignacionValores();
-                entornoCompletado = true;
+                envio.setEntornoCompletado(true);
                 Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
                 guardarParametros(activity);
 
@@ -452,8 +451,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         if (et_Especie38.getText().toString().equals("")) ep38 = "-";
         else ep38 = et_Especie38.getText().toString();
 
-        datosEntorno = new DatosEntorno(tInicio, tFin, zonificacion, viento, direccionViento, nubes, lluvia, plantas, ep37, ep38);
-
+        envio.setDatosEntorno( new DatosEntorno(tInicio, tFin, zonificacion, viento, direccionViento, nubes, lluvia, plantas, ep37, ep38) );
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -861,44 +859,23 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
     private void guardarParametros(Intent actividadDestino) {
 
-        imprimirDatos();
-
-        actividadDestino.putExtra("EMAIL", email);
-        actividadDestino.putExtra("DNI", DNI);
-        actividadDestino.putExtra("ENVIO_COMPLETADO",envioCompletado);
-        actividadDestino.putExtra("DATOS_AVISTAMIENTO", datosAvistamiento);
-        actividadDestino.putExtra("DATOS_ENTORNO", datosEntorno);
-        actividadDestino.putExtra("DATOS_CAPTURA", metodosCaptura);
-        actividadDestino.putExtra("ENTORNO_COMPLETADO", entornoCompletado);
-        actividadDestino.putExtra("MCAPTURAS_COMPLETADO", mCapturasCompletado);
-        actividadDestino.putExtra("AVISTAMIENTO_COMPLETADO", avistamientoCompletado);
-        actividadDestino.putExtra("LIMITES" , limites);
-
-        if (mCapturasCompletado && entornoCompletado && avistamientoCompletado){
-            actividadDestino.putExtra("FECHA", fecha);
-            actividadDestino.putExtra("LATITUD", latitud);
-            actividadDestino.putExtra("LONGITUD", longitud);
-        }
-
+        actividadDestino.putExtra("ENVIO", envio);
+        actividadDestino.putExtra("LIMITES", limites);
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
-        email = datos.getString("EMAIL");
-        DNI = datos.getString("DNI");
-        envioCompletado = datos.getBoolean("ENVIO_COMPLETADO");
-        mCapturasCompletado = datos.getBoolean("MCAPTURAS_COMPLETADO");
-        avistamientoCompletado = datos.getBoolean("AVISTAMIENTO_COMPLETADO");
-        entornoCompletado = datos.getBoolean("ENTORNO_COMPLETADO");
-        metodosCaptura = (MetodosCaptura) datos.getSerializable("DATOS_CAPTURA");
-        datosAvistamiento = (DatosAvistamiento) datos.getSerializable("DATOS_AVISTAMIENTO");
-        datosEntorno = (DatosEntorno) datos.getSerializable("DATOS_ENTORNO");
-        limites = (Limites) datos.getSerializable("LIMITES");
+        envio = (Envio) datos.getSerializable("ENVIO");
 
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado){
-            fecha = datos.getString("FECHA");
-            latitud = datos.getString("LATITUD");
-            longitud = datos.getString("LONGITUD");
-        }
+        DNI = envio.getDNI();
+        email = envio.getEmail();
+        mCapturasCompletado = envio.isMCapturaCompletado();
+        avistamientoCompletado = envio.isAvistamientoCompletado();
+        entornoCompletado = envio.isEntornoCompletado();
+        metodosCaptura = envio.getMetodosCaptura();
+        datosAvistamiento = envio.getDatosAvistamiento();
+        datosEntorno = envio.getDatosEntorno();
+
+        limites = (Limites) datos.getSerializable("LIMITES");
     }
 
     private void imprimirDatos() {
