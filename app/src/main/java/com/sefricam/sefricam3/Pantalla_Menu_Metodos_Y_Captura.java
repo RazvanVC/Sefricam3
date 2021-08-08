@@ -13,30 +13,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback{
 
@@ -44,11 +30,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private TextView tv_Fecha;
     private EditText etnd_Latitud, etnd_Longitud;
 
-    private double latitud,longitud, datosEnviados;
+    private double latitud,longitud;
     private Date fecha;
-
-    private Map<String, ArrayList> avistamientos = new HashMap<>();
-
 
     //PARAMETROS QUE VAN ROTANDO
     private Envio envio;
@@ -69,6 +52,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         iniciarFindView();
         iniciarOnClickListener();
 
+        tv_Fecha.setClickable(true);
+        tv_Fecha.setEnabled(true);
+
         //btn_DatosAves.setEnabled(true);
 
         Bundle datos = this.getIntent().getExtras();
@@ -76,9 +62,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             recuperarDatosRecibidos(datos);
 
             if (envioCompletado){
-                tv_Fecha.setText(datos.getString("FECHA"));
-                etnd_Longitud.setText(String.valueOf(datos.getDouble("LONGITUD")));
-                etnd_Latitud.setText(String.valueOf(datos.getDouble("LATITUD")));
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                tv_Fecha.setText(sdf.format(envio.getFecha()));
+                etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
+                etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
                 tv_Fecha.setClickable(false);
                 etnd_Latitud.setEnabled(false);
                 etnd_Longitud.setEnabled(false);
@@ -160,24 +147,24 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             }
         }*/
         if (view == tv_Fecha){
+            // Get Current Date
             final Calendar c = Calendar.getInstance();
-            Date dt = new Date(System.currentTimeMillis());
-            c.setTime(dt);
-            int dia = c.get(Calendar.DAY_OF_MONTH);
-            int mes = c.get(Calendar.MONTH);
-            int ano = c.get(Calendar.YEAR);
+            int mYear = c.get(Calendar.YEAR);
+            int mMonth = c.get(Calendar.MONTH);
+            int mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void onDateSet(DatePicker datePicker, int dayOfMonth, int month, int year) {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
 
-                    tv_Fecha.setText(year + "/" + (month+1) + "/" + dayOfMonth);
-                }
-            },dia, mes, ano);
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
 
-            datePickerDialog.updateDate(ano, mes,1);
+                            tv_Fecha.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                        }
+                    }, mYear, mMonth, mDay);
             datePickerDialog.show();
         }
         if (view == btn_DatosAves){
