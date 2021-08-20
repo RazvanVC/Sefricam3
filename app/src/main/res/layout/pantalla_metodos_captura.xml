@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text=""
+                android:text="0"
                 android:textColor="@color/Negro"
                 android:textSize="@dimen/_15ssp" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text=""
+                android:text="0"
                 android:textColor="@color/Negro"
                 android:textSize="@dimen/_15ssp" />
 
@@ -280,66 +280,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/linLH_MetodosCamachuelo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_camachuelo"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_ReclamosCamachuelo"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CimbelesCamachuelo"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasCamachueloM"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasCamachueloH"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
                         android:id="@+id/linLH_MetodosJilguero"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -397,67 +337,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
                             android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linLH_MetodosLugano"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_lugano"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_ReclamosLugano"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CimbelesLugano"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasLuganoM"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasLuganoH"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
+                    </LinearLayout> <!-- Metodos Jilguero -->
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosPardilloComun"
@@ -520,307 +400,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
                             android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linLH_MetodosPicogordo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_picogordo"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_ReclamosPicogordo"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CimbelesPicogordo"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPicogordoM"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPicogordoH"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linLH_MetodosPinzonComun"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_pinzon_comun"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_ReclamosPinzonComun"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CimbelesPinzonComun"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPinzonComunM"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPinzonComunH"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linLH_MetodosPinzonReal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_pinzon_real"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_ReclamosPinzonReal"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CimbelesPinzonReal"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPinzonRealM"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPinzonRealH"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linLH_MetodosPiquituerto"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_piquituerto"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_ReclamosPiquituerto"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CimbelesPiquituerto"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPiquituertoM"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasPiquituertoH"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linLH_MetodosVerdecillo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="@dimen/_110sdp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_verdecillo"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_ReclamosVerdecillo"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CimbelesVerdecillo"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasVerdecilloM"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-
-                        <EditText
-                            android:id="@+id/etn_CapturasVerdecilloH"
-                            android:layout_width="@dimen/_70sdp"
-                            android:layout_height="match_parent"
-                            android:hint="@string/et_ValorPredeterminado0"
-                            android:inputType="number"
-                            android:text=""
-                            android:textAlignment="center"
-                            android:textColor="@color/Negro"
-                            android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
+                    </LinearLayout> <!-- Metodos Pardillo Comun -->
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosVerderonComun"
@@ -880,7 +460,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
                             android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
+                    </LinearLayout> <!-- Metodos Verderon Comun -->
 
                     <LinearLayout
                         android:id="@+id/linLH_MetodosVerderonSerrano"
@@ -940,7 +520,427 @@
                             android:textAlignment="center"
                             android:textColor="@color/Negro"
                             android:textSize="@dimen/_15ssp" />
-                    </LinearLayout>
+                    </LinearLayout> <!-- Metodos Verderon Serrano -->
+
+                    <LinearLayout
+                        android:id="@+id/linLH_MetodosVerdecillo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_verdecillo"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_ReclamosVerdecillo"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CimbelesVerdecillo"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasVerdecilloM"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasVerdecilloH"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout> <!-- Metodos Verdecillo -->
+
+                    <LinearLayout
+                        android:id="@+id/linLH_MetodosPinzonComun"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_pinzon_comun"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_ReclamosPinzonComun"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CimbelesPinzonComun"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPinzonComunM"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPinzonComunH"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout> <!-- Metodos Pinzon Comun -->
+
+                    <LinearLayout
+                        android:id="@+id/linLH_MetodosPinzonReal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_pinzon_real"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_ReclamosPinzonReal"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CimbelesPinzonReal"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPinzonRealM"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPinzonRealH"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout> <!-- Metodos Pinzon Real -->
+
+                    <LinearLayout
+                        android:id="@+id/linLH_MetodosLugano"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_lugano"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_ReclamosLugano"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CimbelesLugano"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasLuganoM"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasLuganoH"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout> <!-- Metodos Lugano -->
+
+                    <LinearLayout
+                        android:id="@+id/linLH_MetodosPicogordo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_picogordo"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_ReclamosPicogordo"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CimbelesPicogordo"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPicogordoM"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPicogordoH"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout> <!-- Metodos Picogordo -->
+
+                    <LinearLayout
+                        android:id="@+id/linLH_MetodosPiquituerto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_piquituerto"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_ReclamosPiquituerto"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CimbelesPiquituerto"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPiquituertoM"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasPiquituertoH"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout> <!-- Metodos Piquituerto -->
+
+                    <LinearLayout
+                        android:id="@+id/linLH_MetodosCamachuelo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/_110sdp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_camachuelo"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_ReclamosCamachuelo"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CimbelesCamachuelo"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasCamachueloM"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <EditText
+                            android:id="@+id/etn_CapturasCamachueloH"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:hint="@string/et_ValorPredeterminado0"
+                            android:inputType="number"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/Negro"
+                            android:textSize="@dimen/_15ssp" />
+                    </LinearLayout> <!-- Metodos Camachuelo -->
                 </LinearLayout>
             </HorizontalScrollView>
 

@@ -10,9 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pantalla_Modificacion_Envio extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
 
@@ -21,6 +28,7 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
     private Limites limites;
     private Spinner sp_EnvioSeleccionado;
     private Button btn_ContinuarModificacionEnvio, btn_VolverModificacionEnvio;
+    private ArrayList<Envio> enviosRecibidos = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +57,104 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
         ArrayList <String> enviosCargados = new ArrayList<>();
         enviosCargados.add("Seleccione un envio");
 
-        /*
-        * Carga de los datos desde la BD
-        * Pasar por parametro el numero de grupo (recibir de la pantalla anterior)
-        * Como formato de la lista de seleccionables, recuperar el envio en formato DNI-Fecha
-        */
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Entorno");
+        query.whereEqualTo("NumGrupo",limites.getNumeroGrupo());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null){
+                    ParseObject obj = null;
+                    for (int i = 0; i<objects.size(); i++){
+                        obj = objects.get(i);
+                    }
+                    try {
+                        ArrayList<Integer> hora08 = new ArrayList<>(), hora09 = new ArrayList<>(), hora10 = new ArrayList<>(), hora11 = new ArrayList<>(), hora12 = new ArrayList<>(), hora13 = new ArrayList<>(), hora14 = new ArrayList<>();
+                        for (int i = 8; i<15; i++) {
+                            ArrayList<String> headers = new ArrayList<>();
+                            headers.add("Cam"); headers.add("Jil"); headers.add("Lug"); headers.add("PardC"); headers.add("Pic");headers.add("PinC");headers.add("PinR");headers.add("Piq");headers.add("Verd");headers.add("VerdC");headers.add("VerdS");
+                            for (int z = 0; z<headers.size(); z++){
+                                String field = "";
+                                switch (i){
+                                    case 8:
+                                        field = headers.get(z).concat("08");
+                                        hora08.add(Integer.valueOf(obj.getNumber(field).toString()));
+                                        break;
+                                    case 9:
+                                        field = headers.get(z).concat("09");
+                                        hora09.add(Integer.valueOf(obj.getNumber(field).toString()));
+                                        break;
+                                    case 10:
+                                        field = headers.get(z).concat("10");
+                                        hora10.add(Integer.valueOf(obj.getNumber(field).toString()));
+                                        break;
+                                    case 11:
+                                        field = headers.get(z).concat("11");
+                                        hora11.add(Integer.valueOf(obj.getNumber(field).toString()));
+                                        break;
+                                    case 12:
+                                        field = headers.get(z).concat("12");
+                                        hora12.add(Integer.valueOf(obj.getNumber(field).toString()));
+                                        break;
+                                    case 13:
+                                        field = headers.get(z).concat("13");
+                                        hora13.add(Integer.valueOf(obj.getNumber(field).toString()));
+                                        break;
+                                    case 14:
+                                        field = headers.get(z).concat("14");
+                                        hora14.add(Integer.valueOf(obj.getNumber(field).toString()));
+                                        break;
+                                }
+                            }
+                        }
+
+                        DatosAvistamiento da = new DatosAvistamiento(
+                                obj.getString("HoraIncio"),
+                                obj.getString("HoraFin"),
+                                hora08,
+                                hora09,
+                                hora10,
+                                hora11,
+                                hora12,
+                                hora13,
+                                hora14
+                        );
+                        ArrayList<Integer> plantas = new ArrayList<>();
+
+                        for (int i = 1; i<37; i++){
+                            String field = "EP"+i;
+                            plantas.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        }
+
+                        DatosEntorno de = new DatosEntorno(
+                                Double.parseDouble(obj.getNumber("TempInicio").toString()),
+                                Double.parseDouble(obj.getNumber("TempFinal").toString()),
+                                Integer.valueOf(obj.getNumber("Zonificacion").toString()),
+                                Integer.valueOf(obj.getNumber("Viento").toString()),
+                                obj.getString("DirViento"),
+                                Integer.valueOf(obj.getNumber("Nubes").toString()),
+                                Integer.valueOf(obj.getNumber("Lluvia").toString()),
+                                plantas,
+                                obj.getString("EP37"),
+                                obj.getString("EP38")
+                        );
+
+                        /*MetodosCaptura dmc = new MetodosCaptura(
+
+                        );*/
+
+                        envio.setDatosAvistamiento(da);
+                        envio.setAvistamientoCompletado(true);
+                        envio.setDatosEntorno(de);
+                        envio.setEntornoCompletado(true);
+                        
+
+                    } catch (Exception x){
+                        Toast.makeText(Pantalla_Modificacion_Envio.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            }
+        });
 
         return enviosCargados;
     }

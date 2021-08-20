@@ -456,11 +456,12 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             System.out.println("MinNAnilla => "+ limites.getMinNAnilla());
             System.out.println("AnillaActu => "+etn_NumeroAnilla.getText().toString());
             limites.imprimirDatosAnillamiento();*/
-            if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
-                Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
-                return false;
+            if (Integer.parseInt(etn_NumeroAnilla.getText().toString())!=99999){
+                if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
+                    Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             }
-
         } else if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) {
             if (!etn_NumeroAnilla.getText().toString().isEmpty()){
                 Toast.makeText(this, "No se puede anillar a un ave ya anillada", Toast.LENGTH_SHORT).show();
@@ -485,24 +486,32 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         asignacionParametrosAves();
 
-        if (Double.parseDouble(etnd_Peso.getText().toString())<minPeso || Double.parseDouble(etnd_Peso.getText().toString())>maxPeso){
-            Toast.makeText(this, "El peso no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
-            return false;
+        if(Double.parseDouble(etnd_Peso.getText().toString())!=0){
+            if (Double.parseDouble(etnd_Peso.getText().toString())<minPeso || Double.parseDouble(etnd_Peso.getText().toString())>maxPeso){
+                Toast.makeText(this, "El peso no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        if (Double.parseDouble(etnd_LongitudTarso.getText().toString())<minTarso || Double.parseDouble(etnd_LongitudTarso.getText().toString())>maxTarso){
-            Toast.makeText(this, "La longitud del tarso no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
-            return false;
+        if(Double.parseDouble(etnd_LongitudTarso.getText().toString())!=0){
+            if (Double.parseDouble(etnd_LongitudTarso.getText().toString())<minTarso || Double.parseDouble(etnd_LongitudTarso.getText().toString())>maxTarso){
+                Toast.makeText(this, "La longitud del tarso no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        if (Double.parseDouble(etnd_LongitudPico.getText().toString())<minPico || Double.parseDouble(etnd_LongitudPico.getText().toString())>maxPico){
-            Toast.makeText(this, "La longitud del pico no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
-            return false;
+        if(Double.parseDouble(etnd_LongitudPico.getText().toString())!=0){
+            if (Double.parseDouble(etnd_LongitudPico.getText().toString())<minPico || Double.parseDouble(etnd_LongitudPico.getText().toString())>maxPico){
+                Toast.makeText(this, "La longitud del pico no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
-        if (Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())<minAla || Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())>maxAla){
-            Toast.makeText(this, "La longitud de la tercera primaria no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
-            return false;
+        if(Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())!=0){
+            if (Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())<minAla || Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())>maxAla){
+                Toast.makeText(this, "La longitud de la tercera primaria no se ajusta a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
         //Comprobacion del resto de campos

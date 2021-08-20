@@ -149,7 +149,8 @@
             android:text="Modificar un envio"
             android:textAlignment="textStart"
             android:textColor="@color/Blanco"
-            android:textSize="@dimen/_15ssp" />
+            android:textSize="@dimen/_15ssp"
+            android:visibility="invisible"/>
 
         <Space
             android:layout_width="match_parent"

@@ -147,16 +147,8 @@
                             android:layout_height="wrap_content"
                             android:text="Especie:"
                             android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" />
+                            android:textSize="@dimen/_15ssp" /> <!-- Especie -->
 
-                        <TextView
-                            android:id="@+id/tv_EspecieCamachuelo"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_camachuelo"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" /> <!-- Camichuelo -->
                         <TextView
                             android:id="@+id/tv_EspecieJilguero"
                             android:layout_width="match_parent"
@@ -166,14 +158,6 @@
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Jilguero -->
                         <TextView
-                            android:id="@+id/tv_EspecieLugano"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_lugano"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" /> <!-- Lugano -->
-                        <TextView
                             android:id="@+id/tv_EspeciePardilloComun"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
@@ -182,13 +166,29 @@
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Pardillo Comun -->
                         <TextView
-                            android:id="@+id/tv_EspeciePicogordo"
+                            android:id="@+id/tv_EspecieVerdonComun"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:gravity="center_vertical"
-                            android:text="@string/tv_picogordo"
+                            android:text="@string/tv_verderon_comun"
                             android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" /> <!-- Picogordo -->
+                            android:textSize="@dimen/_15ssp" /> <!-- Verderon Comun -->
+                        <TextView
+                            android:id="@+id/tv_EspecieVerdonSerrano"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_verderon_serrano"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" /> <!-- Verderon Serrano -->
+                        <TextView
+                            android:id="@+id/tv_EspecieVerdecillo"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_verdecillo"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" /> <!-- Verdecillo -->
                         <TextView
                             android:id="@+id/tv_EspeciePinzonComun"
                             android:layout_width="match_parent"
@@ -206,6 +206,22 @@
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Pinzon Real -->
                         <TextView
+                            android:id="@+id/tv_EspecieLugano"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_lugano"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" /> <!-- Lugano -->
+                        <TextView
+                            android:id="@+id/tv_EspeciePicogordo"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_picogordo"
+                            android:textColor="@color/VerdePrimario"
+                            android:textSize="@dimen/_15ssp" /> <!-- Picogordo -->
+                        <TextView
                             android:id="@+id/tv_EspeciePiquituerto"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
@@ -214,29 +230,14 @@
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Piquituerto -->
                         <TextView
-                            android:id="@+id/tv_EspecieVerdecillo"
+                            android:id="@+id/tv_EspecieCamachuelo"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:gravity="center_vertical"
-                            android:text="@string/tv_verdecillo"
+                            android:text="@string/tv_camachuelo"
                             android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" /> <!-- Verdecillo -->
-                        <TextView
-                            android:id="@+id/tv_EspecieVerdonComun"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_verderon_comun"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" /> <!-- Verderon Comun -->
-                        <TextView
-                            android:id="@+id/tv_EspecieVerdonSerrano"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
-                            android:gravity="center_vertical"
-                            android:text="@string/tv_verderon_serrano"
-                            android:textColor="@color/VerdePrimario"
-                            android:textSize="@dimen/_15ssp" /> <!-- Verderon Serrano -->
+                            android:textSize="@dimen/_15ssp" /> <!-- Camachuelo -->
+
                     </LinearLayout>
 
                     <HorizontalScrollView
@@ -329,104 +330,6 @@
                                     android:textSize="@dimen/_15ssp" />
 
                             </LinearLayout> <!-- Linear Layout de Especie + Horas-->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/etn_Camachuelo08"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Camachuelo09"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Camachuelo10"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Camachuelo11"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Camachuelo12"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Camachuelo13"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Camachuelo14"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                            </LinearLayout> <!-- Linear Layout de Camachuelo + Horas -->
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -532,104 +435,6 @@
                                 android:orientation="horizontal">
 
                                 <EditText
-                                    android:id="@+id/etn_Lugano08"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Lugano09"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Lugano10"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Lugano11"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Lugano12"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Lugano13"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_Lugano14"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                            </LinearLayout> <!-- Linear Layout de Lugano + Horas -->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
                                     android:id="@+id/etn_PardilloComun08"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
@@ -727,7 +532,7 @@
                                 android:orientation="horizontal">
 
                                 <EditText
-                                    android:id="@+id/etn_Picogordo08"
+                                    android:id="@+id/etn_VerdonComun08"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -740,7 +545,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Picogordo09"
+                                    android:id="@+id/etn_VerdonComun09"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -753,7 +558,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Picogordo10"
+                                    android:id="@+id/etn_VerdonComun10"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -766,7 +571,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Picogordo11"
+                                    android:id="@+id/etn_VerdonComun11"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -779,7 +584,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Picogordo12"
+                                    android:id="@+id/etn_VerdonComun12"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -792,7 +597,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Picogordo13"
+                                    android:id="@+id/etn_VerdonComun13"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -805,7 +610,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Picogordo14"
+                                    android:id="@+id/etn_VerdonComun14"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -817,7 +622,203 @@
                                     android:textAlignment="center"
                                     android:textSize="@dimen/_12ssp" />
 
-                            </LinearLayout> <!-- Linear Layout de Picogordo + Horas -->
+                            </LinearLayout> <!-- Linear Layout Verdon Comun + Horas -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/etn_VerdonSerrano08"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_VerdonSerrano09"
+                                    android:layout_width="100dp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="12sp" />
+
+                                <EditText
+                                    android:id="@+id/etn_VerdonSerrano10"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_VerdonSerrano11"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_VerdonSerrano12"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_VerdonSerrano13"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_VerdonSerrano14"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                            </LinearLayout> <!-- Linear Layout Verdon Serrano + Horas -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/etn_Verdecillo08"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Verdecillo09"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Verdecillo10"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Verdecillo11"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Verdecillo12"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Verdecillo13"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Verdecillo14"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                            </LinearLayout> <!-- Linear Layout Verdecillo + Horas -->
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -1021,6 +1022,202 @@
                                 android:orientation="horizontal">
 
                                 <EditText
+                                    android:id="@+id/etn_Lugano08"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Lugano09"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Lugano10"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Lugano11"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Lugano12"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Lugano13"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Lugano14"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                            </LinearLayout> <!-- Linear Layout de Lugano + Horas -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/etn_Picogordo08"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Picogordo09"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Picogordo10"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Picogordo11"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Picogordo12"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Picogordo13"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <EditText
+                                    android:id="@+id/etn_Picogordo14"
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:enabled="false"
+                                    android:hint="@string/et_ValorPredeterminado0"
+                                    android:inputType="number"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textSize="@dimen/_12ssp" />
+
+                            </LinearLayout> <!-- Linear Layout de Picogordo + Horas -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <EditText
                                     android:id="@+id/etn_Piquituerto08"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
@@ -1119,7 +1316,7 @@
                                 android:orientation="horizontal">
 
                                 <EditText
-                                    android:id="@+id/etn_Verdecillo08"
+                                    android:id="@+id/etn_Camachuelo08"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -1132,7 +1329,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Verdecillo09"
+                                    android:id="@+id/etn_Camachuelo09"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -1145,7 +1342,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Verdecillo10"
+                                    android:id="@+id/etn_Camachuelo10"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -1158,7 +1355,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Verdecillo11"
+                                    android:id="@+id/etn_Camachuelo11"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -1171,7 +1368,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Verdecillo12"
+                                    android:id="@+id/etn_Camachuelo12"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -1184,7 +1381,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Verdecillo13"
+                                    android:id="@+id/etn_Camachuelo13"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -1197,7 +1394,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_Verdecillo14"
+                                    android:id="@+id/etn_Camachuelo14"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -1209,203 +1406,7 @@
                                     android:textAlignment="center"
                                     android:textSize="@dimen/_12ssp" />
 
-                            </LinearLayout> <!-- Linear Layout Verdecillo + Horas -->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonComun08"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonComun09"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonComun10"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonComun11"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonComun12"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonComun13"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonComun14"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                            </LinearLayout> <!-- Linear Layout Verdon Comun + Horas -->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonSerrano08"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonSerrano09"
-                                    android:layout_width="100dp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="12sp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonSerrano10"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonSerrano11"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonSerrano12"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonSerrano13"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                                <EditText
-                                    android:id="@+id/etn_VerdonSerrano14"
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:enabled="false"
-                                    android:hint="@string/et_ValorPredeterminado0"
-                                    android:inputType="number"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textSize="@dimen/_12ssp" />
-
-                            </LinearLayout> <!-- Linear Layout Verdon Serrano + Horas -->
+                            </LinearLayout> <!-- Linear Layout de Camachuelo + Horas -->
                         </LinearLayout>
                     </HorizontalScrollView>
                 </LinearLayout>
