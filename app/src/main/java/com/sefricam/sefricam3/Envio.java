@@ -8,10 +8,12 @@ public class Envio implements Serializable {
     private DatosEntorno datosEntorno;
     private DatosAvistamiento datosAvistamiento;
     private MetodosCaptura metodosCaptura;
-    private boolean EntornoCompletado, MCapturaCompletado, AvistamientoCompletado, EnvioCompletado;
+    private boolean EntornoCompletado, MCapturaCompletado, AvistamientoCompletado, EnvioCompletado, modificacion;
     private double latitud, longitud;
     private Date fecha;
     private final String DNI, email;
+    private String objectID;
+
 
     public Envio(String DNI, String email) {
         this.datosEntorno = null;
@@ -21,11 +23,28 @@ public class Envio implements Serializable {
         this.MCapturaCompletado = false;
         this.AvistamientoCompletado = false;
         this.EnvioCompletado = false;
+        modificacion=false;
         this.latitud = 0;
         this.longitud = 0;
         this.fecha = null;
         this.DNI = DNI;
         this.email = email;
+    }
+
+    public String getObjectID() {
+        return objectID;
+    }
+
+    public void setObjectID(String objectID) {
+        this.objectID = objectID;
+    }
+
+    public boolean isModificacion() {
+        return modificacion;
+    }
+
+    public void setModificacion(boolean modificacion) {
+        this.modificacion = modificacion;
     }
 
     public DatosEntorno getDatosEntorno() {

@@ -5,13 +5,13 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.31851851851851853" />
         <entry key="app/src/main/res/layout/pantalla_datos_aves.xml" value="3.546875" />
-        <entry key="app/src/main/res/layout/pantalla_datos_avistamiento.xml" value="0.9592067386885962" />
+        <entry key="app/src/main/res/layout/pantalla_datos_avistamiento.xml" value="0.33905579399141633" />
         <entry key="app/src/main/res/layout/pantalla_datos_entorno.xml" value="1.8503787878787878" />
         <entry key="app/src/main/res/layout/pantalla_login.xml" value="1.8503787878787878" />
         <entry key="app/src/main/res/layout/pantalla_menu_intermedio.xml" value="0.3160493827160494" />
         <entry key="app/src/main/res/layout/pantalla_menu_metodos_y_capturas.xml" value="1.8503787878787878" />
-        <entry key="app/src/main/res/layout/pantalla_metodos_captura.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/pantalla_mi_cuadricula.xml" value="1.8503787878787878" />
+        <entry key="app/src/main/res/layout/pantalla_metodos_captura.xml" value="0.85109496918631" />
+        <entry key="app/src/main/res/layout/pantalla_mi_cuadricula.xml" value="0.38164251207729466" />
         <entry key="app/src/main/res/layout/pantalla_mi_envio.xml" value="0.579185520361991" />
         <entry key="app/src/main/res/layout/pantalla_modificacion_envio.xml" value="0.3643067776169143" />
         <entry key="app/src/main/res/layout/spinner.xml" value="3.546875" />
@@ -25,7 +25,7 @@
     <option name="OPTION_INCLUDE_LIBS" value="true" />
     <option name="OPTION_LINK_TO_JDK_DOCS" value="true" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

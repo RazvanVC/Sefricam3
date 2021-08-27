@@ -207,8 +207,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         entity.put("NumGrupo",limites.getNumeroGrupo());
         entity.put("FechaCap", envio.getFecha());
-        entity.put("Latitud", latitud);
-        entity.put("Longitud", longitud);
+        entity.put("Latitud", envio.getLatitud());
+        entity.put("Longitud", envio.getLongitud());
         entity.put("HoraCap", hora);
         entity.put("Especie", especie);
         entity.put("NEjemplares", nEjemplares);

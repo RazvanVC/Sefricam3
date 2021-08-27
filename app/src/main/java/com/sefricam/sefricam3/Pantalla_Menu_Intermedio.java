@@ -121,6 +121,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Modificacion_Envio.class);
             activity.putExtra("ENVIO", new Envio(tv_DNI.getText().toString(), email));
             activity.putExtra("LIMITES", limites);
+            System.out.println("NUMERO GRUPO"+limites.getNumeroGrupo());
             finish();
             startActivity(activity);
         }

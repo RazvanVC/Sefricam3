@@ -218,9 +218,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 asignacionValores();
                 envioDatos();
                 envioCompletado = true;
+                envio.setEnvioCompletado(true);
 
             } else {
-                //Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
             }
         }
         if (view == btn_Volver){
@@ -235,10 +236,14 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     public static Date convertStringToData(String getDate){
         Date today = null;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
 
         try {
             today = simpleDate.parse(getDate);
+            Calendar c = Calendar.getInstance();
+            c.setTime(today);
+            c.add(Calendar.DATE, 1);
+            today = c.getTime();
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
@@ -545,6 +550,11 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         fecha = convertStringToData(tv_Fecha.getText().toString());
         latitud = Double.parseDouble(etnd_Latitud.getText().toString());
         longitud = Double.parseDouble(etnd_Longitud.getText().toString());
+
+        //Seteo de los datos en el envio
+        envio.setFecha(fecha);
+        envio.setLongitud(longitud);
+        envio.setLatitud(latitud);
     }
 
     private boolean comprobarValores() {
@@ -591,6 +601,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         metodosCaptura = envio.getMetodosCaptura();
         datosAvistamiento = envio.getDatosAvistamiento();
         datosEntorno = envio.getDatosEntorno();
+        envioCompletado =  envio.isEnvioCompletado();
 
         limites = (Limites) datos.getSerializable("LIMITES");
     }

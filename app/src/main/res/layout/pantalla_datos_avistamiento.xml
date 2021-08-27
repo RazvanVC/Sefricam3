@@ -644,7 +644,7 @@
 
                                 <EditText
                                     android:id="@+id/etn_VerdonSerrano09"
-                                    android:layout_width="100dp"
+                                    android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
                                     android:ems="10"
@@ -653,7 +653,7 @@
                                     android:inputType="number"
                                     android:text=""
                                     android:textAlignment="center"
-                                    android:textSize="12sp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <EditText
                                     android:id="@+id/etn_VerdonSerrano10"

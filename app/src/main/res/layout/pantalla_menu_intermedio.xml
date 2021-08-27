@@ -150,7 +150,7 @@
             android:textAlignment="textStart"
             android:textColor="@color/Blanco"
             android:textSize="@dimen/_15ssp"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
 
         <Space
             android:layout_width="match_parent"

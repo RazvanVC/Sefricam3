@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:text="Te emcuentras en la cuadtricula"
+            android:text="Te encuentras en la cuadrícula"
             android:textAlignment="center"
             android:textColor="@color/VerdePrimario"
             android:textSize="@dimen/_15sdp"
