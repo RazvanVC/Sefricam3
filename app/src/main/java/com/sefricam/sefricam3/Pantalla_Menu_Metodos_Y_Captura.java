@@ -17,9 +17,11 @@ import androidx.core.app.ActivityCompat;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,6 +47,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private String email;
     private String DNI;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_menu_metodos_y_capturas);
@@ -60,32 +63,54 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             recuperarDatosRecibidos(datos);
-
-            if (envioCompletado){
-                @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                tv_Fecha.setText(sdf.format(envio.getFecha()));
-                etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
-                etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
-                tv_Fecha.setClickable(false);
+            if (envio.isModificacion()){
+                tv_Fecha.setEnabled(false);
                 etnd_Latitud.setEnabled(false);
                 etnd_Longitud.setEnabled(false);
+                Date date = envio.getFecha();
+                @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                String strDate = dateFormat.format(date);
+                tv_Fecha.setText(strDate);
+                etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
+                etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
 
-                //Desactivacion de botones
-                desactivarBotonesDatos();
+                btn_DatosAves.setEnabled(true);
+                btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
+                btn_DatosAves.setPadding(5,0,0,0);
 
+                btn_Enviar.setEnabled(true);
+                btn_Enviar.setText("Modificar");
+                btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
+            }else {
+                if (envioCompletado){
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                    tv_Fecha.setText(sdf.format(envio.getFecha()));
+                    etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
+                    etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
+                    tv_Fecha.setClickable(false);
+                    etnd_Latitud.setEnabled(false);
+                    etnd_Longitud.setEnabled(false);
+
+                    //Desactivacion de botones
+                    desactivarBotonesDatos();
+
+
+                }
+                if (mCapturasCompletado && avistamientoCompletado && entornoCompletado && !envioCompletado){
+                    Toast.makeText(this, "Ya puedes enviar los datos e introducir la latitud y longitud, asi como la fecha", Toast.LENGTH_LONG).show();
+                    tv_Fecha.setEnabled(true);
+                    etnd_Latitud.setEnabled(true);
+                    etnd_Longitud.setEnabled(true);
+                    btn_Enviar.setEnabled(true);
+
+                    btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
+                }
             }
+
             System.out.println("Datos recibidos en Main Menu");
             imprimirDatosRecibidos();
         }
-        if (mCapturasCompletado && avistamientoCompletado && entornoCompletado && !envioCompletado){
-            Toast.makeText(this, "Ya puedes enviar los datos e introducir la latitud y longitud, asi como la fecha", Toast.LENGTH_LONG).show();
-            tv_Fecha.setEnabled(true);
-            etnd_Latitud.setEnabled(true);
-            etnd_Longitud.setEnabled(true);
-            btn_Enviar.setEnabled(true);
 
-            btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
-        }
     }
 
     /**
@@ -129,23 +154,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     @Override
     public void onClick(View view){
-         /*if (view == btn_Localizar){
-
-            ActivityCompat.requestPermissions(Pantalla_Menu_Metodos_Y_Captura.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-            {
-                Toast.makeText(this, "No se pudo realizar la validación", Toast.LENGTH_SHORT).show();
-
-                return;
-            }else
-            {
-                LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                Location loc = locManager.getLastKnownLocation(GPS_PROVIDER);
-                etnd_Longitud.setText(String.valueOf(loc.getLongitude()));
-                etnd_Latitud.setText(String.valueOf(loc.getLatitude()));
-            }
-        }*/
         if (view == tv_Fecha){
             // Get Current Date
             final Calendar c = Calendar.getInstance();
@@ -168,12 +176,19 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             datePickerDialog.show();
         }
         if (view == btn_DatosAves){
-            System.out.println("Boton Datos de Aves");
-            Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Datos_Aves.class);
-            guardarParametros(activity);
+            if (envio.isModificacion()){
+                Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Modificacion_Aves.class);
+                guardarParametros(activity);
 
-            startActivity(activity);
-            finish();
+                startActivity(activity);
+                finish();
+            } else{
+                Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Datos_Aves.class);
+                guardarParametros(activity);
+
+                startActivity(activity);
+                finish();
+            }
         }
         if (view == btn_DatosEntorno){
             System.out.println("Boton Datos de Entorno");
@@ -209,7 +224,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         }
         if (view == btn_Enviar){
-
+        if (envio.isModificacion()){
+            updateObject();
+        } else {
             if (comprobarValores()){
                 //actualizarDatosEnviados();
                 tv_Fecha.setClickable(false);
@@ -224,6 +241,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
             }
         }
+
+        }
         if (view == btn_Volver){
             Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
             activity.putExtra("EMAIL",email);
@@ -234,34 +253,46 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     }
 
-    public static Date convertStringToData(String getDate){
-        Date today = null;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
+    public void updateObject() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Entorno");
 
-        try {
-            today = simpleDate.parse(getDate);
-            Calendar c = Calendar.getInstance();
-            c.setTime(today);
-            c.add(Calendar.DATE, 1);
-            today = c.getTime();
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
-        return today;
+        // Retrieve the object by id
+        query.getInBackground(envio.getObjectID(), (entity, e) -> {
+            if (e == null) {
+                //Object was successfully retrieved
+                // Update the fields we want to
+                entity = assignFields(entity);
+
+                //All other fields will remain the same
+                entity.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e==null){
+                            //Save was done
+                            Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Se ha actualizado el envío correctamente", Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            //Something went wrong
+                            Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            } else {
+                // something went wrong
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
-    private void envioDatos() {
+    private ParseObject assignFields(ParseObject entity) {
 
-        //Parse Send
-        ParseObject entity = new ParseObject("Datos_Entorno");
-
-        //General
-
-        entity.put("Fecha",fecha);
-        entity.put("Latitud",latitud);
-        entity.put("Longitud",longitud);
+        entity.put("Fecha",envio.getFecha());
+        entity.put("Latitud",envio.getLatitud());
+        entity.put("Longitud",envio.getLongitud());
         entity.put("Cuadricula", cuadricula());
-        entity.put("DNI",DNI);
+        entity.put("DNI",envio.getDNI());
         entity.put("NumGrupo", limites.getNumeroGrupo());
 
         //Entorno
@@ -485,6 +516,35 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("VerdS13", datosAvistamiento.getHora13().get(10));
         entity.put("VerdS14", datosAvistamiento.getHora14().get(10));
 
+        return entity;
+    }
+
+    public static Date convertStringToData(String getDate){
+        Date today = null;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
+
+        try {
+            today = simpleDate.parse(getDate);
+            Calendar c = Calendar.getInstance();
+            assert today != null;
+            c.setTime(today);
+            c.add(Calendar.DATE, 1);
+            today = c.getTime();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return today;
+    }
+
+    private void envioDatos() {
+
+        //Parse Send
+        ParseObject entity = new ParseObject("Datos_Entorno");
+
+        //General
+
+        entity = assignFields(entity);
+
         //ENVIAR OBJETO
 
         entity.saveInBackground(new SaveCallback() {
@@ -547,14 +607,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
 
     private void asignacionValores() {
-        fecha = convertStringToData(tv_Fecha.getText().toString());
-        latitud = Double.parseDouble(etnd_Latitud.getText().toString());
-        longitud = Double.parseDouble(etnd_Longitud.getText().toString());
-
-        //Seteo de los datos en el envio
-        envio.setFecha(fecha);
-        envio.setLongitud(longitud);
-        envio.setLatitud(latitud);
+        envio.setFecha(convertStringToData(tv_Fecha.getText().toString()));
+        envio.setLatitud(Double.parseDouble(etnd_Latitud.getText().toString()));
+        envio.setLongitud(Double.parseDouble(etnd_Longitud.getText().toString()));
     }
 
     private boolean comprobarValores() {
@@ -584,7 +639,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     private void guardarParametros(Intent actividadDestino) {
         imprimirDatosRecibidos();
-
         actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
     }
@@ -610,6 +664,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + email);
         System.out.println("DNI                    => " + DNI);
+        System.out.println("FECHA                  => " + envio.getFecha());
         System.out.println("LIMITES                => " + limites);
         System.out.println("____________________________________________________");
         System.out.println("ESTADO ENTORNO         => " + entornoCompletado);

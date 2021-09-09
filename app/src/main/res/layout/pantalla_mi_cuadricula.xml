@@ -34,7 +34,7 @@
         android:textSize="@dimen/_20ssp" />
 
     <LinearLayout
-        android:id="@+id/linLV_ScrollMetodosCaptura"
+        android:id="@+id/linLV_MA_ScrollMetodosCaptura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"

@@ -29,6 +29,7 @@ public class Envio implements Serializable {
         this.fecha = null;
         this.DNI = DNI;
         this.email = email;
+        this.objectID = "";
     }
 
     public String getObjectID() {

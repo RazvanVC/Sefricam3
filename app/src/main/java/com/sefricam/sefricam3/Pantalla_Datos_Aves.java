@@ -53,6 +53,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
     private String email,DNI;
     private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico, latitud, longitud;;
+    private DatosAves ave;
 
 
     @Override
@@ -64,13 +65,21 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         if (datos != null) {
             recuperarDatosRecibidos(datos);
-
             System.out.println("Datos recibidos en Datos Aves");
             imprimirDatosRecibidos();
+
         }
 
         iniciarFindView();
         iniciarOnClickListener();
+        if (envio.isModificacion()) cargarDatos();
+    }
+
+    private void cargarDatos() {
+        tv_Hora.setText(ave.getHoraCaptura());
+
+        //HACER LA CARGA DE DATOS
+
     }
 
     private void iniciarOnClickListener() {
@@ -574,6 +583,10 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         metodosCaptura = envio.getMetodosCaptura();
         datosAvistamiento = envio.getDatosAvistamiento();
         datosEntorno = envio.getDatosEntorno();
+
+        if (envio.isModificacion()){
+            ave = (DatosAves) datos.getSerializable("AVE");
+        }
 
         limites = (Limites) datos.getSerializable("LIMITES");
     }

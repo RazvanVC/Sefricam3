@@ -99,15 +99,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LinLV_TextosBienvenida">
+        app:layout_constraintTop_toBottomOf="@id/LinLV_TextosBienvenida"
+        app:layout_constraintVertical_bias="0.5">
 
         <Button
             android:id="@+id/btn_Mi_Cuadricula"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="1"
-            android:maxHeight="@dimen/_30sdp"
             android:background="@drawable/boton_semiredondeado"
+            android:maxHeight="@dimen/_30sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_30sdp"
             android:text="Mi Cuadricula"
@@ -124,8 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="1"
-            android:maxHeight="@dimen/_30sdp"
             android:background="@drawable/boton_semiredondeado"
+            android:maxHeight="@dimen/_30sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_30sdp"
             android:text="Datos de capturas y entorno"
@@ -142,15 +143,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="1"
-            android:maxHeight="@dimen/_30sdp"
             android:background="@drawable/boton_semiredondeado"
+            android:maxHeight="@dimen/_30sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_30sdp"
             android:text="Modificar un envio"
             android:textAlignment="textStart"
             android:textColor="@color/Blanco"
             android:textSize="@dimen/_15ssp"
-            android:visibility="gone"/>
+            android:visibility="visible" />
 
         <Space
             android:layout_width="match_parent"
@@ -160,9 +161,9 @@
             android:id="@+id/btn_Consular_Envios"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:maxHeight="@dimen/_30sdp"
             android:layout_weight="1"
             android:background="@drawable/boton_semiredondeado"
+            android:maxHeight="@dimen/_30sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_30sdp"
             android:text="Mis datos"
@@ -178,16 +179,18 @@
             android:id="@+id/btn_Salir"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:maxHeight="@dimen/_30sdp"
             android:layout_weight="1"
             android:background="@drawable/boton_semiredondeado"
+            android:maxHeight="@dimen/_30sdp"
             android:paddingStart="@dimen/_10sdp"
             android:text="SALIR"
             android:textAlignment="textStart"
             android:textColor="@color/Blanco"
             android:textSize="@dimen/_15ssp" />
 
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp" />
     </LinearLayout>
 
 

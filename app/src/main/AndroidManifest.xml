@@ -64,6 +64,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Pantalla_Modificacion_Envio"
             android:screenOrientation="portrait"/>
+        <activity android:name=".Pantalla_Modificacion_Aves"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

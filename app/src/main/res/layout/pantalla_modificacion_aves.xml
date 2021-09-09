@@ -4,24 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="100"
     android:background="@color/Blanco">
 
     <ImageView
         android:id="@+id/iv_MA_LogoGrandeModificacionAves"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_90sdp"
-        app:layout_constraintVertical_weight="1"
         android:background="@drawable/iconofedcaza"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_MA_ModificacionEnvio"/>
 
     <TextView
         android:id="@+id/tv_MA_ModificacionEnvio"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginEnd="@dimen/_30sdp"
-        android:layout_weight="1"
+        android:layout_weight="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_MA_LogoGrandeModificacionAves"
@@ -29,15 +30,69 @@
         android:background="@drawable/boton_semiredondeado"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_30sdp"
-        android:text="Modificar mi envio"
+        android:text="Selecciona una opcion"
         android:textAlignment="textStart"
         android:textColor="@color/Blanco"
         android:textSize="@dimen/_20ssp" />
 
     <LinearLayout
-        android:id="@+id/linLV_MA_ScrollMetodosCaptura"
+        android:id="@+id/linLV_MA_OpcionesModAves"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linLV_MA_ScrollMetodosCaptura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_MA_ModificacionEnvio"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/btn_MA_NuevoEnvioModificacionAves"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:background="@drawable/boton_semiredondeado"
+            android:text="Nuevo envio de ave"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_15ssp"
+            android:textAlignment="textStart"
+            android:paddingStart="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp" />
+
+        <Button
+            android:id="@+id/btn_MA_ModificacionEnvioModificacionAves"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:background="@drawable/boton_semiredondeado"
+            android:text="Modificacion de ave"
+            android:textAlignment="textStart"
+            android:paddingStart="@dimen/_10sdp"
+            android:textColor="@color/Blanco"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLV_MA_ScrollMetodosCaptura"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
@@ -47,26 +102,31 @@
         app:layout_constraintBottom_toTopOf="@+id/linLH_BotonesVCModificacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_MA_ModificacionEnvio"
+        app:layout_constraintTop_toBottomOf="@+id/linLV_MA_OpcionesModAves"
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
+            android:id="@+id/tv_MA_TextoSeleccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Seleccione el envio que desee modificar"
             android:textAlignment="center"
             android:textColor="@color/VerdePrimario"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_15sdp"
+            android:visibility="invisible"
+            />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="@dimen/_10sdp" />
 
         <Spinner
-            android:id="@+id/sp_EnvioSeleccionado"
+            android:id="@+id/sp_MA_EnvioAvesSeleccionado"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_15sdp"
-            android:textAlignment="textStart" />
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:visibility="invisible"
+            />
 
     </LinearLayout>
 
@@ -74,6 +134,7 @@
         android:id="@+id/linLH_BotonesVCModificacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="100"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
@@ -87,9 +148,9 @@
         app:layout_constraintTop_toBottomOf="@+id/linLV_MA_ScrollMetodosCaptura">
 
         <Button
-            android:id="@+id/btn_VolverModificacionEnvio"
+            android:id="@+id/btn_MA_VolverModificacionAves"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="50"
             android:background="@drawable/boton_redondeado"
             android:text="@string/btn_Volver"
@@ -104,9 +165,9 @@
             android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/btn_ContinuarModificacionEnvio"
+            android:id="@+id/btn_MA_ContinuarModificacionAves"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="50"
             android:background="@drawable/boton_redondeado"
             android:text="Continuar"

@@ -21,6 +21,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Pantalla_Modificacion_Envio extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
 
@@ -87,34 +88,11 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                         localEnvio.setModificacion(true);
 
                         //System.out.println("LOF - "+obj.getDate("Fecha"));
-                        localEnvio.setFecha(new Date(obj.getDate("Fecha").getTime()) );
+                        localEnvio.setFecha(new Date(Objects.requireNonNull(obj.getDate("Fecha")).getTime()) );
                         localEnvio.setLatitud(Double.parseDouble(String.valueOf(obj.getNumber("Latitud"))));
                         localEnvio.setLongitud(Double.parseDouble(String.valueOf(obj.getNumber("Longitud"))));
-
-                        /*
-                        try {
-
-
-
-
-                        } catch (Exception x){
-                            Toast.makeText(Pantalla_Modificacion_Envio.this, "ERROR: ", Toast.LENGTH_LONG).show();
-                            x.getStackTrace();
-                            //enviosCargados.add("ERROR EN ESTE ELEMENTO A CARGAR");
-                            //System.out.println("ERROR CODE: "+ x.toString());
-                        }*/
+                        localEnvio.setObjectID(obj.getObjectId());
                         enviosRecibidos.add(localEnvio);
-
-                        System.out.println("LOF - "+obj.getDate("Fecha")+" - "+obj.getDate("Fecha").getClass());
-                        System.out.println("L-"+localEnvio.isModificacion());
-                        System.out.println("L-"+localEnvio.getDNI());
-                        System.out.println("L-"+localEnvio.getEmail());
-                        System.out.println("L-"+localEnvio.getFecha());
-                        System.out.println("L-"+localEnvio.getLatitud());
-                        System.out.println("L-"+localEnvio.getLongitud());
-                        System.out.println("L-"+localEnvio.toString());
-                        System.out.println("G-"+enviosRecibidos);
-
 
                     }
                     for (int i = 0; i<enviosRecibidos.size(); i++){
@@ -138,9 +116,75 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
     }
 
     private MetodosCaptura getMetodosCaptura(ParseObject obj) {
+        ArrayList<Boolean> ca = new ArrayList<>();
+        for (int i = 1; i<7; i++){
+            String key = "CA0"+i;
+            ca.add(obj.getBoolean(key));
+        }
+        MetodosCaptura mc = new MetodosCaptura(
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumMallas")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("LongRed")).toString()),
+                obj.getBoolean("Coto"),
+                ca,
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecCamachuelo")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapCamachueloM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapCamachueloH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimCamachuelo")).toString()),
 
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecJilguero")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapJilgueroM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapJilgueroH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimJilguero")).toString()),
 
-        return null;
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecLugano")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapLuganoM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapLuganoH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimLugano")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPardComun")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPardComunM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPardComunH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPardComun")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPicogordo")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPicogordoM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPicogordoH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPicogordo")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPinzComun")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzComunM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzComunH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPinzComun")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPinzReal")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzRealM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzRealH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPinzReal")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPiquituerto")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPiquituertoM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPiquituertoH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPiquituerto")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecVerdecillo")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdecilloM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdecilloH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdecillo")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecVerdComun")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdComunM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdComunH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdComun")).toString()),
+
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecVerdSerrano")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdSerranoM")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdSerranoH")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdSerrano")).toString()),
+
+                obj.getString("Observaciones")
+        );
+
+        return mc;
     }
 
     private DatosEntorno getDatosEntorno(ParseObject obj) {
@@ -152,18 +196,18 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
             else field = "EP".concat(String.valueOf(i));
 
             System.out.println("GMC - " + field);
-            plantas.add(Integer.valueOf(obj.getNumber(field).toString()));
+            plantas.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
         }
         //System.out.println("GMC - " + obj.getNumber("TempInicio") /*+ " - " + obj.getNumber("TempInicio").getClass()*/);
 
         return new DatosEntorno(
-                Double.parseDouble(obj.getNumber("TempInicial").toString()),
-                Double.parseDouble(obj.getNumber("TempFinal").toString()),
-                Integer.valueOf(obj.getNumber("Zonificacion").toString()),
-                Integer.valueOf(obj.getNumber("Viento").toString()),
+                Double.parseDouble(Objects.requireNonNull(obj.getNumber("TempInicial")).toString()),
+                Double.parseDouble(Objects.requireNonNull(obj.getNumber("TempFinal")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("Zonificacion")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("Viento")).toString()),
                 obj.getString("DirViento"),
-                Integer.valueOf(obj.getNumber("Nubes").toString()),
-                Integer.valueOf(obj.getNumber("Lluvia").toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("Nubes")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("Lluvia")).toString()),
                 plantas,
                 obj.getString("EP37"),
                 obj.getString("EP38")
@@ -180,38 +224,38 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                 switch (i){
                     case 8:
                         field = headers.get(z).concat("08");
-                        hora08.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        hora08.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
                         break;
                     case 9:
                         field = headers.get(z).concat("09");
-                        hora09.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        hora09.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
                         break;
                     case 10:
                         field = headers.get(z).concat("10");
-                        hora10.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        hora10.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
                         break;
                     case 11:
                         field = headers.get(z).concat("11");
-                        hora11.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        hora11.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
                         break;
                     case 12:
                         field = headers.get(z).concat("12");
-                        hora12.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        hora12.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
                         break;
                     case 13:
                         field = headers.get(z).concat("13");
-                        hora13.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        hora13.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
                         break;
                     case 14:
                         field = headers.get(z).concat("14");
-                        hora14.add(Integer.valueOf(obj.getNumber(field).toString()));
+                        hora14.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
                         break;
                 }
             }
         }
-
+        System.out.println("GDA - " + obj.getString("HoraIncio"));
         return new DatosAvistamiento(
-                obj.getString("HoraIncio"),
+                obj.getString("HoraInicio"),
                 obj.getString("HoraFin"),
                 hora08,
                 hora09,
@@ -222,33 +266,6 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                 hora14
         );
     }
-
-    private Envio cargarDatos(String DNI) {
-        final Envio[] localEnvio = {null};
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-        query.whereEqualTo("DNI",DNI);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    ParseObject obj = null;
-                    for (int i = 0; i<objects.size(); i++){
-                        obj = objects.get(i);
-                    }
-                    try {
-                        localEnvio[0] = new Envio(obj.getString("username"), obj.getString("DNI"));
-                    } catch (Exception x){
-                        //Toast.makeText(Pantalla_Modificacion_Envio.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
-                    }
-
-                }
-            }
-        });
-
-        return localEnvio[0];
-    }
-
 
     private void iniciarFindView() {
         sp_EnvioSeleccionado = findViewById(R.id.sp_EnvioSeleccionado);
@@ -269,13 +286,16 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
     @Override
     public void onClick(View v) {
         if (v == btn_ContinuarModificacionEnvio){
-            Intent activity = new Intent(Pantalla_Modificacion_Envio.this,Pantalla_Menu_Metodos_Y_Captura.class);
+            if (sp_EnvioSeleccionado.getSelectedItemPosition()!=0){
+                Intent activity = new Intent(Pantalla_Modificacion_Envio.this,Pantalla_Menu_Metodos_Y_Captura.class);
+                envio = enviosRecibidos.get(sp_EnvioSeleccionado.getSelectedItemPosition()-1);
+                activity.putExtra("ENVIO", envio);
 
-            activity.putExtra("ENVIO", envio);
+                activity.putExtra("LIMITES", limites);
+                finish();
+                startActivity(activity);
+            }else Toast.makeText(this, "Se tiene que seleccionar un envío", Toast.LENGTH_SHORT).show();
 
-            activity.putExtra("LIMITES", limites);
-            finish();
-            startActivity(activity);
 
         }
         if (v == btn_VolverModificacionEnvio){
