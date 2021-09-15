@@ -26,29 +26,15 @@ public class DatosAves implements Serializable {
     private int musculoPectoral;
     private int muda;
     private int placaIncubatriz;
+    private boolean modificacion;
+    private String objectID;
 
-    public DatosAves(int numGrupo, Date fechaCaptura, double latitud, double longitud, String horaCaptura, int especie, int nEjemplares, int nAnilla, String anillaPreexistente, double peso, double longitudTarso, double longitudPico, double longitudTerceraPrimaria, int localizacion, int sexo, int edad, int condicionFisica, int grasa, int musculoPectoral, int muda, int placaIncubatriz) {
+    public DatosAves(int numGrupo, Date fechaCaptura, double latitud, double longitud) {
         this.numGrupo = numGrupo;
         this.fechaCaptura = fechaCaptura;
         this.latitud = latitud;
         this.longitud = longitud;
-        this.horaCaptura = horaCaptura;
-        this.especie = especie;
-        this.nEjemplares = nEjemplares;
-        this.nAnilla = nAnilla;
-        this.anillaPreexistente = anillaPreexistente;
-        this.peso = peso;
-        this.longitudTarso = longitudTarso;
-        this.longitudPico = longitudPico;
-        this.longitudTerceraPrimaria = longitudTerceraPrimaria;
-        this.localizacion = localizacion;
-        this.sexo = sexo;
-        this.edad = edad;
-        this.condicionFisica = condicionFisica;
-        this.grasa = grasa;
-        this.musculoPectoral = musculoPectoral;
-        this.muda = muda;
-        this.placaIncubatriz = placaIncubatriz;
+        this.modificacion = false;
     }
 
     public int getNumGrupo() {
@@ -201,5 +187,21 @@ public class DatosAves implements Serializable {
 
     public void setPlacaIncubatriz(int placaIncubatriz) {
         this.placaIncubatriz = placaIncubatriz;
+    }
+
+    public boolean isModificacion() {
+        return modificacion;
+    }
+
+    public void setModificacion(boolean modificacion) {
+        this.modificacion = modificacion;
+    }
+
+    public String getObjectID() {
+        return objectID;
+    }
+
+    public void setObjectID(String objectID) {
+        this.objectID = objectID;
     }
 }

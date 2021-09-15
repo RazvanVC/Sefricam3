@@ -88,22 +88,22 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
     private void iniciarComponentes() {
 
-        etn_LongitudRed = (EditText) findViewById(R.id.etn_LongitudRed);
-        etn_NumeroMallas = (EditText) findViewById(R.id.etn_NumeroMallas);
+        etn_LongitudRed = findViewById(R.id.etn_LongitudRed);
+        etn_NumeroMallas = findViewById(R.id.etn_NumeroMallas);
 
         rbg_Coto = findViewById(R.id.rbg_Coto);
         rb_CotoSI = findViewById(R.id.rb_CotoSI);
         rb_CotoNO = findViewById(R.id.rb_CotoNO);
 
         rbg_ControlAgentes = findViewById(R.id.rbg_ControlAgentes);
-        rb_NoControl = (RadioButton) findViewById(R.id.rb_NoControlAgentes);
-        rb_SiControl = (RadioButton) findViewById(R.id.rb_SiControlAgentes);
+        rb_NoControl = findViewById(R.id.rb_NoControlAgentes);
+        rb_SiControl = findViewById(R.id.rb_SiControlAgentes);
 
-        cb_ControlSeprona = (CheckBox) findViewById(R.id.cb_ControlAgentesSeprona);
-        cb_ControlForestales = (CheckBox) findViewById(R.id.cb_ControlAgentesForestales);
-        cb_ControlPoliciaNacional = (CheckBox) findViewById(R.id.cb_ControlAgentesPoliciaNacional);
-        cb_ControlPoliciaMunicipal = (CheckBox) findViewById(R.id.cb_ControlAgentesPoliciaMunicipal);
-        cb_ControlOtros = (CheckBox) findViewById(R.id.cb_ControlAgentesOtros);
+        cb_ControlSeprona = findViewById(R.id.cb_ControlAgentesSeprona);
+        cb_ControlForestales = findViewById(R.id.cb_ControlAgentesForestales);
+        cb_ControlPoliciaNacional = findViewById(R.id.cb_ControlAgentesPoliciaNacional);
+        cb_ControlPoliciaMunicipal = findViewById(R.id.cb_ControlAgentesPoliciaMunicipal);
+        cb_ControlOtros = findViewById(R.id.cb_ControlAgentesOtros);
 
         //EditText Reclamos
         etn_ReclamosCamachuelo = findViewById(R.id.etn_ReclamosCamachuelo);
@@ -155,9 +155,9 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         etn_CapturasVerderonSerranoM = findViewById(R.id.etn_CapturasVerderonSerranoM);
         etn_CapturasVerderonSerranoH = findViewById(R.id.etn_CapturasVerderonSerranoH);
 
-        et_Observaciones = (EditText) findViewById(R.id.et_ObservacionesMetodos);
-        btn_Guardar = (Button) findViewById(R.id.btn_GuardarMetodos);
-        btn_Volver = (Button) findViewById(R.id.btn_VolverMetodos);
+        et_Observaciones = findViewById(R.id.et_ObservacionesMetodos);
+        btn_Guardar = findViewById(R.id.btn_GuardarMetodos);
+        btn_Volver = findViewById(R.id.btn_VolverMetodos);
     }
 
     @Override

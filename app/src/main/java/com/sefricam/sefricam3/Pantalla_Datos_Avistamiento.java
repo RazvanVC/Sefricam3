@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
@@ -28,16 +26,16 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
     private EditText etn_PinzonReal08, etn_PinzonReal09, etn_PinzonReal10,etn_PinzonReal11,etn_PinzonReal12,etn_PinzonReal13,etn_PinzonReal14;
     private EditText etn_Piquituerto08,etn_Piquituerto09,etn_Piquituerto10,etn_Piquituerto11,etn_Piquituerto12,etn_Piquituerto13,etn_Piquituerto14;
     private EditText etn_Verdecillo08,etn_Verdecillo09,etn_Verdecillo10,etn_Verdecillo11,etn_Verdecillo12,etn_Verdecillo13,etn_Verdecillo14;
-    private EditText etn_VerdonComun08,etn_VerdonComun09,etn_VerdonComun10,etn_VerdonComun11,etn_VerdonComun12,etn_VerdonComun13,etn_VerdonComun14;
-    private EditText etn_VerdonSerrano08,etn_VerdonSerrano09,etn_VerdonSerrano10,etn_VerdonSerrano11,etn_VerdonSerrano12,etn_VerdonSerrano13,etn_VerdonSerrano14;
+    private EditText etn_VerderonComun08,etn_VerderonComun09,etn_VerderonComun10,etn_VerderonComun11,etn_VerderonComun12,etn_VerderonComun13,etn_VerderonComun14;
+    private EditText etn_VerderonSerrano08,etn_VerderonSerrano09,etn_VerderonSerrano10,etn_VerderonSerrano11,etn_VerderonSerrano12,etn_VerderonSerrano13,etn_VerderonSerrano14;
 
-    private ArrayList<Integer> hora08 = new ArrayList<>();
-    private ArrayList<Integer> hora09 = new ArrayList<>();
-    private ArrayList<Integer> hora10 = new ArrayList<>();
-    private ArrayList<Integer> hora11 = new ArrayList<>();
-    private ArrayList<Integer> hora12 = new ArrayList<>();
-    private ArrayList<Integer> hora13 = new ArrayList<>();
-    private ArrayList<Integer> hora14 = new ArrayList<>();
+    private final ArrayList<Integer> hora08 = new ArrayList<>();
+    private final ArrayList<Integer> hora09 = new ArrayList<>();
+    private final ArrayList<Integer> hora10 = new ArrayList<>();
+    private final ArrayList<Integer> hora11 = new ArrayList<>();
+    private final ArrayList<Integer> hora12 = new ArrayList<>();
+    private final ArrayList<Integer> hora13 = new ArrayList<>();
+    private final ArrayList<Integer> hora14 = new ArrayList<>();
 
     //Parametros
     private Envio envio;
@@ -120,7 +118,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
                 break;
         }
 
-        //Camichuelo
+        //Camachuelo
         etn_Camachuelo08.setText(String.valueOf(datosAvistamiento.getHora08().get(0)));
         etn_Camachuelo09.setText(String.valueOf(datosAvistamiento.getHora09().get(0)));
         etn_Camachuelo10.setText(String.valueOf(datosAvistamiento.getHora10().get(0)));
@@ -202,22 +200,22 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_Verdecillo14.setText(String.valueOf(datosAvistamiento.getHora14().get(8)));
 
         //Verderon Comun
-        etn_VerdonComun08.setText(String.valueOf(datosAvistamiento.getHora08().get(9)));
-        etn_VerdonComun09.setText(String.valueOf(datosAvistamiento.getHora09().get(9)));
-        etn_VerdonComun10.setText(String.valueOf(datosAvistamiento.getHora10().get(9)));
-        etn_VerdonComun11.setText(String.valueOf(datosAvistamiento.getHora11().get(9)));
-        etn_VerdonComun12.setText(String.valueOf(datosAvistamiento.getHora12().get(9)));
-        etn_VerdonComun13.setText(String.valueOf(datosAvistamiento.getHora13().get(9)));
-        etn_VerdonComun14.setText(String.valueOf(datosAvistamiento.getHora14().get(9)));
+        etn_VerderonComun08.setText(String.valueOf(datosAvistamiento.getHora08().get(9)));
+        etn_VerderonComun09.setText(String.valueOf(datosAvistamiento.getHora09().get(9)));
+        etn_VerderonComun10.setText(String.valueOf(datosAvistamiento.getHora10().get(9)));
+        etn_VerderonComun11.setText(String.valueOf(datosAvistamiento.getHora11().get(9)));
+        etn_VerderonComun12.setText(String.valueOf(datosAvistamiento.getHora12().get(9)));
+        etn_VerderonComun13.setText(String.valueOf(datosAvistamiento.getHora13().get(9)));
+        etn_VerderonComun14.setText(String.valueOf(datosAvistamiento.getHora14().get(9)));
 
         //Verderon Serrano
-        etn_VerdonSerrano08.setText(String.valueOf(datosAvistamiento.getHora08().get(10)));
-        etn_VerdonSerrano09.setText(String.valueOf(datosAvistamiento.getHora09().get(10)));
-        etn_VerdonSerrano10.setText(String.valueOf(datosAvistamiento.getHora10().get(10)));
-        etn_VerdonSerrano11.setText(String.valueOf(datosAvistamiento.getHora11().get(10)));
-        etn_VerdonSerrano12.setText(String.valueOf(datosAvistamiento.getHora12().get(10)));
-        etn_VerdonSerrano13.setText(String.valueOf(datosAvistamiento.getHora13().get(10)));
-        etn_VerdonSerrano14.setText(String.valueOf(datosAvistamiento.getHora14().get(10)));
+        etn_VerderonSerrano08.setText(String.valueOf(datosAvistamiento.getHora08().get(10)));
+        etn_VerderonSerrano09.setText(String.valueOf(datosAvistamiento.getHora09().get(10)));
+        etn_VerderonSerrano10.setText(String.valueOf(datosAvistamiento.getHora10().get(10)));
+        etn_VerderonSerrano11.setText(String.valueOf(datosAvistamiento.getHora11().get(10)));
+        etn_VerderonSerrano12.setText(String.valueOf(datosAvistamiento.getHora12().get(10)));
+        etn_VerderonSerrano13.setText(String.valueOf(datosAvistamiento.getHora13().get(10)));
+        etn_VerderonSerrano14.setText(String.valueOf(datosAvistamiento.getHora14().get(10)));
     }
 
     private void iniciarOnClickListeners() {
@@ -227,10 +225,10 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
 
 
     private void iniciarFindView() {
-        btn_Guardar = (Button) findViewById(R.id.btn_GuardarAvistamientos);
-        btn_Volver = (Button) findViewById(R.id.btn_VolverAvistamientos);
-        sp_HoraFin = (Spinner) findViewById(R.id.sp_HoraFin);
-        sp_HoraInicio = (Spinner) findViewById(R.id.sp_HoraInicio);
+        btn_Guardar = findViewById(R.id.btn_GuardarAvistamientos);
+        btn_Volver = findViewById(R.id.btn_VolverAvistamientos);
+        sp_HoraFin = findViewById(R.id.sp_HoraFin);
+        sp_HoraInicio = findViewById(R.id.sp_HoraInicio);
 
         //Camachuelo
         etn_Camachuelo08 = findViewById(R.id.etn_Camachuelo08);
@@ -304,29 +302,29 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_Verdecillo12 = findViewById(R.id.etn_Verdecillo12);
         etn_Verdecillo13 = findViewById(R.id.etn_Verdecillo13);
         etn_Verdecillo14 = findViewById(R.id.etn_Verdecillo14);
-        //Verdon Comun
-        etn_VerdonComun08 = findViewById(R.id.etn_VerdonComun08);
-        etn_VerdonComun09 = findViewById(R.id.etn_VerdonComun09);
-        etn_VerdonComun10 = findViewById(R.id.etn_VerdonComun10);
-        etn_VerdonComun11 = findViewById(R.id.etn_VerdonComun11);
-        etn_VerdonComun12 = findViewById(R.id.etn_VerdonComun12);
-        etn_VerdonComun13 = findViewById(R.id.etn_VerdonComun13);
-        etn_VerdonComun14 = findViewById(R.id.etn_VerdonComun14);
-        //Verdon Serrano
-        etn_VerdonSerrano08 = findViewById(R.id.etn_VerdonSerrano08);
-        etn_VerdonSerrano09 = findViewById(R.id.etn_VerdonSerrano09);
-        etn_VerdonSerrano10 = findViewById(R.id.etn_VerdonSerrano10);
-        etn_VerdonSerrano11 = findViewById(R.id.etn_VerdonSerrano11);
-        etn_VerdonSerrano12 = findViewById(R.id.etn_VerdonSerrano12);
-        etn_VerdonSerrano13 = findViewById(R.id.etn_VerdonSerrano13);
-        etn_VerdonSerrano14 = findViewById(R.id.etn_VerdonSerrano14);
+        //Verderon Comun
+        etn_VerderonComun08 = findViewById(R.id.etn_VerderonComun08);
+        etn_VerderonComun09 = findViewById(R.id.etn_VerderonComun09);
+        etn_VerderonComun10 = findViewById(R.id.etn_VerderonComun10);
+        etn_VerderonComun11 = findViewById(R.id.etn_VerderonComun11);
+        etn_VerderonComun12 = findViewById(R.id.etn_VerderonComun12);
+        etn_VerderonComun13 = findViewById(R.id.etn_VerderonComun13);
+        etn_VerderonComun14 = findViewById(R.id.etn_VerderonComun14);
+        //Verderon Serrano
+        etn_VerderonSerrano08 = findViewById(R.id.etn_VerderonSerrano08);
+        etn_VerderonSerrano09 = findViewById(R.id.etn_VerderonSerrano09);
+        etn_VerderonSerrano10 = findViewById(R.id.etn_VerderonSerrano10);
+        etn_VerderonSerrano11 = findViewById(R.id.etn_VerderonSerrano11);
+        etn_VerderonSerrano12 = findViewById(R.id.etn_VerderonSerrano12);
+        etn_VerderonSerrano13 = findViewById(R.id.etn_VerderonSerrano13);
+        etn_VerderonSerrano14 = findViewById(R.id.etn_VerderonSerrano14);
     }
 
     private void iniciarSpinners() {
         String [] franjasHorariasInicio = {"Seleccione una hora","07:00","08:00", "09:00", "10:00","11:00","12:00","13:00"};
         String [] franjasHorariasFin = {"Seleccione una hora","08:00", "09:00", "10:00","11:00","12:00","13:00","14:00"};
-        ArrayAdapter<String> adapterFranjasHorariasIncio = new ArrayAdapter<String>(this, R.layout.spinner,franjasHorariasInicio);
-        ArrayAdapter<String> adapterFranjasHorariasFin = new ArrayAdapter<String>(this, R.layout.spinner,franjasHorariasFin);
+        ArrayAdapter<String> adapterFranjasHorariasIncio = new ArrayAdapter<>(this, R.layout.spinner, franjasHorariasInicio);
+        ArrayAdapter<String> adapterFranjasHorariasFin = new ArrayAdapter<>(this, R.layout.spinner, franjasHorariasFin);
         sp_HoraInicio.setAdapter(adapterFranjasHorariasIncio);
         sp_HoraInicio.setOnItemSelectedListener(this);
         sp_HoraFin.setAdapter(adapterFranjasHorariasFin);
@@ -350,9 +348,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
      */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("ENTRO EN ITEM SELECTED");
         if (parent.getId()==R.id.sp_HoraInicio){
-            System.out.println("ENTRO EN LA VISTA HORA INICIO");
             reiniciarTodo(); //Una vez que se toca un item se reinician a noneditable todas las variables, luego se habilitan. Tambien se ha de forzar al Spinner 2 a que se ponga a null
             if (parent.getSelectedItemPosition()==0) return;
             if (parent.getSelectedItemPosition()==1) {
@@ -477,8 +473,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_PinzonReal08.setEnabled(estado);
         etn_Piquituerto08.setEnabled(estado);
         etn_Verdecillo08.setEnabled(estado);
-        etn_VerdonComun08.setEnabled(estado);
-        etn_VerdonSerrano08.setEnabled(estado);
+        etn_VerderonComun08.setEnabled(estado);
+        etn_VerderonSerrano08.setEnabled(estado);
     }
     private void modificarFranja09(boolean estado){
         etn_Camachuelo09.setEnabled(estado);
@@ -490,8 +486,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_PinzonReal09.setEnabled(estado);
         etn_Piquituerto09.setEnabled(estado);
         etn_Verdecillo09.setEnabled(estado);
-        etn_VerdonComun09.setEnabled(estado);
-        etn_VerdonSerrano09.setEnabled(estado);
+        etn_VerderonComun09.setEnabled(estado);
+        etn_VerderonSerrano09.setEnabled(estado);
     }
     private void modificarFranja10(boolean estado){
         etn_Camachuelo10.setEnabled(estado);
@@ -503,8 +499,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_PinzonReal10.setEnabled(estado);
         etn_Piquituerto10.setEnabled(estado);
         etn_Verdecillo10.setEnabled(estado);
-        etn_VerdonComun10.setEnabled(estado);
-        etn_VerdonSerrano10.setEnabled(estado);
+        etn_VerderonComun10.setEnabled(estado);
+        etn_VerderonSerrano10.setEnabled(estado);
     }
     private void modificarFranja11(boolean estado){
         etn_Camachuelo11.setEnabled(estado);
@@ -516,8 +512,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_PinzonReal11.setEnabled(estado);
         etn_Piquituerto11.setEnabled(estado);
         etn_Verdecillo11.setEnabled(estado);
-        etn_VerdonComun11.setEnabled(estado);
-        etn_VerdonSerrano11.setEnabled(estado);
+        etn_VerderonComun11.setEnabled(estado);
+        etn_VerderonSerrano11.setEnabled(estado);
     }
     private void modificarFranja12(boolean estado){
         etn_Camachuelo12.setEnabled(estado);
@@ -529,8 +525,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_PinzonReal12.setEnabled(estado);
         etn_Piquituerto12.setEnabled(estado);
         etn_Verdecillo12.setEnabled(estado);
-        etn_VerdonComun12.setEnabled(estado);
-        etn_VerdonSerrano12.setEnabled(estado);
+        etn_VerderonComun12.setEnabled(estado);
+        etn_VerderonSerrano12.setEnabled(estado);
     }
     private void modificarFranja13(boolean estado){
         etn_Camachuelo13.setEnabled(estado);
@@ -542,8 +538,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_PinzonReal13.setEnabled(estado);
         etn_Piquituerto13.setEnabled(estado);
         etn_Verdecillo13.setEnabled(estado);
-        etn_VerdonComun13.setEnabled(estado);
-        etn_VerdonSerrano13.setEnabled(estado);
+        etn_VerderonComun13.setEnabled(estado);
+        etn_VerderonSerrano13.setEnabled(estado);
     }
     private void modificarFranja14(boolean estado){
         etn_Camachuelo14.setEnabled(estado);
@@ -555,8 +551,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_PinzonReal14.setEnabled(estado);
         etn_Piquituerto14.setEnabled(estado);
         etn_Verdecillo14.setEnabled(estado);
-        etn_VerdonComun14.setEnabled(estado);
-        etn_VerdonSerrano14.setEnabled(estado);
+        etn_VerderonComun14.setEnabled(estado);
+        etn_VerderonSerrano14.setEnabled(estado);
     }
 
     @Override
@@ -593,10 +589,8 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
 
     private boolean comprobarCampos() {
         if (sp_HoraInicio.getSelectedItemPosition()==0) return false;
-        if (sp_HoraFin.getSelectedItemPosition()==0) return false;
+        return sp_HoraFin.getSelectedItemPosition() != 0;
         //COMPROBACION DE TODOS LOS CAMPOS
-
-        return true;
     }
 
     private void asignacionValores(){
@@ -644,11 +638,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_Verdecillo08.getText().toString().equals("")) hora08.add(0);
         else hora08.add(Integer.parseInt(etn_Verdecillo08.getText().toString()));
 
-        if (etn_VerdonComun08.getText().toString().equals("")) hora08.add(0);
-        else hora08.add(Integer.parseInt(etn_VerdonComun08.getText().toString()));
+        if (etn_VerderonComun08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_VerderonComun08.getText().toString()));
 
-        if (etn_VerdonSerrano08.getText().toString().equals("")) hora08.add(0);
-        else hora08.add(Integer.parseInt(etn_VerdonSerrano08.getText().toString()));
+        if (etn_VerderonSerrano08.getText().toString().equals("")) hora08.add(0);
+        else hora08.add(Integer.parseInt(etn_VerderonSerrano08.getText().toString()));
     }
     private void asignarHora09() {
         if (etn_Camachuelo09.getText().toString().equals("")) hora09.add(0);
@@ -678,11 +672,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_Verdecillo09.getText().toString().equals("")) hora09.add(0);
         else hora09.add(Integer.parseInt(etn_Verdecillo09.getText().toString()));
 
-        if (etn_VerdonComun09.getText().toString().equals("")) hora09.add(0);
-        else hora09.add(Integer.parseInt(etn_VerdonComun09.getText().toString()));
+        if (etn_VerderonComun09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_VerderonComun09.getText().toString()));
 
-        if (etn_VerdonSerrano09.getText().toString().equals("")) hora09.add(0);
-        else hora09.add(Integer.parseInt(etn_VerdonSerrano09.getText().toString()));
+        if (etn_VerderonSerrano09.getText().toString().equals("")) hora09.add(0);
+        else hora09.add(Integer.parseInt(etn_VerderonSerrano09.getText().toString()));
     }
     private void asignarHora10() {
         if (etn_Camachuelo10.getText().toString().equals("")) hora10.add(0);
@@ -712,11 +706,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_Verdecillo10.getText().toString().equals("")) hora10.add(0);
         else hora10.add(Integer.parseInt(etn_Verdecillo10.getText().toString()));
 
-        if (etn_VerdonComun10.getText().toString().equals("")) hora10.add(0);
-        else hora10.add(Integer.parseInt(etn_VerdonComun10.getText().toString()));
+        if (etn_VerderonComun10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_VerderonComun10.getText().toString()));
 
-        if (etn_VerdonSerrano10.getText().toString().equals("")) hora10.add(0);
-        else hora10.add(Integer.parseInt(etn_VerdonSerrano10.getText().toString()));
+        if (etn_VerderonSerrano10.getText().toString().equals("")) hora10.add(0);
+        else hora10.add(Integer.parseInt(etn_VerderonSerrano10.getText().toString()));
     }
     private void asignarHora11() {
         if (etn_Camachuelo11.getText().toString().equals("")) hora11.add(0);
@@ -746,11 +740,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_Verdecillo11.getText().toString().equals("")) hora11.add(0);
         else hora11.add(Integer.parseInt(etn_Verdecillo11.getText().toString()));
 
-        if (etn_VerdonComun11.getText().toString().equals("")) hora11.add(0);
-        else hora11.add(Integer.parseInt(etn_VerdonComun11.getText().toString()));
+        if (etn_VerderonComun11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_VerderonComun11.getText().toString()));
 
-        if (etn_VerdonSerrano11.getText().toString().equals("")) hora11.add(0);
-        else hora11.add(Integer.parseInt(etn_VerdonSerrano11.getText().toString()));
+        if (etn_VerderonSerrano11.getText().toString().equals("")) hora11.add(0);
+        else hora11.add(Integer.parseInt(etn_VerderonSerrano11.getText().toString()));
     }
     private void asignarHora12() {
         if (etn_Camachuelo12.getText().toString().equals("")) hora12.add(0);
@@ -780,11 +774,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_Verdecillo12.getText().toString().equals("")) hora12.add(0);
         else hora12.add(Integer.parseInt(etn_Verdecillo12.getText().toString()));
 
-        if (etn_VerdonComun12.getText().toString().equals("")) hora12.add(0);
-        else hora12.add(Integer.parseInt(etn_VerdonComun12.getText().toString()));
+        if (etn_VerderonComun12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_VerderonComun12.getText().toString()));
 
-        if (etn_VerdonSerrano12.getText().toString().equals("")) hora12.add(0);
-        else hora12.add(Integer.parseInt(etn_VerdonSerrano12.getText().toString()));
+        if (etn_VerderonSerrano12.getText().toString().equals("")) hora12.add(0);
+        else hora12.add(Integer.parseInt(etn_VerderonSerrano12.getText().toString()));
     }
     private void asignarHora13() {
         if (etn_Camachuelo13.getText().toString().equals("")) hora13.add(0);
@@ -814,11 +808,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_Verdecillo13.getText().toString().equals("")) hora13.add(0);
         else hora13.add(Integer.parseInt(etn_Verdecillo13.getText().toString()));
 
-        if (etn_VerdonComun13.getText().toString().equals("")) hora13.add(0);
-        else hora13.add(Integer.parseInt(etn_VerdonComun13.getText().toString()));
+        if (etn_VerderonComun13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_VerderonComun13.getText().toString()));
 
-        if (etn_VerdonSerrano13.getText().toString().equals("")) hora13.add(0);
-        else hora13.add(Integer.parseInt(etn_VerdonSerrano13.getText().toString()));
+        if (etn_VerderonSerrano13.getText().toString().equals("")) hora13.add(0);
+        else hora13.add(Integer.parseInt(etn_VerderonSerrano13.getText().toString()));
     }
     private void asignarHora14() {
         if (etn_Camachuelo14.getText().toString().equals("")) hora14.add(0);
@@ -848,11 +842,11 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_Verdecillo14.getText().toString().equals("")) hora14.add(0);
         else hora14.add(Integer.parseInt(etn_Verdecillo14.getText().toString()));
 
-        if (etn_VerdonComun14.getText().toString().equals("")) hora14.add(0);
-        else hora14.add(Integer.parseInt(etn_VerdonComun14.getText().toString()));
+        if (etn_VerderonComun14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_VerderonComun14.getText().toString()));
 
-        if (etn_VerdonSerrano14.getText().toString().equals("")) hora14.add(0);
-        else hora14.add(Integer.parseInt(etn_VerdonSerrano14.getText().toString()));
+        if (etn_VerderonSerrano14.getText().toString().equals("")) hora14.add(0);
+        else hora14.add(Integer.parseInt(etn_VerderonSerrano14.getText().toString()));
     }
 
     private void guardarParametros(Intent actividadDestino) {

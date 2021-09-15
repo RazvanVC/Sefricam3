@@ -20,7 +20,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     //Metodos de Captura
     ImageView iv_DatosCheckBoxCapturas;
     TextView tv_DatosNumeroMallas, tv_DatosLongitudRed, tv_DatosCoto, tv_DatosControlAgentes;
-    TextView tv_DatosReclamosCamichuelo, tv_DatosCimbelesCamichuelo, tv_DatosCapturasCamichueloM , tv_DatosCapturasCamichueloH;
+    TextView tv_DatosReclamosCamachuelo, tv_DatosCimbelesCamachuelo, tv_DatosCapturasCamachueloM , tv_DatosCapturasCamachueloH;
     TextView tv_DatosReclamosJilguero, tv_DatosCimbelesJilguero, tv_DatosCapturasJilgueroM, tv_DatosCapturasJilgueroH;
     TextView tv_DatosReclamosLugano, tv_DatosCimbelesLugano, tv_DatosCapturasLuganoM, tv_DatosCapturasLuganoH;
     TextView tv_DatosReclamosPardilloComun, tv_DatosCimbelesPardilloComun, tv_DatosCapturasPardilloComunM, tv_DatosCapturasPardilloComunH;
@@ -36,13 +36,13 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     //Datos Avistamiento
     ImageView iv_DatosCheckBoxAvistamiento;
     TextView tv_DatosHoraInicio, tv_DatosHoraFin;
-    TextView tv_DatosEspecieCamachuelo08, tv_DatosEspecieJilguero08, tv_DatosEspecieLugano08, tv_DatosEspeciePardilloComun08, tv_DatosEspeciePicogordo08, tv_DatosEspeciePinzonComun08, tv_DatosEspeciePinzonReal08, tv_DatosEspeciePiquituerto08, tv_DatosEspecieVerdecillo08, tv_DatosEspecieVerdonComun08, tv_DatosEspecieVerdonSerrano08;
-    TextView tv_DatosEspecieCamachuelo09, tv_DatosEspecieJilguero09, tv_DatosEspecieLugano09, tv_DatosEspeciePardilloComun09, tv_DatosEspeciePicogordo09, tv_DatosEspeciePinzonComun09, tv_DatosEspeciePinzonReal09, tv_DatosEspeciePiquituerto09, tv_DatosEspecieVerdecillo09, tv_DatosEspecieVerdonComun09, tv_DatosEspecieVerdonSerrano09;
-    TextView tv_DatosEspecieCamachuelo10, tv_DatosEspecieJilguero10, tv_DatosEspecieLugano10, tv_DatosEspeciePardilloComun10, tv_DatosEspeciePicogordo10, tv_DatosEspeciePinzonComun10, tv_DatosEspeciePinzonReal10, tv_DatosEspeciePiquituerto10, tv_DatosEspecieVerdecillo10, tv_DatosEspecieVerdonComun10, tv_DatosEspecieVerdonSerrano10;
-    TextView tv_DatosEspecieCamachuelo11, tv_DatosEspecieJilguero11, tv_DatosEspecieLugano11, tv_DatosEspeciePardilloComun11, tv_DatosEspeciePicogordo11, tv_DatosEspeciePinzonComun11, tv_DatosEspeciePinzonReal11, tv_DatosEspeciePiquituerto11, tv_DatosEspecieVerdecillo11, tv_DatosEspecieVerdonComun11, tv_DatosEspecieVerdonSerrano11;
-    TextView tv_DatosEspecieCamachuelo12, tv_DatosEspecieJilguero12, tv_DatosEspecieLugano12, tv_DatosEspeciePardilloComun12, tv_DatosEspeciePicogordo12, tv_DatosEspeciePinzonComun12, tv_DatosEspeciePinzonReal12, tv_DatosEspeciePiquituerto12, tv_DatosEspecieVerdecillo12, tv_DatosEspecieVerdonComun12, tv_DatosEspecieVerdonSerrano12;
-    TextView tv_DatosEspecieCamachuelo13, tv_DatosEspecieJilguero13, tv_DatosEspecieLugano13, tv_DatosEspeciePardilloComun13, tv_DatosEspeciePicogordo13, tv_DatosEspeciePinzonComun13, tv_DatosEspeciePinzonReal13, tv_DatosEspeciePiquituerto13, tv_DatosEspecieVerdecillo13, tv_DatosEspecieVerdonComun13, tv_DatosEspecieVerdonSerrano13;
-    TextView tv_DatosEspecieCamachuelo14, tv_DatosEspecieJilguero14, tv_DatosEspecieLugano14, tv_DatosEspeciePardilloComun14, tv_DatosEspeciePicogordo14, tv_DatosEspeciePinzonComun14, tv_DatosEspeciePinzonReal14, tv_DatosEspeciePiquituerto14, tv_DatosEspecieVerdecillo14, tv_DatosEspecieVerdonComun14, tv_DatosEspecieVerdonSerrano14;
+    TextView tv_DatosEspecieCamachuelo08, tv_DatosEspecieJilguero08, tv_DatosEspecieLugano08, tv_DatosEspeciePardilloComun08, tv_DatosEspeciePicogordo08, tv_DatosEspeciePinzonComun08, tv_DatosEspeciePinzonReal08, tv_DatosEspeciePiquituerto08, tv_DatosEspecieVerdecillo08, tv_DatosEspecieVerderonComun08, tv_DatosEspecieVerderonSerrano08;
+    TextView tv_DatosEspecieCamachuelo09, tv_DatosEspecieJilguero09, tv_DatosEspecieLugano09, tv_DatosEspeciePardilloComun09, tv_DatosEspeciePicogordo09, tv_DatosEspeciePinzonComun09, tv_DatosEspeciePinzonReal09, tv_DatosEspeciePiquituerto09, tv_DatosEspecieVerdecillo09, tv_DatosEspecieVerderonComun09, tv_DatosEspecieVerderonSerrano09;
+    TextView tv_DatosEspecieCamachuelo10, tv_DatosEspecieJilguero10, tv_DatosEspecieLugano10, tv_DatosEspeciePardilloComun10, tv_DatosEspeciePicogordo10, tv_DatosEspeciePinzonComun10, tv_DatosEspeciePinzonReal10, tv_DatosEspeciePiquituerto10, tv_DatosEspecieVerdecillo10, tv_DatosEspecieVerderonComun10, tv_DatosEspecieVerderonSerrano10;
+    TextView tv_DatosEspecieCamachuelo11, tv_DatosEspecieJilguero11, tv_DatosEspecieLugano11, tv_DatosEspeciePardilloComun11, tv_DatosEspeciePicogordo11, tv_DatosEspeciePinzonComun11, tv_DatosEspeciePinzonReal11, tv_DatosEspeciePiquituerto11, tv_DatosEspecieVerdecillo11, tv_DatosEspecieVerderonComun11, tv_DatosEspecieVerderonSerrano11;
+    TextView tv_DatosEspecieCamachuelo12, tv_DatosEspecieJilguero12, tv_DatosEspecieLugano12, tv_DatosEspeciePardilloComun12, tv_DatosEspeciePicogordo12, tv_DatosEspeciePinzonComun12, tv_DatosEspeciePinzonReal12, tv_DatosEspeciePiquituerto12, tv_DatosEspecieVerdecillo12, tv_DatosEspecieVerderonComun12, tv_DatosEspecieVerderonSerrano12;
+    TextView tv_DatosEspecieCamachuelo13, tv_DatosEspecieJilguero13, tv_DatosEspecieLugano13, tv_DatosEspeciePardilloComun13, tv_DatosEspeciePicogordo13, tv_DatosEspeciePinzonComun13, tv_DatosEspeciePinzonReal13, tv_DatosEspeciePiquituerto13, tv_DatosEspecieVerdecillo13, tv_DatosEspecieVerderonComun13, tv_DatosEspecieVerderonSerrano13;
+    TextView tv_DatosEspecieCamachuelo14, tv_DatosEspecieJilguero14, tv_DatosEspecieLugano14, tv_DatosEspeciePardilloComun14, tv_DatosEspeciePicogordo14, tv_DatosEspeciePinzonComun14, tv_DatosEspeciePinzonReal14, tv_DatosEspeciePiquituerto14, tv_DatosEspecieVerdecillo14, tv_DatosEspecieVerderonComun14, tv_DatosEspecieVerderonSerrano14;
 
     //Buttons
     Button btn_VolverDatos;
@@ -224,10 +224,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         }
 
 
-        tv_DatosReclamosCamichuelo.setText(String.valueOf(metodosCaptura.getReclamosCamachuelo()));
-        tv_DatosCimbelesCamichuelo.setText(String.valueOf(metodosCaptura.getCimbelesCamachuelo()));
-        tv_DatosCapturasCamichueloM.setText(String.valueOf(metodosCaptura.getCapturasCamachueloM()));
-        tv_DatosCapturasCamichueloH.setText(String.valueOf(metodosCaptura.getCapturasCamachueloH()));
+        tv_DatosReclamosCamachuelo.setText(String.valueOf(metodosCaptura.getReclamosCamachuelo()));
+        tv_DatosCimbelesCamachuelo.setText(String.valueOf(metodosCaptura.getCimbelesCamachuelo()));
+        tv_DatosCapturasCamachueloM.setText(String.valueOf(metodosCaptura.getCapturasCamachueloM()));
+        tv_DatosCapturasCamachueloH.setText(String.valueOf(metodosCaptura.getCapturasCamachueloH()));
         tv_DatosReclamosJilguero.setText(String.valueOf(metodosCaptura.getReclamosJilguero()));
         tv_DatosCimbelesJilguero.setText(String.valueOf(metodosCaptura.getCimbelesJilguero()));
         tv_DatosCapturasJilgueroM.setText(String.valueOf(metodosCaptura.getCapturasJilgueroM()));
@@ -309,10 +309,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
                     tv_DatosEspecieVerdecillo08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
                     break;
                 case 9:
-                    tv_DatosEspecieVerdonComun08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
+                    tv_DatosEspecieVerderonComun08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
                     break;
                 case 10:
-                    tv_DatosEspecieVerdonSerrano08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
+                    tv_DatosEspecieVerderonSerrano08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
                     break;
             }
             posicion++;
@@ -349,10 +349,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
                     tv_DatosEspecieVerdecillo09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
                     break;
                 case 9:
-                    tv_DatosEspecieVerdonComun09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
+                    tv_DatosEspecieVerderonComun09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
                     break;
                 case 10:
-                    tv_DatosEspecieVerdonSerrano09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
+                    tv_DatosEspecieVerderonSerrano09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
                     break;
             }
             posicion++;
@@ -389,10 +389,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
                     tv_DatosEspecieVerdecillo10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
                     break;
                 case 9:
-                    tv_DatosEspecieVerdonComun10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
+                    tv_DatosEspecieVerderonComun10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
                     break;
                 case 10:
-                    tv_DatosEspecieVerdonSerrano10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
+                    tv_DatosEspecieVerderonSerrano10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
                     break;
             }
             posicion++;
@@ -429,10 +429,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
                     tv_DatosEspecieVerdecillo11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
                     break;
                 case 9:
-                    tv_DatosEspecieVerdonComun11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
+                    tv_DatosEspecieVerderonComun11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
                     break;
                 case 10:
-                    tv_DatosEspecieVerdonSerrano11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
+                    tv_DatosEspecieVerderonSerrano11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
                     break;
             }
             posicion++;
@@ -469,10 +469,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
                     tv_DatosEspecieVerdecillo12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
                     break;
                 case 9:
-                    tv_DatosEspecieVerdonComun12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
+                    tv_DatosEspecieVerderonComun12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
                     break;
                 case 10:
-                    tv_DatosEspecieVerdonSerrano12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
+                    tv_DatosEspecieVerderonSerrano12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
                     break;
             }
             posicion++;
@@ -509,10 +509,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
                     tv_DatosEspecieVerdecillo13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
                     break;
                 case 9:
-                    tv_DatosEspecieVerdonComun13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
+                    tv_DatosEspecieVerderonComun13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
                     break;
                 case 10:
-                    tv_DatosEspecieVerdonSerrano13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
+                    tv_DatosEspecieVerderonSerrano13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
                     break;
             }
             posicion++;
@@ -549,10 +549,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
                     tv_DatosEspecieVerdecillo14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
                     break;
                 case 9:
-                    tv_DatosEspecieVerdonComun14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
+                    tv_DatosEspecieVerderonComun14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
                     break;
                 case 10:
-                    tv_DatosEspecieVerdonSerrano14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
+                    tv_DatosEspecieVerderonSerrano14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
                     break;
             }
             posicion++;
@@ -562,15 +562,15 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
 
     private void iniciarComponentes() {
         //Datos Entorno
-        iv_DatosCheckBoxEntorno = (ImageView) findViewById(R.id.iv_DatosCheckBoxEntorno);
-        tv_DatosTemperaturaInicio = (TextView) findViewById(R.id.tv_DatosTemperaturaInicio);
-        tv_DatosTemperaturaFin = (TextView) findViewById(R.id.tv_DatosTemperaturaFin);
+        iv_DatosCheckBoxEntorno = findViewById(R.id.iv_DatosCheckBoxEntorno);
+        tv_DatosTemperaturaInicio = findViewById(R.id.tv_DatosTemperaturaInicio);
+        tv_DatosTemperaturaFin = findViewById(R.id.tv_DatosTemperaturaFin);
         tv_DatosZonificacion = findViewById(R.id.tv_DatosZonificacion);
-        tv_DatosDireccionViento = (TextView) findViewById(R.id.tv_DatosDireccionViento);
-        tv_DatosViento = (TextView) findViewById(R.id.tv_DatosViento);
-        tv_DatosNubes = (TextView) findViewById(R.id.tv_DatosNubes);
-        tv_DatosLluvia = (TextView) findViewById(R.id.tv_DatosLluvia);
-        tv_DatosPlantas = (TextView) findViewById(R.id.tv_DatosPlantas);
+        tv_DatosDireccionViento = findViewById(R.id.tv_DatosDireccionViento);
+        tv_DatosViento = findViewById(R.id.tv_DatosViento);
+        tv_DatosNubes = findViewById(R.id.tv_DatosNubes);
+        tv_DatosLluvia = findViewById(R.id.tv_DatosLluvia);
+        tv_DatosPlantas = findViewById(R.id.tv_DatosPlantas);
 
         //Metodos de captura
         iv_DatosCheckBoxCapturas = findViewById(R.id.iv_DatosCheckBoxCapturas);
@@ -578,10 +578,10 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosLongitudRed = findViewById(R.id.tv_DatosLongitudRed);
         tv_DatosCoto = findViewById(R.id.tv_DatosCoto);
         tv_DatosControlAgentes = findViewById(R.id.tv_DatosControlAgentes);
-        tv_DatosReclamosCamichuelo =  findViewById(R.id.tv_DatosReclamosCamichuelo);
-        tv_DatosCimbelesCamichuelo = findViewById(R.id.tv_DatosCimbelesCamichuelo);
-        tv_DatosCapturasCamichueloM =  findViewById(R.id.tv_DatosCapturasCamichueloM);
-        tv_DatosCapturasCamichueloH =  findViewById(R.id.tv_DatosCapturasCamichueloH);
+        tv_DatosReclamosCamachuelo =  findViewById(R.id.tv_DatosReclamosCamachuelo);
+        tv_DatosCimbelesCamachuelo = findViewById(R.id.tv_DatosCimbelesCamachuelo);
+        tv_DatosCapturasCamachueloM =  findViewById(R.id.tv_DatosCapturasCamachueloM);
+        tv_DatosCapturasCamachueloH =  findViewById(R.id.tv_DatosCapturasCamachueloH);
         tv_DatosReclamosJilguero = findViewById(R.id.tv_DatosReclamosJilguero);
         tv_DatosCimbelesJilguero = findViewById(R.id.tv_DatosCimbelesJilguero);
         tv_DatosCapturasJilgueroM = findViewById(R.id.tv_DatosCapturasJilgueroM);
@@ -638,8 +638,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosEspeciePinzonReal08 = findViewById(R.id.tv_DatosEspeciePinzonReal08);
         tv_DatosEspeciePiquituerto08 =  findViewById(R.id.tv_DatosEspeciePiquituerto08);
         tv_DatosEspecieVerdecillo08 = findViewById(R.id.tv_DatosEspecieVerdecillo08);
-        tv_DatosEspecieVerdonComun08 = findViewById(R.id.tv_DatosEspecieVerdonComun08);
-        tv_DatosEspecieVerdonSerrano08 = findViewById(R.id.tv_DatosEspecieVerdonSerrano08);
+        tv_DatosEspecieVerderonComun08 = findViewById(R.id.tv_DatosEspecieVerderonComun08);
+        tv_DatosEspecieVerderonSerrano08 = findViewById(R.id.tv_DatosEspecieVerderonSerrano08);
         //Hora 09:00
         tv_DatosEspecieCamachuelo09 = findViewById(R.id.tv_DatosEspecieCamachuelo09);
         tv_DatosEspecieJilguero09 = findViewById(R.id.tv_DatosEspecieJilguero09);
@@ -650,8 +650,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosEspeciePinzonReal09 = findViewById(R.id.tv_DatosEspeciePinzonReal09);
         tv_DatosEspeciePiquituerto09 = findViewById(R.id.tv_DatosEspeciePiquituerto09);
         tv_DatosEspecieVerdecillo09 = findViewById(R.id.tv_DatosEspecieVerdecillo09);
-        tv_DatosEspecieVerdonComun09 = findViewById(R.id.tv_DatosEspecieVerdonComun09);
-        tv_DatosEspecieVerdonSerrano09 = findViewById(R.id.tv_DatosEspecieVerdonSerrano09);
+        tv_DatosEspecieVerderonComun09 = findViewById(R.id.tv_DatosEspecieVerderonComun09);
+        tv_DatosEspecieVerderonSerrano09 = findViewById(R.id.tv_DatosEspecieVerderonSerrano09);
         //Hora 10:00
         tv_DatosEspecieCamachuelo10 = findViewById(R.id.tv_DatosEspecieCamachuelo10);
         tv_DatosEspecieJilguero10 = findViewById(R.id.tv_DatosEspecieJilguero10);
@@ -662,8 +662,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosEspeciePinzonReal10 = findViewById(R.id.tv_DatosEspeciePinzonReal10);
         tv_DatosEspeciePiquituerto10 = findViewById(R.id.tv_DatosEspeciePiquituerto10);
         tv_DatosEspecieVerdecillo10 = findViewById(R.id.tv_DatosEspecieVerdecillo10);
-        tv_DatosEspecieVerdonComun10 = findViewById(R.id.tv_DatosEspecieVerdonComun10);
-        tv_DatosEspecieVerdonSerrano10 = findViewById(R.id.tv_DatosEspecieVerdonSerrano10);
+        tv_DatosEspecieVerderonComun10 = findViewById(R.id.tv_DatosEspecieVerderonComun10);
+        tv_DatosEspecieVerderonSerrano10 = findViewById(R.id.tv_DatosEspecieVerderonSerrano10);
         //Hora 11:00
         tv_DatosEspecieCamachuelo11 = findViewById(R.id.tv_DatosEspecieCamachuelo11);
         tv_DatosEspecieJilguero11 = findViewById(R.id.tv_DatosEspecieJilguero11);
@@ -674,8 +674,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosEspeciePinzonReal11 = findViewById(R.id.tv_DatosEspeciePinzonReal11);
         tv_DatosEspeciePiquituerto11 = findViewById(R.id.tv_DatosEspeciePiquituerto11);
         tv_DatosEspecieVerdecillo11 = findViewById(R.id.tv_DatosEspecieVerdecillo11);
-        tv_DatosEspecieVerdonComun11 = findViewById(R.id.tv_DatosEspecieVerdonComun11);
-        tv_DatosEspecieVerdonSerrano11 = findViewById(R.id.tv_DatosEspecieVerdonSerrano11);
+        tv_DatosEspecieVerderonComun11 = findViewById(R.id.tv_DatosEspecieVerderonComun11);
+        tv_DatosEspecieVerderonSerrano11 = findViewById(R.id.tv_DatosEspecieVerderonSerrano11);
         //Hora 12:00
         tv_DatosEspecieCamachuelo12 = findViewById(R.id.tv_DatosEspecieCamachuelo12);
         tv_DatosEspecieJilguero12 = findViewById(R.id.tv_DatosEspecieJilguero12);
@@ -686,8 +686,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosEspeciePinzonReal12 =  findViewById(R.id.tv_DatosEspeciePinzonReal12);
         tv_DatosEspeciePiquituerto12 = findViewById(R.id.tv_DatosEspeciePiquituerto12);
         tv_DatosEspecieVerdecillo12 = findViewById(R.id.tv_DatosEspecieVerdecillo12);
-        tv_DatosEspecieVerdonComun12 = findViewById(R.id.tv_DatosEspecieVerdonComun12);
-        tv_DatosEspecieVerdonSerrano12 = findViewById(R.id.tv_DatosEspecieVerdonSerrano12);
+        tv_DatosEspecieVerderonComun12 = findViewById(R.id.tv_DatosEspecieVerderonComun12);
+        tv_DatosEspecieVerderonSerrano12 = findViewById(R.id.tv_DatosEspecieVerderonSerrano12);
         //Hora 13:00
         tv_DatosEspecieCamachuelo13 = findViewById(R.id.tv_DatosEspecieCamachuelo13);
         tv_DatosEspecieJilguero13 = findViewById(R.id.tv_DatosEspecieJilguero13);
@@ -698,8 +698,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosEspeciePinzonReal13 = findViewById(R.id.tv_DatosEspeciePinzonReal13);
         tv_DatosEspeciePiquituerto13 = findViewById(R.id.tv_DatosEspeciePiquituerto13);
         tv_DatosEspecieVerdecillo13 = findViewById(R.id.tv_DatosEspecieVerdecillo13);
-        tv_DatosEspecieVerdonComun13 = findViewById(R.id.tv_DatosEspecieVerdonComun13);
-        tv_DatosEspecieVerdonSerrano13 = findViewById(R.id.tv_DatosEspecieVerdonSerrano13);
+        tv_DatosEspecieVerderonComun13 = findViewById(R.id.tv_DatosEspecieVerderonComun13);
+        tv_DatosEspecieVerderonSerrano13 = findViewById(R.id.tv_DatosEspecieVerderonSerrano13);
         //Hora 14
         tv_DatosEspecieCamachuelo14 = findViewById(R.id.tv_DatosEspecieCamachuelo14);
         tv_DatosEspecieJilguero14 = findViewById(R.id.tv_DatosEspecieJilguero14);
@@ -710,8 +710,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosEspeciePinzonReal14 = findViewById(R.id.tv_DatosEspeciePinzonReal14);
         tv_DatosEspeciePiquituerto14 = findViewById(R.id.tv_DatosEspeciePiquituerto14);
         tv_DatosEspecieVerdecillo14 = findViewById(R.id.tv_DatosEspecieVerdecillo14);
-        tv_DatosEspecieVerdonComun14 = findViewById(R.id.tv_DatosEspecieVerdonComun14);
-        tv_DatosEspecieVerdonSerrano14 = findViewById(R.id.tv_DatosEspecieVerdonSerrano14);
+        tv_DatosEspecieVerderonComun14 = findViewById(R.id.tv_DatosEspecieVerderonComun14);
+        tv_DatosEspecieVerderonSerrano14 = findViewById(R.id.tv_DatosEspecieVerderonSerrano14);
 
         //Buttons
         btn_VolverDatos = findViewById(R.id.btn_VolverMiEnvio);

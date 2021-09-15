@@ -76,7 +76,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
                 btn_DatosAves.setEnabled(true);
                 btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
-                btn_DatosAves.setPadding(5,0,0,0);
+                //btn_DatosAves.setPadding(5,0,0,0);
 
                 btn_Enviar.setEnabled(true);
                 btn_Enviar.setText("Modificar");
@@ -119,14 +119,14 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private void iniciarFindView() {
 
         //Button
-        btn_Localizar = (Button) findViewById(R.id.btn_LocalizacionActual);
-        btn_DatosAves = (Button) findViewById(R.id.btn_DatosAves);
-        btn_DatosAvistamiento = (Button) findViewById(R.id.btn_DatosAvistamientos);
-        btn_Metodos = (Button) findViewById(R.id.btn_MetodosCaptura);
-        btn_DatosEntorno = (Button) findViewById(R.id.btn_DatosEntorno);
+        btn_Localizar = findViewById(R.id.btn_LocalizacionActual);
+        btn_DatosAves = findViewById(R.id.btn_DatosAves);
+        btn_DatosAvistamiento = findViewById(R.id.btn_DatosAvistamientos);
+        btn_Metodos = findViewById(R.id.btn_MetodosCaptura);
+        btn_DatosEntorno = findViewById(R.id.btn_DatosEntorno);
         btn_MiEnvio = findViewById(R.id.btn_MiEnvio);
-        btn_Volver = (Button) findViewById(R.id.btn_VolverMenuPrincipalMC);
-        btn_Enviar = (Button) findViewById(R.id.btn_EnviarMC);
+        btn_Volver = findViewById(R.id.btn_VolverMenuPrincipalMC);
+        btn_Enviar = findViewById(R.id.btn_EnviarMC);
 
         //Text View
         tv_Fecha = findViewById(R.id.tv_FechaDeTomaIntroducida);
@@ -179,13 +179,12 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             if (envio.isModificacion()){
                 Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Modificacion_Aves.class);
                 guardarParametros(activity);
-
+                activity.putExtra("AVE", new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(),envio.getLongitud()));
                 startActivity(activity);
                 finish();
             } else{
                 Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Datos_Aves.class);
                 guardarParametros(activity);
-
                 startActivity(activity);
                 finish();
             }
@@ -194,7 +193,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             System.out.println("Boton Datos de Entorno");
             Intent activity = new Intent(this, Pantalla_Datos_Entorno.class);
             guardarParametros(activity);
-
             startActivity(activity);
             finish();
         }
@@ -202,7 +200,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             System.out.println("Boton Metodos de Captura");
             Intent activity = new Intent(this, Pantalla_Metodos_Captura.class);
             guardarParametros(activity);
-
             startActivity(activity);
             finish();
         }
@@ -210,7 +207,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             System.out.println("Boton Datos de Avistamiento");
             Intent activity = new Intent(this,Pantalla_Datos_Avistamiento.class);
             guardarParametros(activity);
-
             startActivity(activity);
             finish();
         }
@@ -218,30 +214,28 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             System.out.println("Boton de Mi Envio");
             Intent activity = new Intent(this, Pantalla_Mi_Envio.class);
             guardarParametros(activity);
-
             startActivity(activity);
             finish();
 
         }
         if (view == btn_Enviar){
-        if (envio.isModificacion()){
-            updateObject();
-        } else {
-            if (comprobarValores()){
-                //actualizarDatosEnviados();
-                tv_Fecha.setClickable(false);
-                etnd_Latitud.setEnabled(false);
-                etnd_Longitud.setEnabled(false);
-                asignacionValores();
-                envioDatos();
-                envioCompletado = true;
-                envio.setEnvioCompletado(true);
-
+            if (envio.isModificacion()){
+                updateObject();
             } else {
-                Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
-            }
-        }
+                if (comprobarValores()){
+                    //actualizarDatosEnviados();
+                    tv_Fecha.setClickable(false);
+                    etnd_Latitud.setEnabled(false);
+                    etnd_Longitud.setEnabled(false);
+                    asignacionValores();
+                    envioDatos();
+                    envioCompletado = true;
+                    envio.setEnvioCompletado(true);
 
+                } else {
+                    Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
+                }
+            }
         }
         if (view == btn_Volver){
             Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
@@ -537,15 +531,10 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     private void envioDatos() {
-
-        //Parse Send
         ParseObject entity = new ParseObject("Datos_Entorno");
 
-        //General
-
+        //noinspection ConstantConditions
         entity = assignFields(entity);
-
-        //ENVIAR OBJETO
 
         entity.saveInBackground(new SaveCallback() {
             @Override
@@ -569,7 +558,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private void desactivarBotonesDatos() {
         btn_DatosAves.setEnabled(true);
         btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
-        btn_DatosAves.setPadding(5,0,0,0);
+        //btn_DatosAves.setPadding(5,0,0,0);
         btn_DatosEntorno.setEnabled(false);
         btn_DatosEntorno.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
         btn_DatosEntorno.setPadding(5,0,0,0);
@@ -641,6 +630,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         imprimirDatosRecibidos();
         actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
+
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
@@ -683,14 +673,14 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private String cuadricula(){
         //Primer valor
         String codCuadricula = "";
-        double x = (longitud - 3.123);
+        double x = (envio.getLongitud() - 3.123);
         double x1 = x/0.1159;
         double x2 = 12-x1;
         if(x2<0) x2=0.0;
         double x3 = Math.ceil(x2);
 
         //Segundo valor
-        double y = (latitud - 39.937133);
+        double y = (envio.getLatitud() - 39.937133);
         double y1 = y/0.08878954;
         double y2 = 14-y1;
         if(y2<0) y2=0.0;

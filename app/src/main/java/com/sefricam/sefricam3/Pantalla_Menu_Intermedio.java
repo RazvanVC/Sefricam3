@@ -81,13 +81,13 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
      * Asigna a las variables creadas arriba su correspondiente boton de la actividad
      */
     private void iniciarFindView() {
-        tv_DNI = (TextView) findViewById(R.id.tv_DNI);
-        tv_NGrupo = (TextView) findViewById(R.id.tv_NGrupo);
-        tv_Bienvenida = (TextView) findViewById(R.id.tv_Bienvenida);
-        btn_Salir = (Button) findViewById(R.id.btn_Salir);
-        btn_MenuCapturasEntorno = (Button) findViewById(R.id.btn_Menu_Capturas_Entorno);
+        tv_DNI = findViewById(R.id.tv_DNI);
+        tv_NGrupo = findViewById(R.id.tv_NGrupo);
+        tv_Bienvenida = findViewById(R.id.tv_Bienvenida);
+        btn_Salir = findViewById(R.id.btn_Salir);
+        btn_MenuCapturasEntorno = findViewById(R.id.btn_Menu_Capturas_Entorno);
         btn_Modificacion_Envio = findViewById(R.id.btn_Modificacion_Envio);
-        btn_Envios = (Button) findViewById(R.id.btn_Consular_Envios);
+        btn_Envios = findViewById(R.id.btn_Consular_Envios);
         btn_Mi_Cuadricula = findViewById(R.id.btn_Mi_Cuadricula);
     }
 

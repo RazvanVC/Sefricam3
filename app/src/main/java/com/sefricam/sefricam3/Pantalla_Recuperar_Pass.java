@@ -24,8 +24,8 @@ public class Pantalla_Recuperar_Pass extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_recuperar_contrasena);
 
-        recuperarPass = (Button) findViewById(R.id.btn_RecuperarContrasena);
-        email = (EditText) findViewById(R.id.ete_EmailRecuperacion);
+        recuperarPass = findViewById(R.id.btn_RecuperarContrasena);
+        email = findViewById(R.id.ete_EmailRecuperacion);
         mAuth = FirebaseAuth.getInstance();
 
         recuperarPass.setOnClickListener(new View.OnClickListener() {

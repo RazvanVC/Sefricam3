@@ -5,16 +5,16 @@ import java.util.ArrayList;
 
 public class DatosAvistamiento implements Serializable {
 
-    private String horaInicio;
-    private String horaFin;
+    private final String horaInicio;
+    private final String horaFin;
 
-    private ArrayList<Integer> hora08;
-    private ArrayList<Integer> hora09;
-    private ArrayList<Integer> hora10;
-    private ArrayList<Integer> hora11;
-    private ArrayList<Integer> hora12;
-    private ArrayList<Integer> hora13;
-    private ArrayList<Integer> hora14;
+    private final ArrayList<Integer> hora08;
+    private final ArrayList<Integer> hora09;
+    private final ArrayList<Integer> hora10;
+    private final ArrayList<Integer> hora11;
+    private final ArrayList<Integer> hora12;
+    private final ArrayList<Integer> hora13;
+    private final ArrayList<Integer> hora14;
 
     public DatosAvistamiento(String horaInicio, String horaFin, ArrayList<Integer> hora08, ArrayList<Integer> hora09, ArrayList<Integer> hora10, ArrayList<Integer> hora11, ArrayList<Integer> hora12, ArrayList<Integer> hora13, ArrayList<Integer> hora14) {
         this.horaInicio = horaInicio;

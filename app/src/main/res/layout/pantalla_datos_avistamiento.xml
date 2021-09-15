@@ -166,7 +166,7 @@
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Pardillo Comun -->
                         <TextView
-                            android:id="@+id/tv_EspecieVerdonComun"
+                            android:id="@+id/tv_EspecieVerderonComun"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:gravity="center_vertical"
@@ -174,7 +174,7 @@
                             android:textColor="@color/VerdePrimario"
                             android:textSize="@dimen/_15ssp" /> <!-- Verderon Comun -->
                         <TextView
-                            android:id="@+id/tv_EspecieVerdonSerrano"
+                            android:id="@+id/tv_EspecieVerderonSerrano"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:gravity="center_vertical"
@@ -532,7 +532,7 @@
                                 android:orientation="horizontal">
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonComun08"
+                                    android:id="@+id/etn_VerderonComun08"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -545,7 +545,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonComun09"
+                                    android:id="@+id/etn_VerderonComun09"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -558,7 +558,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonComun10"
+                                    android:id="@+id/etn_VerderonComun10"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -571,7 +571,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonComun11"
+                                    android:id="@+id/etn_VerderonComun11"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -584,7 +584,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonComun12"
+                                    android:id="@+id/etn_VerderonComun12"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -597,7 +597,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonComun13"
+                                    android:id="@+id/etn_VerderonComun13"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -610,7 +610,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonComun14"
+                                    android:id="@+id/etn_VerderonComun14"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -622,7 +622,7 @@
                                     android:textAlignment="center"
                                     android:textSize="@dimen/_12ssp" />
 
-                            </LinearLayout> <!-- Linear Layout Verdon Comun + Horas -->
+                            </LinearLayout> <!-- Linear Layout Verderon Comun + Horas -->
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -630,7 +630,7 @@
                                 android:orientation="horizontal">
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonSerrano08"
+                                    android:id="@+id/etn_VerderonSerrano08"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -643,7 +643,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonSerrano09"
+                                    android:id="@+id/etn_VerderonSerrano09"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -656,7 +656,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonSerrano10"
+                                    android:id="@+id/etn_VerderonSerrano10"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -669,7 +669,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonSerrano11"
+                                    android:id="@+id/etn_VerderonSerrano11"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -682,7 +682,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonSerrano12"
+                                    android:id="@+id/etn_VerderonSerrano12"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -695,7 +695,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonSerrano13"
+                                    android:id="@+id/etn_VerderonSerrano13"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -708,7 +708,7 @@
                                     android:textSize="@dimen/_12ssp" />
 
                                 <EditText
-                                    android:id="@+id/etn_VerdonSerrano14"
+                                    android:id="@+id/etn_VerderonSerrano14"
                                     android:layout_width="@dimen/_100sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_weight="1"
@@ -720,7 +720,7 @@
                                     android:textAlignment="center"
                                     android:textSize="@dimen/_12ssp" />
 
-                            </LinearLayout> <!-- Linear Layout Verdon Serrano + Horas -->
+                            </LinearLayout> <!-- Linear Layout Verderon Serrano + Horas -->
 
                             <LinearLayout
                                 android:layout_width="match_parent"

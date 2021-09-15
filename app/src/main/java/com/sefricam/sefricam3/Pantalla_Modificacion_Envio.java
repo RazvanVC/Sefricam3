@@ -30,7 +30,7 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
     private Limites limites;
     private Spinner sp_EnvioSeleccionado;
     private Button btn_ContinuarModificacionEnvio, btn_VolverModificacionEnvio;
-    private ArrayList<Envio> enviosRecibidos = new ArrayList<>();
+    private final ArrayList<Envio> enviosRecibidos = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,8 +107,6 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                 } else {
                     enviosCargados.add("FIN ENVIOS CARGADOS");
                 }
-
-
             }
         });
 

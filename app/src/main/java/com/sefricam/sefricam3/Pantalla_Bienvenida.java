@@ -29,7 +29,7 @@ public class Pantalla_Bienvenida extends Activity {
         setContentView(R.layout.pantalla_bienvenida);
 
 
-        btn_Start = (Button) findViewById(R.id.btn_Comenzar);
+        btn_Start = findViewById(R.id.btn_Comenzar);
 
         btn_Start.setOnClickListener(new View.OnClickListener() {
             @Override

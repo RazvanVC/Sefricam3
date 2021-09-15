@@ -4,57 +4,55 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListener{
 
     private Button btn_Enviar, btn_Volver;
     private TextView tv_Hora;
 
-    //Datos
-    private String hora,anillaPreexistente;
-    private int especie, numeroAnilla, localizacion, sexo, edad, nEjemplares, condicionFisica, grasa, musculoPectoral, muda, placaIncubatriz;
-    private Double peso, longitudTarso, longitudPico, longitudTerceraPrimaria;
-
     private EditText etn_EjemplaresCapturados, etn_NumeroAnilla, et_NumeroAnillaPreexistente, etnd_Peso, etnd_LongitudTarso, etnd_LongitudPico, etnd_LongitudTerceraPrimaria;
     private RadioGroup rbg_Localizacion, rbg_Sexo, rbg_Edad, rbg_CondicionFisica, rbg_Grasa, rbg_MusculoPectoral,rbg_Muda,rbg_PlacaInc, rbg_EspeciesAves;
+    //Radio Buttons para las Especies
+    private RadioButton rb_EspecieCamachuelo, rb_EspecieJilguero, rb_EspecieLugano, rb_EspeciePardComun, rb_EspeciePicogordo, rb_EspeciePinzComun, rb_EspeciePinzReal, rb_EspeciePiquituerto, rb_EspecieVerdecillo, rb_EspecieVerdComun, rb_EspecieVerdSerrano;
+    //Radio Buttons para la Localizacion
+    private RadioButton rb_LocalizacionLocal,rb_LocalizacionNoLocal, rb_LocalizacionIndeterminado;
+    //Radio Buttons para el Sexo
     private RadioButton rb_SexoMacho, rb_SexoHembra, rb_SexoIndeterminado;
-    private TextView tv_PlacaInc;
+    //Radio Buttons para la Edad
+    private RadioButton rb_EdadJuvenil, rb_EdadAdulto;
+    //Radio Buttons para la Condicion Fisica
+    private RadioButton rb_CondicionBuena, rb_CondicionLesiones, rb_CondicionEnfermedad, rb_CondicionMalformacion;
+    //Radio Buttons para la Grasa
+    private RadioButton rb_GrasaAusente, rb_GrasaInter, rb_GrasaInter_Abd, rb_GrasaInter_Abd_Pectoral;
+    //Radio Buttons para el Musculo Pectoral
+    private RadioButton rb_MusculoQEvidente, rb_MusculoQDistinguible, rb_MusculoQLigera, rb_MusculoNoQ;
+    //Radio Buttons para la Muda
+    private RadioButton rb_MudaAusente, rb_MudaEnCurso, rb_MudaTerminada;
+    //Radio Buttons para la Placa Incubatriz
     private RadioButton rb_PlacaIncNoEvidencia, rb_PlacaIncIncompleta, rb_PlacaIncMEvidente;
+    private TextView tv_PlacaInc;
 
     //Parametros
     private Envio envio;
-    private MetodosCaptura metodosCaptura;
-    private DatosAvistamiento datosAvistamiento;
-    private DatosEntorno datosEntorno;
-    private Limites limites;
-    private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
-    private String email,DNI;
-    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico, latitud, longitud;;
     private DatosAves ave;
-
+    private Limites limites;
+    //Parametros biometricos para las aves
+    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,19 +65,167 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             recuperarDatosRecibidos(datos);
             System.out.println("Datos recibidos en Datos Aves");
             imprimirDatosRecibidos();
-
         }
 
         iniciarFindView();
         iniciarOnClickListener();
-        if (envio.isModificacion()) cargarDatos();
+        if (ave.isModificacion()) cargarDatos();
     }
 
     private void cargarDatos() {
+        btn_Enviar.setText("Modificar");
         tv_Hora.setText(ave.getHoraCaptura());
 
-        //HACER LA CARGA DE DATOS
+        switch (ave.getEspecie()){
+            case 1:
+                rb_EspecieCamachuelo.setChecked(true);
+                break;
+            case 2:
+                rb_EspecieJilguero.setChecked(true);
+                break;
+            case 3:
+                rb_EspecieLugano.setChecked(true);
+                break;
+            case 4:
+                rb_EspeciePardComun.setChecked(true);
+                break;
+            case 5:
+                rb_EspeciePicogordo.setChecked(true);
+                break;
+            case 6:
+                rb_EspeciePinzComun.setChecked(true);
+                break;
+            case 7:
+                rb_EspeciePinzReal.setChecked(true);
+                break;
+            case 8:
+                rb_EspeciePiquituerto.setChecked(true);
+                break;
+            case 9:
+                rb_EspecieVerdecillo.setChecked(true);
+                break;
+            case 10:
+                rb_EspecieVerdComun.setChecked(true);
+                break;
+            case 11:
+                rb_EspecieVerdSerrano.setChecked(true);
+                break;
+        }
 
+        etn_EjemplaresCapturados.setText(String.valueOf(ave.getnEjemplares()));
+        etn_NumeroAnilla.setText(String.valueOf(ave.getnAnilla()));
+        et_NumeroAnillaPreexistente.setText(ave.getAnillaPreexistente());
+        etnd_Peso.setText(String.valueOf(ave.getPeso()));
+        etnd_LongitudTarso.setText(String.valueOf(ave.getLongitudTarso()));
+        etnd_LongitudPico.setText(String.valueOf(ave.getLongitudPico()));
+        etnd_LongitudTerceraPrimaria.setText(String.valueOf(ave.getLongitudTerceraPrimaria()));
+
+        switch (ave.getLocalizacion()){
+            case 1:
+                rb_LocalizacionLocal.setChecked(true);
+                break;
+            case 2:
+                rb_LocalizacionNoLocal.setChecked(true);
+                break;
+            case 3:
+                rb_LocalizacionIndeterminado.setChecked(true);
+                break;
+        }
+
+        switch (ave.getSexo()){
+            case 1:
+                rb_SexoMacho.setChecked(true);
+                cambiarPlacIncubatriz(false);
+                break;
+            case 2:
+                rb_SexoHembra.setChecked(true);
+                cambiarPlacIncubatriz(true);
+                break;
+            case 3:
+                rb_SexoIndeterminado.setChecked(true);
+                cambiarPlacIncubatriz(false);
+                break;
+        }
+
+        switch (ave.getEdad()){
+            case 1:
+                rb_EdadJuvenil.setChecked(true);
+                break;
+            case 2:
+                rb_EdadAdulto.setChecked(true);
+                break;
+        }
+
+        switch (ave.getCondicionFisica()){
+            case 1:
+                rb_CondicionBuena.setChecked(true);
+                break;
+            case 2:
+                rb_CondicionLesiones.setChecked(true);
+                break;
+            case 3:
+                rb_CondicionEnfermedad.setChecked(true);
+                break;
+            case 4:
+                rb_CondicionMalformacion.setChecked(true);
+                break;
+        }
+
+        switch (ave.getGrasa()){
+            case 1:
+                rb_GrasaAusente.setChecked(true);
+                break;
+            case 2:
+                rb_GrasaInter.setChecked(true);
+                break;
+            case 3:
+                rb_GrasaInter_Abd.setChecked(true);
+                break;
+            case 4:
+                rb_GrasaInter_Abd_Pectoral.setChecked(true);
+                break;
+        }
+
+        switch (ave.getMusculoPectoral()){
+            case 1:
+                rb_MusculoQEvidente.setChecked(true);
+                break;
+            case 2:
+                rb_MusculoQDistinguible.setChecked(true);
+                break;
+            case 3:
+                rb_MusculoQLigera.setChecked(true);
+                break;
+            case 4:
+                rb_MusculoNoQ.setChecked(true);
+                break;
+        }
+
+        switch (ave.getMuda()){
+            case 1:
+                rb_MudaAusente.setChecked(true);
+                break;
+            case 2:
+                rb_MudaEnCurso.setChecked(true);
+                break;
+            case 3:
+                rb_MudaTerminada.setChecked(true);
+                break;
+        }
+
+        switch (ave.getPlacaIncubatriz()){
+            case 0:
+                break;
+            case 1:
+                rb_PlacaIncNoEvidencia.setChecked(true);
+                break;
+            case 2:
+                rb_PlacaIncIncompleta.setChecked(true);
+                break;
+            case 3:
+                rb_PlacaIncMEvidente.setChecked(true);
+                break;
+        }
     }
 
     private void iniciarOnClickListener() {
@@ -99,6 +245,17 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         //RB Especie aves
         rbg_EspeciesAves = findViewById(R.id.rbg_EspeciesAves);
+        rb_EspecieCamachuelo = findViewById(R.id.rb_EspecieCamachuelo);
+        rb_EspecieJilguero = findViewById(R.id.rb_EspecieJilguero);
+        rb_EspecieLugano = findViewById(R.id.rb_EspecieLugano);
+        rb_EspeciePardComun = findViewById(R.id.rb_EspeciePardComun);
+        rb_EspeciePicogordo = findViewById(R.id.rb_EspeciePicogordo);
+        rb_EspeciePinzComun = findViewById(R.id.rb_EspeciePinzComun);
+        rb_EspeciePinzReal = findViewById(R.id.rb_EspeciePinzReal);
+        rb_EspeciePiquituerto = findViewById(R.id.rb_EspeciePiquituerto);
+        rb_EspecieVerdecillo = findViewById(R.id.rb_EspecieVerdecillo);
+        rb_EspecieVerdComun = findViewById(R.id.rb_EspecieVerdComun);
+        rb_EspecieVerdSerrano = findViewById(R.id.rb_EspecieVerdSerrano);
 
         etn_EjemplaresCapturados = findViewById(R.id.etn_EjemplaresCapturados);
 
@@ -110,25 +267,49 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         etnd_LongitudPico = findViewById(R.id.etnd_LongitudPico);
         etnd_LongitudTerceraPrimaria = findViewById(R.id.etnd_LongitudTerceraPrimaria);
 
-        //Radio Button Group Ave Local
+        //Radio Buttons Localizacion
         rbg_Localizacion = findViewById(R.id.rbg_Localizacion);
+        rb_LocalizacionLocal =findViewById(R.id.rb_LocalizacionLocal);
+        rb_LocalizacionNoLocal =findViewById(R.id.rb_LocalizacionNoLocal);
+        rb_LocalizacionIndeterminado =findViewById(R.id.rb_LocalizacionIndeterminado);
 
-        //Sexo
+        //Radio Buttons Sexo
         rbg_Sexo = findViewById(R.id.rbg_Sexo);
         rb_SexoMacho = findViewById(R.id.rb_SexoMacho);
         rb_SexoHembra = findViewById(R.id.rb_SexoHembra);
         rb_SexoIndeterminado = findViewById(R.id.rb_SexoIndeterminado);
 
+        //Radio Buttons Edad
         rbg_Edad = findViewById(R.id.rbg_Edad);
+        rb_EdadJuvenil = findViewById(R.id.rb_EdadJuvenil);
+        rb_EdadAdulto = findViewById(R.id.rb_EdadAdulto);
 
-
+        //Radio Buttons Condicion Fisica
         rbg_CondicionFisica = findViewById(R.id.rbg_CondicionFisica);
+        rb_CondicionBuena = findViewById(R.id.rb_CondicionBuena);
+        rb_CondicionLesiones = findViewById(R.id.rb_CondicionLesiones);
+        rb_CondicionEnfermedad = findViewById(R.id.rb_CondicionEnfermedad);
+        rb_CondicionMalformacion = findViewById(R.id.rb_CondicionMalformacion);
 
+        //Radio Buttons Grasa
         rbg_Grasa = findViewById(R.id.rbg_Grasa);
+        rb_GrasaAusente = findViewById(R.id.rb_GrasaAusente);
+        rb_GrasaInter = findViewById(R.id.rb_GrasaInter);
+        rb_GrasaInter_Abd = findViewById(R.id.rb_GrasaInter_Abd);
+        rb_GrasaInter_Abd_Pectoral = findViewById(R.id.rb_GrasaInter_Abd_Pectoral);
 
+        //Radio Buttons Musculo Pectoral
         rbg_MusculoPectoral = findViewById(R.id.rbg_MusculoPectoral);
+        rb_MusculoQEvidente = findViewById(R.id.rb_MusculoQEvidente);
+        rb_MusculoQLigera = findViewById(R.id.rb_MusculoQLigera);
+        rb_MusculoQDistinguible = findViewById(R.id.rb_MusculoQDistinguible);
+        rb_MusculoNoQ = findViewById(R.id.rb_MusculoNoQ);
 
+        //Radio Buttons Muda
         rbg_Muda = findViewById(R.id.rbg_Muda);
+        rb_MudaAusente = findViewById(R.id.rb_MudaAusente);
+        rb_MudaEnCurso = findViewById(R.id.rb_MudaEnCurso);
+        rb_MudaTerminada = findViewById(R.id.rb_MudaTerminada);
 
         //Placa Incubatriz
         tv_PlacaInc = findViewById(R.id.tv_PlacaInc);
@@ -137,6 +318,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         rb_PlacaIncIncompleta = findViewById(R.id.rb_PlacaIncIncompleta);
         rb_PlacaIncMEvidente = findViewById(R.id.rb_PlacaIncMEvidente);
 
+        //Botones de Control
         btn_Volver = findViewById(R.id.btn_VolverAves);
         btn_Enviar = findViewById(R.id.btn_EnviarAves);
 
@@ -145,12 +327,15 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == btn_Enviar){
+
             if (comprobarValores()){
                 asignacionValores();
                 Intent activity = new Intent(this, Pantalla_Menu_Metodos_Y_Captura.class);
                 guardarParametros(activity);
 
-                envioDatos();
+                if (ave.isModificacion()) modificarDatos();
+                else envioDatos();
+
                 startActivity(activity);
                 finish();
             }
@@ -166,6 +351,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             TimePickerDialog recogerHora = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    String hora = "";
                     if (minute<10){
                         hora = hourOfDay+":0"+minute;
                     } else {
@@ -177,67 +363,74 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             recogerHora.show();
         }
         if (v == rb_SexoHembra){
+            cambiarPlacIncubatriz(true);
+        }
+        if (v == rb_SexoMacho){
+            cambiarPlacIncubatriz(false);
+        }
+        if (v == rb_SexoIndeterminado){
+            cambiarPlacIncubatriz(false);
+        }
+    }
+
+    private void cambiarPlacIncubatriz(boolean b) {
+        if (b){
             tv_PlacaInc.setTextColor(getColor(R.color.VerdePrimario));
             rb_PlacaIncMEvidente.setTextColor(getColor(R.color.VerdePrimario));
             rb_PlacaIncIncompleta.setTextColor(getColor(R.color.VerdePrimario));
             rb_PlacaIncNoEvidencia.setTextColor(getColor(R.color.VerdePrimario));
-            rb_PlacaIncMEvidente.setClickable(true);
-            rb_PlacaIncIncompleta.setClickable(true);
-            rb_PlacaIncNoEvidencia.setClickable(true);
-        }
-        if (v == rb_SexoMacho){
+        } else {
             tv_PlacaInc.setTextColor(getColor(R.color.Gris));
             rb_PlacaIncMEvidente.setTextColor(getColor(R.color.Gris));
             rb_PlacaIncIncompleta.setTextColor(getColor(R.color.Gris));
             rb_PlacaIncNoEvidencia.setTextColor(getColor(R.color.Gris));
-            rb_PlacaIncMEvidente.setClickable(false);
-            rb_PlacaIncIncompleta.setClickable(false);
-            rb_PlacaIncNoEvidencia.setClickable(false);
-            rb_PlacaIncMEvidente.setChecked(false);
-            rb_PlacaIncIncompleta.setChecked(false);
-            rb_PlacaIncNoEvidencia.setChecked(false);
+            rb_PlacaIncMEvidente.setChecked(b);
+            rb_PlacaIncIncompleta.setChecked(b);
+            rb_PlacaIncNoEvidencia.setChecked(b);
         }
-        if (v == rb_SexoIndeterminado){
-            tv_PlacaInc.setTextColor(getColor(R.color.Gris));
-            rb_PlacaIncMEvidente.setTextColor(getColor(R.color.Gris));
-            rb_PlacaIncIncompleta.setTextColor(getColor(R.color.Gris));
-            rb_PlacaIncNoEvidencia.setTextColor(getColor(R.color.Gris));
-            rb_PlacaIncMEvidente.setClickable(false);
-            rb_PlacaIncIncompleta.setClickable(false);
-            rb_PlacaIncNoEvidencia.setClickable(false);
-            rb_PlacaIncMEvidente.setChecked(false);
-            rb_PlacaIncIncompleta.setChecked(false);
-            rb_PlacaIncNoEvidencia.setChecked(false);
-        }
+        rb_PlacaIncMEvidente.setClickable(b);
+        rb_PlacaIncIncompleta.setClickable(b);
+        rb_PlacaIncNoEvidencia.setClickable(b);
+
+    }
+
+    private void modificarDatos() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Aves");
+
+        // Retrieve the object by id
+        System.out.println("PDA-MD-OBJECT ID: " + ave.getObjectID());
+        query.getInBackground(ave.getObjectID(), (entity, e) -> {
+            if (e == null) {
+                //noinspection ConstantConditions
+                entity = assignFields(entity);
+
+                entity.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e==null){
+                            //Save was done
+                            Toast.makeText(Pantalla_Datos_Aves.this, "Se ha actualizado el envío correctamente", Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            //Something went wrong
+                            Toast.makeText(Pantalla_Datos_Aves.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            } else {
+                e.printStackTrace();
+                // something went wrong
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void envioDatos() {
         ParseObject entity = new ParseObject("Datos_Aves");
 
-        entity.put("NumGrupo",limites.getNumeroGrupo());
-        entity.put("FechaCap", envio.getFecha());
-        entity.put("Latitud", envio.getLatitud());
-        entity.put("Longitud", envio.getLongitud());
-        entity.put("HoraCap", hora);
-        entity.put("Especie", especie);
-        entity.put("NEjemplares", nEjemplares);
-        entity.put("NumAnilla", numeroAnilla);
-        entity.put("AnillaPre", anillaPreexistente);
-        entity.put("Peso", peso);
-        entity.put("LongTarso", longitudTarso);
-        entity.put("LongPico", longitudPico);
-        entity.put("LongTerPrim", longitudTerceraPrimaria);
-        entity.put("Localizacion", localizacion);
-        entity.put("Sexo", sexo);
-        entity.put("Edad", edad);
-        entity.put("CondFisica", condicionFisica);
-        entity.put("Grasa", grasa);
-        entity.put("MuscPectoral", musculoPectoral);
-        entity.put("Muda", muda);
-        entity.put("PlacIncubatriz", placaIncubatriz);
+        entity = assignFields(entity);
 
-        // Saves the new object.
-        // Notice that the SaveCallback is totally optional!
         entity.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -251,6 +444,33 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 }
             }
         });
+    }
+
+    private ParseObject assignFields(ParseObject entity) {
+
+        entity.put("NumGrupo",ave.getNumGrupo());
+        entity.put("FechaCap",ave.getFechaCaptura());
+        entity.put("Latitud",ave.getLatitud());
+        entity.put("Longitud",ave.getLongitud());
+        entity.put("HoraCap",ave.getHoraCaptura());
+        entity.put("Especie",ave.getEspecie());
+        entity.put("NEjemplares",ave.getnEjemplares());
+        entity.put("NumAnilla",ave.getnAnilla());
+        entity.put("AnillaPre",ave.getAnillaPreexistente());
+        entity.put("Peso",ave.getPeso());
+        entity.put("LongTarso",ave.getLongitudTarso());
+        entity.put("LongPico",ave.getLongitudPico());
+        entity.put("LongTerPrim",ave.getLongitudTerceraPrimaria());
+        entity.put("Localizacion",ave.getLocalizacion());
+        entity.put("Sexo",ave.getSexo());
+        entity.put("Edad",ave.getEdad());
+        entity.put("CondFisica",ave.getCondicionFisica());
+        entity.put("Grasa",ave.getGrasa());
+        entity.put("MuscPectoral",ave.getMusculoPectoral());
+        entity.put("Muda",ave.getMuda());
+        entity.put("PlacIncubatriz",ave.getPlacaIncubatriz());
+
+        return entity;
     }
 
     private void actualizarDatosEnviados() {
@@ -278,159 +498,159 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     @SuppressLint("NonConstantResourceId")
     private void asignacionValores() {
 
-        hora = tv_Hora.getText().toString();
+        ave.setHoraCaptura(tv_Hora.getText().toString());
 
         //Asignacion de especie
         switch (rbg_EspeciesAves.getCheckedRadioButtonId()){
             case R.id.rb_EspecieCamachuelo:
-                especie = 1;
+                ave.setEspecie(1);
                 break;
             case R.id.rb_EspecieJilguero:
-                especie = 2;
+                ave.setEspecie(2);
                 break;
             case R.id.rb_EspecieLugano:
-                especie = 3;
+                ave.setEspecie(3);
                 break;
             case R.id.rb_EspeciePardComun:
-                especie = 4;
+                ave.setEspecie(4);
                 break;
             case R.id.rb_EspeciePicogordo:
-                especie = 5;
+                ave.setEspecie(5);
                 break;
             case R.id.rb_EspeciePinzComun:
-                especie = 6;
+                ave.setEspecie(6);
                 break;
             case R.id.rb_EspeciePinzReal:
-                especie = 7;
+                ave.setEspecie(7);
                 break;
             case R.id.rb_EspeciePiquituerto:
-                especie = 8;
+                ave.setEspecie(8);
                 break;
             case R.id.rb_EspecieVerdecillo:
-                especie = 9;
+                ave.setEspecie(9);
                 break;
             case R.id.rb_EspecieVerdComun:
-                especie = 10;
+                ave.setEspecie(10);
                 break;
             case R.id.rb_EspecieVerdSerrano:
-                especie = 11;
+                ave.setEspecie(11);
                 break;
         }
 
         //Asignacion de anilla
         if (!etn_NumeroAnilla.getText().toString().isEmpty()) {
-            numeroAnilla = Integer.parseInt(etn_NumeroAnilla.getText().toString());
-            anillaPreexistente = "";
+            ave.setnAnilla(Integer.parseInt(etn_NumeroAnilla.getText().toString()));
+            ave.setAnillaPreexistente("");
         } else {
-            numeroAnilla = 0;
-            anillaPreexistente = et_NumeroAnillaPreexistente.getText().toString();
+            ave.setnAnilla(0);
+            ave.setAnillaPreexistente(et_NumeroAnillaPreexistente.getText().toString());
         }
 
         //Asignación de parámetros
-        peso = Double.parseDouble(etnd_Peso.getText().toString());
-        longitudTarso =Double.parseDouble(etnd_LongitudTarso.getText().toString());
-        longitudPico = Double.parseDouble(etnd_LongitudPico.getText().toString());
-        longitudTerceraPrimaria = Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString());
+        ave.setPeso(Double.parseDouble(etnd_Peso.getText().toString()));
+        ave.setLongitudTarso(Double.parseDouble(etnd_LongitudTarso.getText().toString()));
+        ave.setLongitudPico(Double.parseDouble(etnd_LongitudPico.getText().toString()));
+        ave.setLongitudTerceraPrimaria(Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString()));
 
         switch (rbg_Localizacion.getCheckedRadioButtonId()){
             case R.id.rb_LocalizacionLocal:
-                localizacion=1;
+                ave.setLocalizacion(1);
                 break;
             case R.id.rb_LocalizacionNoLocal:
-                localizacion=2;
+                ave.setLocalizacion(2);
                 break;
             case R.id.rb_LocalizacionIndeterminado:
-                localizacion=3;
+                ave.setLocalizacion(3);
                 break;
         }
         switch (rbg_Sexo.getCheckedRadioButtonId()){
             case R.id.rb_SexoMacho:
-                sexo=1;
+                ave.setSexo(1);
                 break;
             case R.id.rb_SexoHembra:
-                sexo=2;
+                ave.setSexo(2);
                 break;
             case R.id.rb_SexoIndeterminado:
-                sexo=3;
+                ave.setSexo(3);
                 break;
         }
         switch (rbg_Edad.getCheckedRadioButtonId()){
             case R.id.rb_EdadJuvenil:
-                edad=1;
+                ave.setEdad(1);
                 break;
             case R.id.rb_EdadAdulto:
-                edad=2;
+                ave.setEdad(2);
                 break;
         }
 
-        nEjemplares = Integer.parseInt(etn_EjemplaresCapturados.getText().toString());
+        ave.setnEjemplares(Integer.parseInt(etn_EjemplaresCapturados.getText().toString()));
 
         switch (rbg_CondicionFisica.getCheckedRadioButtonId()){
             case R.id.rb_CondicionBuena:
-                condicionFisica=1;
+                ave.setCondicionFisica(1);
                 break;
             case R.id.rb_CondicionLesiones:
-                condicionFisica=2;
+                ave.setCondicionFisica(2);
                 break;
             case R.id.rb_CondicionEnfermedad:
-                condicionFisica=3;
+                ave.setCondicionFisica(3);
                 break;
             case R.id.rb_CondicionMalformacion:
-                condicionFisica=4;
+                ave.setCondicionFisica(4);
                 break;
         }
         switch (rbg_Grasa.getCheckedRadioButtonId()){
             case R.id.rb_GrasaAusente:
-                grasa=1;
+                ave.setGrasa(1);
                 break;
             case R.id.rb_GrasaInter:
-                grasa=2;
+                ave.setGrasa(2);
                 break;
             case R.id.rb_GrasaInter_Abd:
-                grasa=3;
+                ave.setGrasa(3);
                 break;
             case R.id.rb_GrasaInter_Abd_Pectoral:
-                grasa=4;
+                ave.setGrasa(4);
                 break;
         }
         switch (rbg_MusculoPectoral.getCheckedRadioButtonId()){
             case R.id.rb_MusculoQEvidente:
-                musculoPectoral=1;
+                ave.setMusculoPectoral(1);
                 break;
             case R.id.rb_MusculoQDistinguible:
-                musculoPectoral=2;
+                ave.setMusculoPectoral(2);
                 break;
             case R.id.rb_MusculoQLigera:
-                musculoPectoral=3;
+                ave.setMusculoPectoral(3);
                 break;
             case R.id.rb_MusculoNoQ:
-                musculoPectoral=4;
+                ave.setMusculoPectoral(4);
                 break;
         }
         switch (rbg_Muda.getCheckedRadioButtonId()){
             case R.id.rb_MudaAusente:
-                muda=1;
+                ave.setMuda(1);
                 break;
             case R.id.rb_MudaEnCurso:
-                muda=2;
+                ave.setMuda(2);
                 break;
             case R.id.rb_MudaTerminada:
-                muda=3;
+                ave.setMuda(3);
                 break;
         }
-        if (sexo==2){
+        if (ave.getSexo()==2){
             switch (rbg_PlacaInc.getCheckedRadioButtonId()){
                 case R.id.rb_PlacaIncNoEvidencia:
-                    placaIncubatriz=1;
+                    ave.setPlacaIncubatriz(1);
                     break;
                 case R.id.rb_PlacaIncIncompleta:
-                    placaIncubatriz=2;
+                    ave.setPlacaIncubatriz(2);
                     break;
                 case R.id.rb_PlacaIncMEvidente:
-                    placaIncubatriz=3;
+                    ave.setPlacaIncubatriz(3);
                     break;
             }
-        } else placaIncubatriz=0;
+        } else ave.setPlacaIncubatriz(0);
 
     }
 
@@ -460,11 +680,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 Toast.makeText(this, "No se puede anillar a un ave ya anillada", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            /*
-            System.out.println("MaxNAnilla => "+ limites.getMaxNAnilla());
-            System.out.println("MinNAnilla => "+ limites.getMinNAnilla());
-            System.out.println("AnillaActu => "+etn_NumeroAnilla.getText().toString());
-            limites.imprimirDatosAnillamiento();*/
             if (Integer.parseInt(etn_NumeroAnilla.getText().toString())!=99999){
                 if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
                     Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
@@ -574,46 +789,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     private void recuperarDatosRecibidos(Bundle datos) {
         envio = (Envio) datos.getSerializable("ENVIO");
-
-        DNI = envio.getDNI();
-        email = envio.getEmail();
-        mCapturasCompletado = envio.isMCapturaCompletado();
-        avistamientoCompletado = envio.isAvistamientoCompletado();
-        entornoCompletado = envio.isEntornoCompletado();
-        metodosCaptura = envio.getMetodosCaptura();
-        datosAvistamiento = envio.getDatosAvistamiento();
-        datosEntorno = envio.getDatosEntorno();
-
-        if (envio.isModificacion()){
-            ave = (DatosAves) datos.getSerializable("AVE");
-        }
-
         limites = (Limites) datos.getSerializable("LIMITES");
-    }
-
-
-
-    private Date convertStringToData(String getDate){
-        //Test Feature
-        /*
-        if (getDate == null){
-            getDate = "16/01/2021";
-            latitud = 0;
-            longitud = 0;
-        }*/
-
-        System.out.println("LONG =>" + longitud);
-        System.out.println("LAT =>" + latitud);
-
-        Date today = null;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-            today = simpleDate.parse(getDate);
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
-        return today;
+        ave = (DatosAves) datos.getSerializable("AVE");
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -745,18 +922,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
     private void imprimirDatosRecibidos() {
         System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
         System.out.println("LIMITES                => " + limites);
+        System.out.println("ENVIO                  => " + envio);
         System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
-        System.out.println("LATITUD                => " + latitud);
-        System.out.println("LONGITUD               => " + longitud);
     }
 }

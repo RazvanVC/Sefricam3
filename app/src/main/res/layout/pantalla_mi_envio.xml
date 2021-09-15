@@ -1063,7 +1063,7 @@
                     android:background="@drawable/celda"/>
 
                 <TextView
-                    android:id="@+id/tv_DatosReclamosCamichuelo"
+                    android:id="@+id/tv_DatosReclamosCamachuelo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -1073,7 +1073,7 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCimbelesCamichuelo"
+                    android:id="@+id/tv_DatosCimbelesCamachuelo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -1083,7 +1083,7 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasCamichueloM"
+                    android:id="@+id/tv_DatosCapturasCamachueloM"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -1093,7 +1093,7 @@
                     android:textAlignment="center"
                     android:background="@drawable/celda"/>
                 <TextView
-                    android:id="@+id/tv_DatosCapturasCamichueloH"
+                    android:id="@+id/tv_DatosCapturasCamachueloH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
@@ -1271,7 +1271,7 @@
 
                     <TextView
                         android:paddingStart="@dimen/_5sdp"
-                        android:id="@+id/tv_DatosEspecieVerdonComun"
+                        android:id="@+id/tv_DatosEspecieVerderonComun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -1282,7 +1282,7 @@
 
                     <TextView
                         android:paddingStart="@dimen/_5sdp"
-                        android:id="@+id/tv_DatosEspecieVerdonSerrano"
+                        android:id="@+id/tv_DatosEspecieVerderonSerrano"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -1413,7 +1413,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Pardillo Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonComun08"
+                                android:id="@+id/tv_DatosEspecieVerderonComun08"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1423,7 +1423,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonSerrano08"
+                                android:id="@+id/tv_DatosEspecieVerderonSerrano08"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1538,7 +1538,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Pardillo Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonComun09"
+                                android:id="@+id/tv_DatosEspecieVerderonComun09"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1548,7 +1548,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonSerrano09"
+                                android:id="@+id/tv_DatosEspecieVerderonSerrano09"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1663,7 +1663,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Pardillo Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonComun10"
+                                android:id="@+id/tv_DatosEspecieVerderonComun10"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1673,7 +1673,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonSerrano10"
+                                android:id="@+id/tv_DatosEspecieVerderonSerrano10"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1788,7 +1788,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Pardillo Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonComun11"
+                                android:id="@+id/tv_DatosEspecieVerderonComun11"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1798,7 +1798,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonSerrano11"
+                                android:id="@+id/tv_DatosEspecieVerderonSerrano11"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1913,7 +1913,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Pardillo Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonComun12"
+                                android:id="@+id/tv_DatosEspecieVerderonComun12"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -1923,7 +1923,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonSerrano12"
+                                android:id="@+id/tv_DatosEspecieVerderonSerrano12"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -2038,7 +2038,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Pardillo Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonComun13"
+                                android:id="@+id/tv_DatosEspecieVerderonComun13"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -2048,7 +2048,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonSerrano13"
+                                android:id="@+id/tv_DatosEspecieVerderonSerrano13"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -2164,7 +2164,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Pardillo Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonComun14"
+                                android:id="@+id/tv_DatosEspecieVerderonComun14"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
@@ -2174,7 +2174,7 @@
                                 android:textSize="@dimen/_13ssp" /> <!-- Verderon Comun -->
 
                             <TextView
-                                android:id="@+id/tv_DatosEspecieVerdonSerrano14"
+                                android:id="@+id/tv_DatosEspecieVerderonSerrano14"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"

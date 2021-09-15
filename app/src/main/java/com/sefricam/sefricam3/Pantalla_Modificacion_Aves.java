@@ -32,7 +32,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
     private String selected;
     private Spinner sp_EnvioAvesSeleccionado;
     private Button btn_ContinuarModificacionAves, btn_VolverModificacionAves, btn_NuevoEnvioModificacionAves, btn_ModificacionEnvioModificacionAves;
-    private ArrayList<DatosAves> enviosRecibidos = new ArrayList<>();
+    private final ArrayList<DatosAves> enviosRecibidos = new ArrayList<>();
     private TextView tv_MA_TextoSeleccion;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
         if (datos != null) {
             envio = (Envio) datos.getSerializable("ENVIO");
             limites = (Limites) datos.getSerializable("LIMITES");
+            ave = (DatosAves) datos.getSerializable("AVE");
         }
 
         //Inicio de los Elementos del layout
@@ -107,29 +108,29 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
 
     private DatosAves getAve(ParseObject obj) {
 
-        int numGrupo = limites.getNumeroGrupo();
-        Date fechaCaptura = envio.getFecha();
-        double latitud = envio.getLatitud();
-        double longitud = envio.getLongitud();
-        String horaCaptura = obj.getString("HoraCap");
-        int especie = Integer.parseInt(Objects.requireNonNull(obj.getNumber("Especie")).toString());
-        int nEjemplares = Integer.parseInt(Objects.requireNonNull(obj.getNumber("NEjemplares")).toString());
-        int nAnilla = Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumAnilla")).toString());
-        String anillaPreexistente = obj.getString("AnillaPre");
-        double peso = Double.parseDouble(Objects.requireNonNull(obj.getNumber("Peso")).toString());
-        double longitudTarso = Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTarso")).toString());
-        double longitudPico = Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongPico")).toString());
-        double longitudTerceraPrimaria = Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTerPrim")).toString());
-        int localizacion = Integer.parseInt(Objects.requireNonNull(obj.getNumber("Localizacion")).toString());
-        int sexo = Integer.parseInt(Objects.requireNonNull(obj.getNumber("Sexo")).toString());
-        int edad = Integer.parseInt(Objects.requireNonNull(obj.getNumber("Edad")).toString());
-        int condicionFisica = Integer.parseInt(Objects.requireNonNull(obj.getNumber("CondFisica")).toString());
-        int grasa = Integer.parseInt(Objects.requireNonNull(obj.getNumber("Grasa")).toString());
-        int musculoPectoral = Integer.parseInt(Objects.requireNonNull(obj.getNumber("MuscPectoral")).toString());
-        int muda = Integer.parseInt(Objects.requireNonNull(obj.getNumber("Muda")).toString());
-        int placaIncubatriz = Integer.parseInt(Objects.requireNonNull(obj.getNumber("PlacIncubatriz")).toString());
+        DatosAves localAve = new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(), envio.getLongitud());
 
-        return new DatosAves(numGrupo,fechaCaptura,latitud,longitud,horaCaptura,especie,nEjemplares,nAnilla,anillaPreexistente,peso,longitudTarso,longitudPico,longitudTerceraPrimaria,localizacion,sexo,edad,condicionFisica,grasa,musculoPectoral,muda,placaIncubatriz);
+        localAve.setHoraCaptura(obj.getString("HoraCap"));
+        localAve.setEspecie(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Especie")).toString()));
+        localAve.setnEjemplares(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NEjemplares")).toString()));
+
+        localAve.setnAnilla(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumAnilla")).toString()));
+        localAve.setAnillaPreexistente(obj.getString("AnillaPre"));
+        localAve.setPeso(Double.parseDouble(Objects.requireNonNull(obj.getNumber("Peso")).toString()));
+        localAve.setLongitudTarso(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTarso")).toString()));
+        localAve.setLongitudPico(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongPico")).toString()));
+        localAve.setLongitudTerceraPrimaria(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTerPrim")).toString()));
+        localAve.setLocalizacion(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Localizacion")).toString()));
+        localAve.setSexo(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Sexo")).toString()));
+        localAve.setEdad(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Edad")).toString()));
+        localAve.setCondicionFisica(Integer.parseInt(Objects.requireNonNull(obj.getNumber("CondFisica")).toString()));
+        localAve.setGrasa(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Grasa")).toString()));
+        localAve.setMusculoPectoral(Integer.parseInt(Objects.requireNonNull(obj.getNumber("MuscPectoral")).toString()));
+        localAve.setMuda(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Muda")).toString()));
+        localAve.setPlacaIncubatriz(Integer.parseInt(Objects.requireNonNull(obj.getNumber("PlacIncubatriz")).toString()));
+        localAve.setObjectID(obj.getObjectId());
+
+        return localAve;
     }
 
     private void iniciarFindView() {
@@ -176,6 +177,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
                 Intent activity = new Intent(Pantalla_Modificacion_Aves.this,Pantalla_Datos_Aves.class);
                 activity.putExtra("ENVIO", envio);
                 activity.putExtra("LIMITES", limites);
+                activity.putExtra("AVE", ave);
                 finish();
                 startActivity(activity);
             }
@@ -183,6 +185,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
                 if (sp_EnvioAvesSeleccionado.getSelectedItemPosition()!=0){
                     Intent activity = new Intent(Pantalla_Modificacion_Aves.this,Pantalla_Datos_Aves.class);
                     ave = enviosRecibidos.get(sp_EnvioAvesSeleccionado.getSelectedItemPosition()-1);
+                    ave.setModificacion(true);
                     activity.putExtra("AVE", ave);
                     activity.putExtra("ENVIO", envio);
                     activity.putExtra("LIMITES", limites);
