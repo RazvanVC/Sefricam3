@@ -19,6 +19,7 @@ import com.parse.ParseQuery;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -87,8 +88,11 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                         localEnvio.setMCapturaCompletado(true);
                         localEnvio.setModificacion(true);
 
-                        //System.out.println("LOF - "+obj.getDate("Fecha"));
-                        localEnvio.setFecha(new Date(Objects.requireNonNull(obj.getDate("Fecha")).getTime()) );
+                        Calendar c = Calendar.getInstance();
+                        c.setTime(Objects.requireNonNull(obj.getDate("Fecha")));
+                        c.add(Calendar.DAY_OF_MONTH, -1);
+                        System.out.println("LOF2 - "+c.getTime());
+                        localEnvio.setFecha(c.getTime());
                         localEnvio.setLatitud(Double.parseDouble(String.valueOf(obj.getNumber("Latitud"))));
                         localEnvio.setLongitud(Double.parseDouble(String.valueOf(obj.getNumber("Longitud"))));
                         localEnvio.setObjectID(obj.getObjectId());
@@ -96,8 +100,9 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
 
                     }
                     for (int i = 0; i<enviosRecibidos.size(); i++){
+
                         Envio localEnvio = enviosRecibidos.get(i);
-                        enviosCargados.add(localEnvio.getFecha().getDay() + "/" + (localEnvio.getFecha().getMonth()+1) + "/" + (localEnvio.getFecha().getYear()+1900) +" - " + localEnvio.getDNI());
+                        enviosCargados.add(localEnvio.getFecha().getDate() + "/" + (localEnvio.getFecha().getMonth()+1) + "/" + (localEnvio.getFecha().getYear()+1900) +" - " + localEnvio.getDNI());
                     }
                     if (enviosCargados.size()==1){
                         enviosCargados.add(0,"No hay datos");
@@ -125,59 +130,59 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                 obj.getBoolean("Coto"),
                 ca,
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecCamachuelo")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimCamachuelo")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapCamachueloM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapCamachueloH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimCamachuelo")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecJilguero")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimJilguero")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapJilgueroM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapJilgueroH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimJilguero")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecLugano")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimLugano")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapLuganoM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapLuganoH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimLugano")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPardComun")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPardComun")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPardComunM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPardComunH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPardComun")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPicogordo")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPicogordo")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPicogordoM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPicogordoH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPicogordo")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPinzComun")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPinzComun")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzComunM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzComunH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPinzComun")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPinzReal")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPinzReal")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzRealM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPinzRealH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPinzReal")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecPiquituerto")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPiquituerto")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPiquituertoM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapPiquituertoH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimPiquituerto")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecVerdecillo")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdecillo")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdecilloM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdecilloH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdecillo")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecVerdComun")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdComun")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdComunM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdComunH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdComun")).toString()),
 
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecVerdSerrano")).toString()),
+                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdSerrano")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdSerranoM")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("CapVerdSerranoH")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("CimVerdSerrano")).toString()),
 
                 obj.getString("Observaciones")
         );

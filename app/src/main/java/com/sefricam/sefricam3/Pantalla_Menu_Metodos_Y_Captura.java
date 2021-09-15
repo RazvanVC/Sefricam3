@@ -2,7 +2,9 @@ package com.sefricam.sefricam3;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,24 +30,13 @@ import java.util.Date;
 
 public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback{
 
-    private Button btn_Localizar, btn_DatosAves, btn_DatosEntorno, btn_Metodos, btn_DatosAvistamiento, btn_Enviar, btn_Volver, btn_MiEnvio;
+    private Button btn_DatosAves, btn_DatosEntorno, btn_DatosMetodos, btn_DatosAvistamiento,btn_MiEnvio, btn_Enviar, btn_Volver;
     private TextView tv_Fecha;
     private EditText etnd_Latitud, etnd_Longitud;
 
-    private double latitud,longitud;
-    private Date fecha;
-
     //PARAMETROS QUE VAN ROTANDO
     private Envio envio;
-
-    private boolean envioCompletado;
-    private MetodosCaptura metodosCaptura;
-    private DatosAvistamiento datosAvistamiento;
-    private DatosEntorno datosEntorno;
     private Limites limites;
-    private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
-    private String email;
-    private String DNI;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +46,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         iniciarFindView();
         iniciarOnClickListener();
 
-        tv_Fecha.setClickable(true);
-        tv_Fecha.setEnabled(true);
-
-        //btn_DatosAves.setEnabled(true);
-
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             recuperarDatosRecibidos(datos);
@@ -67,42 +53,31 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 tv_Fecha.setEnabled(false);
                 etnd_Latitud.setEnabled(false);
                 etnd_Longitud.setEnabled(false);
-                Date date = envio.getFecha();
-                @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                String strDate = dateFormat.format(date);
-                tv_Fecha.setText(strDate);
+
+
+                tv_Fecha.setText(convertDateToString(envio.getFecha()));
                 etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
                 etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
 
                 btn_DatosAves.setEnabled(true);
                 btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
-                //btn_DatosAves.setPadding(5,0,0,0);
 
                 btn_Enviar.setEnabled(true);
                 btn_Enviar.setText("Modificar");
                 btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
             }else {
-                if (envioCompletado){
-                    @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                    tv_Fecha.setText(sdf.format(envio.getFecha()));
+                if (envio.isEnvioCompletado()){
+                    tv_Fecha.setText(convertDateToString(envio.getFecha()));
                     etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
                     etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
-                    tv_Fecha.setClickable(false);
-                    etnd_Latitud.setEnabled(false);
-                    etnd_Longitud.setEnabled(false);
-
-                    //Desactivacion de botones
                     desactivarBotonesDatos();
-
-
                 }
-                if (mCapturasCompletado && avistamientoCompletado && entornoCompletado && !envioCompletado){
+                if (envio.isMCapturaCompletado() && envio.isAvistamientoCompletado() && envio.isEntornoCompletado() && !envio.isEnvioCompletado()){
                     Toast.makeText(this, "Ya puedes enviar los datos e introducir la latitud y longitud, asi como la fecha", Toast.LENGTH_LONG).show();
                     tv_Fecha.setEnabled(true);
                     etnd_Latitud.setEnabled(true);
                     etnd_Longitud.setEnabled(true);
                     btn_Enviar.setEnabled(true);
-
                     btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
                 }
             }
@@ -113,16 +88,20 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     }
 
+    private String convertDateToString(Date fecha) {
+        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormat.format(fecha);
+    }
+
     /**
      * Asigna a las variables creadas arriba su correspondiente boton de la actividad
      */
     private void iniciarFindView() {
 
         //Button
-        btn_Localizar = findViewById(R.id.btn_LocalizacionActual);
         btn_DatosAves = findViewById(R.id.btn_DatosAves);
         btn_DatosAvistamiento = findViewById(R.id.btn_DatosAvistamientos);
-        btn_Metodos = findViewById(R.id.btn_MetodosCaptura);
+        btn_DatosMetodos = findViewById(R.id.btn_MetodosCaptura);
         btn_DatosEntorno = findViewById(R.id.btn_DatosEntorno);
         btn_MiEnvio = findViewById(R.id.btn_MiEnvio);
         btn_Volver = findViewById(R.id.btn_VolverMenuPrincipalMC);
@@ -139,10 +118,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
      */
     public void iniciarOnClickListener(){
         //Button
-        btn_Localizar.setOnClickListener(this);
         btn_DatosAves.setOnClickListener(this);
         btn_DatosAvistamiento.setOnClickListener(this);
-        btn_Metodos.setOnClickListener(this);
+        btn_DatosMetodos.setOnClickListener(this);
         btn_DatosEntorno.setOnClickListener(this);
         btn_MiEnvio.setOnClickListener(this);
         btn_Enviar.setOnClickListener(this);
@@ -150,6 +128,33 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         //EditText
         tv_Fecha.setOnClickListener(this);
+    }
+
+    /**
+     * Called when the activity has detected the user's press of the back
+     * key.  The default implementation simply finishes the current activity,
+     * but you can override this to do whatever you want.
+     */
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder exit = new AlertDialog.Builder(this);
+        exit.setMessage("¿Quieres salir de la aplicación?");
+        exit.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Bienvenida.class));
+                finish();
+            }
+        });
+        exit.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog dialog = exit.create();
+        dialog.show();
     }
 
     @Override
@@ -165,29 +170,22 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     new DatePickerDialog.OnDateSetListener() {
 
+                        @SuppressLint("SetTextI18n")
                         @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            tv_Fecha.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            tv_Fecha.setText(dayOfMonth+"-"+(monthOfYear+1)+"-"+year);
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
         }
         if (view == btn_DatosAves){
-            if (envio.isModificacion()){
-                Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Modificacion_Aves.class);
-                guardarParametros(activity);
-                activity.putExtra("AVE", new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(),envio.getLongitud()));
-                startActivity(activity);
-                finish();
-            } else{
-                Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this,Pantalla_Datos_Aves.class);
-                guardarParametros(activity);
-                startActivity(activity);
-                finish();
-            }
+            Intent activity;
+            if (envio.isModificacion()) activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Modificacion_Aves.class);
+            else activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Datos_Aves.class);
+            activity.putExtra("AVE", new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(),envio.getLongitud()));
+            guardarParametros(activity);
+            startActivity(activity);
+            finish();
         }
         if (view == btn_DatosEntorno){
             System.out.println("Boton Datos de Entorno");
@@ -196,7 +194,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             startActivity(activity);
             finish();
         }
-        if (view == btn_Metodos){
+        if (view == btn_DatosMetodos){
             System.out.println("Boton Metodos de Captura");
             Intent activity = new Intent(this, Pantalla_Metodos_Captura.class);
             guardarParametros(activity);
@@ -229,7 +227,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                     etnd_Longitud.setEnabled(false);
                     asignacionValores();
                     envioDatos();
-                    envioCompletado = true;
                     envio.setEnvioCompletado(true);
 
                 } else {
@@ -239,7 +236,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         }
         if (view == btn_Volver){
             Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
-            activity.putExtra("EMAIL",email);
+            activity.putExtra("EMAIL",envio.getEmail());
             activity.putExtra("LIMITES", limites);
             startActivity(activity);
             finish();
@@ -290,225 +287,225 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("NumGrupo", limites.getNumeroGrupo());
 
         //Entorno
-        entity.put("TempInicial",datosEntorno.gettInicio());
-        entity.put("TempFinal",datosEntorno.gettFin());
-        entity.put("Zonificacion",datosEntorno.getZonificacion());
-        entity.put("Viento",datosEntorno.getViento());
-        entity.put("DirViento",datosEntorno.getDireccionViento());
-        entity.put("Nubes",datosEntorno.getNubes());
-        entity.put("Lluvia",datosEntorno.getLluvia());
+        entity.put("TempInicial",envio.getDatosEntorno().gettInicio());
+        entity.put("TempFinal",envio.getDatosEntorno().gettFin());
+        entity.put("Zonificacion",envio.getDatosEntorno().getZonificacion());
+        entity.put("Viento",envio.getDatosEntorno().getViento());
+        entity.put("DirViento",envio.getDatosEntorno().getDireccionViento());
+        entity.put("Nubes",envio.getDatosEntorno().getNubes());
+        entity.put("Lluvia",envio.getDatosEntorno().getLluvia());
 
         //Plantas
-        entity.put("EP01", datosEntorno.getPlantas().get(0));
-        entity.put("EP02", datosEntorno.getPlantas().get(1));
-        entity.put("EP03", datosEntorno.getPlantas().get(2));
-        entity.put("EP04", datosEntorno.getPlantas().get(3));
-        entity.put("EP05", datosEntorno.getPlantas().get(4));
-        entity.put("EP06", datosEntorno.getPlantas().get(5));
-        entity.put("EP07", datosEntorno.getPlantas().get(6));
-        entity.put("EP08", datosEntorno.getPlantas().get(7));
-        entity.put("EP09", datosEntorno.getPlantas().get(8));
-        entity.put("EP10", datosEntorno.getPlantas().get(9));
-        entity.put("EP11", datosEntorno.getPlantas().get(10));
-        entity.put("EP12", datosEntorno.getPlantas().get(11));
-        entity.put("EP13", datosEntorno.getPlantas().get(12));
-        entity.put("EP14", datosEntorno.getPlantas().get(13));
-        entity.put("EP15", datosEntorno.getPlantas().get(14));
-        entity.put("EP16", datosEntorno.getPlantas().get(15));
-        entity.put("EP17", datosEntorno.getPlantas().get(16));
-        entity.put("EP18", datosEntorno.getPlantas().get(17));
-        entity.put("EP19", datosEntorno.getPlantas().get(18));
-        entity.put("EP20", datosEntorno.getPlantas().get(19));
-        entity.put("EP21", datosEntorno.getPlantas().get(20));
-        entity.put("EP22", datosEntorno.getPlantas().get(21));
-        entity.put("EP23", datosEntorno.getPlantas().get(22));
-        entity.put("EP24", datosEntorno.getPlantas().get(23));
-        entity.put("EP25", datosEntorno.getPlantas().get(24));
-        entity.put("EP26", datosEntorno.getPlantas().get(25));
-        entity.put("EP27", datosEntorno.getPlantas().get(26));
-        entity.put("EP28", datosEntorno.getPlantas().get(27));
-        entity.put("EP29", datosEntorno.getPlantas().get(28));
-        entity.put("EP30", datosEntorno.getPlantas().get(29));
-        entity.put("EP31", datosEntorno.getPlantas().get(30));
-        entity.put("EP32", datosEntorno.getPlantas().get(31));
-        entity.put("EP33", datosEntorno.getPlantas().get(32));
-        entity.put("EP34", datosEntorno.getPlantas().get(33));
-        entity.put("EP35", datosEntorno.getPlantas().get(34));
-        entity.put("EP36", datosEntorno.getPlantas().get(35));
-        entity.put("EP37", datosEntorno.getEP37());
-        entity.put("EP38", datosEntorno.getEP38());
+        entity.put("EP01", envio.getDatosEntorno().getPlantas().get(0));
+        entity.put("EP02", envio.getDatosEntorno().getPlantas().get(1));
+        entity.put("EP03", envio.getDatosEntorno().getPlantas().get(2));
+        entity.put("EP04", envio.getDatosEntorno().getPlantas().get(3));
+        entity.put("EP05", envio.getDatosEntorno().getPlantas().get(4));
+        entity.put("EP06", envio.getDatosEntorno().getPlantas().get(5));
+        entity.put("EP07", envio.getDatosEntorno().getPlantas().get(6));
+        entity.put("EP08", envio.getDatosEntorno().getPlantas().get(7));
+        entity.put("EP09", envio.getDatosEntorno().getPlantas().get(8));
+        entity.put("EP10", envio.getDatosEntorno().getPlantas().get(9));
+        entity.put("EP11", envio.getDatosEntorno().getPlantas().get(10));
+        entity.put("EP12", envio.getDatosEntorno().getPlantas().get(11));
+        entity.put("EP13", envio.getDatosEntorno().getPlantas().get(12));
+        entity.put("EP14", envio.getDatosEntorno().getPlantas().get(13));
+        entity.put("EP15", envio.getDatosEntorno().getPlantas().get(14));
+        entity.put("EP16", envio.getDatosEntorno().getPlantas().get(15));
+        entity.put("EP17", envio.getDatosEntorno().getPlantas().get(16));
+        entity.put("EP18", envio.getDatosEntorno().getPlantas().get(17));
+        entity.put("EP19", envio.getDatosEntorno().getPlantas().get(18));
+        entity.put("EP20", envio.getDatosEntorno().getPlantas().get(19));
+        entity.put("EP21", envio.getDatosEntorno().getPlantas().get(20));
+        entity.put("EP22", envio.getDatosEntorno().getPlantas().get(21));
+        entity.put("EP23", envio.getDatosEntorno().getPlantas().get(22));
+        entity.put("EP24", envio.getDatosEntorno().getPlantas().get(23));
+        entity.put("EP25", envio.getDatosEntorno().getPlantas().get(24));
+        entity.put("EP26", envio.getDatosEntorno().getPlantas().get(25));
+        entity.put("EP27", envio.getDatosEntorno().getPlantas().get(26));
+        entity.put("EP28", envio.getDatosEntorno().getPlantas().get(27));
+        entity.put("EP29", envio.getDatosEntorno().getPlantas().get(28));
+        entity.put("EP30", envio.getDatosEntorno().getPlantas().get(29));
+        entity.put("EP31", envio.getDatosEntorno().getPlantas().get(30));
+        entity.put("EP32", envio.getDatosEntorno().getPlantas().get(31));
+        entity.put("EP33", envio.getDatosEntorno().getPlantas().get(32));
+        entity.put("EP34", envio.getDatosEntorno().getPlantas().get(33));
+        entity.put("EP35", envio.getDatosEntorno().getPlantas().get(34));
+        entity.put("EP36", envio.getDatosEntorno().getPlantas().get(35));
+        entity.put("EP37", envio.getDatosEntorno().getEP37());
+        entity.put("EP38", envio.getDatosEntorno().getEP38());
 
         //Metodos Captura
-        entity.put("NumMallas", metodosCaptura.getNumeroMallas());
-        entity.put("LongRed",metodosCaptura.getLongitudRed());
-        entity.put("Coto",metodosCaptura.isCoto());
+        entity.put("NumMallas", envio.getMetodosCaptura().getNumeroMallas());
+        entity.put("LongRed",envio.getMetodosCaptura().getLongitudRed());
+        entity.put("Coto",envio.getMetodosCaptura().isCoto());
 
-        entity.put("CA01", metodosCaptura.getControlAgentes().get(0));
-        entity.put("CA02", metodosCaptura.getControlAgentes().get(1));
-        entity.put("CA03", metodosCaptura.getControlAgentes().get(2));
-        entity.put("CA04", metodosCaptura.getControlAgentes().get(3));
-        entity.put("CA05", metodosCaptura.getControlAgentes().get(4));
-        entity.put("CA06", metodosCaptura.getControlAgentes().get(5));
+        entity.put("CA01", envio.getMetodosCaptura().getControlAgentes().get(0));
+        entity.put("CA02", envio.getMetodosCaptura().getControlAgentes().get(1));
+        entity.put("CA03", envio.getMetodosCaptura().getControlAgentes().get(2));
+        entity.put("CA04", envio.getMetodosCaptura().getControlAgentes().get(3));
+        entity.put("CA05", envio.getMetodosCaptura().getControlAgentes().get(4));
+        entity.put("CA06", envio.getMetodosCaptura().getControlAgentes().get(5));
 
-        entity.put("RecCamachuelo", metodosCaptura.getReclamosCamachuelo());
-        entity.put("CapCamachueloM", metodosCaptura.getCapturasCamachueloM());
-        entity.put("CapCamachueloH", metodosCaptura.getCapturasCamachueloH());
-        entity.put("CimCamachuelo", metodosCaptura.getCimbelesCamachuelo());
+        entity.put("RecCamachuelo", envio.getMetodosCaptura().getReclamosCamachuelo());
+        entity.put("CapCamachueloM", envio.getMetodosCaptura().getCapturasCamachueloM());
+        entity.put("CapCamachueloH", envio.getMetodosCaptura().getCapturasCamachueloH());
+        entity.put("CimCamachuelo", envio.getMetodosCaptura().getCimbelesCamachuelo());
 
-        entity.put("RecJilguero", metodosCaptura.getReclamosJilguero());
-        entity.put("CapJilgueroM", metodosCaptura.getCapturasJilgueroM());
-        entity.put("CapJilgueroH", metodosCaptura.getCapturasJilgueroH());
-        entity.put("CimJilguero", metodosCaptura.getCimbelesJilguero());
+        entity.put("RecJilguero", envio.getMetodosCaptura().getReclamosJilguero());
+        entity.put("CapJilgueroM", envio.getMetodosCaptura().getCapturasJilgueroM());
+        entity.put("CapJilgueroH", envio.getMetodosCaptura().getCapturasJilgueroH());
+        entity.put("CimJilguero", envio.getMetodosCaptura().getCimbelesJilguero());
 
-        entity.put("RecLugano", metodosCaptura.getReclamosLugano());
-        entity.put("CapLuganoM", metodosCaptura.getCapturasLuganoM());
-        entity.put("CapLuganoH", metodosCaptura.getCapturasLuganoH());
-        entity.put("CimLugano", metodosCaptura.getCimbelesLugano());
+        entity.put("RecLugano", envio.getMetodosCaptura().getReclamosLugano());
+        entity.put("CapLuganoM", envio.getMetodosCaptura().getCapturasLuganoM());
+        entity.put("CapLuganoH", envio.getMetodosCaptura().getCapturasLuganoH());
+        entity.put("CimLugano", envio.getMetodosCaptura().getCimbelesLugano());
 
-        entity.put("RecPardComun", metodosCaptura.getReclamosPardComun());
-        entity.put("CapPardComunM", metodosCaptura.getCapturasPardComunM());
-        entity.put("CapPardComunH", metodosCaptura.getCapturasPardComunH());
-        entity.put("CimPardComun", metodosCaptura.getCimbelesPardComun());
+        entity.put("RecPardComun", envio.getMetodosCaptura().getReclamosPardComun());
+        entity.put("CapPardComunM", envio.getMetodosCaptura().getCapturasPardComunM());
+        entity.put("CapPardComunH", envio.getMetodosCaptura().getCapturasPardComunH());
+        entity.put("CimPardComun", envio.getMetodosCaptura().getCimbelesPardComun());
 
-        entity.put("RecPicogordo", metodosCaptura.getReclamosPicogordo());
-        entity.put("CapPicogordoM", metodosCaptura.getCapturasPicogordoM());
-        entity.put("CapPicogordoH", metodosCaptura.getCapturasPicogordoH());
-        entity.put("CimPicogordo", metodosCaptura.getCimbelesPicogordo());
+        entity.put("RecPicogordo", envio.getMetodosCaptura().getReclamosPicogordo());
+        entity.put("CapPicogordoM", envio.getMetodosCaptura().getCapturasPicogordoM());
+        entity.put("CapPicogordoH", envio.getMetodosCaptura().getCapturasPicogordoH());
+        entity.put("CimPicogordo", envio.getMetodosCaptura().getCimbelesPicogordo());
 
-        entity.put("RecPinzComun", metodosCaptura.getReclamosPinzonComun());
-        entity.put("CapPinzComunM", metodosCaptura.getCapturasPinzonComunM());
-        entity.put("CapPinzComunH", metodosCaptura.getCapturasPinzonComunH());
-        entity.put("CimPinzComun", metodosCaptura.getCimbelesPinzonComun());
+        entity.put("RecPinzComun", envio.getMetodosCaptura().getReclamosPinzonComun());
+        entity.put("CapPinzComunM", envio.getMetodosCaptura().getCapturasPinzonComunM());
+        entity.put("CapPinzComunH", envio.getMetodosCaptura().getCapturasPinzonComunH());
+        entity.put("CimPinzComun", envio.getMetodosCaptura().getCimbelesPinzonComun());
 
-        entity.put("RecPinzReal", metodosCaptura.getReclamosPinzonReal());
-        entity.put("CapPinzRealM", metodosCaptura.getCapturasPinzonRealM());
-        entity.put("CapPinzRealH", metodosCaptura.getCapturasPinzonRealH());
-        entity.put("CimPinzReal", metodosCaptura.getCimbelesPinzonReal());
+        entity.put("RecPinzReal", envio.getMetodosCaptura().getReclamosPinzonReal());
+        entity.put("CapPinzRealM", envio.getMetodosCaptura().getCapturasPinzonRealM());
+        entity.put("CapPinzRealH", envio.getMetodosCaptura().getCapturasPinzonRealH());
+        entity.put("CimPinzReal", envio.getMetodosCaptura().getCimbelesPinzonReal());
 
-        entity.put("RecPiquituerto", metodosCaptura.getReclamosPiquituerto());
-        entity.put("CapPiquituertoM", metodosCaptura.getCapturasPiquituertoM());
-        entity.put("CapPiquituertoH", metodosCaptura.getCapturasPiquituertoH());
-        entity.put("CimPiquituerto", metodosCaptura.getCimbelesPiquituerto());
+        entity.put("RecPiquituerto", envio.getMetodosCaptura().getReclamosPiquituerto());
+        entity.put("CapPiquituertoM", envio.getMetodosCaptura().getCapturasPiquituertoM());
+        entity.put("CapPiquituertoH", envio.getMetodosCaptura().getCapturasPiquituertoH());
+        entity.put("CimPiquituerto", envio.getMetodosCaptura().getCimbelesPiquituerto());
 
-        entity.put("RecVerdecillo", metodosCaptura.getReclamosVerdecillo());
-        entity.put("CapVerdecilloM", metodosCaptura.getCapturasVerdecilloM());
-        entity.put("CapVerdecilloH", metodosCaptura.getCapturasVerdecilloH());
-        entity.put("CimVerdecillo", metodosCaptura.getCimbelesVerdecillo());
+        entity.put("RecVerdecillo", envio.getMetodosCaptura().getReclamosVerdecillo());
+        entity.put("CapVerdecilloM", envio.getMetodosCaptura().getCapturasVerdecilloM());
+        entity.put("CapVerdecilloH", envio.getMetodosCaptura().getCapturasVerdecilloH());
+        entity.put("CimVerdecillo", envio.getMetodosCaptura().getCimbelesVerdecillo());
 
-        entity.put("RecVerdComun", metodosCaptura.getReclamosVerdComun());
-        entity.put("CapVerdComunM", metodosCaptura.getCapturasVerdComunM());
-        entity.put("CapVerdComunH", metodosCaptura.getCapturasVerdComunH());
-        entity.put("CimVerdComun", metodosCaptura.getCimbelesVerdComun());
+        entity.put("RecVerdComun", envio.getMetodosCaptura().getReclamosVerdComun());
+        entity.put("CapVerdComunM", envio.getMetodosCaptura().getCapturasVerdComunM());
+        entity.put("CapVerdComunH", envio.getMetodosCaptura().getCapturasVerdComunH());
+        entity.put("CimVerdComun", envio.getMetodosCaptura().getCimbelesVerdComun());
 
-        entity.put("RecVerdSerrano", metodosCaptura.getReclamosVerdSerrano());
-        entity.put("CapVerdSerranoM", metodosCaptura.getCapturasVerdSerranoM());
-        entity.put("CapVerdSerranoH", metodosCaptura.getCapturasVerdSerranoH());
-        entity.put("CimVerdSerrano", metodosCaptura.getCimbelesVerdSerrano());
+        entity.put("RecVerdSerrano", envio.getMetodosCaptura().getReclamosVerdSerrano());
+        entity.put("CapVerdSerranoM", envio.getMetodosCaptura().getCapturasVerdSerranoM());
+        entity.put("CapVerdSerranoH", envio.getMetodosCaptura().getCapturasVerdSerranoH());
+        entity.put("CimVerdSerrano", envio.getMetodosCaptura().getCimbelesVerdSerrano());
 
-        entity.put("Observaciones",metodosCaptura.getObservaciones());
+        entity.put("Observaciones",envio.getMetodosCaptura().getObservaciones());
 
         //Datos Avistamiento
-        entity.put("HoraInicio",datosAvistamiento.getHoraInicio());
-        entity.put("HoraFin",datosAvistamiento.getHoraFin());
+        entity.put("HoraInicio",envio.getDatosAvistamiento().getHoraInicio());
+        entity.put("HoraFin",envio.getDatosAvistamiento().getHoraFin());
 
         //Avistamientos Camachuelo
-        entity.put("Cam08", datosAvistamiento.getHora08().get(0));
-        entity.put("Cam09", datosAvistamiento.getHora09().get(0));
-        entity.put("Cam10", datosAvistamiento.getHora10().get(0));
-        entity.put("Cam11", datosAvistamiento.getHora11().get(0));
-        entity.put("Cam12", datosAvistamiento.getHora12().get(0));
-        entity.put("Cam13", datosAvistamiento.getHora13().get(0));
-        entity.put("Cam14", datosAvistamiento.getHora14().get(0));
+        entity.put("Cam08", envio.getDatosAvistamiento().getHora08().get(0));
+        entity.put("Cam09", envio.getDatosAvistamiento().getHora09().get(0));
+        entity.put("Cam10", envio.getDatosAvistamiento().getHora10().get(0));
+        entity.put("Cam11", envio.getDatosAvistamiento().getHora11().get(0));
+        entity.put("Cam12", envio.getDatosAvistamiento().getHora12().get(0));
+        entity.put("Cam13", envio.getDatosAvistamiento().getHora13().get(0));
+        entity.put("Cam14", envio.getDatosAvistamiento().getHora14().get(0));
 
         //Avistamientos Jilguero
-        entity.put("Jil08", datosAvistamiento.getHora08().get(1));
-        entity.put("Jil09", datosAvistamiento.getHora09().get(1));
-        entity.put("Jil10", datosAvistamiento.getHora10().get(1));
-        entity.put("Jil11", datosAvistamiento.getHora11().get(1));
-        entity.put("Jil12", datosAvistamiento.getHora12().get(1));
-        entity.put("Jil13", datosAvistamiento.getHora13().get(1));
-        entity.put("Jil14", datosAvistamiento.getHora14().get(1));
+        entity.put("Jil08", envio.getDatosAvistamiento().getHora08().get(1));
+        entity.put("Jil09", envio.getDatosAvistamiento().getHora09().get(1));
+        entity.put("Jil10", envio.getDatosAvistamiento().getHora10().get(1));
+        entity.put("Jil11", envio.getDatosAvistamiento().getHora11().get(1));
+        entity.put("Jil12", envio.getDatosAvistamiento().getHora12().get(1));
+        entity.put("Jil13", envio.getDatosAvistamiento().getHora13().get(1));
+        entity.put("Jil14", envio.getDatosAvistamiento().getHora14().get(1));
 
         //Avistamientos Lugano
-        entity.put("Lug08", datosAvistamiento.getHora08().get(2));
-        entity.put("Lug09", datosAvistamiento.getHora09().get(2));
-        entity.put("Lug10", datosAvistamiento.getHora10().get(2));
-        entity.put("Lug11", datosAvistamiento.getHora11().get(2));
-        entity.put("Lug12", datosAvistamiento.getHora12().get(2));
-        entity.put("Lug13", datosAvistamiento.getHora13().get(2));
-        entity.put("Lug14", datosAvistamiento.getHora14().get(2));
+        entity.put("Lug08", envio.getDatosAvistamiento().getHora08().get(2));
+        entity.put("Lug09", envio.getDatosAvistamiento().getHora09().get(2));
+        entity.put("Lug10", envio.getDatosAvistamiento().getHora10().get(2));
+        entity.put("Lug11", envio.getDatosAvistamiento().getHora11().get(2));
+        entity.put("Lug12", envio.getDatosAvistamiento().getHora12().get(2));
+        entity.put("Lug13", envio.getDatosAvistamiento().getHora13().get(2));
+        entity.put("Lug14", envio.getDatosAvistamiento().getHora14().get(2));
 
         //Avistamientos Pardillo Comun
-        entity.put("PardC08", datosAvistamiento.getHora08().get(3));
-        entity.put("PardC09", datosAvistamiento.getHora09().get(3));
-        entity.put("PardC10", datosAvistamiento.getHora10().get(3));
-        entity.put("PardC11", datosAvistamiento.getHora11().get(3));
-        entity.put("PardC12", datosAvistamiento.getHora12().get(3));
-        entity.put("PardC13", datosAvistamiento.getHora13().get(3));
-        entity.put("PardC14", datosAvistamiento.getHora14().get(3));
+        entity.put("PardC08", envio.getDatosAvistamiento().getHora08().get(3));
+        entity.put("PardC09", envio.getDatosAvistamiento().getHora09().get(3));
+        entity.put("PardC10", envio.getDatosAvistamiento().getHora10().get(3));
+        entity.put("PardC11", envio.getDatosAvistamiento().getHora11().get(3));
+        entity.put("PardC12", envio.getDatosAvistamiento().getHora12().get(3));
+        entity.put("PardC13", envio.getDatosAvistamiento().getHora13().get(3));
+        entity.put("PardC14", envio.getDatosAvistamiento().getHora14().get(3));
 
         //Avistamientos Picogordo
-        entity.put("Pic08", datosAvistamiento.getHora08().get(4));
-        entity.put("Pic09", datosAvistamiento.getHora09().get(4));
-        entity.put("Pic10", datosAvistamiento.getHora10().get(4));
-        entity.put("Pic11", datosAvistamiento.getHora11().get(4));
-        entity.put("Pic12", datosAvistamiento.getHora12().get(4));
-        entity.put("Pic13", datosAvistamiento.getHora13().get(4));
-        entity.put("Pic14", datosAvistamiento.getHora14().get(4));
+        entity.put("Pic08", envio.getDatosAvistamiento().getHora08().get(4));
+        entity.put("Pic09", envio.getDatosAvistamiento().getHora09().get(4));
+        entity.put("Pic10", envio.getDatosAvistamiento().getHora10().get(4));
+        entity.put("Pic11", envio.getDatosAvistamiento().getHora11().get(4));
+        entity.put("Pic12", envio.getDatosAvistamiento().getHora12().get(4));
+        entity.put("Pic13", envio.getDatosAvistamiento().getHora13().get(4));
+        entity.put("Pic14", envio.getDatosAvistamiento().getHora14().get(4));
 
         //Avistamientos
-        entity.put("PinC08", datosAvistamiento.getHora08().get(5));
-        entity.put("PinC09", datosAvistamiento.getHora09().get(5));
-        entity.put("PinC10", datosAvistamiento.getHora10().get(5));
-        entity.put("PinC11", datosAvistamiento.getHora11().get(5));
-        entity.put("PinC12", datosAvistamiento.getHora12().get(5));
-        entity.put("PinC13", datosAvistamiento.getHora13().get(5));
-        entity.put("PinC14", datosAvistamiento.getHora14().get(5));
+        entity.put("PinC08", envio.getDatosAvistamiento().getHora08().get(5));
+        entity.put("PinC09", envio.getDatosAvistamiento().getHora09().get(5));
+        entity.put("PinC10", envio.getDatosAvistamiento().getHora10().get(5));
+        entity.put("PinC11", envio.getDatosAvistamiento().getHora11().get(5));
+        entity.put("PinC12", envio.getDatosAvistamiento().getHora12().get(5));
+        entity.put("PinC13", envio.getDatosAvistamiento().getHora13().get(5));
+        entity.put("PinC14", envio.getDatosAvistamiento().getHora14().get(5));
 
         //Avistamientos
-        entity.put("PinR08", datosAvistamiento.getHora08().get(6));
-        entity.put("PinR09", datosAvistamiento.getHora09().get(6));
-        entity.put("PinR10", datosAvistamiento.getHora10().get(6));
-        entity.put("PinR11", datosAvistamiento.getHora11().get(6));
-        entity.put("PinR12", datosAvistamiento.getHora12().get(6));
-        entity.put("PinR13", datosAvistamiento.getHora13().get(6));
-        entity.put("PinR14", datosAvistamiento.getHora14().get(6));
+        entity.put("PinR08", envio.getDatosAvistamiento().getHora08().get(6));
+        entity.put("PinR09", envio.getDatosAvistamiento().getHora09().get(6));
+        entity.put("PinR10", envio.getDatosAvistamiento().getHora10().get(6));
+        entity.put("PinR11", envio.getDatosAvistamiento().getHora11().get(6));
+        entity.put("PinR12", envio.getDatosAvistamiento().getHora12().get(6));
+        entity.put("PinR13", envio.getDatosAvistamiento().getHora13().get(6));
+        entity.put("PinR14", envio.getDatosAvistamiento().getHora14().get(6));
 
         //Avistamientos
-        entity.put("Piq08", datosAvistamiento.getHora08().get(7));
-        entity.put("Piq09", datosAvistamiento.getHora09().get(7));
-        entity.put("Piq10", datosAvistamiento.getHora10().get(7));
-        entity.put("Piq11", datosAvistamiento.getHora11().get(7));
-        entity.put("Piq12", datosAvistamiento.getHora12().get(7));
-        entity.put("Piq13", datosAvistamiento.getHora13().get(7));
-        entity.put("Piq14", datosAvistamiento.getHora14().get(7));
+        entity.put("Piq08", envio.getDatosAvistamiento().getHora08().get(7));
+        entity.put("Piq09", envio.getDatosAvistamiento().getHora09().get(7));
+        entity.put("Piq10", envio.getDatosAvistamiento().getHora10().get(7));
+        entity.put("Piq11", envio.getDatosAvistamiento().getHora11().get(7));
+        entity.put("Piq12", envio.getDatosAvistamiento().getHora12().get(7));
+        entity.put("Piq13", envio.getDatosAvistamiento().getHora13().get(7));
+        entity.put("Piq14", envio.getDatosAvistamiento().getHora14().get(7));
 
         //Avistamientos
-        entity.put("Verd08", datosAvistamiento.getHora08().get(8));
-        entity.put("Verd09", datosAvistamiento.getHora09().get(8));
-        entity.put("Verd10", datosAvistamiento.getHora10().get(8));
-        entity.put("Verd11", datosAvistamiento.getHora11().get(8));
-        entity.put("Verd12", datosAvistamiento.getHora12().get(8));
-        entity.put("Verd13", datosAvistamiento.getHora13().get(8));
-        entity.put("Verd14", datosAvistamiento.getHora14().get(8));
+        entity.put("Verd08", envio.getDatosAvistamiento().getHora08().get(8));
+        entity.put("Verd09", envio.getDatosAvistamiento().getHora09().get(8));
+        entity.put("Verd10", envio.getDatosAvistamiento().getHora10().get(8));
+        entity.put("Verd11", envio.getDatosAvistamiento().getHora11().get(8));
+        entity.put("Verd12", envio.getDatosAvistamiento().getHora12().get(8));
+        entity.put("Verd13", envio.getDatosAvistamiento().getHora13().get(8));
+        entity.put("Verd14", envio.getDatosAvistamiento().getHora14().get(8));
 
         //Avistamientos
-        entity.put("VerdC08", datosAvistamiento.getHora08().get(9));
-        entity.put("VerdC09", datosAvistamiento.getHora09().get(9));
-        entity.put("VerdC10", datosAvistamiento.getHora10().get(9));
-        entity.put("VerdC11", datosAvistamiento.getHora11().get(9));
-        entity.put("VerdC12", datosAvistamiento.getHora12().get(9));
-        entity.put("VerdC13", datosAvistamiento.getHora13().get(9));
-        entity.put("VerdC14", datosAvistamiento.getHora14().get(9));
+        entity.put("VerdC08", envio.getDatosAvistamiento().getHora08().get(9));
+        entity.put("VerdC09", envio.getDatosAvistamiento().getHora09().get(9));
+        entity.put("VerdC10", envio.getDatosAvistamiento().getHora10().get(9));
+        entity.put("VerdC11", envio.getDatosAvistamiento().getHora11().get(9));
+        entity.put("VerdC12", envio.getDatosAvistamiento().getHora12().get(9));
+        entity.put("VerdC13", envio.getDatosAvistamiento().getHora13().get(9));
+        entity.put("VerdC14", envio.getDatosAvistamiento().getHora14().get(9));
 
         //Avistamientos
-        entity.put("VerdS08", datosAvistamiento.getHora08().get(10));
-        entity.put("VerdS09", datosAvistamiento.getHora09().get(10));
-        entity.put("VerdS10", datosAvistamiento.getHora10().get(10));
-        entity.put("VerdS11", datosAvistamiento.getHora11().get(10));
-        entity.put("VerdS12", datosAvistamiento.getHora12().get(10));
-        entity.put("VerdS13", datosAvistamiento.getHora13().get(10));
-        entity.put("VerdS14", datosAvistamiento.getHora14().get(10));
+        entity.put("VerdS08", envio.getDatosAvistamiento().getHora08().get(10));
+        entity.put("VerdS09", envio.getDatosAvistamiento().getHora09().get(10));
+        entity.put("VerdS10", envio.getDatosAvistamiento().getHora10().get(10));
+        entity.put("VerdS11", envio.getDatosAvistamiento().getHora11().get(10));
+        entity.put("VerdS12", envio.getDatosAvistamiento().getHora12().get(10));
+        entity.put("VerdS13", envio.getDatosAvistamiento().getHora13().get(10));
+        entity.put("VerdS14", envio.getDatosAvistamiento().getHora14().get(10));
 
         return entity;
     }
@@ -556,18 +553,27 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void desactivarBotonesDatos() {
+        //Parametros Envio
+        tv_Fecha.setClickable(false);
+        etnd_Latitud.setEnabled(false);
+        etnd_Longitud.setEnabled(false);
+        //Boton Datos Aves
         btn_DatosAves.setEnabled(true);
         btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
-        //btn_DatosAves.setPadding(5,0,0,0);
+        btn_DatosAves.setPadding(5,0,0,0);
+        //Boton Datos Entorno
         btn_DatosEntorno.setEnabled(false);
         btn_DatosEntorno.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
         btn_DatosEntorno.setPadding(5,0,0,0);
-        btn_Metodos.setEnabled(false);
-        btn_Metodos.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
-        btn_Metodos.setPadding(5,0,0,0);
+        //Boton Datos Metodos
+        btn_DatosMetodos.setEnabled(false);
+        btn_DatosMetodos.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
+        btn_DatosMetodos.setPadding(5,0,0,0);
+        //Boton Datos Avistamiento
         btn_DatosAvistamiento.setEnabled(false);
         btn_DatosAvistamiento.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
         btn_DatosAvistamiento.setPadding(5,0,0,0);
+
         btn_Enviar.setEnabled(false);
         btn_Enviar.setBackground(getDrawable(R.drawable.boton_redondeado_apagado));
     }
@@ -630,39 +636,28 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         imprimirDatosRecibidos();
         actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
-
     }
 
     private void recuperarDatosRecibidos(Bundle datos) {
         envio = (Envio) datos.getSerializable("ENVIO");
 
-        DNI = envio.getDNI();
-        email = envio.getEmail();
-        envioCompletado = envio.isEnvioCompletado();
-        mCapturasCompletado = envio.isMCapturaCompletado();
-        avistamientoCompletado = envio.isAvistamientoCompletado();
-        entornoCompletado = envio.isEntornoCompletado();
-        metodosCaptura = envio.getMetodosCaptura();
-        datosAvistamiento = envio.getDatosAvistamiento();
-        datosEntorno = envio.getDatosEntorno();
-        envioCompletado =  envio.isEnvioCompletado();
 
         limites = (Limites) datos.getSerializable("LIMITES");
     }
 
     private void imprimirDatosRecibidos() {
         System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
+        System.out.println("EMAIL                  => " + envio.getEmail());
+        System.out.println("DNI                    => " + envio.getDNI());
         System.out.println("FECHA                  => " + envio.getFecha());
         System.out.println("LIMITES                => " + limites);
         System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
+        System.out.println("ESTADO ENTORNO         => " + envio.isEntornoCompletado());
+        System.out.println("DATOS ENTORNO          => " + envio.getDatosEntorno());
+        System.out.println("ESTADO METODOS CAPTURA => " + envio.isMCapturaCompletado());
+        System.out.println("METODOS CAPTURA        => " + envio.getMetodosCaptura());
+        System.out.println("ESTADO AVISTAMIENTO    => " + envio.isAvistamientoCompletado());
+        System.out.println("DATOS AVISTAMIENTO     => " + envio.getDatosAvistamiento());
         System.out.println("____________________________________________________");
     }
 

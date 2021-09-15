@@ -83,7 +83,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:textSize="@dimen/_10ssp"
         android:textColor="@color/VerdePrimario"
-        android:text="Version 3.1"
+        android:text="Versión 3.2"
         android:textAlignment="center"/>
 
 
