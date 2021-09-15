@@ -1,6 +1,8 @@
 package com.sefricam.sefricam3;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -102,12 +104,56 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         btn_MenuCapturasEntorno.setOnClickListener(this);
     }
 
+    /**
+     * Called when the activity has detected the user's press of the back
+     * key.  The default implementation simply finishes the current activity,
+     * but you can override this to do whatever you want.
+     */
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder exit = new AlertDialog.Builder(this);
+        exit.setMessage("¿Quieres salir de la aplicación?");
+        exit.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Pantalla_Menu_Intermedio.this, Pantalla_Bienvenida.class));
+                finish();
+            }
+        });
+        exit.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog dialog = exit.create();
+        dialog.show();
+    }
+
     @Override
     public void onClick(View view){
 
         if (view == btn_Salir){
-            startActivity(new Intent(Pantalla_Menu_Intermedio.this, Pantalla_Bienvenida.class));
-            finish();
+            AlertDialog.Builder exit = new AlertDialog.Builder(this);
+            exit.setMessage("¿Quieres salir de la aplicación?");
+            exit.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startActivity(new Intent(Pantalla_Menu_Intermedio.this, Pantalla_Bienvenida.class));
+                    finish();
+                }
+            });
+            exit.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = exit.create();
+            dialog.show();
+
         }
         if (view == btn_MenuCapturasEntorno){
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
