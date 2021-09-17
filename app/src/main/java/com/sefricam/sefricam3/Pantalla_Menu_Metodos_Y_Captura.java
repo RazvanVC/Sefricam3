@@ -4,40 +4,42 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback{
+public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener {
 
-    private Button btn_DatosAves, btn_DatosEntorno, btn_DatosMetodos, btn_DatosAvistamiento,btn_MiEnvio, btn_Enviar, btn_Volver;
-    private TextView tv_Fecha;
-    private EditText etnd_Latitud, etnd_Longitud;
-
-    //PARAMETROS QUE VAN ROTANDO
     private Envio envio;
     private Limites limites;
+    private Button btn_DatosAves;
+    private Button btn_DatosEntorno;
+    private Button btn_DatosMetodos;
+    private Button btn_DatosAvistamiento;
+    private Button btn_MiEnvio;
+    private Button btn_Enviar;
+    private Button btn_Volver;
+    private TextView tv_Fecha;
+    private EditText etnd_Latitud;
+    private EditText etnd_Longitud;
 
+    /**
+     * Metodo que inicializa la visualizacion de la clase
+     */
     @SuppressLint("UseCompatLoadingForDrawables")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,53 +50,30 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
-            recuperarDatosRecibidos(datos);
-            if (envio.isModificacion()){
-                tv_Fecha.setEnabled(false);
-                etnd_Latitud.setEnabled(false);
-                etnd_Longitud.setEnabled(false);
-
-
+            retrieveData(datos);
+            if (envio.isMCapturaCompletado() && envio.isAvistamientoCompletado() && envio.isEntornoCompletado() && !envio.isEnvioCompletado()){
+                Toast.makeText(this, "Ya puedes enviar los datos e introducir la latitud y longitud, asi como la fecha", Toast.LENGTH_LONG).show();
+                tv_Fecha.setEnabled(true);
+                etnd_Latitud.setEnabled(true);
+                etnd_Longitud.setEnabled(true);
+                btn_Enviar.setEnabled(true);
+                btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
+            }
+            if (envio.isEnvioCompletado()){
                 tv_Fecha.setText(convertDateToString(envio.getFecha()));
                 etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
                 etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
-
-                btn_DatosAves.setEnabled(true);
-                btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
-
-                btn_Enviar.setEnabled(true);
-                btn_Enviar.setText("Modificar");
-                btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
-            }else {
-                if (envio.isEnvioCompletado()){
-                    tv_Fecha.setText(convertDateToString(envio.getFecha()));
-                    etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
-                    etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
-                    desactivarBotonesDatos();
-                }
-                if (envio.isMCapturaCompletado() && envio.isAvistamientoCompletado() && envio.isEntornoCompletado() && !envio.isEnvioCompletado()){
-                    Toast.makeText(this, "Ya puedes enviar los datos e introducir la latitud y longitud, asi como la fecha", Toast.LENGTH_LONG).show();
-                    tv_Fecha.setEnabled(true);
-                    etnd_Latitud.setEnabled(true);
-                    etnd_Longitud.setEnabled(true);
-                    btn_Enviar.setEnabled(true);
-                    btn_Enviar.setBackgroundResource(R.drawable.boton_redondeado);
-                }
+                desactivarBotonesDatos(envio.isModificacion());
+                if (envio.isModificacion()) btn_Enviar.setText(R.string.PMMC_btn_Modificar);
             }
-
-            System.out.println("Datos recibidos en Main Menu");
-            imprimirDatosRecibidos();
+            // Comprobacion de Datos, descomentar la lineas de codigo cuando quieras comprobar los parametros que vas recibiendo
+            // imprimirDatosRecibidos();
         }
 
     }
 
-    private String convertDateToString(Date fecha) {
-        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        return dateFormat.format(fecha);
-    }
-
     /**
-     * Asigna a las variables creadas arriba su correspondiente boton de la actividad
+     * Asigna a las variables creadas arriba su correspondiente representacion visual
      */
     private void iniciarFindView() {
 
@@ -114,7 +93,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Inicia todos los click listeners para que los botones sean funcionales
+     * Inicia todos los click listeners para que los componentes sean funcionales
      */
     public void iniciarOnClickListener(){
         //Button
@@ -137,26 +116,28 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
      */
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder exit = new AlertDialog.Builder(this);
-        exit.setMessage("¿Quieres salir de la aplicación?");
-        exit.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Bienvenida.class));
+        if (!envio.isEnvioCompletado()){
+            AlertDialog.Builder exit = new AlertDialog.Builder(this);
+            exit.setMessage("Aun no se han enviado los datos\n¿Desea volver sin enviar?");
+            exit.setPositiveButton("SI", (dialog, which) -> {
+                Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
+                activity.putExtra("EMAIL",envio.getEmail());
+                activity.putExtra("LIMITES", limites);
+                startActivity(activity);
                 finish();
-            }
-        });
-        exit.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+            });
+            exit.setNegativeButton("NO", (dialog, which) -> dialog.cancel());
 
-        AlertDialog dialog = exit.create();
-        dialog.show();
+            AlertDialog dialog = exit.create();
+            dialog.show();
+        }
+
     }
 
+    /**
+     * Metodo que gestiona todos los clicks en componentes de la pantalla
+     * @param view  vista que ha sido clickada
+     */
     @Override
     public void onClick(View view){
         if (view == tv_Fecha){
@@ -167,15 +148,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             int mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @SuppressLint("SetTextI18n")
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                            tv_Fecha.setText(dayOfMonth+"-"+(monthOfYear+1)+"-"+year);
-                        }
-                    }, mYear, mMonth, mDay);
+            @SuppressLint("SetTextI18n") DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    (view1, year, monthOfYear, dayOfMonth) -> tv_Fecha.setText(dayOfMonth+"-"+(monthOfYear+1)+"-"+year), mYear, mMonth, mDay);
             datePickerDialog.show();
         }
         if (view == btn_DatosAves){
@@ -183,101 +157,60 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             if (envio.isModificacion()) activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Modificacion_Aves.class);
             else activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Datos_Aves.class);
             activity.putExtra("AVE", new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(),envio.getLongitud()));
-            guardarParametros(activity);
+            saveData(activity);
             startActivity(activity);
             finish();
         }
         if (view == btn_DatosEntorno){
-            System.out.println("Boton Datos de Entorno");
             Intent activity = new Intent(this, Pantalla_Datos_Entorno.class);
-            guardarParametros(activity);
+            saveData(activity);
             startActivity(activity);
             finish();
         }
         if (view == btn_DatosMetodos){
-            System.out.println("Boton Metodos de Captura");
             Intent activity = new Intent(this, Pantalla_Metodos_Captura.class);
-            guardarParametros(activity);
+            saveData(activity);
             startActivity(activity);
             finish();
         }
         if (view == btn_DatosAvistamiento){
-            System.out.println("Boton Datos de Avistamiento");
             Intent activity = new Intent(this,Pantalla_Datos_Avistamiento.class);
-            guardarParametros(activity);
+            saveData(activity);
             startActivity(activity);
             finish();
         }
         if (view == btn_MiEnvio){
-            System.out.println("Boton de Mi Envio");
             Intent activity = new Intent(this, Pantalla_Mi_Envio.class);
-            guardarParametros(activity);
+            saveData(activity);
             startActivity(activity);
             finish();
-
         }
         if (view == btn_Enviar){
             if (envio.isModificacion()){
                 updateObject();
             } else {
                 if (comprobarValores()){
-                    //actualizarDatosEnviados();
                     tv_Fecha.setClickable(false);
                     etnd_Latitud.setEnabled(false);
                     etnd_Longitud.setEnabled(false);
-                    asignacionValores();
-                    envioDatos();
+                    setValues();
+                    sendObject();
                     envio.setEnvioCompletado(true);
-
                 } else {
                     Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
                 }
             }
         }
         if (view == btn_Volver){
-            Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
-            activity.putExtra("EMAIL",envio.getEmail());
-            activity.putExtra("LIMITES", limites);
-            startActivity(activity);
-            finish();
+            onBackPressed();
         }
-
     }
 
-    public void updateObject() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Entorno");
-
-        // Retrieve the object by id
-        query.getInBackground(envio.getObjectID(), (entity, e) -> {
-            if (e == null) {
-                //Object was successfully retrieved
-                // Update the fields we want to
-                entity = assignFields(entity);
-
-                //All other fields will remain the same
-                entity.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e==null){
-                            //Save was done
-                            Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Se ha actualizado el envío correctamente", Toast.LENGTH_SHORT).show();
-
-                        }else{
-                            //Something went wrong
-                            Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-            } else {
-                // something went wrong
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    private ParseObject assignFields(ParseObject entity) {
+    /**
+     * Asigna los campos al envio que se desea enviar/modificar
+     * @param entity envio al que se le asigna los campos
+     */
+    private void assignFields(ParseObject entity) {
 
         entity.put("Fecha",envio.getFecha());
         entity.put("Latitud",envio.getLatitud());
@@ -507,15 +440,103 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("VerdS13", envio.getDatosAvistamiento().getHora13().get(10));
         entity.put("VerdS14", envio.getDatosAvistamiento().getHora14().get(10));
 
-        return entity;
     }
 
-    public static Date convertStringToData(String getDate){
+    /**
+     * Manda un objeto nuevo a la BD
+     */
+    private void sendObject() {
+        ParseObject entity = new ParseObject("Datos_Entorno");
+
+        assignFields(entity);
+
+        entity.saveInBackground(e -> {
+            if (e==null){
+                //Save was done
+                updateUser();
+                Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Se ha realizado el envío correctamente", Toast.LENGTH_SHORT).show();
+                desactivarBotonesDatos(envio.isModificacion());
+
+            }else{
+                //Something went wrong
+                Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    /**
+     * Manda un update a la BD en el que se actualizan todos los campos
+     */
+    private void updateObject() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Entorno");
+
+        // Retrieve the object by id
+        query.getInBackground(envio.getObjectID(), (entity, e) -> {
+            if (e == null) {
+                //Object was successfully retrieved
+                // Update the fields we want to
+                assignFields(entity);
+                //All other fields will remain the same
+                entity.saveInBackground(e1 -> {
+                    if (e1 ==null){
+                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Se ha actualizado el envío correctamente", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        //Something went wrong
+                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e1.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                // something went wrong
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    /**
+     * Actualiza la ficha de Usuario con un envio nuevo
+     */
+    private void updateUser() {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser!= null){
+            int fichasEnviadas  = currentUser.getInt("NumFichas");
+            fichasEnviadas++;
+            currentUser.put("NumFichas", fichasEnviadas);
+            currentUser.saveInBackground(e -> {
+                if(e==null){
+                    //Save successful
+                    Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Save Successful", Toast.LENGTH_SHORT).show();
+                }else{
+                    // Something went wrong while saving
+                    Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    /**
+     * Metodo para convert Date en Sting
+     * @param fecha valor de Date que desea convertir a String
+     * @return un String formateado de la fecha
+     */
+    private String convertDateToString(Date fecha) {
+        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormat.format(fecha);
+    }
+
+    /**
+     * Convierte un String a un objeto Date
+     * @param stringDate fecha en formato de String
+     * @return objeto Date que se obtiene a partir de formatear el stringDate
+     */
+    public static Date convertStringToDate(String stringDate){
         Date today = null;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
 
         try {
-            today = simpleDate.parse(getDate);
+            today = simpleDate.parse(stringDate);
             Calendar c = Calendar.getInstance();
             assert today != null;
             c.setTime(today);
@@ -527,88 +548,51 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         return today;
     }
 
-    private void envioDatos() {
-        ParseObject entity = new ParseObject("Datos_Entorno");
-
-        //noinspection ConstantConditions
-        entity = assignFields(entity);
-
-        entity.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e==null){
-                    //Save was done
-                    actualizarDatosEnviados();
-                    Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Se ha realizado el envío correctamente", Toast.LENGTH_SHORT).show();
-                    desactivarBotonesDatos();
-
-                }else{
-                    //Something went wrong
-                    Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-    }
-
+    /**
+     * Cambia el estado de los botones segun se trate de una modificacion o no
+     * @param modificacion determina el estado de los botones
+     */
     @SuppressLint("UseCompatLoadingForDrawables")
-    private void desactivarBotonesDatos() {
-        //Parametros Envio
+    private void desactivarBotonesDatos(boolean modificacion) {
         tv_Fecha.setClickable(false);
         etnd_Latitud.setEnabled(false);
         etnd_Longitud.setEnabled(false);
-        //Boton Datos Aves
         btn_DatosAves.setEnabled(true);
         btn_DatosAves.setBackground(getDrawable(R.drawable.boton_semiredondeado));
         btn_DatosAves.setPadding(5,0,0,0);
-        //Boton Datos Entorno
-        btn_DatosEntorno.setEnabled(false);
-        btn_DatosEntorno.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
-        btn_DatosEntorno.setPadding(5,0,0,0);
-        //Boton Datos Metodos
-        btn_DatosMetodos.setEnabled(false);
-        btn_DatosMetodos.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
-        btn_DatosMetodos.setPadding(5,0,0,0);
-        //Boton Datos Avistamiento
-        btn_DatosAvistamiento.setEnabled(false);
-        btn_DatosAvistamiento.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
-        btn_DatosAvistamiento.setPadding(5,0,0,0);
 
-        btn_Enviar.setEnabled(false);
-        btn_Enviar.setBackground(getDrawable(R.drawable.boton_redondeado_apagado));
-    }
+        btn_DatosEntorno.setEnabled(modificacion);
+        btn_DatosMetodos.setEnabled(modificacion);
+        btn_DatosAvistamiento.setEnabled(modificacion);
+        btn_Enviar.setEnabled(modificacion);
 
-    private void actualizarDatosEnviados() {
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser!= null){
-            int fichasEnviadas  = currentUser.getInt("NumFichas");
-            fichasEnviadas++;
-            currentUser.put("NumFichas", fichasEnviadas);
-            currentUser.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if(e==null){
-                        //Save successfull
-                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Save Successful", Toast.LENGTH_SHORT).show();
-                    }else{
-                        // Something went wrong while saving
-                        Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+        if (modificacion){
+            btn_DatosEntorno.setBackground(getDrawable(R.drawable.boton_semiredondeado));
+            btn_DatosMetodos.setBackground(getDrawable(R.drawable.boton_semiredondeado));
+            btn_DatosAvistamiento.setBackground(getDrawable(R.drawable.boton_semiredondeado));
+            btn_Enviar.setBackground(getDrawable(R.drawable.boton_redondeado));
+        } else {
+            btn_DatosEntorno.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
+            btn_DatosMetodos.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
+            btn_DatosAvistamiento.setBackground(getDrawable(R.drawable.boton_semiredondeado_apagado));
+            btn_Enviar.setBackground(getDrawable(R.drawable.boton_redondeado_apagado));
         }
     }
 
-
-
-    private void asignacionValores() {
-        envio.setFecha(convertStringToData(tv_Fecha.getText().toString()));
+    /**
+     * Asigna los valores de latitud, longitud y fecha al envio
+     */
+    private void setValues() {
+        envio.setFecha(convertStringToDate(tv_Fecha.getText().toString()));
         envio.setLatitud(Double.parseDouble(etnd_Latitud.getText().toString()));
         envio.setLongitud(Double.parseDouble(etnd_Longitud.getText().toString()));
     }
 
+    /**
+     * Comprueba que los valores que se introducen se encuentran dentro de los limites
+     * @return true si esta todo bien -- False si hay algun fallo
+     */
     private boolean comprobarValores() {
-
         if (tv_Fecha.getText().toString().equals("-- / -- / ----")) return false;
         if (etnd_Longitud.getText().toString().isEmpty()) return false;
         if (etnd_Latitud.getText().toString().isEmpty()) return false;
@@ -618,34 +602,42 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         } catch (Exception e){
             return false;
         }
-
         if (!(Double.parseDouble(etnd_Longitud.getText().toString())<limites.getMaxLon() && Double.parseDouble(etnd_Longitud.getText().toString())>limites.getMinLon())){
-            Toast.makeText(this, "La longitud no entra en los parámetros establecidos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "La longitud no se encuentra en los parámetros establecidos", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         if (!(Double.parseDouble(etnd_Latitud.getText().toString())<limites.getMaxLat() && Double.parseDouble(etnd_Latitud.getText().toString())>limites.getMinLat())){
-            Toast.makeText(this, "La latitud no entra en los parámetros establecidos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "La latitud no se encuentra en los parámetros establecidos", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         return true;
     }
 
-    private void guardarParametros(Intent actividadDestino) {
-        imprimirDatosRecibidos();
+    /**
+     * Guarda los datos a enviar a la actividad de destino
+     * @param actividadDestino actividad donde se envian los datos
+     */
+    private void saveData(Intent actividadDestino) {
         actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
     }
 
-    private void recuperarDatosRecibidos(Bundle datos) {
+    /**
+     * Recupera los datos de la actividad que los ha mandado
+     * @param datos bundle del que se componen los datos
+     */
+    private void retrieveData(Bundle datos) {
         envio = (Envio) datos.getSerializable("ENVIO");
-
-
         limites = (Limites) datos.getSerializable("LIMITES");
     }
 
+    /**
+     * Metodo que imprime por consola los datos recibidos de la pantalla anterior, se ejecuta en tiempo real
+     * Pese a que parezca que no se usa, es un metodo de control, usado al recibir los datos de cualquier pantalla
+     */
     private void imprimirDatosRecibidos() {
+        System.out.println("****************************************************");
+        System.out.println("Inicio de datos recibidos en Main Menu");
         System.out.println("____________________________________________________");
         System.out.println("EMAIL                  => " + envio.getEmail());
         System.out.println("DNI                    => " + envio.getDNI());
@@ -659,15 +651,17 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         System.out.println("ESTADO AVISTAMIENTO    => " + envio.isAvistamientoCompletado());
         System.out.println("DATOS AVISTAMIENTO     => " + envio.getDatosAvistamiento());
         System.out.println("____________________________________________________");
+        System.out.println("Fin de datos recibidos en Main Menu");
+        System.out.println("****************************************************");
     }
 
     /**
-     * Asignacion de cuadrícula
+     * Asignación de cuadrícula
      * @return código de cuadricula según coordenadas
      */
     private String cuadricula(){
         //Primer valor
-        String codCuadricula = "";
+        String codCuadricula;
         double x = (envio.getLongitud() - 3.123);
         double x1 = x/0.1159;
         double x2 = 12-x1;
@@ -688,8 +682,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         String sValor1 = String.valueOf(ix3);
         String sValor2= String.valueOf(iy3);
 
-        String svalorDef = sValor1.concat(sValor2);
-        int numCuadricula = Integer.parseInt(svalorDef);
+        String sValorDef = sValor1.concat(sValor2);
+        int numCuadricula = Integer.parseInt(sValorDef);
 
         switch (numCuadricula){
             case 37:

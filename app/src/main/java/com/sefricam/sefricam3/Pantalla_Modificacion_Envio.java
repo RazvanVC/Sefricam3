@@ -87,6 +87,7 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                         localEnvio.setMetodosCaptura(mc);
                         localEnvio.setMCapturaCompletado(true);
                         localEnvio.setModificacion(true);
+                        localEnvio.setEnvioCompletado(true);
 
                         Calendar c = Calendar.getInstance();
                         c.setTime(Objects.requireNonNull(obj.getDate("Fecha")));
