@@ -100,30 +100,18 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
      */
     private String setCuadricula(double longitud, double latitud){
         //Primer valor
-        String codCuadricula;
-        double x = (longitud - 3.123);
-        double x1 = x/0.1159;
-        double x2 = 12-x1;
-        if(x2<0) x2=0.0;
-        double x3 = Math.ceil(x2);
+        double x = 12-((longitud - 3.123)/0.1159);
+        if(x<0) x=0.0;
+        x = Math.ceil(x);
 
         //Segundo valor
-        double y = (latitud - 39.937133);
-        double y1 = y/0.08878954;
-        double y2 = 14-y1;
-        if(y2<0) y2=0.0;
-        double y3 = Math.ceil(y2);
+        double y = 14-((latitud - 39.937133)/0.08878954);
+        if(y<0) y=0.0;
+        y = Math.ceil(y);
 
-        //Juntar los dos numeros
-        int ix3 = (int) x3;
-        int iy3 = (int) y3;
+        int numCuadricula = Integer.parseInt(String.valueOf((int) x).concat(String.valueOf((int) y)));
 
-        String sValor1 = String.valueOf(ix3);
-        String sValor2= String.valueOf(iy3);
-
-        String svalorDef = sValor1.concat(sValor2);
-        int numCuadricula = Integer.parseInt(svalorDef);
-
+        String codCuadricula;
         switch (numCuadricula){
             case 37:
                 codCuadricula = "01UKA10";
@@ -236,7 +224,6 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
             case 77:
                 codCuadricula = "37VKA04";
                 break;
-
             case 87:
                 codCuadricula = "38VKA05";
                 break;
@@ -348,7 +335,6 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
             case 1111:
                 codCuadricula = "74VKE08";
                 break;
-
             case 1211:
                 codCuadricula = "75VKE09";
                 break;
@@ -385,7 +371,6 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
             case 814:
                 codCuadricula = "86VKH05";
                 break;
-
             default:
                 codCuadricula = "ERROR";
                 break;
