@@ -11,8 +11,8 @@ import com.parse.ParseInstallation;
 public class Pantalla_Bienvenida extends Activity {
 
     /**
-     * Pantalla que inicia la aplicacion
-     * @param savedInstanceState bundle de datos que recibe la pantalla
+     * Initialize the screen and all its components
+     * @param savedInstanceState bundle of data that receives when it starts the screen
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
