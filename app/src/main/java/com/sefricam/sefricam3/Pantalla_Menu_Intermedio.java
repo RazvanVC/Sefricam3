@@ -2,87 +2,74 @@ package com.sefricam.sefricam3;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.io.Serializable;
-import java.util.List;
+import java.util.Objects;
 
 
 public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickListener{
 
+    // UI Elements
     private Button btn_Salir, btn_MenuCapturasEntorno, btn_Envios, btn_Modificacion_Envio, btn_Mi_Cuadricula;
-    public String email;
     private TextView tv_NGrupo, tv_DNI, tv_Bienvenida;
+
+    // Class Elements
     private Limites limites;
+    private String email;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_menu_intermedio);
 
-        //Inicio de los Elementos del layout
-        iniciarFindView();
-        iniciarOnClickListener();
+        //Starting the elements from the UI
+        startFindView();
+        setOnClickListener();
 
-        //Carga de datos recuperados de la BD
+        //Charging the data from the DB into the application
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             email = datos.getString("EMAIL");
             limites = (Limites) datos.getSerializable("LIMITES");
-            /*limites.imprimirDatosRecYCim();
-            limites.imprimirDatosParametrosAves();
-            limites.imprimirDatosAnillamiento();*/
             cargarDatos(email);
         }
     }
 
+    /**
+     * Get the user data from the DB
+     * @param email search element for the query
+     */
     private void cargarDatos(String email) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
         query.whereEqualTo("username",email);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    ParseObject obj = null;
-                    for (int i = 0; i<objects.size(); i++){
-                        obj = objects.get(i);
-                    }
-                    try {
-                        tv_Bienvenida.append(obj.getString("Nombre")+"!");
-                        tv_DNI.setText(obj.getString("DNI"));
-                        tv_NGrupo.setText(obj.getNumber("NumGrupo").toString());
-                        limites = new Limites(obj.getInt("NumGrupo"));
-                    } catch (Exception x){
-                        Toast.makeText(Pantalla_Menu_Intermedio.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
-                    }
-
+        query.findInBackground((objects, e) -> {
+            if (e == null){
+                ParseObject obj = objects.get(objects.size()-1);
+                try {
+                    tv_Bienvenida.append(obj.getString("Nombre")+"!");
+                    tv_DNI.setText(obj.getString("DNI"));
+                    tv_NGrupo.setText(Objects.requireNonNull(obj.getNumber("NumGrupo")).toString());
+                    limites = new Limites(obj.getInt("NumGrupo"));
+                } catch (Exception x){
+                    assert false;
+                    Toast.makeText(Pantalla_Menu_Intermedio.this, "ERROR: " + e.getCode(), Toast.LENGTH_LONG).show();
                 }
+
             }
         });
     }
 
     /**
-     * Asigna a las variables creadas arriba su correspondiente boton de la actividad
+     * Init the UI elements into the code
      */
-    private void iniciarFindView() {
+    private void startFindView() {
         tv_DNI = findViewById(R.id.tv_DNI);
         tv_NGrupo = findViewById(R.id.tv_NGrupo);
         tv_Bienvenida = findViewById(R.id.tv_Bienvenida);
@@ -94,9 +81,9 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
     }
 
     /**
-     * Inicia todos los click listeners para que los botones sean funcionales
+     * Sets all the click listener for the UI elements
      */
-    public void iniciarOnClickListener(){
+    public void setOnClickListener(){
         btn_Salir.setOnClickListener(this);
         btn_Envios.setOnClickListener(this);
         btn_Modificacion_Envio.setOnClickListener(this);
@@ -108,82 +95,59 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
      * Called when the activity has detected the user's press of the back
      * key.  The default implementation simply finishes the current activity,
      * but you can override this to do whatever you want.
+     * Overrides it for a message that ask if you want to leave the application
      */
     @Override
     public void onBackPressed() {
         AlertDialog.Builder exit = new AlertDialog.Builder(this);
         exit.setMessage("¿Quieres salir de la aplicación?");
-        exit.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(Pantalla_Menu_Intermedio.this, Pantalla_Bienvenida.class));
-                finish();
-            }
+        exit.setPositiveButton("SI", (dialog, which) -> {
+            startActivity(new Intent(Pantalla_Menu_Intermedio.this, Pantalla_Bienvenida.class));
+            finish();
         });
-        exit.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        exit.setNegativeButton("NO", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = exit.create();
         dialog.show();
     }
 
+    /**
+     * Handle the onClick event for the UI elements
+     * @param view the view that was clicked
+     */
     @Override
     public void onClick(View view){
-
         if (view == btn_Salir){
-            AlertDialog.Builder exit = new AlertDialog.Builder(this);
-            exit.setMessage("¿Quieres salir de la aplicación?");
-            exit.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startActivity(new Intent(Pantalla_Menu_Intermedio.this, Pantalla_Bienvenida.class));
-                    finish();
-                }
-            });
-            exit.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-
-            AlertDialog dialog = exit.create();
-            dialog.show();
-
+            onBackPressed();
         }
         if (view == btn_MenuCapturasEntorno){
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Menu_Metodos_Y_Captura.class);
-
-            activity.putExtra("ENVIO", new Envio(tv_DNI.getText().toString(), email));
-            activity.putExtra("LIMITES", limites);
-            finish();
-            startActivity(activity);
+            chargeActivity(activity, view);
         }
         if (view == btn_Modificacion_Envio) {
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Modificacion_Envio.class);
-            activity.putExtra("ENVIO", new Envio(tv_DNI.getText().toString(), email));
-            activity.putExtra("LIMITES", limites);
-            System.out.println("NUMERO GRUPO"+limites.getNumeroGrupo());
-            finish();
-            startActivity(activity);
+            chargeActivity(activity, view);
         }
         if (view == btn_Mi_Cuadricula) {
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Mi_Cuadricula.class);
-            activity.putExtra("EMAIL",email);
-            activity.putExtra("LIMITES", limites);
-            finish();
-            startActivity(activity);
+            chargeActivity(activity, view);
         }
         if (view == btn_Envios){
             Intent activity = new Intent(Pantalla_Menu_Intermedio.this,Pantalla_Mis_Datos.class);
-            activity.putExtra("EMAIL",email);
-            activity.putExtra("LIMITES", limites);
-            finish();
-            startActivity(activity);
+            chargeActivity(activity, view);
         }
+    }
+
+    /**
+     * Handle the new activity that starts, putting all the necessary parameters in the bundle
+     * @param activity the activity that will start
+     * @param view the view that was clicked
+     */
+    private void chargeActivity(Intent activity, View view) {
+        if (view == btn_MenuCapturasEntorno || view == btn_Modificacion_Envio) activity.putExtra("ENVIO", new Envio(tv_DNI.getText().toString(), email));
+        else activity.putExtra("EMAIL",email);
+        activity.putExtra("LIMITES", limites);
+        finish();
+        startActivity(activity);
     }
 }
