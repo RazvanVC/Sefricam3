@@ -17,14 +17,18 @@ import java.util.Objects;
 
 public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickListener{
 
-    // UI Elements
+    // UI Parameters
     private Button btn_Salir, btn_MenuCapturasEntorno, btn_Envios, btn_Modificacion_Envio, btn_Mi_Cuadricula;
     private TextView tv_NGrupo, tv_DNI, tv_Bienvenida;
 
-    // Class Elements
+    // Class Parameters
     private Limites limites;
     private String email;
 
+    /**
+     * Initialize the screen and all its components
+     * @param savedInstanceState bundle of data that receives when it starts the screen
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_menu_intermedio);
@@ -33,7 +37,7 @@ public class Pantalla_Menu_Intermedio extends Activity implements View.OnClickLi
         startFindView();
         setOnClickListener();
 
-        //Charging the data from the DB into the application
+        //Charging the data from the DB into the application and extracting the data from the bundle
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             email = datos.getString("EMAIL");

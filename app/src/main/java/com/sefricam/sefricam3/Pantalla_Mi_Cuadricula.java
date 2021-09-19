@@ -11,24 +11,28 @@ import android.widget.Toast;
 
 public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickListener{
 
-
-    public String email;
-    private double longitud, latitud;
-    private Limites limites;
+    // UI Parameters
     private EditText etnd_LatitudCuadricula, etnd_LongitudCuadricula;
     private TextView tv_CuadriculaActual, tv_ResultadoCuadricula;
     private Button btn_CalcularCuadricula, btn_VolverCuadricula;
 
+    //Class Parameters
+    public String email;
+    private Limites limites;
 
+    /**
+     * Initialize the screen and all its components
+     * @param savedInstanceState bundle of data that receives when it starts the screen
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_mi_cuadricula);
 
-        //Inicio de los Elementos del layout
-        iniciarFindView();
-        iniciarOnClickListener();
+        //Starting the elements from the UI
+        startFindView();
+        setOnClickListener();
 
-        //Carga de datos recuperados de la BD
+        //Extracts the data from the bundle
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             email = datos.getString("EMAIL");
@@ -37,9 +41,11 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
     }
 
 
-
-    private void iniciarFindView() {
-        etnd_LatitudCuadricula =findViewById(R.id.etnd_LatitudCuadricula);
+    /**
+     * Init the UI elements into the code
+     */
+    private void startFindView() {
+        etnd_LatitudCuadricula = findViewById(R.id.etnd_LatitudCuadricula);
         etnd_LongitudCuadricula = findViewById(R.id.etnd_LongitudCuadricula);
         tv_CuadriculaActual = findViewById(R.id.tv_CuadriculaActual);
         tv_ResultadoCuadricula = findViewById(R.id.tv_ResultadoCuadricula);
@@ -48,14 +54,16 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
 
     }
 
-    private void iniciarOnClickListener() {
+    /**
+     * Sets all the click listener for the UI elements
+     */
+    private void setOnClickListener() {
         btn_CalcularCuadricula.setOnClickListener(this);
         btn_VolverCuadricula.setOnClickListener(this);
     }
 
     /**
      * Called when a view has been clicked.
-     *
      * @param v The view that was clicked.
      */
     @Override
@@ -77,22 +85,22 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
                 return;
             }
 
-            longitud = Double.parseDouble(etnd_LongitudCuadricula.getText().toString());
-            latitud = Double.parseDouble(etnd_LatitudCuadricula.getText().toString());
+            double longitud = Double.parseDouble(etnd_LongitudCuadricula.getText().toString());
+            double latitud = Double.parseDouble(etnd_LatitudCuadricula.getText().toString());
 
-            tv_ResultadoCuadricula.setText(cuadricula());
+            tv_ResultadoCuadricula.setText(setCuadricula(longitud, latitud));
             tv_ResultadoCuadricula.setVisibility(View.VISIBLE);
             tv_CuadriculaActual.setVisibility(View.VISIBLE);
         }
     }
 
     /**
-     * Asignacion de cuadrícula
-     * @return código de cuadricula según coordenadas
+     * Set the code for the coordinates provided
+     * @return code for the Quadrille
      */
-    private String cuadricula(){
+    private String setCuadricula(double longitud, double latitud){
         //Primer valor
-        String codCuadricula = "";
+        String codCuadricula;
         double x = (longitud - 3.123);
         double x1 = x/0.1159;
         double x2 = 12-x1;
