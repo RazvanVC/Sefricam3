@@ -35,9 +35,9 @@ public class Pantalla_Mis_Datos extends Activity {
         if (datos != null) {
             email = datos.getString("EMAIL");
             limites = (Limites) datos.getSerializable("LIMITES");
-            cargarDatos(email);
+            loadUserData(email);
         }
-        
+
         //Sets the click listener and onClick method fo the button
         btn_VolverDatos.setOnClickListener(v -> onBackPressed());
     }
@@ -72,7 +72,7 @@ public class Pantalla_Mis_Datos extends Activity {
      * Charge the used data in the UI
      * @param email query parameter to find the user
      */
-    private void cargarDatos(String email) {
+    private void loadUserData(String email) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
         query.whereEqualTo("username",email);
         query.findInBackground((objects, e) -> {
