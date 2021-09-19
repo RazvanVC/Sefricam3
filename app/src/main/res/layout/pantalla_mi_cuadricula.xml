@@ -73,7 +73,9 @@
                 android:textAlignment="center"
                 android:textColor="@color/Negro"
                 android:textSize="@dimen/_15sdp"
-                android:hint="@string/hint_Latitud"/>
+                android:hint="@string/hint_Latitud"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"/>
 
             <EditText
                 android:id="@+id/etnd_LongitudCuadricula"
@@ -84,7 +86,9 @@
                 android:textAlignment="center"
                 android:textColor="@color/Negro"
                 android:textSize="@dimen/_15sdp"
-                android:hint="@string/hint_Longitud"/>
+                android:hint="@string/hint_Longitud"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <Button
