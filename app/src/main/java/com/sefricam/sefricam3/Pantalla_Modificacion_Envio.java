@@ -4,27 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
+
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
-public class Pantalla_Modificacion_Envio extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
+public class Pantalla_Modificacion_Envio extends Activity implements View.OnClickListener{
 
 
     private Envio envio;
@@ -47,8 +40,8 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
         }
 
         //Inicio de los Elementos del layout
-        iniciarFindView();
-        iniciarOnClickListener();
+        startFindView();
+        startOnClickListeners();
         iniciarSpinners();
 
 
@@ -56,7 +49,7 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
 
     private void iniciarSpinners() {
         ArrayList <String> envios = cargarEnvios();
-        ArrayAdapter<String> adapterEnvios = new ArrayAdapter<String>(this, R.layout.spinner,envios);
+        ArrayAdapter<String> adapterEnvios = new ArrayAdapter<>(this, R.layout.spinner, envios);
         sp_EnvioSeleccionado.setAdapter(adapterEnvios);
     }
 
@@ -66,66 +59,67 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Entorno");
         query.whereEqualTo("DNI",envio.getDNI());
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    ParseObject obj;
-                    for (int i = 0; i<objects.size(); i++){
-                        Envio localEnvio = null;
-                        obj = objects.get(i);
+        query.findInBackground((objects, e) -> {
+            if (e == null){
+                ParseObject obj;
+                for (int i = 0; i<objects.size(); i++){
+                    obj = objects.get(i);
 
-                        localEnvio = new Envio(envio.getDNI(), envio.getEmail());
-                        DatosAvistamiento da = getDatosAvistamiento(obj);
-                        DatosEntorno de = getDatosEntorno(obj);
-                        MetodosCaptura mc = getMetodosCaptura(obj);
+                    Envio localEnvio = new Envio(envio.getDNI(), envio.getEmail());
+                    DatosAvistamiento da = getDatosAvistamiento(obj);
+                    DatosEntorno de = getDatosEntorno(obj);
+                    MetodosCaptura mc = getMetodosCaptura(obj);
 
-                        localEnvio.setDatosAvistamiento(da);
-                        localEnvio.setAvistamientoCompletado(true);
-                        localEnvio.setDatosEntorno(de);
-                        localEnvio.setEntornoCompletado(true);
-                        localEnvio.setMetodosCaptura(mc);
-                        localEnvio.setMCapturaCompletado(true);
-                        localEnvio.setModificacion(true);
-                        localEnvio.setEnvioCompletado(true);
+                    localEnvio.setDatosAvistamiento(da);
+                    localEnvio.setAvistamientoCompletado(true);
+                    localEnvio.setDatosEntorno(de);
+                    localEnvio.setEntornoCompletado(true);
+                    localEnvio.setMetodosCaptura(mc);
+                    localEnvio.setMCapturaCompletado(true);
+                    localEnvio.setModificacion(true);
+                    localEnvio.setEnvioCompletado(true);
 
-                        Calendar c = Calendar.getInstance();
-                        c.setTime(Objects.requireNonNull(obj.getDate("Fecha")));
-                        c.add(Calendar.DAY_OF_MONTH, -1);
-                        System.out.println("LOF2 - "+c.getTime());
-                        localEnvio.setFecha(c.getTime());
-                        localEnvio.setLatitud(Double.parseDouble(String.valueOf(obj.getNumber("Latitud"))));
-                        localEnvio.setLongitud(Double.parseDouble(String.valueOf(obj.getNumber("Longitud"))));
-                        localEnvio.setObjectID(obj.getObjectId());
-                        enviosRecibidos.add(localEnvio);
-
-                    }
-                    for (int i = 0; i<enviosRecibidos.size(); i++){
-
-                        Envio localEnvio = enviosRecibidos.get(i);
-                        enviosCargados.add(localEnvio.getFecha().getDate() + "/" + (localEnvio.getFecha().getMonth()+1) + "/" + (localEnvio.getFecha().getYear()+1900) +" - " + localEnvio.getDNI());
-                    }
-                    if (enviosCargados.size()==1){
-                        enviosCargados.add(0,"No hay datos");
-                    }
-
-
-                } else {
-                    enviosCargados.add("FIN ENVIOS CARGADOS");
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(Objects.requireNonNull(obj.getDate("Fecha")));
+                    c.add(Calendar.DAY_OF_MONTH, -1);
+                    localEnvio.setFecha(c.getTime());
+                    localEnvio.setLatitud(Double.parseDouble(String.valueOf(obj.getNumber("Latitud"))));
+                    localEnvio.setLongitud(Double.parseDouble(String.valueOf(obj.getNumber("Longitud"))));
+                    localEnvio.setObjectID(obj.getObjectId());
+                    enviosRecibidos.add(localEnvio);
                 }
+                for (int i = 0; i<enviosRecibidos.size(); i++){
+                    Envio localEnvio = enviosRecibidos.get(i);
+                    Calendar localCalendar = Calendar.getInstance();
+                    localCalendar.setTime(localEnvio.getFecha());
+                    enviosCargados.add(localCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (localCalendar.get(Calendar.MONTH)+1) + "/" + localCalendar.get(Calendar.YEAR) +" - " + localEnvio.getDNI());
+                }
+                // Checks if the array have just one element
+                if (enviosCargados.size()==1){
+                    enviosCargados.remove(0);
+                    enviosCargados.add(getString(R.string.PME_NoDataFound));
+                }
+            } else {
+                enviosCargados.remove(0);
+                enviosCargados.add(getString(R.string.PME_NoDataFound));
             }
         });
-
         return enviosCargados;
     }
 
+    /**
+     * Extracts all the data to compose a MetodosCaptura Object
+     * @param obj object from where the data is extracted
+     * @return a new MetodosCaptura object from the data
+     */
     private MetodosCaptura getMetodosCaptura(ParseObject obj) {
         ArrayList<Boolean> ca = new ArrayList<>();
         for (int i = 1; i<7; i++){
             String key = "CA0"+i;
             ca.add(obj.getBoolean(key));
         }
-        MetodosCaptura mc = new MetodosCaptura(
+
+        return new MetodosCaptura(
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumMallas")).toString()),
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("LongRed")).toString()),
                 obj.getBoolean("Coto"),
@@ -187,10 +181,13 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
 
                 obj.getString("Observaciones")
         );
-
-        return mc;
     }
 
+    /**
+     * Extracts all the data to compose a DatosEntorno Object
+     * @param obj object from where the data is extracted
+     * @return a new DatosEntorno object from the data
+     */
     private DatosEntorno getDatosEntorno(ParseObject obj) {
         ArrayList<Integer> plantas = new ArrayList<>();
 
@@ -202,7 +199,6 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
             System.out.println("GMC - " + field);
             plantas.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
         }
-        //System.out.println("GMC - " + obj.getNumber("TempInicio") /*+ " - " + obj.getNumber("TempInicio").getClass()*/);
 
         return new DatosEntorno(
                 Double.parseDouble(Objects.requireNonNull(obj.getNumber("TempInicial")).toString()),
@@ -218,13 +214,18 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
         );
     }
 
+    /**
+     * Extracts all the data to compose a DatosAvistamiento Object
+     * @param obj object from where the data is extracted
+     * @return a new DatosAvistamiento object from the data
+     */
     private DatosAvistamiento getDatosAvistamiento(ParseObject obj) {
         ArrayList<Integer> hora08 = new ArrayList<>(), hora09 = new ArrayList<>(), hora10 = new ArrayList<>(), hora11 = new ArrayList<>(), hora12 = new ArrayList<>(), hora13 = new ArrayList<>(), hora14 = new ArrayList<>();
         for (int i = 8; i<15; i++) {
             ArrayList<String> headers = new ArrayList<>();
             headers.add("Cam"); headers.add("Jil"); headers.add("Lug"); headers.add("PardC"); headers.add("Pic");headers.add("PinC");headers.add("PinR");headers.add("Piq");headers.add("Verd");headers.add("VerdC");headers.add("VerdS");
             for (int z = 0; z<headers.size(); z++){
-                String field = "";
+                String field;
                 switch (i){
                     case 8:
                         field = headers.get(z).concat("08");
@@ -257,7 +258,6 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
                 }
             }
         }
-        System.out.println("GDA - " + obj.getString("HoraIncio"));
         return new DatosAvistamiento(
                 obj.getString("HoraInicio"),
                 obj.getString("HoraFin"),
@@ -271,20 +271,25 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
         );
     }
 
-    private void iniciarFindView() {
+    /**
+     * Init the UI elements into the code
+     */
+    private void startFindView() {
         sp_EnvioSeleccionado = findViewById(R.id.sp_EnvioSeleccionado);
         btn_ContinuarModificacionEnvio = findViewById(R.id.btn_ContinuarModificacionEnvio);
         btn_VolverModificacionEnvio = findViewById(R.id.btn_VolverModificacionEnvio);
     }
 
-    private void iniciarOnClickListener() {
+    /**
+     * Sets all the click listener for the UI elements
+     */
+    private void startOnClickListeners() {
         btn_ContinuarModificacionEnvio.setOnClickListener(this);
         btn_VolverModificacionEnvio.setOnClickListener(this);
     }
 
     /**
      * Called when a view has been clicked.
-     *
      * @param v The view that was clicked.
      */
     @Override
@@ -308,39 +313,6 @@ public class Pantalla_Modificacion_Envio extends Activity implements AdapterView
             activity.putExtra("LIMITES", limites);
             startActivity(activity);
         }
-
-    }
-
-    /**
-     * <p>Callback method to be invoked when an item in this view has been
-     * selected. This callback is invoked only when the newly selected
-     * position is different from the previously selected position or if
-     * there was no selected item.</p>
-     * <p>
-     * Implementers can call getItemAtPosition(position) if they need to access the
-     * data associated with the selected item.
-     *
-     * @param parent   The AdapterView where the selection happened
-     * @param view     The view within the AdapterView that was clicked
-     * @param position The position of the view in the adapter
-     * @param id       The row id of the item that is selected
-     */
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (parent.getId() == R.id.sp_EnvioSeleccionado){
-
-        }
-    }
-
-    /**
-     * Callback method to be invoked when the selection disappears from this
-     * view. The selection can disappear for instance when touch is activated
-     * or when the adapter becomes empty.
-     *
-     * @param parent The AdapterView that now contains no selected item.
-     */
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
