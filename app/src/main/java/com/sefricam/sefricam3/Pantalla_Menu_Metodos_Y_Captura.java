@@ -66,7 +66,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 tv_Fecha.setText(convertDateToString(envio.getFecha()));
                 etnd_Latitud.setText(String.valueOf(envio.getLatitud()));
                 etnd_Longitud.setText(String.valueOf(envio.getLongitud()));
-                desactivarBotonesDatos(envio.isModificacion());
+                enableDataButtons(envio.isModificacion());
                 if (envio.isModificacion()) btn_Enviar.setText(R.string.PMMC_btn_Modificar);
             }
             // Comprobacion de Datos, descomentar la lineas de codigo cuando quieras comprobar los parametros que vas recibiendo
@@ -133,13 +133,26 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
             AlertDialog dialog = exit.create();
             dialog.show();
-        }
+        } else if (envio.isModificacion()){
+            AlertDialog.Builder exit = new AlertDialog.Builder(this);
+            exit.setMessage("Si vuelves los cambios no enviados no se guardarán\n¿Desea volver igualmente?");
+            exit.setPositiveButton("SI", (dialog, which) -> {
+                Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
+                activity.putExtra("EMAIL",envio.getEmail());
+                activity.putExtra("LIMITES", limites);
+                startActivity(activity);
+                finish();
+            });
+            exit.setNegativeButton("NO", (dialog, which) -> dialog.cancel());
 
+            AlertDialog dialog = exit.create();
+            dialog.show();
+        }
     }
 
     /**
-     * Metodo que gestiona todos los clicks en componentes de la pantalla
-     * @param view  vista que ha sido clickada
+     * Handle the onClick event for the UI elements
+     * @param view the view that was clicked
      */
     @Override
     public void onClick(View view){
@@ -149,7 +162,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             int mYear = c.get(Calendar.YEAR);
             int mMonth = c.get(Calendar.MONTH);
             int mDay = c.get(Calendar.DAY_OF_MONTH);
-
 
             @SuppressLint("SetTextI18n") DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     (view1, year, monthOfYear, dayOfMonth) -> tv_Fecha.setText(dayOfMonth+"-"+(monthOfYear+1)+"-"+year), mYear, mMonth, mDay);
@@ -210,8 +222,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Asigna los campos al envio que se desea enviar/modificar
-     * @param entity envio al que se le asigna los campos
+     * Sets the fields for the ParseObject to send or modify
+     * @param entity Datos_Entorno instance where are saved the fields
      */
     private void assignFields(ParseObject entity) {
 
@@ -446,7 +458,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Manda un objeto nuevo a la BD
+     * Sends a new Datos_Entorno object to the Parse Database
      */
     private void sendObject() {
         ParseObject entity = new ParseObject("Datos_Entorno");
@@ -458,7 +470,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 //Save was done
                 updateUser();
                 Toast.makeText(Pantalla_Menu_Metodos_Y_Captura.this, "Se ha realizado el envío correctamente", Toast.LENGTH_SHORT).show();
-                desactivarBotonesDatos(envio.isModificacion());
+                enableDataButtons(envio.isModificacion());
 
             }else{
                 //Something went wrong
@@ -469,7 +481,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Manda un update a la BD en el que se actualizan todos los campos
+     * Sends a Datos_Entorno update to an object
      */
     private void updateObject() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Entorno");
@@ -499,7 +511,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Actualiza la ficha de Usuario con un envio nuevo
+     * Updates User data with the new send
      */
     private void updateUser() {
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -520,9 +532,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Metodo para convert Date en Sting
-     * @param fecha valor de Date que desea convertir a String
-     * @return un String formateado de la fecha
+     * Convert Date to String
+     * @param fecha Date value to convert to String
+     * @return a formatted String value, extracted from the date
      */
     private String convertDateToString(Date fecha) {
         @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -530,9 +542,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Convierte un String a un objeto Date
-     * @param stringDate fecha en formato de String
-     * @return objeto Date que se obtiene a partir de formatear el stringDate
+     * Convert a String to Date
+     * @param stringDate a String object that is wished to convert to Date Object
+     * @return the Date Object that is obtained from formatting the String
      */
     public static Date convertStringToDate(String stringDate){
         Date today = null;
@@ -552,11 +564,11 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Cambia el estado de los botones segun se trate de una modificacion o no
-     * @param modificacion determina el estado de los botones
+     * Changes the button state if is an modification or not
+     * @param modificacion true if is a modification, false if not
      */
     @SuppressLint("UseCompatLoadingForDrawables")
-    private void desactivarBotonesDatos(boolean modificacion) {
+    private void enableDataButtons(boolean modificacion) {
         tv_Fecha.setClickable(false);
         etnd_Latitud.setEnabled(false);
         etnd_Longitud.setEnabled(false);
@@ -583,7 +595,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Asigna los valores de latitud, longitud y fecha al envio
+     * Sets Date, Latitude, and Longitude to the Envio Object
      */
     private void setValues() {
         envio.setFecha(convertStringToDate(tv_Fecha.getText().toString()));
@@ -592,11 +604,11 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Comprueba que los valores que se introducen se encuentran dentro de los limites
-     * @return true si esta todo bien -- False si hay algun fallo
+     * Checks if all the submitted data is in certain limits
+     * @return true if all its alright, false if not
      */
     private boolean comprobarValores() {
-        if (tv_Fecha.getText().toString().equals("-- / -- / ----")) return false;
+        if (tv_Fecha.getText().toString().equals("__-__-____")) return false;
         if (etnd_Longitud.getText().toString().isEmpty()) return false;
         if (etnd_Latitud.getText().toString().isEmpty()) return false;
         try {
@@ -617,8 +629,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Guarda los datos a enviar a la actividad de destino
-     * @param actividadDestino actividad donde se envian los datos
+     * Save the parameters to send to a certain activity
+     * @param actividadDestino activity where data is send
      */
     private void saveData(Intent actividadDestino) {
         actividadDestino.putExtra("ENVIO", envio);
@@ -626,8 +638,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Recupera los datos de la actividad que los ha mandado
-     * @param datos bundle del que se componen los datos
+     * Retrieve the data received from a certain activity
+     * @param datos bundle where the data is located
      */
     private void retrieveData(Bundle datos) {
         envio = (Envio) datos.getSerializable("ENVIO");
@@ -635,8 +647,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Metodo que imprime por consola los datos recibidos de la pantalla anterior, se ejecuta en tiempo real
-     * Pese a que parezca que no se usa, es un metodo de control, usado al recibir los datos de cualquier pantalla
+     * This method is used to see the parameters that are used along the app
      */
     private void imprimirDatosRecibidos() {
         System.out.println("****************************************************");
@@ -659,8 +670,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Asignación de cuadrícula
-     * @return código de cuadricula según coordenadas
+     * Assign the Cuadricula field
+     * @return Cuadricula code based on the coordinates
      */
     private String cuadricula(){
         //Primer valor
