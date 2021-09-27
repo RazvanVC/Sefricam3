@@ -19,13 +19,19 @@ import java.util.Objects;
 
 public class Pantalla_Modificacion_Envio extends Activity implements View.OnClickListener{
 
-
-    private Envio envio;
-    private Limites limites;
+    // UI Parameters
     private Spinner sp_EnvioSeleccionado;
     private Button btn_ContinuarModificacionEnvio, btn_VolverModificacionEnvio;
+
+    // Class Parameters
+    private Envio envio;
+    private Limites limites;
     private final ArrayList<Envio> enviosRecibidos = new ArrayList<>();
 
+    /**
+     * Initialize the screen and all its components
+     * @param savedInstanceState bundle of data that receives when it starts the screen
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_modificacion_envio);
@@ -42,17 +48,15 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
         //Inicio de los Elementos del layout
         startFindView();
         startOnClickListeners();
-        iniciarSpinners();
-
+        startSpinners();
 
     }
 
-    private void iniciarSpinners() {
-        ArrayList <String> envios = cargarEnvios();
-        ArrayAdapter<String> adapterEnvios = new ArrayAdapter<>(this, R.layout.spinner, envios);
-        sp_EnvioSeleccionado.setAdapter(adapterEnvios);
-    }
 
+    /**
+     * Retrieves all Envios from Parse Database which have the same DNI as the user.
+     * @return an String Array filled with the keys of the objects
+     */
     private ArrayList<String> cargarEnvios() {
         ArrayList <String> enviosCargados = new ArrayList<>();
         enviosCargados.add("Seleccione un envio");
@@ -61,40 +65,14 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
         query.whereEqualTo("DNI",envio.getDNI());
         query.findInBackground((objects, e) -> {
             if (e == null){
-                ParseObject obj;
-                for (int i = 0; i<objects.size(); i++){
-                    obj = objects.get(i);
-
-                    Envio localEnvio = new Envio(envio.getDNI(), envio.getEmail());
-                    DatosAvistamiento da = getDatosAvistamiento(obj);
-                    DatosEntorno de = getDatosEntorno(obj);
-                    MetodosCaptura mc = getMetodosCaptura(obj);
-
-                    localEnvio.setDatosAvistamiento(da);
-                    localEnvio.setAvistamientoCompletado(true);
-                    localEnvio.setDatosEntorno(de);
-                    localEnvio.setEntornoCompletado(true);
-                    localEnvio.setMetodosCaptura(mc);
-                    localEnvio.setMCapturaCompletado(true);
-                    localEnvio.setModificacion(true);
-                    localEnvio.setEnvioCompletado(true);
-
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(Objects.requireNonNull(obj.getDate("Fecha")));
-                    c.add(Calendar.DAY_OF_MONTH, -1);
-                    localEnvio.setFecha(c.getTime());
-                    localEnvio.setLatitud(Double.parseDouble(String.valueOf(obj.getNumber("Latitud"))));
-                    localEnvio.setLongitud(Double.parseDouble(String.valueOf(obj.getNumber("Longitud"))));
-                    localEnvio.setObjectID(obj.getObjectId());
-                    enviosRecibidos.add(localEnvio);
-                }
+                chargeEnvios(objects);
                 for (int i = 0; i<enviosRecibidos.size(); i++){
                     Envio localEnvio = enviosRecibidos.get(i);
                     Calendar localCalendar = Calendar.getInstance();
                     localCalendar.setTime(localEnvio.getFecha());
                     enviosCargados.add(localCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (localCalendar.get(Calendar.MONTH)+1) + "/" + localCalendar.get(Calendar.YEAR) +" - " + localEnvio.getDNI());
                 }
-                // Checks if the array have just one element
+                /* Checks if the array have just one element */
                 if (enviosCargados.size()==1){
                     enviosCargados.remove(0);
                     enviosCargados.add(getString(R.string.PME_NoDataFound));
@@ -105,6 +83,40 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
             }
         });
         return enviosCargados;
+    }
+
+    /**
+     * Put in Envios ArrayList all the Envio from the Parse Database
+     * @param objects arraylist filled with the database objects
+     */
+    private void chargeEnvios(java.util.List<ParseObject> objects) {
+        ParseObject obj;
+        for (int i = 0; i< objects.size(); i++){
+            obj = objects.get(i);
+
+            Envio localEnvio = new Envio(envio.getDNI(), envio.getEmail());
+            DatosAvistamiento da = getDatosAvistamiento(obj);
+            DatosEntorno de = getDatosEntorno(obj);
+            MetodosCaptura mc = getMetodosCaptura(obj);
+
+            localEnvio.setDatosAvistamiento(da);
+            localEnvio.setAvistamientoCompletado(true);
+            localEnvio.setDatosEntorno(de);
+            localEnvio.setEntornoCompletado(true);
+            localEnvio.setMetodosCaptura(mc);
+            localEnvio.setMCapturaCompletado(true);
+            localEnvio.setModificacion(true);
+            localEnvio.setEnvioCompletado(true);
+
+            Calendar c = Calendar.getInstance();
+            c.setTime(Objects.requireNonNull(obj.getDate("Fecha")));
+            c.add(Calendar.DAY_OF_MONTH, -1);
+            localEnvio.setFecha(c.getTime());
+            localEnvio.setLatitud(Double.parseDouble(String.valueOf(obj.getNumber("Latitud"))));
+            localEnvio.setLongitud(Double.parseDouble(String.valueOf(obj.getNumber("Longitud"))));
+            localEnvio.setObjectID(obj.getObjectId());
+            enviosRecibidos.add(localEnvio);
+        }
     }
 
     /**
@@ -289,6 +301,15 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
     }
 
     /**
+     * Init the UI spinners and fills them with data
+     */
+    private void startSpinners() {
+        ArrayList <String> envios = cargarEnvios();
+        ArrayAdapter<String> adapterEnvios = new ArrayAdapter<>(this, R.layout.spinner, envios);
+        sp_EnvioSeleccionado.setAdapter(adapterEnvios);
+    }
+
+    /**
      * Called when a view has been clicked.
      * @param v The view that was clicked.
      */
@@ -299,13 +320,10 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
                 Intent activity = new Intent(Pantalla_Modificacion_Envio.this,Pantalla_Menu_Metodos_Y_Captura.class);
                 envio = enviosRecibidos.get(sp_EnvioSeleccionado.getSelectedItemPosition()-1);
                 activity.putExtra("ENVIO", envio);
-
                 activity.putExtra("LIMITES", limites);
                 finish();
                 startActivity(activity);
             }else Toast.makeText(this, "Se tiene que seleccionar un envío", Toast.LENGTH_SHORT).show();
-
-
         }
         if (v == btn_VolverModificacionEnvio){
             Intent activity = new Intent(Pantalla_Modificacion_Envio.this,Pantalla_Menu_Intermedio.class);
