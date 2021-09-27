@@ -24,8 +24,7 @@ import java.util.Date;
 
 public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener {
 
-    private Envio envio;
-    private Limites limites;
+    // UI Parameters
     private Button btn_DatosAves;
     private Button btn_DatosEntorno;
     private Button btn_DatosMetodos;
@@ -37,16 +36,20 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private EditText etnd_Latitud;
     private EditText etnd_Longitud;
 
+    // Class Parameters
+    private Envio envio;
+    private Limites limites;
+
     /**
-     * Metodo que inicializa la visualizacion de la clase
+     * Initialize the screen and all its components
+     * @param savedInstanceState bundle of data that receives when it starts the screen
      */
-    @SuppressLint("UseCompatLoadingForDrawables")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_menu_metodos_y_capturas);
 
-        iniciarFindView();
-        iniciarOnClickListener();
+        startFindView();
+        setOnClickListener();
 
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
@@ -73,9 +76,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Asigna a las variables creadas arriba su correspondiente representacion visual
+     * Init the UI elements into the code
      */
-    private void iniciarFindView() {
+    private void startFindView() {
 
         //Button
         btn_DatosAves = findViewById(R.id.btn_DatosAves);
@@ -93,9 +96,9 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     }
 
     /**
-     * Inicia todos los click listeners para que los componentes sean funcionales
+     * Sets all the click listener for the UI elements
      */
-    public void iniciarOnClickListener(){
+    public void setOnClickListener(){
         //Button
         btn_DatosAves.setOnClickListener(this);
         btn_DatosAvistamiento.setOnClickListener(this);
