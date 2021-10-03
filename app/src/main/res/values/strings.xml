@@ -143,5 +143,6 @@
     <string name="cb_Especie36">Matapulgas</string>
     <string name="PMMC_btn_Modificar">Modificar</string>
     <string name="PME_NoDataFound">No se han encontrado datos</string>
+    <string name="PDA_btn_Modificar">Modificar</string>
 
 </resources>
