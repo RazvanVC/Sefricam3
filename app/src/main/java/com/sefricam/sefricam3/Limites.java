@@ -11,6 +11,10 @@ import com.parse.ParseQuery;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This is a Object Class in order to make data more readable at debug. Contains all the data related
+ * to the biometry of the birds that we store in the Parse DB
+ */
 public class Limites implements Serializable {
     private double minLat, maxLat, minLon, maxLon;
     private int minTemp, maxTemp, minNAnilla, maxNAnilla;
