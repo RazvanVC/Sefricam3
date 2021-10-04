@@ -59,9 +59,6 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             recuperarDatosRecibidos(datos);
-
-            System.out.println("Datos recibidos en Metodos de Captura");
-            imprimirDatos();
         }
 
         setContentView(R.layout.pantalla_metodos_captura);
@@ -778,21 +775,4 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
         limites = (Limites) datos.getSerializable("LIMITES");
     }
-
-
-    private void imprimirDatos() {
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("LIMITES                => " + limites);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
-    }
-
 }

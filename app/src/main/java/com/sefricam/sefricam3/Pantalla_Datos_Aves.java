@@ -988,14 +988,4 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 break;
         }
     }
-
-    /**
-     * Prints the received data from an activity
-     */
-    private void imprimirDatosRecibidos() {
-        System.out.println("____________________________________________________");
-        System.out.println("LIMITES                => " + limites);
-        System.out.println("ENVIO                  => " + envio);
-        System.out.println("____________________________________________________");
-    }
 }

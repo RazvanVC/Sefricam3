@@ -1325,9 +1325,7 @@ public class Limites implements Serializable {
                 maxNAnilla = obj.getInt("NAnillaMax");
 
                 numeroGrupo  = obj.getInt("NumGrupo");
-                imprimirDatosAnillamiento();
             }
-            imprimirDatosAnillamiento();
         });
     }
 

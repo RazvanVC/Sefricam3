@@ -62,9 +62,6 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
             recuperarDatosRecibidos(datos);
-
-            System.out.println("Datos recibidos en Mi Envio");
-            imprimirDatosRecibidos();
         }
 
         setContentView(R.layout.pantalla_mi_envio);
@@ -738,8 +735,6 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     }
 
     private void guardarParametros(Intent actividadDestino) {
-        imprimirDatosRecibidos();
-
         actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
     }
@@ -759,18 +754,4 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         limites = (Limites) datos.getSerializable("LIMITES");
     }
 
-    private void imprimirDatosRecibidos() {
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + email);
-        System.out.println("DNI                    => " + DNI);
-        System.out.println("LIMITES                => " + limites);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + entornoCompletado);
-        System.out.println("DATOS ENTORNO          => " + datosEntorno);
-        System.out.println("ESTADO METODOS CAPTURA => " + mCapturasCompletado);
-        System.out.println("METODOS CAPTURA        => " + metodosCaptura);
-        System.out.println("ESTADO AVISTAMIENTO    => " + avistamientoCompletado);
-        System.out.println("DATOS AVISTAMIENTO     => " + datosAvistamiento);
-        System.out.println("____________________________________________________");
-    }
 }

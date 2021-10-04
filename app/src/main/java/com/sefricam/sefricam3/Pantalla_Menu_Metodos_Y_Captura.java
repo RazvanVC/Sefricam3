@@ -70,9 +70,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 if (envio.isModificacion()) btn_Enviar.setText(R.string.PMMC_btn_Modificar);
             }
             // Comprobacion de Datos, descomentar la lineas de codigo cuando quieras comprobar los parametros que vas recibiendo
-            // imprimirDatosRecibidos();
+            // envio.printData(this.getClass().getName());
         }
-
     }
 
     /**
@@ -644,29 +643,6 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
     private void retrieveData(Bundle datos) {
         envio = (Envio) datos.getSerializable("ENVIO");
         limites = (Limites) datos.getSerializable("LIMITES");
-    }
-
-    /**
-     * This method is used to see the parameters that are used along the app
-     */
-    private void imprimirDatosRecibidos() {
-        System.out.println("****************************************************");
-        System.out.println("Inicio de datos recibidos en Main Menu");
-        System.out.println("____________________________________________________");
-        System.out.println("EMAIL                  => " + envio.getEmail());
-        System.out.println("DNI                    => " + envio.getDNI());
-        System.out.println("FECHA                  => " + envio.getFecha());
-        System.out.println("LIMITES                => " + limites);
-        System.out.println("____________________________________________________");
-        System.out.println("ESTADO ENTORNO         => " + envio.isEntornoCompletado());
-        System.out.println("DATOS ENTORNO          => " + envio.getDatosEntorno());
-        System.out.println("ESTADO METODOS CAPTURA => " + envio.isMCapturaCompletado());
-        System.out.println("METODOS CAPTURA        => " + envio.getMetodosCaptura());
-        System.out.println("ESTADO AVISTAMIENTO    => " + envio.isAvistamientoCompletado());
-        System.out.println("DATOS AVISTAMIENTO     => " + envio.getDatosAvistamiento());
-        System.out.println("____________________________________________________");
-        System.out.println("Fin de datos recibidos en Main Menu");
-        System.out.println("****************************************************");
     }
 
     /**

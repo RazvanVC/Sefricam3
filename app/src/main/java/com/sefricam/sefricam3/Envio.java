@@ -139,4 +139,23 @@ public class Envio implements Serializable {
     public String getEmail() {
         return email;
     }
+
+    public void printData(String name){
+        System.out.println("****************************************************");
+        System.out.println("Star of Received Data from " + name);
+        System.out.println("____________________________________________________");
+        System.out.println("EMAIL                  => " + this.getEmail());
+        System.out.println("DNI                    => " + this.getDNI());
+        System.out.println("FECHA                  => " + this.getFecha());
+        System.out.println("____________________________________________________");
+        System.out.println("ESTADO ENTORNO         => " + this.isEntornoCompletado());
+        System.out.println("DATOS ENTORNO          => " + this.getDatosEntorno());
+        System.out.println("ESTADO METODOS CAPTURA => " + this.isMCapturaCompletado());
+        System.out.println("METODOS CAPTURA        => " + this.getMetodosCaptura());
+        System.out.println("ESTADO AVISTAMIENTO    => " + this.isAvistamientoCompletado());
+        System.out.println("DATOS AVISTAMIENTO     => " + this.getDatosAvistamiento());
+        System.out.println("____________________________________________________");
+        System.out.println("End of Received Data from " + name);
+        System.out.println("****************************************************");
+    }
 }
