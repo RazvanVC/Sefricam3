@@ -67,6 +67,10 @@ public class MetodosCaptura implements Serializable {
 
     private final String Observaciones;
 
+    /**
+     * This is a Object Class in order to make data more readable at debug. Contains all the data related
+     * to the MetodosCaptura that we store in the Parse DB
+     */
     public MetodosCaptura(int numeroMallas, int longitudRed, boolean coto, ArrayList<Boolean> controlAgentes, int reclamosCamachuelo, int cimbelesCamachuelo, int capturasCamachueloM, int capturasCamachueloH, int reclamosJilguero, int cimbelesJilguero, int capturasJilgueroM, int capturasJilgueroH, int reclamosLugano, int cimbelesLugano, int capturasLuganoM, int capturasLuganoH, int reclamosPardComun, int cimbelesPardComun, int capturasPardComunM, int capturasPardComunH, int reclamosPicogordo, int cimbelesPicogordo, int capturasPicogordoM, int capturasPicogordoH, int reclamosPinzonComun, int cimbelesPinzonComun, int capturasPinzonComunM, int capturasPinzonComunH, int reclamosPinzonReal, int cimbelesPinzonReal, int capturasPinzonRealM, int capturasPinzonRealH, int reclamosPiquituerto, int cimbelesPiquituerto, int capturasPiquituertoM, int capturasPiquituertoH, int reclamosVerdecillo, int cimbelesVerdecillo, int capturasVerdecilloM, int capturasVerdecilloH, int reclamosVerdComun, int cimbelesVerdComun, int capturasVerdComunM, int capturasVerdComunH, int reclamosVerdSerrano, int cimbelesVerdSerrano, int capturasVerdSerranoM, int capturasVerdSerranoH, String observaciones) {
         NumeroMallas = numeroMallas;
         LongitudRed = longitudRed;
