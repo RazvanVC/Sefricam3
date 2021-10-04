@@ -1,15 +1,9 @@
 package com.sefricam.sefricam3;
 
-import android.widget.Toast;
-
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * This is a Object Class in order to make data more readable at debug. Contains all the data related
@@ -66,155 +60,153 @@ public class Limites implements Serializable {
         // The query will search for a ParseObject, given its objectId.
         // When the query finishes running, it will invoke the GetCallback
         // with either the object, or the exception thrown
-        query.getInBackground("AWmV7DLevo", new GetCallback<ParseObject>() {
-            public void done(ParseObject result, ParseException e) {
-                if (e == null) {
-                    //Datos Generales
-                    minLat = result.getDouble("MinLat");
-                    maxLat = result.getDouble("MaxLat");
-                    minLon = result.getDouble("MinLon");
-                    maxLon = result.getDouble("MaxLon");
-                    minTemp = result.getInt("MinTemp");
-                    maxTemp = result.getInt("MaxTemp");
+        query.getInBackground("AWmV7DLevo", (result, e) -> {
+            if (e == null) {
+                //Datos Generales
+                minLat = result.getDouble("MinLat");
+                maxLat = result.getDouble("MaxLat");
+                minLon = result.getDouble("MinLon");
+                maxLon = result.getDouble("MaxLon");
+                minTemp = result.getInt("MinTemp");
+                maxTemp = result.getInt("MaxTemp");
 
-                    //Datos Aves
-                    maxRecCamachuelo = result.getInt("MaxRecCamachuelo");
-                    maxCimCamachuelo = result.getInt("MaxCimCamachuelo");
+                //Datos Aves
+                maxRecCamachuelo = result.getInt("MaxRecCamachuelo");
+                maxCimCamachuelo = result.getInt("MaxCimCamachuelo");
 
-                    maxRecJilguero = result.getInt("MaxRecJilguero");
-                    maxCimJilguero = result.getInt("MaxCimJilguero");
+                maxRecJilguero = result.getInt("MaxRecJilguero");
+                maxCimJilguero = result.getInt("MaxCimJilguero");
 
-                    maxRecLugano = result.getInt("MaxRecLugano");
-                    maxCimLugano = result.getInt("MaxCimLugano");
+                maxRecLugano = result.getInt("MaxRecLugano");
+                maxCimLugano = result.getInt("MaxCimLugano");
 
-                    maxRecPardComun = result.getInt("MaxRecPardComun");
-                    maxCimPardComun = result.getInt("MaxCimPardComun");
+                maxRecPardComun = result.getInt("MaxRecPardComun");
+                maxCimPardComun = result.getInt("MaxCimPardComun");
 
-                    maxCimPicogordo = result.getInt("MaxCimPicogordo");
-                    maxRecPicogordo = result.getInt("MaxRecPicogordo");
+                maxCimPicogordo = result.getInt("MaxCimPicogordo");
+                maxRecPicogordo = result.getInt("MaxRecPicogordo");
 
-                    maxCimPinzComun = result.getInt("MaxCimPinzComun");
-                    maxRecPinzComun = result.getInt("MaxRecPinzComun");
+                maxCimPinzComun = result.getInt("MaxCimPinzComun");
+                maxRecPinzComun = result.getInt("MaxRecPinzComun");
 
-                    maxRecPinzReal = result.getInt("MaxRecPinzReal");
-                    maxCimPinzReal = result.getInt("MaxCimPinzReal");
+                maxRecPinzReal = result.getInt("MaxRecPinzReal");
+                maxCimPinzReal = result.getInt("MaxCimPinzReal");
 
-                    maxRecPiquituerto = result.getInt("MaxRecPiquituerto");
-                    maxCimPiquituerto = result.getInt("MaxCimPiquituerto");
+                maxRecPiquituerto = result.getInt("MaxRecPiquituerto");
+                maxCimPiquituerto = result.getInt("MaxCimPiquituerto");
 
-                    maxRecVerdecillo = result.getInt("MaxRecVerdecillo");
-                    maxCimVerdecillo = result.getInt("MaxCimVerdecillo");
+                maxRecVerdecillo = result.getInt("MaxRecVerdecillo");
+                maxCimVerdecillo = result.getInt("MaxCimVerdecillo");
 
-                    maxRecVerdComun = result.getInt("MaxRecVerdComun");
-                    maxCimVerdComun = result.getInt("MaxCimVerdComun");
+                maxRecVerdComun = result.getInt("MaxRecVerdComun");
+                maxCimVerdComun = result.getInt("MaxCimVerdComun");
 
-                    maxRecVerdSerrano = result.getInt("MaxRecVerdSerrano");
-                    maxCimVerdSerrano = result.getInt("MaxCimVerdSerrano");
+                maxRecVerdSerrano = result.getInt("MaxRecVerdSerrano");
+                maxCimVerdSerrano = result.getInt("MaxCimVerdSerrano");
 
-                    //Parámetros aves
-                    minAlaCamachuelo = result.getDouble("MinAlaCamachuelo");
-                    maxAlaCamachuelo = result.getDouble("MaxAlaCamachuelo");
-                    minPicoCamachuelo = result.getDouble("MinPicoCamachuelo");
-                    maxPicoCamachuelo = result.getDouble("MaxPicoCamachuelo");
-                    minTarsoCamachuelo = result.getDouble("MinTarsoCamachuelo");
-                    maxTarsoCamachuelo = result.getDouble("MaxTarsoCamachuelo");
-                    minPesoCamachuelo = result.getDouble("MinPesoCamachuelo");
-                    maxPesoCamachuelo = result.getDouble("MaxPesoCamachuelo");
+                //Parámetros aves
+                minAlaCamachuelo = result.getDouble("MinAlaCamachuelo");
+                maxAlaCamachuelo = result.getDouble("MaxAlaCamachuelo");
+                minPicoCamachuelo = result.getDouble("MinPicoCamachuelo");
+                maxPicoCamachuelo = result.getDouble("MaxPicoCamachuelo");
+                minTarsoCamachuelo = result.getDouble("MinTarsoCamachuelo");
+                maxTarsoCamachuelo = result.getDouble("MaxTarsoCamachuelo");
+                minPesoCamachuelo = result.getDouble("MinPesoCamachuelo");
+                maxPesoCamachuelo = result.getDouble("MaxPesoCamachuelo");
 
-                    minAlaJilguero = result.getDouble("MinAlaJilguero");
-                    maxAlaJilguero = result.getDouble("MaxAlaJilguero");
-                    minPicoJilguero = result.getDouble("MinPicoJilguero");
-                    maxPicoJilguero = result.getDouble("MaxPicoJilguero");
-                    minTarsoJilguero = result.getDouble("MinTarsoJilguero");
-                    maxTarsoJilguero = result.getDouble("MaxTarsoJilguero");
-                    minPesoJilguero = result.getDouble("MinPesoJilguero");
-                    maxPesoJilguero = result.getDouble("MaxPesoJilguero");
+                minAlaJilguero = result.getDouble("MinAlaJilguero");
+                maxAlaJilguero = result.getDouble("MaxAlaJilguero");
+                minPicoJilguero = result.getDouble("MinPicoJilguero");
+                maxPicoJilguero = result.getDouble("MaxPicoJilguero");
+                minTarsoJilguero = result.getDouble("MinTarsoJilguero");
+                maxTarsoJilguero = result.getDouble("MaxTarsoJilguero");
+                minPesoJilguero = result.getDouble("MinPesoJilguero");
+                maxPesoJilguero = result.getDouble("MaxPesoJilguero");
 
-                    minAlaLugano = result.getDouble("MinAlaLugano");
-                    maxAlaLugano = result.getDouble("MaxAlaLugano");
-                    minPicoLugano = result.getDouble("MinPicoLugano");
-                    maxPicoLugano = result.getDouble("MaxPicoLugano");
-                    minTarsoLugano = result.getDouble("MinTarsoLugano");
-                    maxTarsoLugano = result.getDouble("MaxTarsoLugano");
-                    minPesoLugano = result.getDouble("MinPesoLugano");
-                    maxPesoLugano = result.getDouble("MaxPesoLugano");
+                minAlaLugano = result.getDouble("MinAlaLugano");
+                maxAlaLugano = result.getDouble("MaxAlaLugano");
+                minPicoLugano = result.getDouble("MinPicoLugano");
+                maxPicoLugano = result.getDouble("MaxPicoLugano");
+                minTarsoLugano = result.getDouble("MinTarsoLugano");
+                maxTarsoLugano = result.getDouble("MaxTarsoLugano");
+                minPesoLugano = result.getDouble("MinPesoLugano");
+                maxPesoLugano = result.getDouble("MaxPesoLugano");
 
-                    minAlaPardComun = result.getDouble("MinAlaPardComun");
-                    maxAlaPardComun = result.getDouble("MaxAlaPardComun");
-                    minPicoPardComun = result.getDouble("MinPicoPardComun");
-                    maxPicoPardComun = result.getDouble("MaxPicoPardComun");
-                    minTarsoPardComun = result.getDouble("MinTarsoPardComun");
-                    maxTarsoPardComun = result.getDouble("MaxTarsoPardComun");
-                    minPesoPardComun = result.getDouble("MinPesoPardComun");
-                    maxPesoPardComun = result.getDouble("MaxPesoPardComun");
+                minAlaPardComun = result.getDouble("MinAlaPardComun");
+                maxAlaPardComun = result.getDouble("MaxAlaPardComun");
+                minPicoPardComun = result.getDouble("MinPicoPardComun");
+                maxPicoPardComun = result.getDouble("MaxPicoPardComun");
+                minTarsoPardComun = result.getDouble("MinTarsoPardComun");
+                maxTarsoPardComun = result.getDouble("MaxTarsoPardComun");
+                minPesoPardComun = result.getDouble("MinPesoPardComun");
+                maxPesoPardComun = result.getDouble("MaxPesoPardComun");
 
-                    minAlaPicogordo = result.getDouble("MinAlaPicogordo");
-                    maxAlaPicogordo = result.getDouble("MaxAlaPicogordo");
-                    minPicoPicogordo = result.getDouble("MinPicoPicogordo");
-                    maxPicoPicogordo = result.getDouble("MaxPicoPicogordo");
-                    minTarsoPicogordo = result.getDouble("MinTarsoPicogordo");
-                    maxTarsoPicogordo = result.getDouble("MaxTarsoPicogordo");
-                    minPesoPicogordo = result.getDouble("MinPesoPicogordo");
-                    maxPesoPicogordo = result.getDouble("MaxPesoPicogordo");
+                minAlaPicogordo = result.getDouble("MinAlaPicogordo");
+                maxAlaPicogordo = result.getDouble("MaxAlaPicogordo");
+                minPicoPicogordo = result.getDouble("MinPicoPicogordo");
+                maxPicoPicogordo = result.getDouble("MaxPicoPicogordo");
+                minTarsoPicogordo = result.getDouble("MinTarsoPicogordo");
+                maxTarsoPicogordo = result.getDouble("MaxTarsoPicogordo");
+                minPesoPicogordo = result.getDouble("MinPesoPicogordo");
+                maxPesoPicogordo = result.getDouble("MaxPesoPicogordo");
 
-                    minAlaPinzComun = result.getDouble("MinAlaPinzComun");
-                    maxAlaPinzComun = result.getDouble("MaxAlaPinzComun");
-                    minPicoPinzComun = result.getDouble("MinPicoPinzComun");
-                    maxPicoPinzComun = result.getDouble("MaxPicoPinzComun");
-                    minTarsoPinzComun = result.getDouble("MinTarsoPinzComun");
-                    maxTarsoPinzComun = result.getDouble("MaxTarsoPinzComun");
-                    minPesoPinzComun = result.getDouble("MinPesoPinzComun");
-                    maxPesoPinzComun = result.getDouble("MaxPesoPinzComun");
+                minAlaPinzComun = result.getDouble("MinAlaPinzComun");
+                maxAlaPinzComun = result.getDouble("MaxAlaPinzComun");
+                minPicoPinzComun = result.getDouble("MinPicoPinzComun");
+                maxPicoPinzComun = result.getDouble("MaxPicoPinzComun");
+                minTarsoPinzComun = result.getDouble("MinTarsoPinzComun");
+                maxTarsoPinzComun = result.getDouble("MaxTarsoPinzComun");
+                minPesoPinzComun = result.getDouble("MinPesoPinzComun");
+                maxPesoPinzComun = result.getDouble("MaxPesoPinzComun");
 
-                    minAlaPinzReal = result.getDouble("MinAlaPinzReal");
-                    maxAlaPinzReal = result.getDouble("MaxAlaPinzReal");
-                    minPicoPinzReal = result.getDouble("MinPicoPinzReal");
-                    maxPicoPinzReal = result.getDouble("MaxPicoPinzReal");
-                    minTarsoPinzReal = result.getDouble("MinTarsoPinzReal");
-                    maxTarsoPinzReal = result.getDouble("MaxTarsoPinzReal");
-                    minPesoPinzReal = result.getDouble("MinPesoPinzReal");
-                    maxPesoPinzReal = result.getDouble("MaxPesoPinzReal");
+                minAlaPinzReal = result.getDouble("MinAlaPinzReal");
+                maxAlaPinzReal = result.getDouble("MaxAlaPinzReal");
+                minPicoPinzReal = result.getDouble("MinPicoPinzReal");
+                maxPicoPinzReal = result.getDouble("MaxPicoPinzReal");
+                minTarsoPinzReal = result.getDouble("MinTarsoPinzReal");
+                maxTarsoPinzReal = result.getDouble("MaxTarsoPinzReal");
+                minPesoPinzReal = result.getDouble("MinPesoPinzReal");
+                maxPesoPinzReal = result.getDouble("MaxPesoPinzReal");
 
-                    minAlaPiquituerto = result.getDouble("MinAlaPiquituerto");
-                    maxAlaPiquituerto = result.getDouble("MaxAlaPiquituerto");
-                    minPicoPiquituerto = result.getDouble("MinPicoPiquituerto");
-                    maxPicoPiquituerto = result.getDouble("MaxPicoPiquituerto");
-                    minTarsoPiquituerto = result.getDouble("MinTarsoPiquituerto");
-                    maxTarsoPiquituerto = result.getDouble("MaxTarsoPiquituerto");
-                    minPesoPiquituerto = result.getDouble("MinPesoPiquituerto");
-                    maxPesoPiquituerto = result.getDouble("MaxPesoPiquituerto");
+                minAlaPiquituerto = result.getDouble("MinAlaPiquituerto");
+                maxAlaPiquituerto = result.getDouble("MaxAlaPiquituerto");
+                minPicoPiquituerto = result.getDouble("MinPicoPiquituerto");
+                maxPicoPiquituerto = result.getDouble("MaxPicoPiquituerto");
+                minTarsoPiquituerto = result.getDouble("MinTarsoPiquituerto");
+                maxTarsoPiquituerto = result.getDouble("MaxTarsoPiquituerto");
+                minPesoPiquituerto = result.getDouble("MinPesoPiquituerto");
+                maxPesoPiquituerto = result.getDouble("MaxPesoPiquituerto");
 
-                    minAlaVerdecillo = result.getDouble("MinAlaVerdecillo");
-                    maxAlaVerdecillo = result.getDouble("MaxAlaVerdecillo");
-                    minPicoVerdecillo = result.getDouble("MinPicoVerdecillo");
-                    maxPicoVerdecillo = result.getDouble("MaxPicoVerdecillo");
-                    minTarsoVerdecillo = result.getDouble("MinTarsoVerdecillo");
-                    maxTarsoVerdecillo = result.getDouble("MaxTarsoVerdecillo");
-                    minPesoVerdecillo = result.getDouble("MinPesoVerdecillo");
-                    maxPesoVerdecillo = result.getDouble("MaxPesoVerdecillo");
+                minAlaVerdecillo = result.getDouble("MinAlaVerdecillo");
+                maxAlaVerdecillo = result.getDouble("MaxAlaVerdecillo");
+                minPicoVerdecillo = result.getDouble("MinPicoVerdecillo");
+                maxPicoVerdecillo = result.getDouble("MaxPicoVerdecillo");
+                minTarsoVerdecillo = result.getDouble("MinTarsoVerdecillo");
+                maxTarsoVerdecillo = result.getDouble("MaxTarsoVerdecillo");
+                minPesoVerdecillo = result.getDouble("MinPesoVerdecillo");
+                maxPesoVerdecillo = result.getDouble("MaxPesoVerdecillo");
 
-                    minAlaVerdComun = result.getDouble("MinAlaVerdComun");
-                    maxAlaVerdComun = result.getDouble("MaxAlaVerdComun");
-                    minPicoVerdComun = result.getDouble("MinPicoVerdComun");
-                    maxPicoVerdComun = result.getDouble("MaxPicoVerdComun");
-                    minTarsoVerdComun = result.getDouble("MinTarsoVerdComun");
-                    maxTarsoVerdComun = result.getDouble("MaxTarsoVerdComun");
-                    minPesoVerdComun = result.getDouble("MinPesoVerdComun");
-                    maxPesoVerdComun = result.getDouble("MaxPesoVerdComun");
+                minAlaVerdComun = result.getDouble("MinAlaVerdComun");
+                maxAlaVerdComun = result.getDouble("MaxAlaVerdComun");
+                minPicoVerdComun = result.getDouble("MinPicoVerdComun");
+                maxPicoVerdComun = result.getDouble("MaxPicoVerdComun");
+                minTarsoVerdComun = result.getDouble("MinTarsoVerdComun");
+                maxTarsoVerdComun = result.getDouble("MaxTarsoVerdComun");
+                minPesoVerdComun = result.getDouble("MinPesoVerdComun");
+                maxPesoVerdComun = result.getDouble("MaxPesoVerdComun");
 
-                    minAlaVerdSerrano = result.getDouble("MinAlaVerdSerrano");
-                    maxAlaVerdSerrano = result.getDouble("MaxAlaVerdSerrano");
-                    minPicoVerdSerrano = result.getDouble("MinPicoVerdSerrano");
-                    maxPicoVerdSerrano = result.getDouble("MaxPicoVerdSerrano");
-                    minTarsoVerdSerrano = result.getDouble("MinTarsoVerdSerrano");
-                    maxTarsoVerdSerrano = result.getDouble("MaxTarsoVerdSerrano");
-                    minPesoVerdSerrano = result.getDouble("MinPesoVerdSerrano");
-                    maxPesoVerdSerrano = result.getDouble("MaxPesoVerdSerrano");
+                minAlaVerdSerrano = result.getDouble("MinAlaVerdSerrano");
+                maxAlaVerdSerrano = result.getDouble("MaxAlaVerdSerrano");
+                minPicoVerdSerrano = result.getDouble("MinPicoVerdSerrano");
+                maxPicoVerdSerrano = result.getDouble("MaxPicoVerdSerrano");
+                minTarsoVerdSerrano = result.getDouble("MinTarsoVerdSerrano");
+                maxTarsoVerdSerrano = result.getDouble("MaxTarsoVerdSerrano");
+                minPesoVerdSerrano = result.getDouble("MinPesoVerdSerrano");
+                maxPesoVerdSerrano = result.getDouble("MaxPesoVerdSerrano");
 
 
-                } else {
-                    System.out.println("ERROR: No es posible leer los datos");
-                }
+            } else {
+                System.out.println("ERROR: No es posible leer los datos");
             }
         });
     }
@@ -1325,20 +1317,17 @@ public class Limites implements Serializable {
 
         query.whereEqualTo("NumGrupo", numGrupo);
 
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    ParseObject  obj = objects.get(0);
+        query.findInBackground((objects, e) -> {
+            if (e == null){
+                ParseObject  obj = objects.get(0);
 
-                    minNAnilla = obj.getInt("NAnillaMin");
-                    maxNAnilla = obj.getInt("NAnillaMax");
+                minNAnilla = obj.getInt("NAnillaMin");
+                maxNAnilla = obj.getInt("NAnillaMax");
 
-                    numeroGrupo  = obj.getInt("NumGrupo");
-                    imprimirDatosAnillamiento();
-                }
+                numeroGrupo  = obj.getInt("NumGrupo");
                 imprimirDatosAnillamiento();
             }
+            imprimirDatosAnillamiento();
         });
     }
 
