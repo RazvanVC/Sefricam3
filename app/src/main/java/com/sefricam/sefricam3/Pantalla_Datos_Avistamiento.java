@@ -757,6 +757,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_VerderonSerrano08.getText().toString().equals("")) hora08.add(0);
         else hora08.add(Integer.parseInt(etn_VerderonSerrano08.getText().toString()));
     }
+
     /**
      * Sets the Values for the 09:00 to the inner ArrayList
      */
@@ -794,6 +795,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_VerderonSerrano09.getText().toString().equals("")) hora09.add(0);
         else hora09.add(Integer.parseInt(etn_VerderonSerrano09.getText().toString()));
     }
+
     /**
      * Sets the Values for the 10:00 to the inner ArrayList
      */
@@ -831,6 +833,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_VerderonSerrano10.getText().toString().equals("")) hora10.add(0);
         else hora10.add(Integer.parseInt(etn_VerderonSerrano10.getText().toString()));
     }
+
     /**
      * Sets the Values for the 11:00 to the inner ArrayList
      */
@@ -868,6 +871,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_VerderonSerrano11.getText().toString().equals("")) hora11.add(0);
         else hora11.add(Integer.parseInt(etn_VerderonSerrano11.getText().toString()));
     }
+
     /**
      * Sets the Values for the 12:00 to the inner ArrayList
      */
@@ -905,6 +909,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_VerderonSerrano12.getText().toString().equals("")) hora12.add(0);
         else hora12.add(Integer.parseInt(etn_VerderonSerrano12.getText().toString()));
     }
+
     /**
      * Sets the Values for the 13:00 to the inner ArrayList
      */
@@ -942,6 +947,7 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         if (etn_VerderonSerrano13.getText().toString().equals("")) hora13.add(0);
         else hora13.add(Integer.parseInt(etn_VerderonSerrano13.getText().toString()));
     }
+    
     /**
      * Sets the Values for the 14:00 to the inner ArrayList
      */
