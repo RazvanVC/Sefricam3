@@ -3,6 +3,10 @@ package com.sefricam.sefricam3;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * This is a Object Class in order to make data more readable at debug. Contains all the data related
+ * to the birds that we store in the Parse DB
+ */
 public class DatosAves implements Serializable {
 
     private final int numGrupo;
