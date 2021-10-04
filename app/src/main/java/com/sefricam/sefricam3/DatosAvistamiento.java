@@ -3,6 +3,10 @@ package com.sefricam.sefricam3;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * This is a Object Class in order to make data more readable at debug. Contains all the data related
+ * to the DatosAvistamiento that we store in the Parse DB
+ */
 public class DatosAvistamiento implements Serializable {
 
     private final String horaInicio;
