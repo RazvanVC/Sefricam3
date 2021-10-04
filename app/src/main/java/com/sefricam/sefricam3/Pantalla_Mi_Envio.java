@@ -9,555 +9,182 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
 
-    //Datos Entorno
-    ImageView iv_DatosCheckBoxEntorno;
-    TextView tv_DatosTemperaturaInicio,tv_DatosTemperaturaFin,tv_DatosZonificacion,tv_DatosDireccionViento,tv_DatosViento,tv_DatosNubes,tv_DatosLluvia,tv_DatosPlantas;
+    // UI Parameters
+    private ImageView iv_DatosCheckBoxEntorno;
+    private TextView tv_DatosTemperaturaInicio;
+    private TextView tv_DatosTemperaturaFin;
+    private TextView tv_DatosZonificacion;
+    private TextView tv_DatosDireccionViento;
+    private TextView tv_DatosViento;
+    private TextView tv_DatosNubes;
+    private TextView tv_DatosLluvia;
+    private TextView tv_DatosPlantas;
+    private ImageView iv_DatosCheckBoxCapturas;
+    private TextView tv_DatosNumeroMallas;
+    private TextView tv_DatosLongitudRed;
+    private TextView tv_DatosCoto;
+    private TextView tv_DatosControlAgentes;
+    private TextView tv_DatosReclamosCamachuelo;
+    private TextView tv_DatosCimbelesCamachuelo;
+    private TextView tv_DatosCapturasCamachueloM;
+    private TextView tv_DatosCapturasCamachueloH;
+    private TextView tv_DatosReclamosJilguero;
+    private TextView tv_DatosCimbelesJilguero;
+    private TextView tv_DatosCapturasJilgueroM;
+    private TextView tv_DatosCapturasJilgueroH;
+    private TextView tv_DatosReclamosLugano;
+    private TextView tv_DatosCimbelesLugano;
+    private TextView tv_DatosCapturasLuganoM;
+    private TextView tv_DatosCapturasLuganoH;
+    private TextView tv_DatosReclamosPardilloComun;
+    private TextView tv_DatosCimbelesPardilloComun;
+    private TextView tv_DatosCapturasPardilloComunM;
+    private TextView tv_DatosCapturasPardilloComunH;
+    private TextView tv_DatosReclamosPicogordo;
+    private TextView tv_DatosCimbelesPicogordo;
+    private TextView tv_DatosCapturasPicogordoM;
+    private TextView tv_DatosCapturasPicogordoH;
+    private TextView tv_DatosReclamosPinzonComun;
+    private TextView tv_DatosCimbelesPinzonComun;
+    private TextView tv_DatosCapturasPinzonComunM;
+    private TextView tv_DatosCapturasPinzonComunH;
+    private TextView tv_DatosReclamosPinzonReal;
+    private TextView tv_DatosCimbelesPinzonReal;
+    private TextView tv_DatosCapturasPinzonRealM;
+    private TextView tv_DatosCapturasPinzonRealH;
+    private TextView tv_DatosReclamosPiquituerto;
+    private TextView tv_DatosCimbelesPiquituerto;
+    private TextView tv_DatosCapturasPiquituertoM;
+    private TextView tv_DatosCapturasPiquituertoH;
+    private TextView tv_DatosReclamosVerdecillo;
+    private TextView tv_DatosCimbelesVerdecillo;
+    private TextView tv_DatosCapturasVerdecilloM;
+    private TextView tv_DatosCapturasVerdecilloH;
+    private TextView tv_DatosReclamosVerderonComun;
+    private TextView tv_DatosCimbelesVerderonComun;
+    private TextView tv_DatosCapturasVerderonComunM;
+    private TextView tv_DatosCapturasVerderonComunH;
+    private TextView tv_DatosReclamosVerderonSerrano;
+    private TextView tv_DatosCimbelesVerderonSerrano;
+    private TextView tv_DatosCapturasVerderonSerranoM;
+    private TextView tv_DatosCapturasVerderonSerranoH;
+    private TextView tv_DatosObservaciones;
+    private ImageView iv_DatosCheckBoxAvistamiento;
+    private TextView tv_DatosHoraInicio;
+    private TextView tv_DatosHoraFin;
+    private TextView tv_DatosEspecieCamachuelo08;
+    private TextView tv_DatosEspecieJilguero08;
+    private TextView tv_DatosEspecieLugano08;
+    private TextView tv_DatosEspeciePardilloComun08;
+    private TextView tv_DatosEspeciePicogordo08;
+    private TextView tv_DatosEspeciePinzonComun08;
+    private TextView tv_DatosEspeciePinzonReal08;
+    private TextView tv_DatosEspeciePiquituerto08;
+    private TextView tv_DatosEspecieVerdecillo08;
+    private TextView tv_DatosEspecieVerderonComun08;
+    private TextView tv_DatosEspecieVerderonSerrano08;
+    private TextView tv_DatosEspecieCamachuelo09;
+    private TextView tv_DatosEspecieJilguero09;
+    private TextView tv_DatosEspecieLugano09;
+    private TextView tv_DatosEspeciePardilloComun09;
+    private TextView tv_DatosEspeciePicogordo09;
+    private TextView tv_DatosEspeciePinzonComun09;
+    private TextView tv_DatosEspeciePinzonReal09;
+    private TextView tv_DatosEspeciePiquituerto09;
+    private TextView tv_DatosEspecieVerdecillo09;
+    private TextView tv_DatosEspecieVerderonComun09;
+    private TextView tv_DatosEspecieVerderonSerrano09;
+    private TextView tv_DatosEspecieCamachuelo10;
+    private TextView tv_DatosEspecieJilguero10;
+    private TextView tv_DatosEspecieLugano10;
+    private TextView tv_DatosEspeciePardilloComun10;
+    private TextView tv_DatosEspeciePicogordo10;
+    private TextView tv_DatosEspeciePinzonComun10;
+    private TextView tv_DatosEspeciePinzonReal10;
+    private TextView tv_DatosEspeciePiquituerto10;
+    private TextView tv_DatosEspecieVerdecillo10;
+    private TextView tv_DatosEspecieVerderonComun10;
+    private TextView tv_DatosEspecieVerderonSerrano10;
+    private TextView tv_DatosEspecieCamachuelo11;
+    private TextView tv_DatosEspecieJilguero11;
+    private TextView tv_DatosEspecieLugano11;
+    private TextView tv_DatosEspeciePardilloComun11;
+    private TextView tv_DatosEspeciePicogordo11;
+    private TextView tv_DatosEspeciePinzonComun11;
+    private TextView tv_DatosEspeciePinzonReal11;
+    private TextView tv_DatosEspeciePiquituerto11;
+    private TextView tv_DatosEspecieVerdecillo11;
+    private TextView tv_DatosEspecieVerderonComun11;
+    private TextView tv_DatosEspecieVerderonSerrano11;
+    private TextView tv_DatosEspecieCamachuelo12;
+    private TextView tv_DatosEspecieJilguero12;
+    private TextView tv_DatosEspecieLugano12;
+    private TextView tv_DatosEspeciePardilloComun12;
+    private TextView tv_DatosEspeciePicogordo12;
+    private TextView tv_DatosEspeciePinzonComun12;
+    private TextView tv_DatosEspeciePinzonReal12;
+    private TextView tv_DatosEspeciePiquituerto12;
+    private TextView tv_DatosEspecieVerdecillo12;
+    private TextView tv_DatosEspecieVerderonComun12;
+    private TextView tv_DatosEspecieVerderonSerrano12;
+    private TextView tv_DatosEspecieCamachuelo13;
+    private TextView tv_DatosEspecieJilguero13;
+    private TextView tv_DatosEspecieLugano13;
+    private TextView tv_DatosEspeciePardilloComun13;
+    private TextView tv_DatosEspeciePicogordo13;
+    private TextView tv_DatosEspeciePinzonComun13;
+    private TextView tv_DatosEspeciePinzonReal13;
+    private TextView tv_DatosEspeciePiquituerto13;
+    private TextView tv_DatosEspecieVerdecillo13;
+    private TextView tv_DatosEspecieVerderonComun13;
+    private TextView tv_DatosEspecieVerderonSerrano13;
+    private TextView tv_DatosEspecieCamachuelo14;
+    private TextView tv_DatosEspecieJilguero14;
+    private TextView tv_DatosEspecieLugano14;
+    private TextView tv_DatosEspeciePardilloComun14;
+    private TextView tv_DatosEspeciePicogordo14;
+    private TextView tv_DatosEspeciePinzonComun14;
+    private TextView tv_DatosEspeciePinzonReal14;
+    private TextView tv_DatosEspeciePiquituerto14;
+    private TextView tv_DatosEspecieVerdecillo14;
+    private TextView tv_DatosEspecieVerderonComun14;
+    private TextView tv_DatosEspecieVerderonSerrano14;
+    private Button btn_VolverDatos;
 
-    //Metodos de Captura
-    ImageView iv_DatosCheckBoxCapturas;
-    TextView tv_DatosNumeroMallas, tv_DatosLongitudRed, tv_DatosCoto, tv_DatosControlAgentes;
-    TextView tv_DatosReclamosCamachuelo, tv_DatosCimbelesCamachuelo, tv_DatosCapturasCamachueloM , tv_DatosCapturasCamachueloH;
-    TextView tv_DatosReclamosJilguero, tv_DatosCimbelesJilguero, tv_DatosCapturasJilgueroM, tv_DatosCapturasJilgueroH;
-    TextView tv_DatosReclamosLugano, tv_DatosCimbelesLugano, tv_DatosCapturasLuganoM, tv_DatosCapturasLuganoH;
-    TextView tv_DatosReclamosPardilloComun, tv_DatosCimbelesPardilloComun, tv_DatosCapturasPardilloComunM, tv_DatosCapturasPardilloComunH;
-    TextView tv_DatosReclamosPicogordo, tv_DatosCimbelesPicogordo, tv_DatosCapturasPicogordoM, tv_DatosCapturasPicogordoH;
-    TextView tv_DatosReclamosPinzonComun, tv_DatosCimbelesPinzonComun, tv_DatosCapturasPinzonComunM, tv_DatosCapturasPinzonComunH;
-    TextView tv_DatosReclamosPinzonReal, tv_DatosCimbelesPinzonReal, tv_DatosCapturasPinzonRealM, tv_DatosCapturasPinzonRealH;
-    TextView tv_DatosReclamosPiquituerto, tv_DatosCimbelesPiquituerto, tv_DatosCapturasPiquituertoM, tv_DatosCapturasPiquituertoH;
-    TextView tv_DatosReclamosVerdecillo, tv_DatosCimbelesVerdecillo, tv_DatosCapturasVerdecilloM, tv_DatosCapturasVerdecilloH;
-    TextView tv_DatosReclamosVerderonComun, tv_DatosCimbelesVerderonComun, tv_DatosCapturasVerderonComunM, tv_DatosCapturasVerderonComunH;
-    TextView tv_DatosReclamosVerderonSerrano, tv_DatosCimbelesVerderonSerrano, tv_DatosCapturasVerderonSerranoM, tv_DatosCapturasVerderonSerranoH;
-    TextView tv_DatosObservaciones;
-
-    //Datos Avistamiento
-    ImageView iv_DatosCheckBoxAvistamiento;
-    TextView tv_DatosHoraInicio, tv_DatosHoraFin;
-    TextView tv_DatosEspecieCamachuelo08, tv_DatosEspecieJilguero08, tv_DatosEspecieLugano08, tv_DatosEspeciePardilloComun08, tv_DatosEspeciePicogordo08, tv_DatosEspeciePinzonComun08, tv_DatosEspeciePinzonReal08, tv_DatosEspeciePiquituerto08, tv_DatosEspecieVerdecillo08, tv_DatosEspecieVerderonComun08, tv_DatosEspecieVerderonSerrano08;
-    TextView tv_DatosEspecieCamachuelo09, tv_DatosEspecieJilguero09, tv_DatosEspecieLugano09, tv_DatosEspeciePardilloComun09, tv_DatosEspeciePicogordo09, tv_DatosEspeciePinzonComun09, tv_DatosEspeciePinzonReal09, tv_DatosEspeciePiquituerto09, tv_DatosEspecieVerdecillo09, tv_DatosEspecieVerderonComun09, tv_DatosEspecieVerderonSerrano09;
-    TextView tv_DatosEspecieCamachuelo10, tv_DatosEspecieJilguero10, tv_DatosEspecieLugano10, tv_DatosEspeciePardilloComun10, tv_DatosEspeciePicogordo10, tv_DatosEspeciePinzonComun10, tv_DatosEspeciePinzonReal10, tv_DatosEspeciePiquituerto10, tv_DatosEspecieVerdecillo10, tv_DatosEspecieVerderonComun10, tv_DatosEspecieVerderonSerrano10;
-    TextView tv_DatosEspecieCamachuelo11, tv_DatosEspecieJilguero11, tv_DatosEspecieLugano11, tv_DatosEspeciePardilloComun11, tv_DatosEspeciePicogordo11, tv_DatosEspeciePinzonComun11, tv_DatosEspeciePinzonReal11, tv_DatosEspeciePiquituerto11, tv_DatosEspecieVerdecillo11, tv_DatosEspecieVerderonComun11, tv_DatosEspecieVerderonSerrano11;
-    TextView tv_DatosEspecieCamachuelo12, tv_DatosEspecieJilguero12, tv_DatosEspecieLugano12, tv_DatosEspeciePardilloComun12, tv_DatosEspeciePicogordo12, tv_DatosEspeciePinzonComun12, tv_DatosEspeciePinzonReal12, tv_DatosEspeciePiquituerto12, tv_DatosEspecieVerdecillo12, tv_DatosEspecieVerderonComun12, tv_DatosEspecieVerderonSerrano12;
-    TextView tv_DatosEspecieCamachuelo13, tv_DatosEspecieJilguero13, tv_DatosEspecieLugano13, tv_DatosEspeciePardilloComun13, tv_DatosEspeciePicogordo13, tv_DatosEspeciePinzonComun13, tv_DatosEspeciePinzonReal13, tv_DatosEspeciePiquituerto13, tv_DatosEspecieVerdecillo13, tv_DatosEspecieVerderonComun13, tv_DatosEspecieVerderonSerrano13;
-    TextView tv_DatosEspecieCamachuelo14, tv_DatosEspecieJilguero14, tv_DatosEspecieLugano14, tv_DatosEspeciePardilloComun14, tv_DatosEspeciePicogordo14, tv_DatosEspeciePinzonComun14, tv_DatosEspeciePinzonReal14, tv_DatosEspeciePiquituerto14, tv_DatosEspecieVerdecillo14, tv_DatosEspecieVerderonComun14, tv_DatosEspecieVerderonSerrano14;
-
-    //Buttons
-    Button btn_VolverDatos;
-    //Parametros
+    // Class Parameters
     private Envio envio;
-    private MetodosCaptura metodosCaptura;
-    private DatosAvistamiento datosAvistamiento;
-    private DatosEntorno datosEntorno;
     private Limites limites;
-    private boolean mCapturasCompletado,avistamientoCompletado,entornoCompletado;
-    private String email;
-    private String DNI;
 
+    /**
+     * Initialize the screen and all its components
+     * @param savedInstanceState bundle of data that receives when it starts the screen
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle datos = this.getIntent().getExtras();
         if (datos != null) {
-            recuperarDatosRecibidos(datos);
+            retrieveData(datos);
         }
 
         setContentView(R.layout.pantalla_mi_envio);
-        iniciarComponentes();
-        iniciarOnClickListener();
+        startFindView();
+        setOnClickListener();
 
-        if (entornoCompletado) cargarDatosEntorno();
+        if (envio.isEntornoCompletado()) loadDatosEntorno();
 
-        if (mCapturasCompletado) cargarDatosMCapturas();
+        if (envio.isMCapturaCompletado()) loadMetodosCapturas();
 
-        if (avistamientoCompletado) cargarDatosAvistamiento();
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void cargarDatosEntorno() {
-        iv_DatosCheckBoxEntorno.setBackground(getDrawable(R.drawable.baseline_check_box_24));
-
-        tv_DatosTemperaturaInicio.setText(datosEntorno.gettInicio() + " ºC");
-        tv_DatosTemperaturaFin.setText(datosEntorno.gettFin()+" ºC");
-        switch (datosEntorno.getZonificacion()){
-            case 1:
-                tv_DatosZonificacion.setText("Afloramientos Rocosos y Rasos");
-                break;
-            case 2:
-                tv_DatosZonificacion.setText("Cultivos");
-                break;
-            case 3:
-                tv_DatosZonificacion.setText("Láminas y Cursos de Agua");
-                break;
-            case 4:
-                tv_DatosZonificacion.setText("Dehesa y zonas adehesadas");
-                break;
-            case 5:
-                tv_DatosZonificacion.setText("Plantaciones de Frondosas y Coníferas");
-                break;
-            case 6:
-                tv_DatosZonificacion.setText("Vegetación Arbórea de Coníferas");
-                break;
-            case 7:
-                tv_DatosZonificacion.setText("Vegetación Arbórea de Frondosas");
-                break;
-            case 8:
-                tv_DatosZonificacion.setText("Vegetación de Matorral");
-                break;
-            case 9:
-                tv_DatosZonificacion.setText("Vegetación Herbácea");
-                break;
-            case 10:
-                tv_DatosZonificacion.setText("Viñedos, Olivares y Otros Frutales");
-                break;
-            case 11:
-                tv_DatosZonificacion.setText("Zonas Artificiales");
-                break;
-        }
-        tv_DatosDireccionViento.setText(datosEntorno.getDireccionViento());
-        switch (datosEntorno.getViento()){
-            case 1:
-                tv_DatosViento.setText("Calma");
-                break;
-            case 2:
-                tv_DatosViento.setText("Ligero");
-                break;
-            case 3:
-                tv_DatosViento.setText("Fuerte");
-                break;
-        }
-        switch (datosEntorno.getNubes()){
-            case 1:
-                tv_DatosNubes.setText("Ausentes");
-                break;
-            case 2:
-                tv_DatosNubes.setText("Nubes y claros");
-                break;
-            case 3:
-                tv_DatosNubes.setText("Cubierto");
-                break;
-            case 4:
-                tv_DatosNubes.setText("Muy Cubierto");
-                break;
-        }
-        switch (datosEntorno.getLluvia()){
-            case 1:
-                tv_DatosLluvia.setText("Ausentes");
-                break;
-            case 2:
-                tv_DatosLluvia.setText("Intermitente");
-                break;
-            case 3:
-                tv_DatosLluvia.setText("Ligera");
-                break;
-            case 4:
-                tv_DatosLluvia.setText("Fuerte");
-                break;
-            case 5:
-                tv_DatosLluvia.setText("Muy fuerte");
-                break;
-        }
-        int i = 0;
-        while (i<datosEntorno.getPlantas().size()){
-            String estado = "No encontrado";
-            int estadoRecuperado = datosEntorno.getPlantas().get(i);
-            System.out.println("Estado"+i+": "+estadoRecuperado);
-            if (estadoRecuperado == 1) estado = "Encontrado";
-            if (datosEntorno.getPlantas().get(i) == 2) estado = "Abundante";
-            if (i < 9) tv_DatosPlantas.append(("0" + (i + 1)) + ". " + estado + "\n");
-            else tv_DatosPlantas.append((i + 1) + ". " + estado + "\n");
-            i++;
-        }
-
-        if (datosEntorno.getEP37()!="_")tv_DatosPlantas.append("37. "+datosEntorno.getEP37()+"\n");
-        else tv_DatosPlantas.append("37. No encontrado\n");
-
-        if (datosEntorno.getEP38()!="")tv_DatosPlantas.append("38. "+datosEntorno.getEP38());
-        else tv_DatosPlantas.append("38. No encontrado");
-    }
-
-    private void cargarDatosMCapturas() {
-        iv_DatosCheckBoxCapturas.setBackground(getDrawable(R.drawable.baseline_check_box_24));
-        tv_DatosNumeroMallas.setText(String.valueOf(metodosCaptura.getNumeroMallas()));
-        tv_DatosLongitudRed.setText(String.valueOf(metodosCaptura.getLongitudRed()));
-        if (metodosCaptura.isCoto()){
-           tv_DatosCoto.setText("Si");
-        } else {
-            tv_DatosCoto.setText("No");
-        }
-        int i = 0;
-
-        while (i < metodosCaptura.getControlAgentes().size()){
-            switch (i){
-                case 0:
-                    if (!metodosCaptura.getControlAgentes().get(i))
-                    tv_DatosControlAgentes.append("No hay control");
-                    break;
-                case 1:
-                    if (metodosCaptura.getControlAgentes().get(i))
-                    tv_DatosControlAgentes.append("Seprona\n");
-                    break;
-                case 2:
-                    if (metodosCaptura.getControlAgentes().get(i))
-                    tv_DatosControlAgentes.append("Agentes Forestales\n");
-                    break;
-                case 3:
-                    if (metodosCaptura.getControlAgentes().get(i))
-                    tv_DatosControlAgentes.append("Policía Local\n");
-                    break;
-                case 4:
-                    if (metodosCaptura.getControlAgentes().get(i))
-                    tv_DatosControlAgentes.append("Policía Nacional\n");
-                    break;
-                case 5:
-                    if (metodosCaptura.getControlAgentes().get(i))
-                    tv_DatosControlAgentes.append("Otros");
-                    break;
-            }
-            i++;
-        }
-
-
-        tv_DatosReclamosCamachuelo.setText(String.valueOf(metodosCaptura.getReclamosCamachuelo()));
-        tv_DatosCimbelesCamachuelo.setText(String.valueOf(metodosCaptura.getCimbelesCamachuelo()));
-        tv_DatosCapturasCamachueloM.setText(String.valueOf(metodosCaptura.getCapturasCamachueloM()));
-        tv_DatosCapturasCamachueloH.setText(String.valueOf(metodosCaptura.getCapturasCamachueloH()));
-        tv_DatosReclamosJilguero.setText(String.valueOf(metodosCaptura.getReclamosJilguero()));
-        tv_DatosCimbelesJilguero.setText(String.valueOf(metodosCaptura.getCimbelesJilguero()));
-        tv_DatosCapturasJilgueroM.setText(String.valueOf(metodosCaptura.getCapturasJilgueroM()));
-        tv_DatosCapturasJilgueroH.setText(String.valueOf(metodosCaptura.getCapturasJilgueroH()));
-        tv_DatosReclamosLugano.setText(String.valueOf(metodosCaptura.getReclamosLugano()));
-        tv_DatosCimbelesLugano.setText(String.valueOf(metodosCaptura.getCimbelesLugano()));
-        tv_DatosCapturasLuganoM.setText(String.valueOf(metodosCaptura.getCapturasLuganoM()));
-        tv_DatosCapturasLuganoH.setText(String.valueOf(metodosCaptura.getCapturasLuganoH()));
-        tv_DatosReclamosPardilloComun.setText(String.valueOf(metodosCaptura.getReclamosPardComun()));
-        tv_DatosCimbelesPardilloComun.setText(String.valueOf(metodosCaptura.getCimbelesPardComun()));
-        tv_DatosCapturasPardilloComunM.setText(String.valueOf(metodosCaptura.getCapturasPardComunM()));
-        tv_DatosCapturasPardilloComunH.setText(String.valueOf(metodosCaptura.getCapturasPardComunH()));
-        tv_DatosReclamosPicogordo.setText(String.valueOf(metodosCaptura.getReclamosPicogordo()));
-        tv_DatosCimbelesPicogordo.setText(String.valueOf(metodosCaptura.getCimbelesPicogordo()));
-        tv_DatosCapturasPicogordoM.setText(String.valueOf(metodosCaptura.getCapturasPicogordoM()));
-        tv_DatosCapturasPicogordoH.setText(String.valueOf(metodosCaptura.getCapturasPicogordoH()));
-        tv_DatosReclamosPinzonComun.setText(String.valueOf(metodosCaptura.getReclamosPinzonComun()));
-        tv_DatosCimbelesPinzonComun.setText(String.valueOf(metodosCaptura.getCimbelesPinzonComun()));
-        tv_DatosCapturasPinzonComunM.setText(String.valueOf(metodosCaptura.getCapturasPinzonComunM()));
-        tv_DatosCapturasPinzonComunH.setText(String.valueOf(metodosCaptura.getCapturasPinzonComunH()));
-        tv_DatosReclamosPinzonReal.setText(String.valueOf(metodosCaptura.getReclamosPinzonReal()));
-        tv_DatosCimbelesPinzonReal.setText(String.valueOf(metodosCaptura.getCimbelesPinzonReal()));
-        tv_DatosCapturasPinzonRealM.setText(String.valueOf(metodosCaptura.getCapturasPinzonRealM()));
-        tv_DatosCapturasPinzonRealH.setText(String.valueOf(metodosCaptura.getCapturasPinzonRealH()));
-        tv_DatosReclamosPiquituerto.setText(String.valueOf(metodosCaptura.getReclamosPiquituerto()));
-        tv_DatosCimbelesPiquituerto.setText(String.valueOf(metodosCaptura.getCimbelesPiquituerto()));
-        tv_DatosCapturasPiquituertoM.setText(String.valueOf(metodosCaptura.getCapturasPiquituertoM()));
-        tv_DatosCapturasPiquituertoH.setText(String.valueOf(metodosCaptura.getCapturasPiquituertoH()));
-        tv_DatosReclamosVerdecillo.setText(String.valueOf(metodosCaptura.getReclamosVerdecillo()));
-        tv_DatosCimbelesVerdecillo.setText(String.valueOf(metodosCaptura.getCimbelesVerdecillo()));
-        tv_DatosCapturasVerdecilloM.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloM()));
-        tv_DatosCapturasVerdecilloH.setText(String.valueOf(metodosCaptura.getCapturasVerdecilloH()));
-        tv_DatosReclamosVerderonComun.setText(String.valueOf(metodosCaptura.getReclamosVerdComun()));
-        tv_DatosCimbelesVerderonComun.setText(String.valueOf(metodosCaptura.getCimbelesVerdComun()));
-        tv_DatosCapturasVerderonComunM.setText(String.valueOf(metodosCaptura.getCapturasVerdComunM()));
-        tv_DatosCapturasVerderonComunH.setText(String.valueOf(metodosCaptura.getCapturasVerdComunH()));
-        tv_DatosReclamosVerderonSerrano.setText(String.valueOf(metodosCaptura.getReclamosVerdSerrano()));
-        tv_DatosCimbelesVerderonSerrano.setText(String.valueOf(metodosCaptura.getCimbelesVerdSerrano()));
-        tv_DatosCapturasVerderonSerranoM.setText(String.valueOf(metodosCaptura.getCapturasVerdSerranoM()));
-        tv_DatosCapturasVerderonSerranoH.setText(String.valueOf(metodosCaptura.getCapturasVerdSerranoM()));
-
-        tv_DatosObservaciones.setText(String.valueOf(metodosCaptura.getObservaciones()));
-    }
-
-    private void cargarDatosAvistamiento() {
-        iv_DatosCheckBoxAvistamiento.setBackground(getDrawable(R.drawable.baseline_check_box_24));
-
-        tv_DatosHoraInicio.setText(datosAvistamiento.getHoraInicio());
-        tv_DatosHoraFin.setText(datosAvistamiento.getHoraFin());
-
-        int posicion = 0;
-        while (posicion < datosAvistamiento.getHora08().size()){
-            switch (posicion){
-                case 0:
-                    tv_DatosEspecieCamachuelo08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 1:
-                    tv_DatosEspecieJilguero08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 2:
-                    tv_DatosEspecieLugano08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 3:
-                    tv_DatosEspeciePardilloComun08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 4:
-                    tv_DatosEspeciePicogordo08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 5:
-                    tv_DatosEspeciePinzonComun08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 6:
-                    tv_DatosEspeciePinzonReal08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 7:
-                    tv_DatosEspeciePiquituerto08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 8:
-                    tv_DatosEspecieVerdecillo08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 9:
-                    tv_DatosEspecieVerderonComun08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-                case 10:
-                    tv_DatosEspecieVerderonSerrano08.setText(String.valueOf(datosAvistamiento.getHora08().get(posicion)));
-                    break;
-            }
-            posicion++;
-        }
-
-        posicion = 0;
-        while (posicion < datosAvistamiento.getHora09().size()){
-            switch (posicion){
-                case 0:
-                    tv_DatosEspecieCamachuelo09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 1:
-                    tv_DatosEspecieJilguero09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 2:
-                    tv_DatosEspecieLugano09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 3:
-                    tv_DatosEspeciePardilloComun09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 4:
-                    tv_DatosEspeciePicogordo09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 5:
-                    tv_DatosEspeciePinzonComun09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 6:
-                    tv_DatosEspeciePinzonReal09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 7:
-                    tv_DatosEspeciePiquituerto09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 8:
-                    tv_DatosEspecieVerdecillo09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 9:
-                    tv_DatosEspecieVerderonComun09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-                case 10:
-                    tv_DatosEspecieVerderonSerrano09.setText(String.valueOf(datosAvistamiento.getHora09().get(posicion)));
-                    break;
-            }
-            posicion++;
-        }
-
-        posicion = 0;
-        while (posicion < datosAvistamiento.getHora10().size()){
-            switch (posicion){
-                case 0:
-                    tv_DatosEspecieCamachuelo10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 1:
-                    tv_DatosEspecieJilguero10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 2:
-                    tv_DatosEspecieLugano10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 3:
-                    tv_DatosEspeciePardilloComun10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 4:
-                    tv_DatosEspeciePicogordo10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 5:
-                    tv_DatosEspeciePinzonComun10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 6:
-                    tv_DatosEspeciePinzonReal10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 7:
-                    tv_DatosEspeciePiquituerto10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 8:
-                    tv_DatosEspecieVerdecillo10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 9:
-                    tv_DatosEspecieVerderonComun10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-                case 10:
-                    tv_DatosEspecieVerderonSerrano10.setText(String.valueOf(datosAvistamiento.getHora10().get(posicion)));
-                    break;
-            }
-            posicion++;
-        }
-
-        posicion = 0;
-        while (posicion < datosAvistamiento.getHora11().size()){
-            switch (posicion){
-                case 0:
-                    tv_DatosEspecieCamachuelo11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 1:
-                    tv_DatosEspecieJilguero11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 2:
-                    tv_DatosEspecieLugano11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 3:
-                    tv_DatosEspeciePardilloComun11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 4:
-                    tv_DatosEspeciePicogordo11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 5:
-                    tv_DatosEspeciePinzonComun11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 6:
-                    tv_DatosEspeciePinzonReal11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 7:
-                    tv_DatosEspeciePiquituerto11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 8:
-                    tv_DatosEspecieVerdecillo11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 9:
-                    tv_DatosEspecieVerderonComun11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-                case 10:
-                    tv_DatosEspecieVerderonSerrano11.setText(String.valueOf(datosAvistamiento.getHora11().get(posicion)));
-                    break;
-            }
-            posicion++;
-        }
-
-        posicion = 0;
-        while (posicion < datosAvistamiento.getHora12().size()){
-            switch (posicion){
-                case 0:
-                    tv_DatosEspecieCamachuelo12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 1:
-                    tv_DatosEspecieJilguero12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 2:
-                    tv_DatosEspecieLugano12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 3:
-                    tv_DatosEspeciePardilloComun12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 4:
-                    tv_DatosEspeciePicogordo12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 5:
-                    tv_DatosEspeciePinzonComun12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 6:
-                    tv_DatosEspeciePinzonReal12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 7:
-                    tv_DatosEspeciePiquituerto12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 8:
-                    tv_DatosEspecieVerdecillo12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 9:
-                    tv_DatosEspecieVerderonComun12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-                case 10:
-                    tv_DatosEspecieVerderonSerrano12.setText(String.valueOf(datosAvistamiento.getHora12().get(posicion)));
-                    break;
-            }
-            posicion++;
-        }
-
-        posicion = 0;
-        while (posicion < datosAvistamiento.getHora13().size()){
-            switch (posicion){
-                case 0:
-                    tv_DatosEspecieCamachuelo13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 1:
-                    tv_DatosEspecieJilguero13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 2:
-                    tv_DatosEspecieLugano13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 3:
-                    tv_DatosEspeciePardilloComun13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 4:
-                    tv_DatosEspeciePicogordo13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 5:
-                    tv_DatosEspeciePinzonComun13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 6:
-                    tv_DatosEspeciePinzonReal13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 7:
-                    tv_DatosEspeciePiquituerto13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 8:
-                    tv_DatosEspecieVerdecillo13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 9:
-                    tv_DatosEspecieVerderonComun13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-                case 10:
-                    tv_DatosEspecieVerderonSerrano13.setText(String.valueOf(datosAvistamiento.getHora13().get(posicion)));
-                    break;
-            }
-            posicion++;
-        }
-
-        posicion = 0;
-        while (posicion < datosAvistamiento.getHora14().size()){
-            switch (posicion){
-                case 0:
-                    tv_DatosEspecieCamachuelo14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 1:
-                    tv_DatosEspecieJilguero14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 2:
-                    tv_DatosEspecieLugano14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 3:
-                    tv_DatosEspeciePardilloComun14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 4:
-                    tv_DatosEspeciePicogordo14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 5:
-                    tv_DatosEspeciePinzonComun14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 6:
-                    tv_DatosEspeciePinzonReal14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 7:
-                    tv_DatosEspeciePiquituerto14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 8:
-                    tv_DatosEspecieVerdecillo14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 9:
-                    tv_DatosEspecieVerderonComun14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-                case 10:
-                    tv_DatosEspecieVerderonSerrano14.setText(String.valueOf(datosAvistamiento.getHora14().get(posicion)));
-                    break;
-            }
-            posicion++;
-        }
+        if (envio.isAvistamientoCompletado()) loadDatosAvistamiento();
 
     }
 
-    private void iniciarComponentes() {
+    /**
+     * Init the UI elements into the code
+     */
+    private void startFindView() {
         //Datos Entorno
         iv_DatosCheckBoxEntorno = findViewById(R.id.iv_DatosCheckBoxEntorno);
         tv_DatosTemperaturaInicio = findViewById(R.id.tv_DatosTemperaturaInicio);
@@ -714,43 +341,534 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         btn_VolverDatos = findViewById(R.id.btn_VolverMiEnvio);
     }
 
-    private void iniciarOnClickListener() {
+    /**
+     * Sets all the click listener for the UI elements
+     */
+    private void setOnClickListener() {
         btn_VolverDatos.setOnClickListener(this);
     }
 
     /**
      * Called when a view has been clicked.
-     *
      * @param v The view that was clicked.
      */
     @Override
     public void onClick(View v) {
         if (v == btn_VolverDatos){
             Intent activity = new Intent(this,Pantalla_Menu_Metodos_Y_Captura.class);
-            guardarParametros(activity);
-
+            saveData(activity);
             startActivity(activity);
             finish();
         }
     }
 
-    private void guardarParametros(Intent actividadDestino) {
+    /**
+     * Loads DatosEntorno Class in to the UI
+     */
+    @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
+    private void loadDatosEntorno() {
+        iv_DatosCheckBoxEntorno.setBackground(getDrawable(R.drawable.baseline_check_box_24));
+
+        tv_DatosTemperaturaInicio.setText(envio.getDatosEntorno().gettInicio() + " ºC");
+        tv_DatosTemperaturaFin.setText(envio.getDatosEntorno().gettFin()+" ºC");
+        switch (envio.getDatosEntorno().getZonificacion()){
+            case 1:
+                tv_DatosZonificacion.setText("Afloramientos Rocosos y Rasos");
+                break;
+            case 2:
+                tv_DatosZonificacion.setText("Cultivos");
+                break;
+            case 3:
+                tv_DatosZonificacion.setText("Láminas y Cursos de Agua");
+                break;
+            case 4:
+                tv_DatosZonificacion.setText("Dehesa y zonas adehesadas");
+                break;
+            case 5:
+                tv_DatosZonificacion.setText("Plantaciones de Frondosas y Coníferas");
+                break;
+            case 6:
+                tv_DatosZonificacion.setText("Vegetación Arbórea de Coníferas");
+                break;
+            case 7:
+                tv_DatosZonificacion.setText("Vegetación Arbórea de Frondosas");
+                break;
+            case 8:
+                tv_DatosZonificacion.setText("Vegetación de Matorral");
+                break;
+            case 9:
+                tv_DatosZonificacion.setText("Vegetación Herbácea");
+                break;
+            case 10:
+                tv_DatosZonificacion.setText("Viñedos, Olivares y Otros Frutales");
+                break;
+            case 11:
+                tv_DatosZonificacion.setText("Zonas Artificiales");
+                break;
+        }
+        tv_DatosDireccionViento.setText(envio.getDatosEntorno().getDireccionViento());
+        switch (envio.getDatosEntorno().getViento()){
+            case 1:
+                tv_DatosViento.setText("Calma");
+                break;
+            case 2:
+                tv_DatosViento.setText("Ligero");
+                break;
+            case 3:
+                tv_DatosViento.setText("Fuerte");
+                break;
+        }
+        switch (envio.getDatosEntorno().getNubes()){
+            case 1:
+                tv_DatosNubes.setText("Ausentes");
+                break;
+            case 2:
+                tv_DatosNubes.setText("Nubes y claros");
+                break;
+            case 3:
+                tv_DatosNubes.setText("Cubierto");
+                break;
+            case 4:
+                tv_DatosNubes.setText("Muy Cubierto");
+                break;
+        }
+        switch (envio.getDatosEntorno().getLluvia()){
+            case 1:
+                tv_DatosLluvia.setText("Ausentes");
+                break;
+            case 2:
+                tv_DatosLluvia.setText("Intermitente");
+                break;
+            case 3:
+                tv_DatosLluvia.setText("Ligera");
+                break;
+            case 4:
+                tv_DatosLluvia.setText("Fuerte");
+                break;
+            case 5:
+                tv_DatosLluvia.setText("Muy fuerte");
+                break;
+        }
+        int i = 0;
+        while (i<envio.getDatosEntorno().getPlantas().size()){
+            String estado = "No encontrado";
+            int estadoRecuperado = envio.getDatosEntorno().getPlantas().get(i);
+            System.out.println("Estado"+i+": "+estadoRecuperado);
+            if (estadoRecuperado == 1) estado = "Encontrado";
+            if (envio.getDatosEntorno().getPlantas().get(i) == 2) estado = "Abundante";
+            if (i < 9) tv_DatosPlantas.append(("0" + (i + 1)) + ". " + estado + "\n");
+            else tv_DatosPlantas.append((i + 1) + ". " + estado + "\n");
+            i++;
+        }
+
+        if (!envio.getDatosEntorno().getEP37().equals("_"))tv_DatosPlantas.append("37. "+envio.getDatosEntorno().getEP37()+"\n");
+        else tv_DatosPlantas.append("37. No encontrado\n");
+
+        if (!envio.getDatosEntorno().getEP38().equals(""))tv_DatosPlantas.append("38. "+envio.getDatosEntorno().getEP38());
+        else tv_DatosPlantas.append("38. No encontrado");
+    }
+
+    /**
+     * Loads MetodosCaptura Class in to the UI
+     */
+    @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
+    private void loadMetodosCapturas() {
+        iv_DatosCheckBoxCapturas.setBackground(getDrawable(R.drawable.baseline_check_box_24));
+        tv_DatosNumeroMallas.setText(String.valueOf(envio.getMetodosCaptura().getNumeroMallas()));
+        tv_DatosLongitudRed.setText(String.valueOf(envio.getMetodosCaptura().getLongitudRed()));
+        if (envio.getMetodosCaptura().isCoto()){
+           tv_DatosCoto.setText("Si");
+        } else {
+            tv_DatosCoto.setText("No");
+        }
+        int i = 0;
+
+        while (i < envio.getMetodosCaptura().getControlAgentes().size()){
+            switch (i){
+                case 0:
+                    if (!envio.getMetodosCaptura().getControlAgentes().get(i))
+                    tv_DatosControlAgentes.append("No hay control");
+                    break;
+                case 1:
+                    if (envio.getMetodosCaptura().getControlAgentes().get(i))
+                    tv_DatosControlAgentes.append("Seprona\n");
+                    break;
+                case 2:
+                    if (envio.getMetodosCaptura().getControlAgentes().get(i))
+                    tv_DatosControlAgentes.append("Agentes Forestales\n");
+                    break;
+                case 3:
+                    if (envio.getMetodosCaptura().getControlAgentes().get(i))
+                    tv_DatosControlAgentes.append("Policía Local\n");
+                    break;
+                case 4:
+                    if (envio.getMetodosCaptura().getControlAgentes().get(i))
+                    tv_DatosControlAgentes.append("Policía Nacional\n");
+                    break;
+                case 5:
+                    if (envio.getMetodosCaptura().getControlAgentes().get(i))
+                    tv_DatosControlAgentes.append("Otros");
+                    break;
+            }
+            i++;
+        }
+
+
+        tv_DatosReclamosCamachuelo.setText(String.valueOf(envio.getMetodosCaptura().getReclamosCamachuelo()));
+        tv_DatosCimbelesCamachuelo.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesCamachuelo()));
+        tv_DatosCapturasCamachueloM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasCamachueloM()));
+        tv_DatosCapturasCamachueloH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasCamachueloH()));
+        tv_DatosReclamosJilguero.setText(String.valueOf(envio.getMetodosCaptura().getReclamosJilguero()));
+        tv_DatosCimbelesJilguero.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesJilguero()));
+        tv_DatosCapturasJilgueroM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasJilgueroM()));
+        tv_DatosCapturasJilgueroH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasJilgueroH()));
+        tv_DatosReclamosLugano.setText(String.valueOf(envio.getMetodosCaptura().getReclamosLugano()));
+        tv_DatosCimbelesLugano.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesLugano()));
+        tv_DatosCapturasLuganoM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasLuganoM()));
+        tv_DatosCapturasLuganoH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasLuganoH()));
+        tv_DatosReclamosPardilloComun.setText(String.valueOf(envio.getMetodosCaptura().getReclamosPardComun()));
+        tv_DatosCimbelesPardilloComun.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesPardComun()));
+        tv_DatosCapturasPardilloComunM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPardComunM()));
+        tv_DatosCapturasPardilloComunH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPardComunH()));
+        tv_DatosReclamosPicogordo.setText(String.valueOf(envio.getMetodosCaptura().getReclamosPicogordo()));
+        tv_DatosCimbelesPicogordo.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesPicogordo()));
+        tv_DatosCapturasPicogordoM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPicogordoM()));
+        tv_DatosCapturasPicogordoH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPicogordoH()));
+        tv_DatosReclamosPinzonComun.setText(String.valueOf(envio.getMetodosCaptura().getReclamosPinzonComun()));
+        tv_DatosCimbelesPinzonComun.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesPinzonComun()));
+        tv_DatosCapturasPinzonComunM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPinzonComunM()));
+        tv_DatosCapturasPinzonComunH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPinzonComunH()));
+        tv_DatosReclamosPinzonReal.setText(String.valueOf(envio.getMetodosCaptura().getReclamosPinzonReal()));
+        tv_DatosCimbelesPinzonReal.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesPinzonReal()));
+        tv_DatosCapturasPinzonRealM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPinzonRealM()));
+        tv_DatosCapturasPinzonRealH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPinzonRealH()));
+        tv_DatosReclamosPiquituerto.setText(String.valueOf(envio.getMetodosCaptura().getReclamosPiquituerto()));
+        tv_DatosCimbelesPiquituerto.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesPiquituerto()));
+        tv_DatosCapturasPiquituertoM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPiquituertoM()));
+        tv_DatosCapturasPiquituertoH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasPiquituertoH()));
+        tv_DatosReclamosVerdecillo.setText(String.valueOf(envio.getMetodosCaptura().getReclamosVerdecillo()));
+        tv_DatosCimbelesVerdecillo.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesVerdecillo()));
+        tv_DatosCapturasVerdecilloM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdecilloM()));
+        tv_DatosCapturasVerdecilloH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdecilloH()));
+        tv_DatosReclamosVerderonComun.setText(String.valueOf(envio.getMetodosCaptura().getReclamosVerdComun()));
+        tv_DatosCimbelesVerderonComun.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesVerdComun()));
+        tv_DatosCapturasVerderonComunM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdComunM()));
+        tv_DatosCapturasVerderonComunH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdComunH()));
+        tv_DatosReclamosVerderonSerrano.setText(String.valueOf(envio.getMetodosCaptura().getReclamosVerdSerrano()));
+        tv_DatosCimbelesVerderonSerrano.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesVerdSerrano()));
+        tv_DatosCapturasVerderonSerranoM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdSerranoM()));
+        tv_DatosCapturasVerderonSerranoH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdSerranoM()));
+
+        tv_DatosObservaciones.setText(String.valueOf(envio.getMetodosCaptura().getObservaciones()));
+    }
+
+    /**
+     * Loads DatosAvistamiento Class in to the UI
+     */
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void loadDatosAvistamiento() {
+        iv_DatosCheckBoxAvistamiento.setBackground(getDrawable(R.drawable.baseline_check_box_24));
+
+        tv_DatosHoraInicio.setText(envio.getDatosAvistamiento().getHoraInicio());
+        tv_DatosHoraFin.setText(envio.getDatosAvistamiento().getHoraFin());
+
+        int posicion = 0;
+        while (posicion < envio.getDatosAvistamiento().getHora08().size()){
+            switch (posicion){
+                case 0:
+                    tv_DatosEspecieCamachuelo08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 1:
+                    tv_DatosEspecieJilguero08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 2:
+                    tv_DatosEspecieLugano08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 3:
+                    tv_DatosEspeciePardilloComun08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 4:
+                    tv_DatosEspeciePicogordo08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 5:
+                    tv_DatosEspeciePinzonComun08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 6:
+                    tv_DatosEspeciePinzonReal08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 7:
+                    tv_DatosEspeciePiquituerto08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 8:
+                    tv_DatosEspecieVerdecillo08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 9:
+                    tv_DatosEspecieVerderonComun08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+                case 10:
+                    tv_DatosEspecieVerderonSerrano08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(posicion)));
+                    break;
+            }
+            posicion++;
+        }
+
+        posicion = 0;
+        while (posicion < envio.getDatosAvistamiento().getHora09().size()){
+            switch (posicion){
+                case 0:
+                    tv_DatosEspecieCamachuelo09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 1:
+                    tv_DatosEspecieJilguero09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 2:
+                    tv_DatosEspecieLugano09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 3:
+                    tv_DatosEspeciePardilloComun09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 4:
+                    tv_DatosEspeciePicogordo09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 5:
+                    tv_DatosEspeciePinzonComun09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 6:
+                    tv_DatosEspeciePinzonReal09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 7:
+                    tv_DatosEspeciePiquituerto09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 8:
+                    tv_DatosEspecieVerdecillo09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 9:
+                    tv_DatosEspecieVerderonComun09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+                case 10:
+                    tv_DatosEspecieVerderonSerrano09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(posicion)));
+                    break;
+            }
+            posicion++;
+        }
+
+        posicion = 0;
+        while (posicion < envio.getDatosAvistamiento().getHora10().size()){
+            switch (posicion){
+                case 0:
+                    tv_DatosEspecieCamachuelo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 1:
+                    tv_DatosEspecieJilguero10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 2:
+                    tv_DatosEspecieLugano10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 3:
+                    tv_DatosEspeciePardilloComun10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 4:
+                    tv_DatosEspeciePicogordo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 5:
+                    tv_DatosEspeciePinzonComun10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 6:
+                    tv_DatosEspeciePinzonReal10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 7:
+                    tv_DatosEspeciePiquituerto10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 8:
+                    tv_DatosEspecieVerdecillo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 9:
+                    tv_DatosEspecieVerderonComun10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+                case 10:
+                    tv_DatosEspecieVerderonSerrano10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(posicion)));
+                    break;
+            }
+            posicion++;
+        }
+
+        posicion = 0;
+        while (posicion < envio.getDatosAvistamiento().getHora11().size()){
+            switch (posicion){
+                case 0:
+                    tv_DatosEspecieCamachuelo11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 1:
+                    tv_DatosEspecieJilguero11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 2:
+                    tv_DatosEspecieLugano11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 3:
+                    tv_DatosEspeciePardilloComun11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 4:
+                    tv_DatosEspeciePicogordo11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 5:
+                    tv_DatosEspeciePinzonComun11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 6:
+                    tv_DatosEspeciePinzonReal11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 7:
+                    tv_DatosEspeciePiquituerto11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 8:
+                    tv_DatosEspecieVerdecillo11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 9:
+                    tv_DatosEspecieVerderonComun11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+                case 10:
+                    tv_DatosEspecieVerderonSerrano11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(posicion)));
+                    break;
+            }
+            posicion++;
+        }
+
+        posicion = 0;
+        while (posicion < envio.getDatosAvistamiento().getHora12().size()){
+            switch (posicion){
+                case 0:
+                    tv_DatosEspecieCamachuelo12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 1:
+                    tv_DatosEspecieJilguero12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 2:
+                    tv_DatosEspecieLugano12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 3:
+                    tv_DatosEspeciePardilloComun12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 4:
+                    tv_DatosEspeciePicogordo12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 5:
+                    tv_DatosEspeciePinzonComun12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 6:
+                    tv_DatosEspeciePinzonReal12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 7:
+                    tv_DatosEspeciePiquituerto12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 8:
+                    tv_DatosEspecieVerdecillo12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 9:
+                    tv_DatosEspecieVerderonComun12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+                case 10:
+                    tv_DatosEspecieVerderonSerrano12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(posicion)));
+                    break;
+            }
+            posicion++;
+        }
+
+        posicion = 0;
+        while (posicion < envio.getDatosAvistamiento().getHora13().size()){
+            switch (posicion){
+                case 0:
+                    tv_DatosEspecieCamachuelo13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 1:
+                    tv_DatosEspecieJilguero13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 2:
+                    tv_DatosEspecieLugano13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 3:
+                    tv_DatosEspeciePardilloComun13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 4:
+                    tv_DatosEspeciePicogordo13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 5:
+                    tv_DatosEspeciePinzonComun13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 6:
+                    tv_DatosEspeciePinzonReal13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 7:
+                    tv_DatosEspeciePiquituerto13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 8:
+                    tv_DatosEspecieVerdecillo13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 9:
+                    tv_DatosEspecieVerderonComun13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+                case 10:
+                    tv_DatosEspecieVerderonSerrano13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(posicion)));
+                    break;
+            }
+            posicion++;
+        }
+
+        posicion = 0;
+        while (posicion < envio.getDatosAvistamiento().getHora14().size()){
+            switch (posicion){
+                case 0:
+                    tv_DatosEspecieCamachuelo14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 1:
+                    tv_DatosEspecieJilguero14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 2:
+                    tv_DatosEspecieLugano14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 3:
+                    tv_DatosEspeciePardilloComun14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 4:
+                    tv_DatosEspeciePicogordo14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 5:
+                    tv_DatosEspeciePinzonComun14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 6:
+                    tv_DatosEspeciePinzonReal14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 7:
+                    tv_DatosEspeciePiquituerto14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 8:
+                    tv_DatosEspecieVerdecillo14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 9:
+                    tv_DatosEspecieVerderonComun14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+                case 10:
+                    tv_DatosEspecieVerderonSerrano14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(posicion)));
+                    break;
+            }
+            posicion++;
+        }
+
+    }
+
+    /**
+     * Save the parameters to send to a certain activity
+     * @param actividadDestino activity where data is send
+     */
+    private void saveData(Intent actividadDestino) {
         actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
     }
 
-    private void recuperarDatosRecibidos(Bundle datos) {
+    /**
+     * Retrieve the data received from a certain activity
+     * @param datos bundle where the data is located
+     */
+    private void retrieveData(Bundle datos) {
         envio = (Envio) datos.getSerializable("ENVIO");
-
-        DNI = envio.getDNI();
-        email = envio.getEmail();
-        mCapturasCompletado = envio.isMCapturaCompletado();
-        avistamientoCompletado = envio.isAvistamientoCompletado();
-        entornoCompletado = envio.isEntornoCompletado();
-        metodosCaptura = envio.getMetodosCaptura();
-        datosAvistamiento = envio.getDatosAvistamiento();
-        datosEntorno = envio.getDatosEntorno();
-
         limites = (Limites) datos.getSerializable("LIMITES");
     }
 
