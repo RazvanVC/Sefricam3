@@ -17,9 +17,11 @@ public class Envio implements Serializable {
     private Date fecha;
     private final String DNI, email;
     private String objectID;
+    private final String versionNumber;
 
 
     public Envio(String DNI, String email) {
+        this.versionNumber = "version325";
         this.datosEntorno = null;
         this.datosAvistamiento = null;
         this.metodosCaptura = null;
@@ -34,6 +36,10 @@ public class Envio implements Serializable {
         this.DNI = DNI;
         this.email = email;
         this.objectID = "";
+    }
+
+    public String getVersionNumber() {
+        return versionNumber;
     }
 
     public String getObjectID() {
