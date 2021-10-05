@@ -725,6 +725,11 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             return false;
         }
 
+        if (!checkAve()) {
+            Toast.makeText(this, "ERROR: La especie seleccionada no se puede anillar", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         if (etn_EjemplaresCapturados.getText().toString().equals("0")){
             Toast.makeText(this, "ERROR: Las capturas tienen que ser distintas de cero", Toast.LENGTH_SHORT).show();
             return false;
@@ -838,6 +843,39 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         }
 
         return true;
+    }
+
+    /**
+     * Checks if the species can be submitted
+     * @return default false, true is can be submitted
+     */
+    @SuppressLint("NonConstantResourceId")
+    private boolean checkAve() {
+        switch (rbg_EspeciesAves.getCheckedRadioButtonId()){
+            case R.id.rb_EspecieCamachuelo:
+                return limites.isAnillableCamachuelo();
+            case R.id.rb_EspecieJilguero:
+                return limites.isAnillableJilguero();
+            case R.id.rb_EspecieLugano:
+                return limites.isAnillableLugano();
+            case R.id.rb_EspeciePardComun:
+                return limites.isAnillablePardComun();
+            case R.id.rb_EspeciePicogordo:
+                return limites.isAnillablePicogordo();
+            case R.id.rb_EspeciePinzComun:
+                return limites.isAnillablePinzComun();
+            case R.id.rb_EspeciePinzReal:
+                return limites.isAnillablePinzReal();
+            case R.id.rb_EspeciePiquituerto:
+                return limites.isAnillablePiquituerto();
+            case R.id.rb_EspecieVerdecillo:
+                return limites.isAnillableVerdecillo();
+            case R.id.rb_EspecieVerdComun:
+                return limites.isAnillableVerdComun();
+            case R.id.rb_EspecieVerdSerrano:
+                return limites.isAnillableVerdSerrano();
+        }
+        return false;
     }
 
     /**
