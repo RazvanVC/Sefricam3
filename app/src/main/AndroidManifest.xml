@@ -38,9 +38,6 @@
             android:name=".Pantalla_Menu_Metodos_Y_Captura"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Pantalla_Recuperar_Pass"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".Pantalla_Datos_Aves"
             android:screenOrientation="portrait"/>
         <activity

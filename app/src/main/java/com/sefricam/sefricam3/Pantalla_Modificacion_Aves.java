@@ -88,13 +88,16 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
                     for (int i = 0; i<enviosRecibidos.size(); i++){
                         DatosAves localAve = enviosRecibidos.get(i);
 
-                        enviosCargados.add("AVE " + i);
+                        if (localAve.getnAnilla()==0){
+                            enviosCargados.add(localAve.getAnillaPreexistente());
+                        } else  {
+                            enviosCargados.add(String.valueOf(localAve.getnAnilla()));
+                        }
+
                     }
                     if (enviosCargados.size()==1){
                         enviosCargados.add(0,"No hay datos");
                     }
-
-
                 } else {
                     enviosCargados.add("FIN ENVIOS CARGADOS");
                 }
@@ -110,6 +113,9 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
 
         DatosAves localAve = new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(), envio.getLongitud());
 
+        /**
+         * TODO cambiar la fecha por la fecha que se corresponde con el envio de ave, sino solomanete mostrar las aves que se corresponden con la fecha del envio.
+         */
         localAve.setHoraCaptura(obj.getString("HoraCap"));
         localAve.setEspecie(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Especie")).toString()));
         localAve.setnEjemplares(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NEjemplares")).toString()));

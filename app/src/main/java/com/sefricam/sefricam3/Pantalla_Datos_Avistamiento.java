@@ -344,10 +344,10 @@ public class Pantalla_Datos_Avistamiento extends Activity implements AdapterView
         etn_Picogordo08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(4)));
         etn_Picogordo09.setText(String.valueOf(envio.getDatosAvistamiento().getHora09().get(4)));
         etn_Picogordo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora10().get(4)));
-        etn_Picogordo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(4)));
-        etn_Picogordo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(4)));
-        etn_Picogordo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(4)));
-        etn_Picogordo10.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(4)));
+        etn_Picogordo11.setText(String.valueOf(envio.getDatosAvistamiento().getHora11().get(4)));
+        etn_Picogordo12.setText(String.valueOf(envio.getDatosAvistamiento().getHora12().get(4)));
+        etn_Picogordo13.setText(String.valueOf(envio.getDatosAvistamiento().getHora13().get(4)));
+        etn_Picogordo14.setText(String.valueOf(envio.getDatosAvistamiento().getHora14().get(4)));
 
         //Pinzon Comun
         etn_PinzonComun08.setText(String.valueOf(envio.getDatosAvistamiento().getHora08().get(5)));

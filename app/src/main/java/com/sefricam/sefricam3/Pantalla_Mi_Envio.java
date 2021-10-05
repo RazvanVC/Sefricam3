@@ -557,7 +557,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         tv_DatosReclamosVerderonSerrano.setText(String.valueOf(envio.getMetodosCaptura().getReclamosVerdSerrano()));
         tv_DatosCimbelesVerderonSerrano.setText(String.valueOf(envio.getMetodosCaptura().getCimbelesVerdSerrano()));
         tv_DatosCapturasVerderonSerranoM.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdSerranoM()));
-        tv_DatosCapturasVerderonSerranoH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdSerranoM()));
+        tv_DatosCapturasVerderonSerranoH.setText(String.valueOf(envio.getMetodosCaptura().getCapturasVerdSerranoH()));
 
         tv_DatosObservaciones.setText(String.valueOf(envio.getMetodosCaptura().getObservaciones()));
     }
