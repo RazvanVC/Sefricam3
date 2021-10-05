@@ -454,6 +454,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("VerdS13", envio.getDatosAvistamiento().getHora13().get(10));
         entity.put("VerdS14", envio.getDatosAvistamiento().getHora14().get(10));
 
+        entity.put("VersionApp",envio.getVersionNumber());
     }
 
     /**
