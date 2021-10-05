@@ -748,6 +748,10 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                     Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
                     return false;
                 }
+                if (limites.getAvesAnilladas().contains(Integer.parseInt(etn_NumeroAnilla.getText().toString()))) {
+                    Toast.makeText(this, "El numero de anilla que has especificado ya esta siendo usado", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             }
         } else if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) {
             if (!etn_NumeroAnilla.getText().toString().isEmpty()){

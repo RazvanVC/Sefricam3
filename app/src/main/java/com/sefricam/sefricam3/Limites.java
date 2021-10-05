@@ -4,6 +4,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This is a Object Class in order to make data more readable at debug. Contains all the data related
@@ -48,6 +49,7 @@ public class Limites implements Serializable {
     private int numeroGrupo;
 
     private boolean anillableCamachuelo, anillableVerdComun, anillableVerdSerrano, anillableJilguero, anillablePardComun, anillableVerdecillo, anillableLugano, anillablePinzComun, anillablePinzReal, anillablePiquituerto, anillablePicogordo;
+    private ArrayList<Integer> avesAnilladas;
 
     public Limites(int numGrupo) {
         this.numeroGrupo = numGrupo;
@@ -938,4 +940,11 @@ public class Limites implements Serializable {
 
     }
 
+    public void setAvesAnilladas(ArrayList<Integer> avesAnilladas) {
+        this.avesAnilladas = avesAnilladas;
+    }
+
+    public ArrayList<Integer> getAvesAnilladas() {
+        return avesAnilladas;
+    }
 }

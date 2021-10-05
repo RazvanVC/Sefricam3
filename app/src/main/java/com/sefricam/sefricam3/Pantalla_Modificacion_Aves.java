@@ -13,14 +13,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.content.res.AppCompatResources;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
@@ -58,7 +54,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
 
     private void iniciarSpinners() {
         ArrayList <String> envios = cargarEnvios();
-        ArrayAdapter<String> adapterEnvios = new ArrayAdapter<String>(this, R.layout.spinner,envios);
+        ArrayAdapter<String> adapterEnvios = new ArrayAdapter<>(this, R.layout.spinner, envios);
         sp_EnvioAvesSeleccionado.setAdapter(adapterEnvios);
     }
 
@@ -69,41 +65,40 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Aves");
 
         query.whereEqualTo("NumGrupo",limites.getNumeroGrupo());
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    ParseObject obj;
-                    for (int i = 0; i<objects.size(); i++){
-                        DatosAves localAve = null;
-                        obj = objects.get(i);
+        query.findInBackground((objects, e) -> {
+            if (e == null){
+                ParseObject obj;
+                ArrayList<Integer> avesAnilladas = new ArrayList<>();
+                for (int i = 0; i<objects.size(); i++){
+                    DatosAves localAve;
+                    obj = objects.get(i);
 
-                        localAve = getAve(obj);
-
-                        if (localAve.getLatitud() == envio.getLatitud() && localAve.getLongitud() == envio.getLongitud()){
-                            enviosRecibidos.add(localAve);
-                        }
-
+                    localAve = getAve(obj);
+                    avesAnilladas.add(localAve.getnAnilla());
+                    if (localAve.getLatitud() == envio.getLatitud() && localAve.getLongitud() == envio.getLongitud()){
+                        enviosRecibidos.add(localAve);
                     }
-                    for (int i = 0; i<enviosRecibidos.size(); i++){
-                        DatosAves localAve = enviosRecibidos.get(i);
 
-                        if (localAve.getnAnilla()==0){
-                            enviosCargados.add(localAve.getAnillaPreexistente());
-                        } else  {
-                            enviosCargados.add(String.valueOf(localAve.getnAnilla()));
-                        }
-
-                    }
-                    if (enviosCargados.size()==1){
-                        enviosCargados.add(0,"No hay datos");
-                    }
-                } else {
-                    enviosCargados.add("FIN ENVIOS CARGADOS");
                 }
+                for (int i = 0; i<enviosRecibidos.size(); i++){
+                    DatosAves localAve = enviosRecibidos.get(i);
 
+                    if (localAve.getnAnilla()==0){
+                        enviosCargados.add(localAve.getAnillaPreexistente());
+                    } else  {
+                        enviosCargados.add(String.valueOf(localAve.getnAnilla()));
+                    }
 
+                }
+                limites.setAvesAnilladas(avesAnilladas);
+                if (enviosCargados.size()==1){
+                    enviosCargados.add(0,"No hay datos");
+                }
+            } else {
+                enviosCargados.add("FIN ENVIOS CARGADOS");
             }
+
+
         });
 
         return enviosCargados;
@@ -111,11 +106,11 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
 
     private DatosAves getAve(ParseObject obj) {
 
-        DatosAves localAve = new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(), envio.getLongitud());
+        DatosAves localAve = new DatosAves(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumGrupo")).toString()),
+                Objects.requireNonNull(obj.getDate("FechaCap")),
+                Double.parseDouble(Objects.requireNonNull(obj.getNumber("Latitud")).toString()),
+                Double.parseDouble(Objects.requireNonNull(obj.getNumber("Longitud")).toString()));
 
-        /**
-         * TODO cambiar la fecha por la fecha que se corresponde con el envio de ave, sino solomanete mostrar las aves que se corresponden con la fecha del envio.
-         */
         localAve.setHoraCaptura(obj.getString("HoraCap"));
         localAve.setEspecie(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Especie")).toString()));
         localAve.setnEjemplares(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NEjemplares")).toString()));
@@ -227,9 +222,6 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
      */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (parent.getId() == R.id.sp_EnvioSeleccionado){
-
-        }
     }
 
     /**
