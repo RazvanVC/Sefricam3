@@ -13,9 +13,11 @@ import android.widget.Toast;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
+import java.util.TimeZone;
 
 public class Pantalla_Modificacion_Envio extends Activity implements View.OnClickListener{
 
@@ -41,8 +43,6 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
         if (datos != null) {
             envio = (Envio) datos.getSerializable("ENVIO");
             limites = (Limites) datos.getSerializable("LIMITES");
-            System.out.println(limites);
-            System.out.println("NUMERO GRUPO MOD: " + limites.getNumeroGrupo());
         }
 
         //Inicio de los Elementos del layout
@@ -69,6 +69,7 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
                 for (int i = 0; i<enviosRecibidos.size(); i++){
                     Envio localEnvio = enviosRecibidos.get(i);
                     Calendar localCalendar = Calendar.getInstance();
+                    localCalendar.setTimeZone(TimeZone.getTimeZone("UTC"));
                     localCalendar.setTime(localEnvio.getFecha());
                     enviosCargados.add(localCalendar.get(Calendar.DAY_OF_MONTH) + "/" + (localCalendar.get(Calendar.MONTH)+1) + "/" + localCalendar.get(Calendar.YEAR) +" - " + localEnvio.getDNI());
                 }
@@ -109,9 +110,11 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
             localEnvio.setEnvioCompletado(true);
 
             Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("UTC"));
             c.setTime(Objects.requireNonNull(obj.getDate("Fecha")));
-            c.add(Calendar.DAY_OF_MONTH, -1);
+            System.out.println(Objects.requireNonNull(obj.getDate("Fecha")));
             localEnvio.setFecha(c.getTime());
+            System.out.println(localEnvio.getFecha());
             localEnvio.setLatitud(Double.parseDouble(String.valueOf(obj.getNumber("Latitud"))));
             localEnvio.setLongitud(Double.parseDouble(String.valueOf(obj.getNumber("Longitud"))));
             localEnvio.setObjectID(obj.getObjectId());

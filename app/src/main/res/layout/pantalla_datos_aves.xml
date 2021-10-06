@@ -562,6 +562,20 @@
                     android:text="Muy evidente"
                     android:clickable="false"/>
             </RadioGroup>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Observaciones:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <EditText
+                android:id="@+id/et_ObservacionesAves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp"
+                android:importantForAutofill="no" />
 
         </LinearLayout>
     </ScrollView>

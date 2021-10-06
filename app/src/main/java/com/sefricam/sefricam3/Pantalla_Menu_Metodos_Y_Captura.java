@@ -21,6 +21,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener {
 
@@ -146,6 +147,12 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
             AlertDialog dialog = exit.create();
             dialog.show();
+        } else {
+            Intent activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Menu_Intermedio.class);
+            activity.putExtra("EMAIL",envio.getEmail());
+            activity.putExtra("LIMITES", limites);
+            startActivity(activity);
+            finish();
         }
     }
 
@@ -158,6 +165,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         if (view == tv_Fecha){
             // Get Current Date
             final Calendar c = Calendar.getInstance();
+            c.setTimeZone(TimeZone.getTimeZone("UTC"));
             int mYear = c.get(Calendar.YEAR);
             int mMonth = c.get(Calendar.MONTH);
             int mDay = c.get(Calendar.DAY_OF_MONTH);
@@ -170,7 +178,12 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             Intent activity;
             if (envio.isModificacion()) activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Modificacion_Aves.class);
             else activity = new Intent(Pantalla_Menu_Metodos_Y_Captura.this, Pantalla_Datos_Aves.class);
-            activity.putExtra("AVE", new DatosAves(limites.getNumeroGrupo(),envio.getFecha(),envio.getLatitud(),envio.getLongitud()));
+            Calendar c = Calendar.getInstance();
+            c.setTime(envio.getFecha());
+            c.setTimeZone(TimeZone.getTimeZone("UTC"));
+            c.add(Calendar.HOUR, 2);
+            if (c.get(Calendar.HOUR_OF_DAY)>=22) c.add(Calendar.HOUR,-20);
+            activity.putExtra("AVE", new DatosAves(limites.getNumeroGrupo(),c.getTime(),envio.getLatitud(),envio.getLongitud()));
             saveData(activity);
             startActivity(activity);
             finish();
@@ -213,6 +226,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 } else {
                     Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_LONG).show();
                 }
+                System.out.println(comprobarValores());
             }
         }
         if (view == btn_Volver){
@@ -226,7 +240,12 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
      */
     private void assignFields(ParseObject entity) {
 
-        entity.put("Fecha",envio.getFecha());
+        Calendar c = Calendar.getInstance();
+        c.setTime(envio.getFecha());
+        c.setTimeZone(TimeZone.getTimeZone("UTC"));
+        c.add(Calendar.HOUR, 2);
+        if (c.get(Calendar.HOUR_OF_DAY)>=22) c.add(Calendar.HOUR,-20);
+        entity.put("Fecha",c.getTime());
         entity.put("Latitud",envio.getLatitud());
         entity.put("Longitud",envio.getLongitud());
         entity.put("Cuadricula", cuadricula());
@@ -537,8 +556,19 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
      * @return a formatted String value, extracted from the date
      */
     private String convertDateToString(Date fecha) {
+        String today = null;
         @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        return dateFormat.format(fecha);
+        try {
+            Calendar c = Calendar.getInstance();
+            assert fecha != null;
+            c.setTimeZone(TimeZone.getTimeZone("UTC"));
+            c.setTime(fecha);
+            fecha = c.getTime();
+            today = dateFormat.format(fecha);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return today;
     }
 
     /**
@@ -552,11 +582,13 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
 
         try {
             today = simpleDate.parse(stringDate);
+            System.out.println(today);
             Calendar c = Calendar.getInstance();
             assert today != null;
+            c.setTimeZone(TimeZone.getTimeZone("UTC"));
             c.setTime(today);
-            c.add(Calendar.DATE, 1);
             today = c.getTime();
+            System.out.println(today);
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
@@ -608,6 +640,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
      * @return true if all its alright, false if not
      */
     private boolean comprobarValores() {
+        System.out.println(tv_Fecha.getText().toString().equals("__-__-____"));
         if (tv_Fecha.getText().toString().equals("__-__-____")) return false;
         if (etnd_Longitud.getText().toString().isEmpty()) return false;
         if (etnd_Latitud.getText().toString().isEmpty()) return false;

@@ -130,6 +130,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
         localAve.setMuda(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Muda")).toString()));
         localAve.setPlacaIncubatriz(Integer.parseInt(Objects.requireNonNull(obj.getNumber("PlacIncubatriz")).toString()));
         localAve.setObjectID(obj.getObjectId());
+        localAve.setObservaciones(obj.getString("Observaciones"));
 
         return localAve;
     }

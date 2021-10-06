@@ -32,6 +32,7 @@ public class DatosAves implements Serializable {
     private int placaIncubatriz;
     private boolean modificacion;
     private String objectID;
+    private String observaciones;
 
     public DatosAves(int numGrupo, Date fechaCaptura, double latitud, double longitud) {
         this.numGrupo = numGrupo;
@@ -39,6 +40,14 @@ public class DatosAves implements Serializable {
         this.latitud = latitud;
         this.longitud = longitud;
         this.modificacion = false;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     public int getNumGrupo() {

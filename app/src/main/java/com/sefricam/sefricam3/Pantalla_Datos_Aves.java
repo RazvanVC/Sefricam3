@@ -84,6 +84,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private RadioButton rb_PlacaIncIncompleta;
     private RadioButton rb_PlacaIncMEvidente;
     private TextView tv_PlacaInc;
+    private EditText et_ObservacionesAves;
 
     //Class Parameters
     private Envio envio;
@@ -269,6 +270,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 rb_PlacaIncMEvidente.setChecked(true);
                 break;
         }
+
+        et_ObservacionesAves.setText(ave.getObservaciones());
     }
 
     /**
@@ -352,6 +355,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         rb_PlacaIncNoEvidencia = findViewById(R.id.rb_PlacaIncNoEvidencia);
         rb_PlacaIncIncompleta = findViewById(R.id.rb_PlacaIncIncompleta);
         rb_PlacaIncMEvidente = findViewById(R.id.rb_PlacaIncMEvidente);
+
+        et_ObservacionesAves = findViewById(R.id.et_ObservacionesAves);
 
         //Botones de Control
         btn_Volver = findViewById(R.id.btn_VolverAves);
@@ -521,6 +526,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         entity.put("MuscPectoral",ave.getMusculoPectoral());
         entity.put("Muda",ave.getMuda());
         entity.put("PlacIncubatriz",ave.getPlacaIncubatriz());
+        entity.put("Observaciones", ave.getObservaciones());
 
         return entity;
     }
@@ -707,6 +713,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             }
         } else ave.setPlacaIncubatriz(0);
 
+        ave.setObservaciones(et_ObservacionesAves.getText().toString());
     }
 
     /**
@@ -730,6 +737,11 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             return false;
         }
 
+        if (etn_EjemplaresCapturados.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR: Las capturas tienen que completarse", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         if (etn_EjemplaresCapturados.getText().toString().equals("0")){
             Toast.makeText(this, "ERROR: Las capturas tienen que ser distintas de cero", Toast.LENGTH_SHORT).show();
             return false;
@@ -748,7 +760,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                     Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-                if (limites.getAvesAnilladas().contains(Integer.parseInt(etn_NumeroAnilla.getText().toString()))) {
+                if (limites.getAvesAnilladas().contains(Integer.parseInt(etn_NumeroAnilla.getText().toString())) && !ave.isModificacion()) {
                     Toast.makeText(this, "El numero de anilla que has especificado ya esta siendo usado", Toast.LENGTH_SHORT).show();
                     return false;
                 }
