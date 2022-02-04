@@ -22,7 +22,10 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private Button btn_Enviar, btn_Volver;
     private TextView tv_Hora;
     private EditText etn_EjemplaresCapturados;
+    //Radio Buttons seleccion de tipo de anillamiento
+    private RadioButton rb_SeleccionNumAnilla;
     private EditText etn_NumeroAnilla;
+    private RadioButton rb_SeleccionAnillaPre;
     private EditText et_NumeroAnillaPreexistente;
     private EditText etnd_Peso;
     private EditText etnd_LongitudTarso;
@@ -298,7 +301,9 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         etn_EjemplaresCapturados = findViewById(R.id.etn_EjemplaresCapturados);
 
         //Datos del ave
+        rb_SeleccionNumAnilla = findViewById(R.id.rb_SeleccionNumAnilla);
         etn_NumeroAnilla = findViewById(R.id.etn_NumeroAnilla);
+        rb_SeleccionAnillaPre = findViewById(R.id.rb_SeleccionAnillaPre);
         et_NumeroAnillaPreexistente = findViewById(R.id.et_NumeroAnillaPrexistente);
         etnd_Peso = findViewById(R.id.etnd_Peso);
         etnd_LongitudTarso = findViewById(R.id.etnd_LongitudTarso);
@@ -374,7 +379,10 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         rb_SexoIndeterminado.setOnClickListener(this);
         rb_SexoHembra.setOnClickListener(this);
         rb_SexoMacho.setOnClickListener(this);
-
+        rb_EdadAdulto.setOnClickListener(this);
+        rb_EdadJuvenil.setOnClickListener(this);
+        rb_SeleccionAnillaPre.setOnClickListener(this);
+        rb_SeleccionNumAnilla.setOnClickListener(this);
     }
 
     /**
@@ -415,7 +423,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             }, 7, 0, true);
             recogerHora.show();
         }
-        if (view == rb_SexoHembra){
+        if (view == rb_SexoHembra && rb_EdadAdulto.isChecked()){
             switchPlacaIncubatriz(true);
         }
         if (view == rb_SexoMacho){
@@ -424,6 +432,31 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         if (view == rb_SexoIndeterminado){
             switchPlacaIncubatriz(false);
         }
+        if (view == rb_SeleccionNumAnilla){
+            switchStatusAnilla(true);
+        }
+        if (view == rb_SeleccionAnillaPre){
+            switchStatusAnilla(false);
+        }
+        if (view == rb_EdadJuvenil){
+            switchPlacaIncubatriz(false);
+        }
+        if (view == rb_EdadAdulto && rb_SexoHembra.isChecked()){
+            switchPlacaIncubatriz(true);
+        }
+    }
+
+    /**
+     *
+     * @param status if b==true enables Numero de Anilla else enables Anilla Preexistente
+     */
+    private void switchStatusAnilla(boolean status) {
+        rb_SeleccionNumAnilla.setChecked(status);
+        rb_SeleccionAnillaPre.setChecked(!status);
+        etn_NumeroAnilla.setEnabled(status);
+        etn_NumeroAnilla.setText("");
+        et_NumeroAnillaPreexistente.setEnabled(!status);
+        et_NumeroAnillaPreexistente.setText("");
     }
 
     /**
@@ -441,6 +474,9 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             rb_PlacaIncMEvidente.setTextColor(getColor(R.color.Gris));
             rb_PlacaIncIncompleta.setTextColor(getColor(R.color.Gris));
             rb_PlacaIncNoEvidencia.setTextColor(getColor(R.color.Gris));
+            rb_PlacaIncMEvidente.setChecked(false);
+            rb_PlacaIncIncompleta.setChecked(false);
+            rb_PlacaIncNoEvidencia.setChecked(false);
         }
         rb_PlacaIncMEvidente.setClickable(b);
         rb_PlacaIncIncompleta.setClickable(b);
@@ -732,11 +768,6 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             return false;
         }
 
-        if (!checkAve()) {
-            Toast.makeText(this, "ERROR: La especie seleccionada no se puede anillar", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
         if (etn_EjemplaresCapturados.getText().toString().isEmpty()) {
             Toast.makeText(this, "ERROR: Las capturas tienen que completarse", Toast.LENGTH_SHORT).show();
             return false;
@@ -750,38 +781,36 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
 
         //Comprobacion de parámetros dentro de límites
-        if (!etn_NumeroAnilla.getText().toString().isEmpty()){
-            if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) {
-                Toast.makeText(this, "No se puede anillar a un ave ya anillada", Toast.LENGTH_SHORT).show();
+        if (rb_SeleccionNumAnilla.isChecked()){
+            if (etn_NumeroAnilla.getText().toString().isEmpty()){
+                Toast.makeText(this, "ERROR: El numero de anilla no puede estar vacío", Toast.LENGTH_SHORT).show();
                 return false;
             }
             if (Integer.parseInt(etn_NumeroAnilla.getText().toString())!=99999){
+                if (!checkAve()) {
+                    Toast.makeText(this, "ERROR: La especie seleccionada no se puede anillar", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
                 if (Integer.parseInt(etn_NumeroAnilla.getText().toString())<limites.getMinNAnilla() || Integer.parseInt(etn_NumeroAnilla.getText().toString())>limites.getMaxNAnilla()){
-                    Toast.makeText(this, "El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "ERROR: El numero de anilla no corresponde a tus limites de anillamiento", Toast.LENGTH_SHORT).show();
                     return false;
                 }
                 if (limites.getAvesAnilladas().contains(Integer.parseInt(etn_NumeroAnilla.getText().toString())) && !ave.isModificacion()) {
-                    Toast.makeText(this, "El numero de anilla que has especificado ya esta siendo usado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "ERROR: El numero de anilla que has especificado ya esta siendo usado", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
-        } else if (!et_NumeroAnillaPreexistente.getText().toString().isEmpty()) {
-            if (!etn_NumeroAnilla.getText().toString().isEmpty()){
-                Toast.makeText(this, "No se puede anillar a un ave ya anillada", Toast.LENGTH_SHORT).show();
+        } else {
+            if (et_NumeroAnillaPreexistente.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR: La anilla preexistente no puede estar vacía", Toast.LENGTH_SHORT).show();
                 return false;
             }
-        } else {
-            Toast.makeText(this, "Se tiene que introducir al menos un tipo de anilla", Toast.LENGTH_SHORT).show();
-            return false;
         }
 
         //Comprobacion de que los parámetros no estén vacios
-
         if (
-                etnd_LongitudPico.getText().toString().equals("") ||
-                        etnd_LongitudTarso.getText().toString().equals("") ||
-                        etnd_LongitudTerceraPrimaria.getText().toString().equals("") ||
-                        etnd_Peso.getText().toString().equals("")
+                etnd_LongitudPico.getText().toString().equals("") || etnd_LongitudTarso.getText().toString().equals("") ||
+                etnd_LongitudTerceraPrimaria.getText().toString().equals("") || etnd_Peso.getText().toString().equals("")
         ){
             Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
             return false;
@@ -851,7 +880,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         }
 
         //Placa incubatriz
-        if (rbg_Sexo.getCheckedRadioButtonId()==R.id.rb_SexoHembra){
+        if (rb_SexoHembra.isChecked() && rb_EdadAdulto.isChecked()){
             if (rbg_PlacaInc.getCheckedRadioButtonId()==-1){
                 Toast.makeText(this, "Se ha de seleccionar el estado de la placa incubatriz", Toast.LENGTH_SHORT).show();
                 return false;

@@ -1291,24 +1291,24 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_Especie18"
+                    android:id="@+id/tv_Especie21"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="35"
-                    android:text="@string/cb_Especie18"
+                    android:text="@string/cb_Especie21"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioGroup
-                    android:id="@+id/rbg_Especie18"
+                    android:id="@+id/rbg_Especie21"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/rb_Especie18N"
+                        android:id="@+id/rb_Especie21N"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:checked="true"
@@ -1317,7 +1317,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <RadioButton
-                        android:id="@+id/rb_Especie18S"
+                        android:id="@+id/rb_Especie21S"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/rb_PlantaPresente"
@@ -1325,109 +1325,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <RadioButton
-                        android:id="@+id/rb_Especie18A"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_Especie19"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="35"
-                    android:text="@string/cb_Especie19"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp" />
-
-                <RadioGroup
-                    android:id="@+id/rbg_Especie19"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="65"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie19N"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie19S"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie19A"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_Especie36"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="35"
-                    android:text="@string/cb_Especie36"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp" />
-
-                <RadioGroup
-                    android:id="@+id/rbg_Especie36"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="65"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie36N"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie36S"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie36A"
+                        android:id="@+id/rb_Especie21A"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/rb_PlantaAbundante"
@@ -1479,57 +1377,6 @@
 
                     <RadioButton
                         android:id="@+id/rb_Especie20A"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_Especie21"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="35"
-                    android:text="@string/cb_Especie21"
-                    android:textColor="@color/VerdePrimario"
-                    android:textSize="@dimen/_13ssp" />
-
-                <RadioGroup
-                    android:id="@+id/rbg_Especie21"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="65"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie21N"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie21S"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <RadioButton
-                        android:id="@+id/rb_Especie21A"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/rb_PlantaAbundante"
@@ -1683,6 +1530,57 @@
 
                     <RadioButton
                         android:id="@+id/rb_Especie24A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/rb_PlantaAbundante"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="@string/cb_Especie18"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie18N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:text="@string/rb_PlantaNo"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie18S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/rb_PlantaPresente"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie18A"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/rb_PlantaAbundante"
@@ -1989,6 +1887,108 @@
 
                     <RadioButton
                         android:id="@+id/rb_Especie30A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/rb_PlantaAbundante"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie19"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="@string/cb_Especie19"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie19"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie19N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:text="@string/rb_PlantaNo"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie19S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/rb_PlantaPresente"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie19A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/rb_PlantaAbundante"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie36"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="@string/cb_Especie36"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <RadioGroup
+                    android:id="@+id/rbg_Especie36"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie36N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:text="@string/rb_PlantaNo"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie36S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/rb_PlantaPresente"
+                        android:textColor="@color/VerdePrimario"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie36A"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/rb_PlantaAbundante"

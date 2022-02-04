@@ -36,6 +36,24 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_IntroduceNParticipantes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Introduzca el numero de participantes:"
+                android:textColor="@color/VerdePrimario"
+                android:textSize="@dimen/_15ssp" />
+
+            <EditText
+                android:id="@+id/etn_NumeroParticipantes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="0"
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
+
+            <TextView
                 android:id="@+id/tv_IntroduceNMallas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:text="0"
+                android:hint="0"
                 android:textColor="@color/Negro"
                 android:textSize="@dimen/_15ssp" />
 
@@ -66,8 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number"
-                android:text="0"
+                android:inputType="numberDecimal"
+                android:hint="0"
                 android:textColor="@color/Negro"
                 android:textSize="@dimen/_15ssp" />
 

@@ -133,10 +133,15 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
             String key = "CA0"+i;
             ca.add(obj.getBoolean(key));
         }
+        int Participantes = 0;
+        try {
+            Participantes = Integer.parseInt(obj.getNumber("Participantes").toString());
+        }catch (Exception e){};
 
         return new MetodosCaptura(
+                Participantes,
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumMallas")).toString()),
-                Integer.parseInt(Objects.requireNonNull(obj.getNumber("LongRed")).toString()),
+                Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongRed")).toString()),
                 obj.getBoolean("Coto"),
                 ca,
                 Integer.parseInt(Objects.requireNonNull(obj.getNumber("RecCamachuelo")).toString()),

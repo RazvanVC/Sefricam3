@@ -21,6 +21,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     private TextView tv_DatosNubes;
     private TextView tv_DatosLluvia;
     private TextView tv_DatosPlantas;
+    private TextView tv_DatosNumeroParticipantes;
     private ImageView iv_DatosCheckBoxCapturas;
     private TextView tv_DatosNumeroMallas;
     private TextView tv_DatosLongitudRed;
@@ -198,6 +199,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
 
         //Metodos de captura
         iv_DatosCheckBoxCapturas = findViewById(R.id.iv_DatosCheckBoxCapturas);
+        tv_DatosNumeroParticipantes = findViewById(R.id.tv_DatosNumeroParticipantes);
         tv_DatosNumeroMallas = findViewById(R.id.tv_DatosNumeroMallas);
         tv_DatosLongitudRed = findViewById(R.id.tv_DatosLongitudRed);
         tv_DatosCoto = findViewById(R.id.tv_DatosCoto);
@@ -474,6 +476,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
     private void loadMetodosCapturas() {
         iv_DatosCheckBoxCapturas.setBackground(getDrawable(R.drawable.baseline_check_box_24));
+        tv_DatosNumeroParticipantes.setText(String.valueOf(envio.getMetodosCaptura().getNumeroParticipantes()));
         tv_DatosNumeroMallas.setText(String.valueOf(envio.getMetodosCaptura().getNumeroMallas()));
         tv_DatosLongitudRed.setText(String.valueOf(envio.getMetodosCaptura().getLongitudRed()));
         if (envio.getMetodosCaptura().isCoto()){

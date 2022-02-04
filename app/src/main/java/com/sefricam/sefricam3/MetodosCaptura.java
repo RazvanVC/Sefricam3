@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MetodosCaptura implements Serializable {
+    private final int NumeroParticipantes;
     private final int NumeroMallas;
-    private final int LongitudRed;
+    private final double LongitudRed;
 
     private final boolean Coto;
     private final ArrayList<Boolean> ControlAgentes;
@@ -71,7 +72,8 @@ public class MetodosCaptura implements Serializable {
      * This is a Object Class in order to make data more readable at debug. Contains all the data related
      * to the MetodosCaptura that we store in the Parse DB
      */
-    public MetodosCaptura(int numeroMallas, int longitudRed, boolean coto, ArrayList<Boolean> controlAgentes, int reclamosCamachuelo, int cimbelesCamachuelo, int capturasCamachueloM, int capturasCamachueloH, int reclamosJilguero, int cimbelesJilguero, int capturasJilgueroM, int capturasJilgueroH, int reclamosLugano, int cimbelesLugano, int capturasLuganoM, int capturasLuganoH, int reclamosPardComun, int cimbelesPardComun, int capturasPardComunM, int capturasPardComunH, int reclamosPicogordo, int cimbelesPicogordo, int capturasPicogordoM, int capturasPicogordoH, int reclamosPinzonComun, int cimbelesPinzonComun, int capturasPinzonComunM, int capturasPinzonComunH, int reclamosPinzonReal, int cimbelesPinzonReal, int capturasPinzonRealM, int capturasPinzonRealH, int reclamosPiquituerto, int cimbelesPiquituerto, int capturasPiquituertoM, int capturasPiquituertoH, int reclamosVerdecillo, int cimbelesVerdecillo, int capturasVerdecilloM, int capturasVerdecilloH, int reclamosVerdComun, int cimbelesVerdComun, int capturasVerdComunM, int capturasVerdComunH, int reclamosVerdSerrano, int cimbelesVerdSerrano, int capturasVerdSerranoM, int capturasVerdSerranoH, String observaciones) {
+    public MetodosCaptura(int numeroParticipantes, int numeroMallas, double longitudRed, boolean coto, ArrayList<Boolean> controlAgentes, int reclamosCamachuelo, int cimbelesCamachuelo, int capturasCamachueloM, int capturasCamachueloH, int reclamosJilguero, int cimbelesJilguero, int capturasJilgueroM, int capturasJilgueroH, int reclamosLugano, int cimbelesLugano, int capturasLuganoM, int capturasLuganoH, int reclamosPardComun, int cimbelesPardComun, int capturasPardComunM, int capturasPardComunH, int reclamosPicogordo, int cimbelesPicogordo, int capturasPicogordoM, int capturasPicogordoH, int reclamosPinzonComun, int cimbelesPinzonComun, int capturasPinzonComunM, int capturasPinzonComunH, int reclamosPinzonReal, int cimbelesPinzonReal, int capturasPinzonRealM, int capturasPinzonRealH, int reclamosPiquituerto, int cimbelesPiquituerto, int capturasPiquituertoM, int capturasPiquituertoH, int reclamosVerdecillo, int cimbelesVerdecillo, int capturasVerdecilloM, int capturasVerdecilloH, int reclamosVerdComun, int cimbelesVerdComun, int capturasVerdComunM, int capturasVerdComunH, int reclamosVerdSerrano, int cimbelesVerdSerrano, int capturasVerdSerranoM, int capturasVerdSerranoH, String observaciones) {
+        NumeroParticipantes = numeroParticipantes;
         NumeroMallas = numeroMallas;
         LongitudRed = longitudRed;
         Coto = coto;
@@ -127,7 +129,7 @@ public class MetodosCaptura implements Serializable {
         return NumeroMallas;
     }
 
-    public int getLongitudRed() {
+    public double getLongitudRed() {
         return LongitudRed;
     }
 
@@ -317,5 +319,9 @@ public class MetodosCaptura implements Serializable {
 
     public String getObservaciones() {
         return Observaciones;
+    }
+
+    public int getNumeroParticipantes() {
+        return NumeroParticipantes;
     }
 }

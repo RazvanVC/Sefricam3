@@ -5,6 +5,7 @@ import com.parse.ParseQuery;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * This is a Object Class in order to make data more readable at debug. Contains all the data related
@@ -49,12 +50,34 @@ public class Limites implements Serializable {
     private int numeroGrupo;
 
     private boolean anillableCamachuelo, anillableVerdComun, anillableVerdSerrano, anillableJilguero, anillablePardComun, anillableVerdecillo, anillableLugano, anillablePinzComun, anillablePinzReal, anillablePiquituerto, anillablePicogordo;
-    private ArrayList<Integer> avesAnilladas;
+    private ArrayList<Integer> avesAnilladas = new ArrayList<>();
 
     public Limites(int numGrupo) {
         this.numeroGrupo = numGrupo;
         readObject(numGrupo);
         readObject();
+        loadAnillas(numGrupo);
+    }
+
+    private void loadAnillas(int numGrupo) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Aves");
+
+        query.whereEqualTo("NumGrupo", numGrupo);
+        query.whereLessThanOrEqualTo("NumAnilla", this.maxNAnilla);
+        query.whereGreaterThanOrEqualTo("NumeroAnilla", this.minNAnilla);
+
+        query.findInBackground((objects, e) -> {
+            if (e == null){
+                ParseObject obj;
+                for (int i = 0; i<objects.size(); i++){
+                    DatosAves localAve;
+                    obj = objects.get(i);
+                    avesAnilladas.add(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumAnilla")).toString()));
+
+                }
+                System.out.println(avesAnilladas);
+            }
+        });
     }
 
     private void readObject() {
@@ -910,11 +933,8 @@ public class Limites implements Serializable {
         query.findInBackground((objects, e) -> {
             if (e == null){
                 ParseObject  obj = objects.get(0);
-
                 minNAnilla = obj.getInt("NAnillaMin");
                 maxNAnilla = obj.getInt("NAnillaMax");
-
-                numeroGrupo  = obj.getInt("NumGrupo");
             }
         });
     }

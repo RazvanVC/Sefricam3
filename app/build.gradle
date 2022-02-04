@@ -4,15 +4,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.sefricam.sefricam3"
         minSdkVersion 24
-        targetSdkVersion 29
-        versionCode 3
-        versionName "3.2"
+        targetSdkVersion 30
+        versionCode 5
+        versionName "3.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -8,13 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import static java.lang.Math.*;
 
 public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickListener{
 
     // UI Parameters
-    private EditText etnd_LatitudCuadricula, etnd_LongitudCuadricula;
-    private TextView tv_CuadriculaActual, tv_ResultadoCuadricula;
-    private Button btn_CalcularCuadricula, btn_VolverCuadricula;
+    private EditText etnd_LatitudCuadricula, etnd_LongitudCuadricula, etnd_LongitudAnterior, etnd_LatitudAnterior;
+    private TextView tv_CuadriculaActual;
+    private TextView tv_ResultadoCuadricula;
+    private TextView tv_DatosLongitudDistancia;
+    private TextView tv_Distancia;
+    private TextView tv_ResultadoDistancia;
+    private Button btn_CalcularCuadricula, btn_VolverCuadricula, btn_CalcularDistancia;
 
     //Class Parameters
     public String email;
@@ -47,11 +52,15 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
     private void startFindView() {
         etnd_LatitudCuadricula = findViewById(R.id.etnd_LatitudCuadricula);
         etnd_LongitudCuadricula = findViewById(R.id.etnd_LongitudCuadricula);
+        etnd_LongitudAnterior=findViewById(R.id.etnd_LongitudAnterior);
+        etnd_LatitudAnterior=findViewById(R.id.etnd_LatitudAnterior);
         tv_CuadriculaActual = findViewById(R.id.tv_CuadriculaActual);
         tv_ResultadoCuadricula = findViewById(R.id.tv_ResultadoCuadricula);
+        tv_Distancia= findViewById(R.id.tv_Distancia);
+        tv_ResultadoDistancia = findViewById(R.id.tv_ResultadoDistancia);
         btn_CalcularCuadricula = findViewById(R.id.btn_CalcularCuadricula);
         btn_VolverCuadricula = findViewById(R.id.btn_VolverCuadricula);
-
+        btn_CalcularDistancia = findViewById(R.id.btn_CalcularDistancia);
     }
 
     /**
@@ -60,6 +69,7 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
     private void setOnClickListener() {
         btn_CalcularCuadricula.setOnClickListener(this);
         btn_VolverCuadricula.setOnClickListener(this);
+        btn_CalcularDistancia.setOnClickListener(this);
     }
 
     /**
@@ -92,6 +102,35 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
             tv_ResultadoCuadricula.setVisibility(View.VISIBLE);
             tv_CuadriculaActual.setVisibility(View.VISIBLE);
         }
+        if (v == btn_CalcularDistancia){
+            try {
+                Double.parseDouble(etnd_LongitudCuadricula.getText().toString());
+                Double.parseDouble(etnd_LatitudCuadricula.getText().toString());
+                Double.parseDouble(etnd_LongitudAnterior.getText().toString());
+                Double.parseDouble(etnd_LatitudAnterior.getText().toString());
+            } catch (Exception e) {
+                tv_Distancia.setVisibility(View.INVISIBLE);
+                tv_ResultadoDistancia.setVisibility(View.INVISIBLE);
+                Toast.makeText(this, "Hay un error con las coordenadas introducidas", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            double longitud1 = Double.parseDouble(etnd_LongitudCuadricula.getText().toString());
+            double latitud1 = Double.parseDouble(etnd_LatitudCuadricula.getText().toString());
+            double longitud2 = Double.parseDouble(etnd_LongitudAnterior.getText().toString());
+            double latitud2 = Double.parseDouble(etnd_LatitudAnterior.getText().toString());
+
+
+            tv_ResultadoDistancia.setText(setDistancia(longitud1,latitud1,longitud2,latitud2));
+            tv_Distancia.setVisibility(View.VISIBLE);
+            tv_ResultadoDistancia.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+    private String setDistancia(double longitud1, double latitud1, double longitud2, double latitud2) {
+        double distanciaGrados = acos(sin(latitud1)*sin(latitud2)+cos(latitud1)*cos(latitud2)*cos(longitud1-longitud2));
+        double distanciaTotal = round(111.18*distanciaGrados*100.0)/100.0;
+        return distanciaTotal+" KM";
     }
 
     /**

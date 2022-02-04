@@ -64,6 +64,8 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Datos_Aves");
 
+        query.whereEqualTo("Longitud", envio.getLongitud());
+        query.whereEqualTo("Latitud", envio.getLatitud());
         query.whereEqualTo("NumGrupo",limites.getNumeroGrupo());
         query.findInBackground((objects, e) -> {
             if (e == null){

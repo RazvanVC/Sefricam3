@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Blanco">
@@ -198,7 +199,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="30"
                     android:inputType="number"
-                    android:textSize="@dimen/_13ssp" />
+                    android:textSize="@dimen/_13ssp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </LinearLayout>
 
@@ -209,24 +211,50 @@
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
                 android:text="Introduzca los datos del ave"/>
-            <EditText
-                android:id="@+id/etn_NumeroAnilla"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_15ssp"
-                android:inputType="number"
-                android:textColor="@color/Negro"
-                android:hint="Numero de anilla"
-                android:enabled="true"/>
-            <EditText
-                android:id="@+id/et_NumeroAnillaPrexistente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/Negro"
-                android:hint="Anilla preexistente"
-                android:enabled="true"/>
+
+            <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/rb_SeleccionNumAnilla"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_15sdp"
+                    android:checked="true"/>
+                <EditText
+                    android:id="@+id/etn_NumeroAnilla"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15ssp"
+                    android:inputType="number"
+                    android:textColor="@color/Negro"
+                    android:hint="Numero de anilla"
+                    android:enabled="true"/>
+            </LinearLayout>
+
+            <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/rb_SeleccionAnillaPre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/VerdePrimario"
+                    android:checked="false"/>
+                <EditText
+                    android:id="@+id/et_NumeroAnillaPrexistente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="@dimen/_15ssp"
+                    android:textColor="@color/Negro"
+                    android:hint="Anilla preexistente"
+                    android:enabled="false"/>
+            </LinearLayout>
+
+
             <EditText
                 android:id="@+id/etnd_Peso"
                 android:layout_width="match_parent"

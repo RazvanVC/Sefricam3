@@ -20,7 +20,7 @@ import static java.lang.Integer.parseInt;
 public class Pantalla_Metodos_Captura extends Activity implements View.OnClickListener{
 
     private Button btn_Guardar, btn_Volver;
-    private EditText etn_NumeroMallas, etn_LongitudRed;
+    private EditText etn_NumeroMallas, etn_LongitudRed, etn_NumeroParticipantes;
 
     private EditText etn_CimbelesCamachuelo, etn_ReclamosCamachuelo, etn_CapturasCamachueloM, etn_CapturasCamachueloH;
     private EditText etn_CimbelesJilguero, etn_ReclamosJilguero, etn_CapturasJilgueroM, etn_CapturasJilgueroH;
@@ -85,6 +85,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
     private void iniciarComponentes() {
 
+        etn_NumeroParticipantes = findViewById(R.id.etn_NumeroParticipantes);
         etn_LongitudRed = findViewById(R.id.etn_LongitudRed);
         etn_NumeroMallas = findViewById(R.id.etn_NumeroMallas);
 
@@ -247,10 +248,16 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
         int capturasVerdecilloM;
         int capturasVerderonComunM;
         int capturasVerderonSerranoM;
+        int numeroMallas;
+        double longitudRed;
 
+        int numeroParticipantes = Integer.parseInt(etn_NumeroParticipantes.getText().toString());
 
-        int numeroMallas = parseInt(etn_NumeroMallas.getText().toString());
-        int longitudRed = parseInt(etn_LongitudRed.getText().toString());
+        if (etn_NumeroMallas.getText().toString().isEmpty()) numeroMallas = 0;
+        else numeroMallas = Integer.parseInt(etn_NumeroMallas.getText().toString());
+
+        if (etn_LongitudRed.getText().toString().isEmpty()) longitudRed = 0;
+        else longitudRed = Double.parseDouble(etn_LongitudRed.getText().toString());
 
         asignarControlAgentes();
         boolean coto = false;
@@ -441,7 +448,7 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
         String observaciones = et_Observaciones.getText().toString();
 
-        envio.setMetodosCaptura(new MetodosCaptura(numeroMallas, longitudRed, coto, ControlAgentes,
+        envio.setMetodosCaptura(new MetodosCaptura(numeroParticipantes, numeroMallas, longitudRed, coto, ControlAgentes,
                 reclamosCamachuelo, cimbelesCamachuelo, capturasCamachueloM, capturasCamachueloH,
                 reclamosJilguero, cimbelesJilguero, capturasJilgueroM, capturasJilgueroH,
                 reclamosLugano, cimbelesLugano, capturasLuganoM, capturasLuganoH,
@@ -470,7 +477,9 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     }
 
     private boolean comprobarCampos() {
-        boolean comprobado =  true;
+
+
+        if (TextUtils.isEmpty(etn_NumeroParticipantes.getText().toString())) return false;
 
         if (TextUtils.isEmpty(etn_NumeroMallas.getText().toString())) return false;
 
@@ -478,28 +487,23 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
 
         if (!comprobarCimbeles()) return false;
 
-        comprobado = comprobarReclamos();
-        if (!comprobado) return comprobado;
+        if (!comprobarReclamos()) return false;
 
 
-        if (rbg_Coto.getCheckedRadioButtonId()==-1) comprobado =false;
-        if (!comprobado) return comprobado;
+        if (rbg_Coto.getCheckedRadioButtonId()==-1) return false;
 
-        if (rbg_ControlAgentes.getCheckedRadioButtonId()==-1) comprobado=false;
-        if (!comprobado) return comprobado;
+
+        if (rbg_ControlAgentes.getCheckedRadioButtonId()==-1) return false;
         if (rbg_ControlAgentes.getCheckedRadioButtonId()!=-1) {
             if (rbg_ControlAgentes.getCheckedRadioButtonId() == R.id.rb_SiControlAgentes) {
-                if (
-                        !cb_ControlOtros.isChecked()
-                                && !cb_ControlPoliciaNacional.isChecked()
-                                && !cb_ControlPoliciaMunicipal.isChecked()
-                                && !cb_ControlForestales.isChecked()
-                                && !cb_ControlSeprona.isChecked()
-                )
-                    comprobado = false;
+                return cb_ControlOtros.isChecked()
+                        || cb_ControlPoliciaNacional.isChecked()
+                        || cb_ControlPoliciaMunicipal.isChecked()
+                        || cb_ControlForestales.isChecked()
+                        || cb_ControlSeprona.isChecked();
             }
         }
-        return comprobado;
+        return true;
     }
 
     private boolean comprobarReclamos() {
@@ -670,12 +674,12 @@ public class Pantalla_Metodos_Captura extends Activity implements View.OnClickLi
     }
 
     private void guardarParametros(Intent actividadDestino) {
-
         actividadDestino.putExtra("ENVIO", envio);
         actividadDestino.putExtra("LIMITES", limites);
     }
 
     private void cargarDatos() {
+        etn_NumeroParticipantes.setText(String.valueOf(metodosCaptura.getNumeroParticipantes()));
         etn_NumeroMallas.setText(String.valueOf(metodosCaptura.getNumeroMallas()));
         etn_LongitudRed.setText(String.valueOf(metodosCaptura.getLongitudRed()));
 

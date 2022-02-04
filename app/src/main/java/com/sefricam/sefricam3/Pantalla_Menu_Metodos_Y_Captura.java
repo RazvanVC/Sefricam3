@@ -302,6 +302,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("EP38", envio.getDatosEntorno().getEP38());
 
         //Metodos Captura
+        entity.put("Participantes", envio.getMetodosCaptura().getNumeroParticipantes());
         entity.put("NumMallas", envio.getMetodosCaptura().getNumeroMallas());
         entity.put("LongRed",envio.getMetodosCaptura().getLongitudRed());
         entity.put("Coto",envio.getMetodosCaptura().isCoto());
