@@ -64,7 +64,7 @@ public class Limites implements Serializable {
 
         query.whereEqualTo("NumGrupo", numGrupo);
         query.whereLessThanOrEqualTo("NumAnilla", this.maxNAnilla);
-        query.whereGreaterThanOrEqualTo("NumeroAnilla", this.minNAnilla);
+        query.whereGreaterThanOrEqualTo("NumAnilla", this.minNAnilla);
 
         query.findInBackground((objects, e) -> {
             if (e == null){
