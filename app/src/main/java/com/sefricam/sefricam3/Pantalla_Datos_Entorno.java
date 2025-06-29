@@ -374,7 +374,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     /**
      * Puts the data in the Envio Object
      */
-    @SuppressLint("NonConstantResourceId")
     private void setValues() {
         int zonificacion = 0;
         int viento = 0;
@@ -386,115 +385,87 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         double tInicio = Double.parseDouble(etnd_TemperaturaInicio.getText().toString());
         double tFin = Double.parseDouble(etnd_TemperaturaFin.getText().toString());
 
-        switch (rbg_Zonificacion.getCheckedRadioButtonId()){
-            case R.id.rb_Zonificacion01:
-                zonificacion = 1;
-                break;
-            case R.id.rb_Zonificacion02:
-                zonificacion = 2;
-                break;
-            case R.id.rb_Zonificacion03:
-                zonificacion = 3;
-                break;
-            case R.id.rb_Zonificacion04:
-                zonificacion = 4;
-                break;
-            case R.id.rb_Zonificacion05:
-                zonificacion = 5;
-                break;
-            case R.id.rb_Zonificacion06:
-                zonificacion = 6;
-                break;
-            case R.id.rb_Zonificacion07:
-                zonificacion = 7;
-                break;
-            case R.id.rb_Zonificacion08:
-                zonificacion = 8;
-                break;
-            case R.id.rb_Zonificacion09:
-                zonificacion = 9;
-                break;
-            case R.id.rb_Zonificacion10:
-                zonificacion = 10;
-                break;
-            case R.id.rb_Zonificacion11:
-                zonificacion = 11;
-                break;
+        int checkedIdZonificacion = rbg_Zonificacion.getCheckedRadioButtonId();
+        if (checkedIdZonificacion == R.id.rb_Zonificacion01) {
+            zonificacion = 1;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion02) {
+            zonificacion = 2;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion03) {
+            zonificacion = 3;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion04) {
+            zonificacion = 4;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion05) {
+            zonificacion = 5;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion06) {
+            zonificacion = 6;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion07) {
+            zonificacion = 7;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion08) {
+            zonificacion = 8;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion09) {
+            zonificacion = 9;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion10) {
+            zonificacion = 10;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion11) {
+            zonificacion = 11;
         }
 
-        switch (rbg_FuerzaViento.getCheckedRadioButtonId()) {
-            case R.id.rb_VientoCalma:
-                viento = 1;
-                break;
-            case R.id.rb_VientoLigero:
-                viento = 2;
-                break;
-            case R.id.rb_VientoFuerte:
-                viento=3;
-                break;
+        int checkedIdFuerzaViento = rbg_FuerzaViento.getCheckedRadioButtonId();
+        if (checkedIdFuerzaViento == R.id.rb_VientoCalma) {
+            viento = 1;
+        } else if (checkedIdFuerzaViento == R.id.rb_VientoLigero) {
+            viento = 2;
+        } else if (checkedIdFuerzaViento == R.id.rb_VientoFuerte) {
+            viento = 3;
         }
 
-        if (rb_VientoLigero.isChecked() || rb_VientoFuerte.isChecked()){
-            switch (rbg_DireccionViento.getCheckedRadioButtonId()){
-                case R.id.rb_DirN:
-                    direccionViento = "N";
-                    break;
-                case R.id.rb_DirS:
-                    direccionViento = "S";
-                    break;
-                case R.id.rb_DirE:
-                    direccionViento = "E";
-                    break;
-                case R.id.rb_DirO:
-                    direccionViento = "O";
-                    break;
-                case R.id.rb_DirNE:
-                    direccionViento = "NE";
-                    break;
-                case R.id.rb_DirNO:
-                    direccionViento = "NO";
-                    break;
-                case R.id.rb_DirSE:
-                    direccionViento = "SE";
-                    break;
-                case R.id.rb_DirSO:
-                    direccionViento = "SO";
-                    break;
+
+        if (rb_VientoLigero.isChecked() || rb_VientoFuerte.isChecked()) {
+            int checkedIdViento = rbg_DireccionViento.getCheckedRadioButtonId();
+            if (checkedIdViento == R.id.rb_DirN) {
+                direccionViento = "N";
+            } else if (checkedIdViento == R.id.rb_DirS) {
+                direccionViento = "S";
+            } else if (checkedIdViento == R.id.rb_DirE) {
+                direccionViento = "E";
+            } else if (checkedIdViento == R.id.rb_DirO) {
+                direccionViento = "O";
+            } else if (checkedIdViento == R.id.rb_DirNE) {
+                direccionViento = "NE";
+            } else if (checkedIdViento == R.id.rb_DirNO) {
+                direccionViento = "NO";
+            } else if (checkedIdViento == R.id.rb_DirSE) {
+                direccionViento = "SE";
+            } else if (checkedIdViento == R.id.rb_DirSO) {
+                direccionViento = "SO";
             }
-        } else direccionViento = "0";
-
-
-        switch (rbg_Nubes.getCheckedRadioButtonId()){
-            case R.id.rb_NubesAusente:
-                nubes=1;
-                break;
-            case R.id.rb_NubesNYC:
-                nubes=2;
-                break;
-            case R.id.rb_NubesCubierto:
-                nubes=3;
-                break;
-            case R.id.rb_NubesMCubierto:
-                nubes=4;
-                break;
+        } else {
+            direccionViento = "0";
         }
 
-        switch (rbg_Lluvia.getCheckedRadioButtonId()){
-            case R.id.rb_LluviaAusente:
-                lluvia=1;
-                break;
-            case R.id.rb_LluviaIntermitente:
-                lluvia=2;
-                break;
-            case R.id.rb_LluviaLigera:
-                lluvia = 3;
-                break;
-            case R.id.rb_LluviaFuerte:
-                lluvia = 4;
-                break;
-            case R.id.rb_LluviaMFuerte:
-                lluvia = 5;
-                break;
+
+        int checkedIdNubes = rbg_Nubes.getCheckedRadioButtonId();
+        if (checkedIdNubes == R.id.rb_NubesAusente) {
+            nubes = 1;
+        } else if (checkedIdNubes == R.id.rb_NubesNYC) {
+            nubes = 2;
+        } else if (checkedIdNubes == R.id.rb_NubesCubierto) {
+            nubes = 3;
+        } else if (checkedIdNubes == R.id.rb_NubesMCubierto) {
+            nubes = 4;
+        }
+
+        int checkedIdLluvia = rbg_Lluvia.getCheckedRadioButtonId();
+        if (checkedIdLluvia == R.id.rb_LluviaAusente) {
+            lluvia = 1;
+        } else if (checkedIdLluvia == R.id.rb_LluviaIntermitente) {
+            lluvia = 2;
+        } else if (checkedIdLluvia == R.id.rb_LluviaLigera) {
+            lluvia = 3;
+        } else if (checkedIdLluvia == R.id.rb_LluviaFuerte) {
+            lluvia = 4;
+        } else if (checkedIdLluvia == R.id.rb_LluviaMFuerte) {
+            lluvia = 5;
         }
 
         ArrayList<Integer> plantas = setPlantas();
