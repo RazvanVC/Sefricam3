@@ -51,6 +51,11 @@ dependencies {
     // Parse SDK
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.25.0"
 }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 repositories {
     google()

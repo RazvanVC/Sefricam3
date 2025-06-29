@@ -144,5 +144,9 @@
     <string name="PMMC_btn_Modificar">Modificar</string>
     <string name="PME_NoDataFound">No se han encontrado datos</string>
     <string name="PDA_btn_Modificar">Modificar</string>
+    <string name="opt_A">Abund</string>
+    <string name="opt_N">No</string>
+    <string name="opt_S">Pres.</string>
+    <string name="opt_MA">M. Abund.</string>
 
 </resources>
