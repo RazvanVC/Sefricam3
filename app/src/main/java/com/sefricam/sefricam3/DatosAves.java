@@ -22,6 +22,7 @@ public class DatosAves implements Serializable {
     private double longitudTarso;
     private double longitudPico;
     private double longitudTerceraPrimaria;
+    private double longitudCola;
     private int localizacion;
     private int sexo;
     private int edad;
@@ -136,6 +137,14 @@ public class DatosAves implements Serializable {
 
     public void setLongitudTerceraPrimaria(double longitudTerceraPrimaria) {
         this.longitudTerceraPrimaria = longitudTerceraPrimaria;
+    }
+
+    public double getLongitudCola() {
+        return longitudCola;
+    }
+
+    public void setLongitudCola(double longitudCola) {
+        this.longitudCola = longitudCola;
     }
 
     public int getLocalizacion() {
