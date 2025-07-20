@@ -60,7 +60,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private TextView tv_DireccionViento;
     private Button btn_Guardar;
     private Button btn_Volver;
-    private RadioButton[][] rbEspecie = new RadioButton[36][3];
+    private final RadioButton[][] rbEspecie = new RadioButton[36][3];
 
     //Class Parameters
     private Envio envio;
@@ -416,10 +416,10 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         ArrayList<Integer> plantas = setPlantas();
 
         String ep37, ep38;
-        if (et_Especie37.getText().toString().equals("")) ep37 = "-";
+        if (et_Especie37.getText().toString().isEmpty()) ep37 = "-";
         else ep37 = et_Especie37.getText().toString();
 
-        if (et_Especie38.getText().toString().equals("")) ep38 = "-";
+        if (et_Especie38.getText().toString().isEmpty()) ep38 = "-";
         else ep38 = et_Especie38.getText().toString();
 
         envio.setDatosEntorno( new DatosEntorno(tInicio, tFin, zonificacion, viento, direccionViento, nubes, lluvia, plantas, ep37, ep38) );
@@ -464,8 +464,8 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
      */
     private void loadData() {
 
-        etnd_TemperaturaInicio.setText(String.valueOf(envio.getDatosEntorno().gettInicio()));
-        etnd_TemperaturaFin.setText(String.valueOf(envio.getDatosEntorno().gettFin()));
+        etnd_TemperaturaInicio.setText(String.valueOf(envio.getDatosEntorno().getTInicio()));
+        etnd_TemperaturaFin.setText(String.valueOf(envio.getDatosEntorno().getTFin()));
 
         switch (envio.getDatosEntorno().getZonificacion()){
             case 1:

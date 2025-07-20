@@ -50,6 +50,10 @@ dependencies {
 
     // Parse SDK
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.25.0"
+
+    // Loombok
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
 java {
     toolchain {

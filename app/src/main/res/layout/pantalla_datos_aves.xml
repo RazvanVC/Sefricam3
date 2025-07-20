@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/iv_LogoGrandeAves"
+        android:contentDescription="@string/contentDescription_LogoAves"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_90sdp"
         app:layout_constraintVertical_weight="1"
@@ -41,7 +42,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="70"
-                    android:text="Hora de captura del ave:"
+                    android:text="@string/HoraDeCapturaDelAve"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp" />
 
@@ -51,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="30"
                     android:gravity="center"
-                    android:text="--:--"
+                    android:text="@string/HoraCapturaDelAveEmpty"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp" />
             </LinearLayout>
@@ -73,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Seleccione la especie: "/>
+                android:text="@string/SeleccioneLaEspecie"/>
 
             <RadioGroup
                 android:id="@+id/rbg_EspeciesAves"
@@ -110,7 +111,7 @@
                     android:id="@+id/rb_EspeciePardComun"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pardillo Común"
+                    android:text="@string/rb_PadrCom"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
                     />
@@ -164,7 +165,7 @@
                     android:id="@+id/rb_EspecieVerdComun"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Verderón Común"
+                    android:text="@string/rb_VerdCom"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
                     />
@@ -173,7 +174,7 @@
                     android:id="@+id/rb_EspecieVerdSerrano"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Verderón Serrano"
+                    android:text="@string/rb_VerdSerr"
                     android:textSize="@dimen/_13sdp"
                     android:textColor="@color/VerdePrimario"
                     />
@@ -191,7 +192,7 @@
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Ejemplares Capturados"/>
+                    android:text="@string/tv_EjemCaptura"/>
 
                 <EditText
                     android:id="@+id/etn_EjemplaresCapturados"
@@ -271,7 +272,7 @@
                 android:inputType="numberDecimal"
                 android:textSize="@dimen/_15ssp"
                 android:textColor="@color/Negro"
-                android:hint="Longitud del tarso (cm)"
+                android:hint="@string/etnd_LongitudTarso"
                 android:enabled="true"/>
             <EditText
                 android:id="@+id/etnd_LongitudPico"
@@ -280,7 +281,7 @@
                 android:inputType="numberDecimal"
                 android:textSize="@dimen/_15ssp"
                 android:textColor="@color/Negro"
-                android:hint="Longitud del pico (cm)"
+                android:hint="@string/etnd_LongitudPico"
                 android:enabled="true"/>
             <EditText
                 android:id="@+id/etnd_LongitudTerceraPrimaria"
@@ -289,15 +290,25 @@
                 android:inputType="numberDecimal"
                 android:textSize="@dimen/_15ssp"
                 android:textColor="@color/Negro"
-                android:hint="Longitud tercera primaria (cm)"
+                android:hint="@string/etnd_LongitudTerceraPrimaria"
                 android:enabled="true"/>
+
+            <EditText
+                android:id="@+id/etnd_LongitudCola"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:hint="@string/etnd_LongitudCola"
+                android:inputType="numberDecimal"
+                android:textColor="@color/Negro"
+                android:textSize="@dimen/_15ssp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Local"/>
+                android:text="@string/tv_Local"/>
             <RadioGroup
                 android:id="@+id/rbg_Localizacion"
                 android:layout_width="match_parent"
@@ -310,20 +321,20 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Si"/>
+                    android:text="@string/si"/>
                 <RadioButton
                     android:id="@+id/rb_LocalizacionNoLocal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="No"/>
+                    android:text="@string/no"/>
 
                 <RadioButton
                     android:id="@+id/rb_LocalizacionIndeterminado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Indeterminado"
+                    android:text="@string/indeterminado"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp" />
             </RadioGroup>
@@ -333,7 +344,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Sexo"/>
+                android:text="@string/sexo"/>
             <RadioGroup
                 android:id="@+id/rbg_Sexo"
                 android:layout_width="match_parent"
@@ -346,21 +357,21 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Macho"/>
+                    android:text="@string/macho"/>
                 <RadioButton
                     android:id="@+id/rb_SexoHembra"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Hembra"/>
+                    android:text="@string/hembra"/>
                 <RadioButton
                     android:id="@+id/rb_SexoIndeterminado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Indeterminado"/>
+                    android:text="@string/indeterminado"/>
             </RadioGroup>
 
             <TextView
@@ -368,7 +379,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Edad"/>
+                android:text="@string/edad"/>
             <RadioGroup
                 android:id="@+id/rbg_Edad"
                 android:layout_width="match_parent"
@@ -381,14 +392,14 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Juvenil"/>
+                    android:text="@string/juvenil"/>
                 <RadioButton
                     android:id="@+id/rb_EdadAdulto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Adulto"/>
+                    android:text="@string/adulto"/>
             </RadioGroup>
 
             <TextView
@@ -396,7 +407,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Condicion Fisica"/>
+                android:text="@string/condicion_fisica"/>
             <RadioGroup
                 android:id="@+id/rbg_CondicionFisica"
                 android:layout_width="match_parent"
@@ -409,28 +420,28 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Buena"/>
+                    android:text="@string/buena"/>
                 <RadioButton
                     android:id="@+id/rb_CondicionLesiones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Presenta Lesiones"/>
+                    android:text="@string/presenta_lesiones"/>
                 <RadioButton
                     android:id="@+id/rb_CondicionEnfermedad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Sintomas de enfermedad"/>
+                    android:text="@string/sintomas_de_enfermedad"/>
                 <RadioButton
                     android:id="@+id/rb_CondicionMalformacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Malformacion"/>
+                    android:text="@string/malformacion"/>
             </RadioGroup>
 
             <TextView
@@ -438,7 +449,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Grasa"/>
+                android:text="@string/grasa"/>
             <RadioGroup
                 android:id="@+id/rbg_Grasa"
                 android:layout_width="match_parent"
@@ -451,28 +462,28 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Ausente"/>
+                    android:text="@string/ausente"/>
                 <RadioButton
                     android:id="@+id/rb_GrasaInter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Interclavicular"/>
+                    android:text="@string/interclavicular"/>
                 <RadioButton
                     android:id="@+id/rb_GrasaInter_Abd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Inter. + Abdominal"/>
+                    android:text="@string/inter_abdominal"/>
                 <RadioButton
                     android:id="@+id/rb_GrasaInter_Abd_Pectoral"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Inter. + Abdominal + Pectoral"/>
+                    android:text="@string/inter_abdominal_pectoral"/>
             </RadioGroup>
 
             <TextView
@@ -480,7 +491,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Músculo Pectoral"/>
+                android:text="@string/m_sculo_pectoral"/>
             <RadioGroup
                 android:id="@+id/rbg_MusculoPectoral"
                 android:layout_width="match_parent"
@@ -493,28 +504,28 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Quilla evidente"/>
+                    android:text="@string/quilla_evidente"/>
                 <RadioButton
                     android:id="@+id/rb_MusculoQDistinguible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Quilla distinguible"/>
+                    android:text="@string/quilla_distinguible"/>
                 <RadioButton
                     android:id="@+id/rb_MusculoQLigera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Quilla ligera"/>
+                    android:text="@string/quilla_ligera"/>
                 <RadioButton
                     android:id="@+id/rb_MusculoNoQ"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="No marca quilla"/>
+                    android:text="@string/no_marca_quilla"/>
             </RadioGroup>
 
             <TextView
@@ -522,7 +533,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp"
-                android:text="Muda"/>
+                android:text="@string/muda"/>
             <RadioGroup
                 android:id="@+id/rbg_Muda"
                 android:layout_width="match_parent"
@@ -535,21 +546,21 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Ausente"/>
+                    android:text="@string/ausente"/>
                 <RadioButton
                     android:id="@+id/rb_MudaEnCurso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="En curso"/>
+                    android:text="@string/en_curso"/>
                 <RadioButton
                     android:id="@+id/rb_MudaTerminada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Terminada"/>
+                    android:text="@string/terminada"/>
             </RadioGroup>
 
             <TextView
@@ -558,7 +569,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/Gris"
                 android:textSize="@dimen/_15ssp"
-                android:text="Placa incubatriz"/>
+                android:text="@string/placa_incubatriz"/>
             <RadioGroup
                 android:id="@+id/rbg_PlacaInc"
                 android:layout_width="match_parent"
@@ -571,7 +582,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/Gris"
                     android:textSize="@dimen/_15ssp"
-                    android:text="No evidencia"
+                    android:text="@string/no_evidencia"
                     android:clickable="false"/>
                 <RadioButton
                     android:id="@+id/rb_PlacaIncIncompleta"
@@ -579,7 +590,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/Gris"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Incompleta"
+                    android:text="@string/incompleta"
                     android:clickable="false"/>
                 <RadioButton
                     android:id="@+id/rb_PlacaIncMEvidente"
@@ -587,13 +598,13 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/Gris"
                     android:textSize="@dimen/_15ssp"
-                    android:text="Muy evidente"
+                    android:text="@string/muy_evidente"
                     android:clickable="false"/>
             </RadioGroup>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Observaciones:"
+                android:text="@string/observaciones"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
@@ -628,7 +639,7 @@
             android:layout_weight="1"
             android:background="@drawable/boton_redondeado"
 
-            android:text="Enviar"
+            android:text="@string/enviar"
             android:textColor="@color/Blanco"
             android:textSize="@dimen/_18ssp" />
 
@@ -642,7 +653,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/boton_redondeado"
-            android:text="Volver"
+            android:text="@string/volver"
             android:textColor="@color/Blanco"
             android:textSize="@dimen/_18ssp" />
 

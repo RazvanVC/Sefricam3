@@ -3,10 +3,15 @@ package com.sefricam.sefricam3;
 import java.io.Serializable;
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * This is a Object Class in order to make data more readable at debug. Contains all the data related
  * to the full Datos_Entorno class that we store in the Parse DB
  */
+@Getter
+@Setter
 public class Envio implements Serializable {
 
     private DatosEntorno datosEntorno;
@@ -37,115 +42,6 @@ public class Envio implements Serializable {
         this.email = email;
         this.objectID = "";
     }
-
-    public String getVersionNumber() {
-        return versionNumber;
-    }
-
-    public String getObjectID() {
-        return objectID;
-    }
-
-    public void setObjectID(String objectID) {
-        this.objectID = objectID;
-    }
-
-    public boolean isModificacion() {
-        return modificacion;
-    }
-
-    public void setModificacion(boolean modificacion) {
-        this.modificacion = modificacion;
-    }
-
-    public DatosEntorno getDatosEntorno() {
-        return datosEntorno;
-    }
-
-    public void setDatosEntorno(DatosEntorno datosEntorno) {
-        this.datosEntorno = datosEntorno;
-    }
-
-    public DatosAvistamiento getDatosAvistamiento() {
-        return datosAvistamiento;
-    }
-
-    public void setDatosAvistamiento(DatosAvistamiento datosAvistamiento) {
-        this.datosAvistamiento = datosAvistamiento;
-    }
-
-    public MetodosCaptura getMetodosCaptura() {
-        return metodosCaptura;
-    }
-
-    public void setMetodosCaptura(MetodosCaptura metodosCaptura) {
-        this.metodosCaptura = metodosCaptura;
-    }
-
-    public boolean isEntornoCompletado() {
-        return EntornoCompletado;
-    }
-
-    public void setEntornoCompletado(boolean entornoCompletado) {
-        EntornoCompletado = entornoCompletado;
-    }
-
-    public boolean isMCapturaCompletado() {
-        return MCapturaCompletado;
-    }
-
-    public void setMCapturaCompletado(boolean MCapturaCompletado) {
-        this.MCapturaCompletado = MCapturaCompletado;
-    }
-
-    public boolean isAvistamientoCompletado() {
-        return AvistamientoCompletado;
-    }
-
-    public void setAvistamientoCompletado(boolean avistamientoCompletado) {
-        AvistamientoCompletado = avistamientoCompletado;
-    }
-
-    public boolean isEnvioCompletado() {
-        return EnvioCompletado;
-    }
-
-    public void setEnvioCompletado(boolean envioCompletado) {
-        EnvioCompletado = envioCompletado;
-    }
-
-    public double getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(double latitud) {
-        this.latitud = latitud;
-    }
-
-    public double getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getDNI() {
-        return DNI;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public void printData(String name){
         System.out.println("****************************************************");
         System.out.println("Star of Received Data from " + name);

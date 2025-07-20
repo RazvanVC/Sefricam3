@@ -31,6 +31,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private EditText etnd_LongitudTarso;
     private EditText etnd_LongitudPico;
     private EditText etnd_LongitudTerceraPrimaria;
+    private EditText etnd_LongitudCola;
     private RadioGroup rbg_Localizacion;
     private RadioGroup rbg_Sexo;
     private RadioGroup rbg_Edad;
@@ -159,8 +160,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 break;
         }
 
-        etn_EjemplaresCapturados.setText(String.valueOf(ave.getnEjemplares()));
-        etn_NumeroAnilla.setText(String.valueOf(ave.getnAnilla()));
+        etn_EjemplaresCapturados.setText(String.valueOf(ave.getNEjemplares()));
+        etn_NumeroAnilla.setText(String.valueOf(ave.getNAnilla()));
         et_NumeroAnillaPreexistente.setText(ave.getAnillaPreexistente());
         etnd_Peso.setText(String.valueOf(ave.getPeso()));
         etnd_LongitudTarso.setText(String.valueOf(ave.getLongitudTarso()));
@@ -309,6 +310,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         etnd_LongitudTarso = findViewById(R.id.etnd_LongitudTarso);
         etnd_LongitudPico = findViewById(R.id.etnd_LongitudPico);
         etnd_LongitudTerceraPrimaria = findViewById(R.id.etnd_LongitudTerceraPrimaria);
+        etnd_LongitudCola = findViewById(R.id.etnd_LongitudCola);
 
         //Radio Buttons Localizacion
         rbg_Localizacion = findViewById(R.id.rbg_Localizacion);
@@ -547,8 +549,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         entity.put("Longitud",ave.getLongitud());
         entity.put("HoraCap",ave.getHoraCaptura());
         entity.put("Especie",ave.getEspecie());
-        entity.put("NEjemplares",ave.getnEjemplares());
-        entity.put("NumAnilla",ave.getnAnilla());
+        entity.put("NEjemplares",ave.getNEjemplares());
+        entity.put("NumAnilla",ave.getNAnilla());
         entity.put("AnillaPre",ave.getAnillaPreexistente());
         entity.put("Peso",ave.getPeso());
         entity.put("LongTarso",ave.getLongitudTarso());
@@ -625,10 +627,10 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         //Asignacion de anilla
         if (!etn_NumeroAnilla.getText().toString().isEmpty()) {
-            ave.setnAnilla(Integer.parseInt(etn_NumeroAnilla.getText().toString()));
+            ave.setNAnilla(Integer.parseInt(etn_NumeroAnilla.getText().toString()));
             ave.setAnillaPreexistente("");
         } else {
-            ave.setnAnilla(0);
+            ave.setNAnilla(0);
             ave.setAnillaPreexistente(et_NumeroAnillaPreexistente.getText().toString());
         }
 
@@ -637,6 +639,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         ave.setLongitudTarso(Double.parseDouble(etnd_LongitudTarso.getText().toString()));
         ave.setLongitudPico(Double.parseDouble(etnd_LongitudPico.getText().toString()));
         ave.setLongitudTerceraPrimaria(Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString()));
+        ave.setLongitudCola(Double.parseDouble(etnd_LongitudCola.getText().toString()));
 
         //Asignación de localización
         int localizacionId = rbg_Localizacion.getCheckedRadioButtonId();
@@ -666,7 +669,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             ave.setEdad(2);
         }
 
-        ave.setnEjemplares(Integer.parseInt(etn_EjemplaresCapturados.getText().toString()));
+        ave.setNEjemplares(Integer.parseInt(etn_EjemplaresCapturados.getText().toString()));
 
         //Asignación de condición física
         int condicionFisicaId = rbg_CondicionFisica.getCheckedRadioButtonId();
@@ -783,8 +786,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         //Comprobacion de que los parámetros no estén vacios
         if (
-                etnd_LongitudPico.getText().toString().equals("") || etnd_LongitudTarso.getText().toString().equals("") ||
-                etnd_LongitudTerceraPrimaria.getText().toString().equals("") || etnd_Peso.getText().toString().equals("")
+                etnd_LongitudPico.getText().toString().isEmpty() || etnd_LongitudTarso.getText().toString().isEmpty() ||
+                        etnd_LongitudTerceraPrimaria.getText().toString().isEmpty() || etnd_Peso.getText().toString().isEmpty()
         ){
             Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
             return false;

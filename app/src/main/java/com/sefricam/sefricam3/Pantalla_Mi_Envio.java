@@ -371,8 +371,8 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
     private void loadDatosEntorno() {
         iv_DatosCheckBoxEntorno.setBackground(getDrawable(R.drawable.baseline_check_box_24));
 
-        tv_DatosTemperaturaInicio.setText(envio.getDatosEntorno().gettInicio() + " ºC");
-        tv_DatosTemperaturaFin.setText(envio.getDatosEntorno().gettFin()+" ºC");
+        tv_DatosTemperaturaInicio.setText(envio.getDatosEntorno().getTInicio() + " ºC");
+        tv_DatosTemperaturaFin.setText(envio.getDatosEntorno().getTFin()+" ºC");
         switch (envio.getDatosEntorno().getZonificacion()){
             case 1:
                 tv_DatosZonificacion.setText("Afloramientos Rocosos y Rasos");
@@ -466,7 +466,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
         if (!envio.getDatosEntorno().getEP37().equals("_"))tv_DatosPlantas.append("37. "+envio.getDatosEntorno().getEP37()+"\n");
         else tv_DatosPlantas.append("37. No encontrado\n");
 
-        if (!envio.getDatosEntorno().getEP38().equals(""))tv_DatosPlantas.append("38. "+envio.getDatosEntorno().getEP38());
+        if (!envio.getDatosEntorno().getEP38().isEmpty())tv_DatosPlantas.append("38. "+envio.getDatosEntorno().getEP38());
         else tv_DatosPlantas.append("38. No encontrado");
     }
 
