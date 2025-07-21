@@ -60,7 +60,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private TextView tv_DireccionViento;
     private Button btn_Guardar;
     private Button btn_Volver;
-    private final RadioButton[][] rbEspecie = new RadioButton[36][3];
+    private final RadioButton[][] rbEspecie = new RadioButton[42][4];
 
     //Class Parameters
     private Envio envio;
@@ -139,18 +139,25 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_LluviaFuerte = findViewById(R.id.rb_LluviaFuerte);
         rb_LluviaMFuerte = findViewById(R.id.rb_LluviaMFuerte);
 
-        for (int i = 1; i <= 36; i++) {
-            for (int j = 0; j < 3; j++) {
-                String suffix = j == 0 ? "N" : (j == 1 ? "S" : "A");
+        for (int i = 1; i <= 44; i++) {
+            if (i == 37 || i == 38) continue; // Saltar especies de texto libre
+            int idx = especieToIndex(i);
+            for (int j = 0; j < 4; j++) {
+                String suffix = switch (j) {
+                    case 0: yield "N";
+                    case 1: yield "S";
+                    case 2: yield "A";
+                    case 3: yield "MA";
+                    default: yield "";
+                };
                 int resId = getResources().getIdentifier(
-                    String.format("rb_Especie%02d%s", i, suffix),
-                    "id", getPackageName());
-                rbEspecie[i - 1][j] = findViewById(resId);
-                int finalI = i;
-                rbEspecie[i - 1][j].setOnClickListener(v -> {
-                    // ensure exclusive selection per species
-                    for (int k = 0; k < 3; k++) {
-                        if (rbEspecie[finalI - 1][k] != v) rbEspecie[finalI - 1][k].setChecked(false);
+                        String.format("rb_Especie%02d%s", i, suffix),
+                        "id", getPackageName());
+                rbEspecie[idx][j] = findViewById(resId);
+                int finalIdx = idx;
+                rbEspecie[idx][j].setOnClickListener(v -> {
+                    for (int k = 0; k < 4; k++) {
+                        if (rbEspecie[finalIdx][k] != v) rbEspecie[finalIdx][k].setChecked(false);
                     }
                 });
             }
@@ -161,6 +168,12 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
         btn_Guardar = findViewById(R.id.btn_GuardarEntorno);
         btn_Volver = findViewById(R.id.btn_VolverEntorno);
+    }
+
+    private int especieToIndex(int especieNum) {
+        if (especieNum < 37) return especieNum - 1;
+        if (especieNum > 38) return especieNum - 3;
+        throw new IllegalArgumentException("La especie 37 y 38 no tienen radio buttons");
     }
 
     /**
@@ -432,10 +445,16 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     @SuppressLint("NonConstantResourceId")
     private ArrayList<Integer> setPlantas() {
         ArrayList<Integer> plantasSeleccionadas = new ArrayList<>();
-        for (int i = 0; i < 36; i++) {
+        for (int i = 1; i <= 44; i++) {
+            if (i == 37 || i == 38) {
+                plantasSeleccionadas.add(0); // Para mantener la posición
+                continue;
+            }
+            int idx = especieToIndex(i);
             int val = 0;
-            if (rbEspecie[i][1].isChecked()) val = 1;
-            else if (rbEspecie[i][2].isChecked()) val = 2;
+            if (rbEspecie[idx][1].isChecked()) val = 1;
+            else if (rbEspecie[idx][2].isChecked()) val = 2;
+            else if (rbEspecie[idx][3].isChecked()) val = 3;
             plantasSeleccionadas.add(val);
         }
         return plantasSeleccionadas;
@@ -612,10 +631,11 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
 
         int i = 0;
-        while (i < envio.getDatosEntorno().getPlantas().size()) {
-            int planta = envio.getDatosEntorno().getPlantas().get(i);
-            loadPlantas(i, planta);
-            i++;
+        for (int especieNum = 1; especieNum <= 44; especieNum++) {
+            if (especieNum == 37 || especieNum == 38) continue;
+            int idx = especieToIndex(especieNum);
+            int planta = envio.getDatosEntorno().getPlantas().get(especieNum - 1);
+            loadPlantas(idx, planta);
         }
 
         et_Especie37.setText(envio.getDatosEntorno().getEP37());
@@ -662,9 +682,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
      * @param planta the state in which is checked
      */
     private void loadPlantas(int numero, int planta) {
-        // clear all
-        for (int j = 0; j < 3; j++) rbEspecie[numero][j].setChecked(false);
-        // set selected
-        if (planta >= 0 && planta < 3) rbEspecie[numero][planta].setChecked(true);
+        for (int j = 0; j < 4; j++) rbEspecie[numero][j].setChecked(false);
+        if (planta > 0 && planta <= 4) rbEspecie[numero][planta].setChecked(true);
     }
 }
