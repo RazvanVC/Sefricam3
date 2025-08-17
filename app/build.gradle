@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.diffplug.spotless' version '7.2.1'
 }
 
 android {
@@ -65,4 +66,13 @@ repositories {
     google()
     mavenCentral()
     maven { url 'https://jitpack.io' }
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+        leadingSpacesToTabs()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
 }

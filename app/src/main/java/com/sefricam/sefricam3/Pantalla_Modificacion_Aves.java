@@ -48,8 +48,6 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
         iniciarFindView();
         iniciarOnClickListener();
         iniciarSpinners();
-
-
     }
 
     private void iniciarSpinners() {
@@ -123,6 +121,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
         localAve.setLongitudTarso(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTarso")).toString()));
         localAve.setLongitudPico(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongPico")).toString()));
         localAve.setLongitudTerceraPrimaria(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTerPrim")).toString()));
+        localAve.setLongitudCola(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongCola")).toString()));
         localAve.setLocalizacion(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Localizacion")).toString()));
         localAve.setSexo(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Sexo")).toString()));
         localAve.setEdad(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Edad")).toString()));

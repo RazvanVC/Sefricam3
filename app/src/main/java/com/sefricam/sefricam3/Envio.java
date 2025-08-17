@@ -26,7 +26,7 @@ public class Envio implements Serializable {
 
 
     public Envio(String DNI, String email) {
-        this.versionNumber = "version341";
+        this.versionNumber = "version400";
         this.datosEntorno = null;
         this.datosAvistamiento = null;
         this.metodosCaptura = null;

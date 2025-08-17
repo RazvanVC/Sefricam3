@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,7 +70,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 if (envio.isModificacion()) btn_Enviar.setText(R.string.PMMC_btn_Modificar);
             }
             // Comprobacion de Datos, descomentar la lineas de codigo cuando quieras comprobar los parametros que vas recibiendo
-            // envio.printData(this.getClass().getName());
+            envio.printData(this.getClass().getName());
         }
     }
 
@@ -298,6 +297,12 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("EP34", envio.getDatosEntorno().getPlantas().get(33));
         entity.put("EP35", envio.getDatosEntorno().getPlantas().get(34));
         entity.put("EP36", envio.getDatosEntorno().getPlantas().get(35));
+        entity.put("EP39", envio.getDatosEntorno().getPlantas().get(36));
+        entity.put("EP40", envio.getDatosEntorno().getPlantas().get(37));
+        entity.put("EP41", envio.getDatosEntorno().getPlantas().get(38));
+        entity.put("EP42", envio.getDatosEntorno().getPlantas().get(39));
+        entity.put("EP43", envio.getDatosEntorno().getPlantas().get(40));
+        entity.put("EP44", envio.getDatosEntorno().getPlantas().get(41));
         entity.put("EP37", envio.getDatosEntorno().getEP37());
         entity.put("EP38", envio.getDatosEntorno().getEP38());
 

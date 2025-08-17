@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sefricam v3</string>
+    <string name="app_name">Sefricam v4</string>
 
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
 
@@ -195,5 +195,24 @@
     <string name="observaciones">Observaciones:</string>
     <string name="enviar">Enviar</string>
     <string name="volver">Volver</string>
+    <string name="introduzca_la_temperatura">Introduzca la temperatura:</string>
+    <string name="temperatura_incio">Temperatura Incio</string>
+    <string name="temperatura_fin">Temperatura Fin</string>
+    <string name="zonificacion">Zonificacion por uso del Suelo</string>
+    <string name="zonificacion_01">Afloramientos Rocosos y Rasos</string>
+    <string name="zonificacion_02">Cultivos</string>
+    <string name="zonificacion_03">Láminas y Cursos de Agua</string>
+    <string name="zonificacion_04">Dehesa y zonas adehesadas</string>
+    <string name="zonificacion_05">Plantaciones de Frondosas y Coníferas</string>
+    <string name="zonificacion_06">Vegetación Arbórea de Coníferas</string>
+    <string name="zonificacion_07">Vegetación Arbórea de Frondosas</string>
+    <string name="zonificacion_08">Vegetación de Matorral</string>
+    <string name="zonificacion_09">Vegetación Herbácea</string>
+    <string name="zonificacion_10">Viñedos, Olivares y Otros Frutales</string>
+    <string name="zonificacion_11">Zonas Artificiales</string>
+    <string name="viento">Viento (Marque la correspondiente)</string>
+    <string name="viento_01">CALMA</string>
+    <string name="viento_02">LIGERO</string>
+    <string name="viento_03">FUERTE</string>
 
 </resources>

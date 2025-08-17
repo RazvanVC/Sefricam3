@@ -3,8 +3,8 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="VerdePrimario">#179309</color>
-    <color name="VerdeSecundario">#4CC83E</color>
+    <color name="VerdePrimario">#1976D2</color>
+    <color name="VerdeSecundario">#1565C0</color>
     <color name="Negro">#000000</color>
     <color name="Blanco">#FFFFFF</color>
     <color name="Gris">#424242</color>

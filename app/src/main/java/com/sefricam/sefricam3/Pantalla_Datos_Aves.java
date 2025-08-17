@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -95,7 +96,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private DatosAves ave;
     private Limites limites;
     //Biometric parameters for the birds
-    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico;
+    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico, maxCola, minCola;
 
     /**
      * Initialize the screen and all its components
@@ -167,6 +168,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         etnd_LongitudTarso.setText(String.valueOf(ave.getLongitudTarso()));
         etnd_LongitudPico.setText(String.valueOf(ave.getLongitudPico()));
         etnd_LongitudTerceraPrimaria.setText(String.valueOf(ave.getLongitudTerceraPrimaria()));
+        etnd_LongitudCola.setText(String.valueOf(ave.getLongitudCola()));
 
         switch (ave.getLocalizacion()){
             case 1:
@@ -255,6 +257,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 break;
             case 2:
                 rb_MudaEnCurso.setChecked(true);
+                switchPlacaIncubatriz(ave.getSexo() == 2);
                 break;
             case 3:
                 rb_MudaTerminada.setChecked(true);
@@ -556,6 +559,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         entity.put("LongTarso",ave.getLongitudTarso());
         entity.put("LongPico",ave.getLongitudPico());
         entity.put("LongTerPrim",ave.getLongitudTerceraPrimaria());
+        entity.put("LongCola", ave.getLongitudCola());
         entity.put("Localizacion",ave.getLocalizacion());
         entity.put("Sexo",ave.getSexo());
         entity.put("Edad",ave.getEdad());
@@ -787,7 +791,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         //Comprobacion de que los parámetros no estén vacios
         if (
                 etnd_LongitudPico.getText().toString().isEmpty() || etnd_LongitudTarso.getText().toString().isEmpty() ||
-                        etnd_LongitudTerceraPrimaria.getText().toString().isEmpty() || etnd_Peso.getText().toString().isEmpty()
+                        etnd_LongitudTerceraPrimaria.getText().toString().isEmpty() || etnd_Peso.getText().toString().isEmpty() || etnd_LongitudCola.getText().toString().isEmpty()
         ){
             Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
             return false;
@@ -819,6 +823,13 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         if(Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())!=0){
             if (Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())<minAla || Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())>maxAla){
                 Toast.makeText(this, "La longitud de la tercera primaria no se correspone a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if(Double.parseDouble(etnd_LongitudCola.getText().toString())!=0){
+            if (Double.parseDouble(etnd_LongitudCola.getText().toString())<minCola || Double.parseDouble(etnd_LongitudCola.getText().toString())>maxCola){
+                Toast.makeText(this, "La longitud de la cola no se correspone a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -929,112 +940,133 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
             maxTarso = limites.getMaxTarsoCamachuelo();
             maxAla = limites.getMaxAlaCamachuelo();
             maxPico = limites.getMaxPicoCamachuelo();
+            maxCola = limites.getMaxColaCamachuelo();
 
             minPeso = limites.getMinPesoCamachuelo();
             minTarso = limites.getMinTarsoCamachuelo();
             minAla = limites.getMinAlaCamachuelo();
             minPico = limites.getMinPicoCamachuelo();
+            minCola = limites.getMinColaCamachuelo();
         } else if (especieId == R.id.rb_EspecieJilguero) {
             maxPeso  = limites.getMaxPesoJilguero();
             maxTarso = limites.getMaxTarsoJilguero();
             maxAla = limites.getMaxAlaJilguero();
             maxPico = limites.getMaxPicoCamachuelo();
+            maxCola = limites.getMaxColaJilguero();
 
             minPeso  = limites.getMinPesoJilguero();
             minTarso = limites.getMinTarsoJilguero();
             minAla = limites.getMinAlaJilguero();
             minPico = limites.getMinPicoJilguero();
+            minCola = limites.getMinColaJilguero();
         } else if (especieId == R.id.rb_EspecieLugano) {
-                maxPeso  = limites.getMaxPesoLugano();
-                maxTarso = limites.getMaxTarsoLugano();
-                maxAla = limites.getMaxAlaLugano();
-                maxPico = limites.getMaxPicoLugano();
+            maxPeso = limites.getMaxPesoLugano();
+            maxTarso = limites.getMaxTarsoLugano();
+            maxAla = limites.getMaxAlaLugano();
+            maxPico = limites.getMaxPicoLugano();
+            maxCola = limites.getMaxColaLugano();
 
-                minPeso  = limites.getMinPesoLugano();
-                minTarso = limites.getMinTarsoLugano();
-                minAla = limites.getMinAlaLugano();
-                minPico = limites.getMinPicoLugano();
-
+            minPeso = limites.getMinPesoLugano();
+            minTarso = limites.getMinTarsoLugano();
+            minAla = limites.getMinAlaLugano();
+            minPico = limites.getMinPicoLugano();
+            minCola = limites.getMinColaLugano();
         } else if (especieId == R.id.rb_EspeciePardComun) {
-                maxPeso  = limites.getMaxPesoPardComun();
-                maxTarso = limites.getMaxTarsoPardComun();
-                maxAla = limites.getMaxAlaPardComun();
-                maxPico = limites.getMaxPicoPardComun();
+            maxPeso = limites.getMaxPesoPardComun();
+            maxTarso = limites.getMaxTarsoPardComun();
+            maxAla = limites.getMaxAlaPardComun();
+            maxPico = limites.getMaxPicoPardComun();
+            maxCola = limites.getMaxColaPardComun();
 
-                minPeso  = limites.getMinPesoPardComun();
-                minTarso = limites.getMinTarsoPardComun();
-                minAla = limites.getMinAlaPardComun();
-                minPico = limites.getMinPicoPardComun();
+            minPeso = limites.getMinPesoPardComun();
+            minTarso = limites.getMinTarsoPardComun();
+            minAla = limites.getMinAlaPardComun();
+            minPico = limites.getMinPicoPardComun();
+            minCola = limites.getMinColaPardComun();
         } else if (especieId == R.id.rb_EspeciePicogordo) {
-                maxPeso  = limites.getMaxPesoPicogordo();
-                maxTarso = limites.getMaxTarsoPicogordo();
-                maxAla = limites.getMaxAlaPicogordo();
-                maxPico = limites.getMaxPicoPicogordo();
+            maxPeso = limites.getMaxPesoPicogordo();
+            maxTarso = limites.getMaxTarsoPicogordo();
+            maxAla = limites.getMaxAlaPicogordo();
+            maxPico = limites.getMaxPicoPicogordo();
+            maxCola = limites.getMaxColaPicogordo();
 
-                minPeso  = limites.getMinPesoPicogordo();
-                minTarso = limites.getMinTarsoPicogordo();
-                minAla = limites.getMinAlaPicogordo();
-                minPico = limites.getMinPicoPicogordo();
+            minPeso = limites.getMinPesoPicogordo();
+            minTarso = limites.getMinTarsoPicogordo();
+            minAla = limites.getMinAlaPicogordo();
+            minPico = limites.getMinPicoPicogordo();
+            minCola = limites.getMinColaPicogordo();
         } else if (especieId == R.id.rb_EspeciePinzComun) {
-                maxPeso  = limites.getMaxPesoPinzComun();
-                maxTarso = limites.getMaxTarsoPinzComun();
-                maxAla = limites.getMaxAlaPinzComun();
-                maxPico = limites.getMaxPicoPinzComun();
+            maxPeso = limites.getMaxPesoPinzComun();
+            maxTarso = limites.getMaxTarsoPinzComun();
+            maxAla = limites.getMaxAlaPinzComun();
+            maxPico = limites.getMaxPicoPinzComun();
+            maxCola = limites.getMaxColaPinzComun();
 
-                minPeso  = limites.getMinPesoPinzComun();
-                minTarso = limites.getMinTarsoPinzComun();
-                minAla = limites.getMinAlaPinzComun();
-                minPico = limites.getMinPicoPinzComun();
+            minPeso = limites.getMinPesoPinzComun();
+            minTarso = limites.getMinTarsoPinzComun();
+            minAla = limites.getMinAlaPinzComun();
+            minPico = limites.getMinPicoPinzComun();
+            minCola = limites.getMinColaPinzComun();
         } else if (especieId == R.id.rb_EspeciePinzReal) {
-                maxPeso  = limites.getMaxPesoPinzReal();
-                maxTarso = limites.getMaxTarsoPinzReal();
-                maxAla = limites.getMaxAlaPinzReal();
-                maxPico = limites.getMaxPicoPinzReal();
+            maxPeso = limites.getMaxPesoPinzReal();
+            maxTarso = limites.getMaxTarsoPinzReal();
+            maxAla = limites.getMaxAlaPinzReal();
+            maxPico = limites.getMaxPicoPinzReal();
+            maxCola = limites.getMaxColaPinzReal();
 
-                minPeso  = limites.getMinPesoPinzReal();
-                minTarso = limites.getMinTarsoPinzReal();
-                minAla = limites.getMinAlaPinzReal();
-                minPico = limites.getMinPicoPinzReal();
+            minPeso = limites.getMinPesoPinzReal();
+            minTarso = limites.getMinTarsoPinzReal();
+            minAla = limites.getMinAlaPinzReal();
+            minPico = limites.getMinPicoPinzReal();
+            minCola = limites.getMinColaPinzReal();
         } else if (especieId == R.id.rb_EspeciePiquituerto) {
-                maxPeso  = limites.getMaxPesoPiquituerto();
-                maxTarso = limites.getMaxTarsoPiquituerto();
-                maxAla = limites.getMaxAlaPiquituerto();
-                maxPico = limites.getMaxPicoPiquituerto();
+            maxPeso = limites.getMaxPesoPiquituerto();
+            maxTarso = limites.getMaxTarsoPiquituerto();
+            maxAla = limites.getMaxAlaPiquituerto();
+            maxPico = limites.getMaxPicoPiquituerto();
+            maxCola = limites.getMaxColaPiquituerto();
 
-                minPeso  = limites.getMinPesoPiquituerto();
-                minTarso = limites.getMinTarsoPiquituerto();
-                minAla = limites.getMinAlaPiquituerto();
-                minPico = limites.getMinPicoPiquituerto();
+            minPeso = limites.getMinPesoPiquituerto();
+            minTarso = limites.getMinTarsoPiquituerto();
+            minAla = limites.getMinAlaPiquituerto();
+            minPico = limites.getMinPicoPiquituerto();
+            minCola = limites.getMinColaPiquituerto();
         } else if (especieId == R.id.rb_EspecieVerdecillo) {
-                maxPeso  = limites.getMaxPesoVerdecillo();
-                maxTarso = limites.getMaxTarsoVerdecillo();
-                maxAla = limites.getMaxAlaVerdecillo();
-                maxPico = limites.getMaxPicoVerdecillo();
+            maxPeso = limites.getMaxPesoVerdecillo();
+            maxTarso = limites.getMaxTarsoVerdecillo();
+            maxAla = limites.getMaxAlaVerdecillo();
+            maxPico = limites.getMaxPicoVerdecillo();
+            maxCola = limites.getMaxColaVerdecillo();
 
-                minPeso  = limites.getMinPesoVerdecillo();
-                minTarso = limites.getMinTarsoVerdecillo();
-                minAla = limites.getMinAlaVerdecillo();
-                minPico = limites.getMinPicoVerdecillo();
+            minPeso = limites.getMinPesoVerdecillo();
+            minTarso = limites.getMinTarsoVerdecillo();
+            minAla = limites.getMinAlaVerdecillo();
+            minPico = limites.getMinPicoVerdecillo();
+            minCola = limites.getMinColaVerdecillo();
         } else if (especieId == R.id.rb_EspecieVerdComun) {
-                maxPeso  = limites.getMaxPesoVerdComun();
-                maxTarso = limites.getMaxTarsoVerdComun();
-                maxAla = limites.getMaxAlaVerdComun();
-                maxPico = limites.getMaxPicoVerdComun();
+            maxPeso = limites.getMaxPesoVerdComun();
+            maxTarso = limites.getMaxTarsoVerdComun();
+            maxAla = limites.getMaxAlaVerdComun();
+            maxPico = limites.getMaxPicoVerdComun();
+            maxCola = limites.getMaxColaVerdComun();
 
-                minPeso  = limites.getMinPesoVerdComun();
-                minTarso = limites.getMinTarsoVerdComun();
-                minAla = limites.getMinAlaVerdComun();
-                minPico = limites.getMinPicoVerdComun();
+            minPeso = limites.getMinPesoVerdComun();
+            minTarso = limites.getMinTarsoVerdComun();
+            minAla = limites.getMinAlaVerdComun();
+            minPico = limites.getMinPicoVerdComun();
+            minCola = limites.getMinColaVerdComun();
         } else if (especieId == R.id.rb_EspecieVerdSerrano) {
-                maxPeso  = limites.getMaxPesoVerdSerrano();
-                maxTarso = limites.getMaxTarsoVerdSerrano();
-                maxAla = limites.getMaxAlaVerdSerrano();
-                maxPico = limites.getMaxPicoVerdSerrano();
+            maxPeso  = limites.getMaxPesoVerdSerrano();
+            maxTarso = limites.getMaxTarsoVerdSerrano();
+            maxAla = limites.getMaxAlaVerdSerrano();
+            maxPico = limites.getMaxPicoVerdSerrano();
+            maxCola = limites.getMaxColaVerdSerrano();
 
-                minPeso  = limites.getMinPesoVerdSerrano();
-                minTarso = limites.getMinTarsoVerdSerrano();
-                minAla = limites.getMinAlaVerdSerrano();
-                minPico = limites.getMinPicoVerdSerrano();
+            minPeso = limites.getMinPesoVerdSerrano();
+            minTarso = limites.getMinTarsoVerdSerrano();
+            minAla = limites.getMinAlaVerdSerrano();
+            minPico = limites.getMinPicoVerdSerrano();
+            minCola = limites.getMinColaVerdSerrano();
         }
     }
 }

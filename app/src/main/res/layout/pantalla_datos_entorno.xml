@@ -6,6 +6,7 @@
     android:background="@color/Blanco">
 
     <ImageView
+        android:contentDescription="Logo Federación Madrileña de Caza"
         android:id="@+id/iv_LogoGrandeEntorno"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
@@ -38,7 +39,7 @@
                 android:id="@+id/tv_IntruduceTemperatura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Introduzca la temperatura:"
+                android:text="@string/introduzca_la_temperatura"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
@@ -52,7 +53,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Temperatura Incio"
+                    android:importantForAutofill="no"
+                    android:hint="@string/temperatura_incio"
                     android:inputType="numberDecimal|numberSigned"
                     android:textColor="@color/Negro"
                     android:textSize="@dimen/_13ssp" />
@@ -67,7 +69,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Temperatura Fin"
+                    android:importantForAutofill="no"
+                    android:hint="@string/temperatura_fin"
                     android:inputType="numberDecimal|numberSigned"
                     android:textColor="@color/Negro"
                     android:textSize="@dimen/_13ssp" />
@@ -78,7 +81,7 @@
                 android:id="@+id/tv_Zonificacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Zonificacion por uso del Suelo"
+                android:text="@string/zonificacion"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
@@ -93,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Afloramientos Rocosos y Rasos"/>
+                    android:text="@string/zonificacion_01"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion02"
@@ -101,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Cultivos"/>
+                    android:text="@string/zonificacion_02"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion03"
@@ -109,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Láminas y Cursos de Agua"/>
+                    android:text="@string/zonificacion_03"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion04"
@@ -117,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Dehesa y zonas adehesadas"/>
+                    android:text="@string/zonificacion_04"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion05"
@@ -125,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Plantaciones de Frondosas y Coníferas"/>
+                    android:text="@string/zonificacion_05"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion06"
@@ -133,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación Arbórea de Coníferas"/>
+                    android:text="@string/zonificacion_06"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion07"
@@ -141,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación Arbórea de Frondosas"/>
+                    android:text="@string/zonificacion_07"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion08"
@@ -149,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación de Matorral"/>
+                    android:text="@string/zonificacion_08"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion09"
@@ -157,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación Herbácea"/>
+                    android:text="@string/zonificacion_09"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion10"
@@ -165,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Viñedos, Olivares y Otros Frutales"/>
+                    android:text="@string/zonificacion_10"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion11"
@@ -173,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Zonas Artificiales"/>
+                    android:text="@string/zonificacion_11"/>
 
             </RadioGroup>
 
@@ -181,7 +184,7 @@
                 android:id="@+id/tv_FuerzaViento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Viento (Marque la correspondiente)"
+                android:text="@string/viento"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
@@ -194,7 +197,7 @@
                     android:id="@+id/rb_VientoCalma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="CALMA"
+                    android:text="@string/viento_01"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
@@ -202,7 +205,7 @@
                     android:id="@+id/rb_VientoLigero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="LIGERO"
+                    android:text="@string/viento_02"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
@@ -210,7 +213,7 @@
                     android:id="@+id/rb_VientoFuerte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="FUERTE"
+                    android:text="@string/viento_03"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
             </RadioGroup>
@@ -375,7 +378,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="AUSENTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -383,7 +387,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="INTERMITENTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -391,7 +396,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="LIGERA"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -399,7 +405,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="FUERTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -407,7 +414,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MUY FUERTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
             </RadioGroup>
 
@@ -418,10 +425,19 @@
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:outlineAmbientShadowColor="@color/Gris"
+                >
 
                 <TextView
                     android:id="@+id/tv_Especie01"
@@ -468,6 +484,13 @@
                 </GridLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -520,6 +543,13 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -571,6 +601,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -622,6 +658,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -673,6 +715,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -724,6 +772,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -775,6 +829,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -826,6 +886,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -877,6 +943,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -928,6 +1000,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -979,6 +1057,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1030,6 +1114,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1081,6 +1171,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1132,6 +1228,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1183,6 +1285,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1234,6 +1342,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1285,6 +1399,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1336,6 +1456,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1387,6 +1513,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1438,6 +1570,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1489,6 +1627,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1540,6 +1684,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1591,6 +1741,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1642,6 +1798,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1693,6 +1855,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1744,6 +1912,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1795,6 +1969,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1846,6 +2026,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1897,6 +2083,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1948,6 +2140,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1999,6 +2197,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2050,6 +2254,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2101,6 +2311,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2152,6 +2368,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2203,6 +2425,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2254,6 +2482,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2305,6 +2539,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2356,6 +2596,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2407,6 +2653,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2458,6 +2710,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2509,6 +2767,12 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2559,6 +2823,13 @@
                 </GridLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
 
             <TextView
                 android:layout_width="match_parent"

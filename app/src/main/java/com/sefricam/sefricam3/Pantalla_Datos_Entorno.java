@@ -144,16 +144,17 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             int idx = especieToIndex(i);
             for (int j = 0; j < 4; j++) {
                 String suffix = switch (j) {
-                    case 0: yield "N";
-                    case 1: yield "S";
-                    case 2: yield "A";
-                    case 3: yield "MA";
-                    default: yield "";
+                    case 0 -> "N";
+                    case 1 -> "S";
+                    case 2 -> "A";
+                    case 3 -> "MA";
+                    default -> "";
                 };
                 int resId = getResources().getIdentifier(
                         String.format("rb_Especie%02d%s", i, suffix),
                         "id", getPackageName());
                 rbEspecie[idx][j] = findViewById(resId);
+                if (j == 0) rbEspecie[idx][0].setChecked(true);
                 int finalIdx = idx;
                 rbEspecie[idx][j].setOnClickListener(v -> {
                     for (int k = 0; k < 4; k++) {
@@ -185,6 +186,42 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_VientoCalma.setOnClickListener(this);
         rb_VientoFuerte.setOnClickListener(this);
         rb_VientoLigero.setOnClickListener(this);
+
+        // Listeners para los RadioButton de nubes
+        View.OnClickListener nubesListener = v -> {
+            if (rb_NubesAusente.isChecked()) {
+                rb_LluviaAusente.setChecked(false);
+                rb_LluviaIntermitente.setChecked(false);
+                rb_LluviaLigera.setChecked(false);
+                rb_LluviaFuerte.setChecked(false);
+                rb_LluviaMFuerte.setChecked(false);
+                rb_LluviaAusente.setClickable(false);
+                rb_LluviaIntermitente.setClickable(false);
+                rb_LluviaLigera.setClickable(false);
+                rb_LluviaFuerte.setClickable(false);
+                rb_LluviaMFuerte.setClickable(false);
+                rb_LluviaAusente.setTextColor(getColor(R.color.Gris));
+                rb_LluviaIntermitente.setTextColor(getColor(R.color.Gris));
+                rb_LluviaLigera.setTextColor(getColor(R.color.Gris));
+                rb_LluviaFuerte.setTextColor(getColor(R.color.Gris));
+                rb_LluviaMFuerte.setTextColor(getColor(R.color.Gris));
+            } else {
+                rb_LluviaAusente.setClickable(true);
+                rb_LluviaIntermitente.setClickable(true);
+                rb_LluviaLigera.setClickable(true);
+                rb_LluviaFuerte.setClickable(true);
+                rb_LluviaMFuerte.setClickable(true);
+                rb_LluviaAusente.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaIntermitente.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaLigera.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaFuerte.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaMFuerte.setTextColor(getColor(R.color.VerdePrimario));
+            }
+        };
+        rb_NubesAusente.setOnClickListener(nubesListener);
+        rb_NubesNYC.setOnClickListener(nubesListener);
+        rb_NubesCubierto.setOnClickListener(nubesListener);
+        rb_NubesMCubierto.setOnClickListener(nubesListener);
     }
 
     /**

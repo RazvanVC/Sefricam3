@@ -458,6 +458,7 @@ public class Pantalla_Mi_Envio extends Activity implements View.OnClickListener{
             System.out.println("Estado"+i+": "+estadoRecuperado);
             if (estadoRecuperado == 1) estado = "Encontrado";
             if (envio.getDatosEntorno().getPlantas().get(i) == 2) estado = "Abundante";
+            if (envio.getDatosEntorno().getPlantas().get(i) == 3) estado = "Muy Abundante";
             if (i < 9) tv_DatosPlantas.append(("0" + (i + 1)) + ". " + estado + "\n");
             else tv_DatosPlantas.append((i + 1) + ". " + estado + "\n");
             i++;
