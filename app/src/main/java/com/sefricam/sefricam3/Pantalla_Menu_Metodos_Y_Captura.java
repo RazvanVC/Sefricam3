@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import com.sefricam.sefricam3.GridRegistry;
 
 public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener {
 
@@ -689,7 +690,25 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
      * Assign the Cuadricula field
      * @return Cuadricula code based on the coordinates
      */
-    private String cuadricula(){
+    private String cuadricula(){// 1) Elige el conjunto de celdas (todas por defecto).
+        java.util.List<GridRegistry.GridCell> cells = GridRegistry.all();
+
+        // 2) Coordenadas del envío (grados, con signo ±)
+        double lat = envio.getLatitud();
+        double lon = envio.getLongitud();
+
+        // 3) Encuentra la grid más cercana inyectando la distancia en KM
+        GridRegistry.GridCell nearest = GridRegistry.findNearest(
+                lat,    // (lat, lon)
+                lon,
+                cells,
+                this::miDistanciaKm
+        );
+
+        // 4) Devuelve denominación o "ERROR" si no hay celdas
+        return (nearest != null) ? nearest.denominacion() : "ERROR";
+
+        /*
         //Primer valor
         double x = 12-((envio.getLongitud() - 3.123)/0.1159);
         if(x<0) x=0.0;
@@ -791,6 +810,19 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
             case 1213 -> "85VKG09";
             case 814 -> "86VKH05";
             default -> "ERROR";
-        };
+        };*/
+    }
+
+    /** Distancia Haversine en KM (lat/lon en grados). NO usa ABS, respeta signos ±. */
+    private double miDistanciaKm(double lat1, double lon1, double lat2, double lon2) {
+        final double R = 6371.0088; // km
+        double phi1 = Math.toRadians(lat1);
+        double phi2 = Math.toRadians(lat2);
+        double dPhi = Math.toRadians(lat2 - lat1);
+        double dLam = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dPhi/2)*Math.sin(dPhi/2)
+                + Math.cos(phi1)*Math.cos(phi2)*Math.sin(dLam/2)*Math.sin(dLam/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
     }
 }
