@@ -13,7 +13,7 @@ public final class GridRegistry {
     private GridRegistry() { }
 
     /** Representa una cuadrícula con nombre y centro (lat, lon) en grados. */
-    public static record GridCell(String denominacion, double centrlat, double centrlon) { }
+    public record GridCell(String denominacion, double centrlat, double centrlon) { }
 
     /** Comunidad/ámbito para organizar grupos. */
     public enum Scope {
