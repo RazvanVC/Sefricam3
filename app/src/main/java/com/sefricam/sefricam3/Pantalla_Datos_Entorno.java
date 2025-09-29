@@ -346,7 +346,9 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             if (rbg_DireccionViento.getCheckedRadioButtonId()==-1) return false;
         }
         if (rbg_Nubes.getCheckedRadioButtonId()==-1) return false;
-        if (rbg_Lluvia.getCheckedRadioButtonId()==-1) return false;
+        if (!rb_NubesAusente.isChecked()){
+            if (rbg_Lluvia.getCheckedRadioButtonId()==-1) return false;
+        }
         try {
             Double.valueOf(etnd_TemperaturaInicio.getText().toString());
             Double.valueOf(etnd_TemperaturaFin.getText().toString());
@@ -450,17 +452,21 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             nubes = 4;
         }
 
-        int checkedIdLluvia = rbg_Lluvia.getCheckedRadioButtonId();
-        if (checkedIdLluvia == R.id.rb_LluviaAusente) {
+        if (rb_NubesAusente.isChecked()) {
             lluvia = 1;
-        } else if (checkedIdLluvia == R.id.rb_LluviaIntermitente) {
-            lluvia = 2;
-        } else if (checkedIdLluvia == R.id.rb_LluviaLigera) {
-            lluvia = 3;
-        } else if (checkedIdLluvia == R.id.rb_LluviaFuerte) {
-            lluvia = 4;
-        } else if (checkedIdLluvia == R.id.rb_LluviaMFuerte) {
-            lluvia = 5;
+        } else {
+            int checkedIdLluvia = rbg_Lluvia.getCheckedRadioButtonId();
+            if (checkedIdLluvia == R.id.rb_LluviaAusente) {
+                lluvia = 1;
+            } else if (checkedIdLluvia == R.id.rb_LluviaIntermitente) {
+                lluvia = 2;
+            } else if (checkedIdLluvia == R.id.rb_LluviaLigera) {
+                lluvia = 3;
+            } else if (checkedIdLluvia == R.id.rb_LluviaFuerte) {
+                lluvia = 4;
+            } else if (checkedIdLluvia == R.id.rb_LluviaMFuerte) {
+                lluvia = 5;
+            }
         }
 
         ArrayList<Integer> plantas = setPlantas();
