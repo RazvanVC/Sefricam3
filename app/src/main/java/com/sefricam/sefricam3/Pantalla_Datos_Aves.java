@@ -31,6 +31,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private EditText etnd_LongitudTarso;
     private EditText etnd_LongitudPico;
     private EditText etnd_LongitudTerceraPrimaria;
+    private EditText etnd_LongitudCola;
     private RadioGroup rbg_Localizacion;
     private RadioGroup rbg_Sexo;
     private RadioGroup rbg_Edad;
@@ -166,6 +167,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         etnd_LongitudTarso.setText(String.valueOf(ave.getLongitudTarso()));
         etnd_LongitudPico.setText(String.valueOf(ave.getLongitudPico()));
         etnd_LongitudTerceraPrimaria.setText(String.valueOf(ave.getLongitudTerceraPrimaria()));
+        etnd_LongitudCola.setText(String.valueOf(ave.getLongitudCola()));
 
         switch (ave.getLocalizacion()){
             case 1:
@@ -309,6 +311,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         etnd_LongitudTarso = findViewById(R.id.etnd_LongitudTarso);
         etnd_LongitudPico = findViewById(R.id.etnd_LongitudPico);
         etnd_LongitudTerceraPrimaria = findViewById(R.id.etnd_LongitudTerceraPrimaria);
+        etnd_LongitudCola = findViewById(R.id.etnd_LongitudCola);
 
         //Radio Buttons Localizacion
         rbg_Localizacion = findViewById(R.id.rbg_Localizacion);
@@ -554,6 +557,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         entity.put("LongTarso",ave.getLongitudTarso());
         entity.put("LongPico",ave.getLongitudPico());
         entity.put("LongTerPrim",ave.getLongitudTerceraPrimaria());
+        entity.put("LongCola",ave.getLongitudCola());
         entity.put("Localizacion",ave.getLocalizacion());
         entity.put("Sexo",ave.getSexo());
         entity.put("Edad",ave.getEdad());
@@ -648,6 +652,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         ave.setLongitudTarso(Double.parseDouble(etnd_LongitudTarso.getText().toString()));
         ave.setLongitudPico(Double.parseDouble(etnd_LongitudPico.getText().toString()));
         ave.setLongitudTerceraPrimaria(Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString()));
+        ave.setLongitudCola(Double.parseDouble(etnd_LongitudCola.getText().toString()));
 
         switch (rbg_Localizacion.getCheckedRadioButtonId()){
             case R.id.rb_LocalizacionLocal:
@@ -810,7 +815,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         //Comprobacion de que los parámetros no estén vacios
         if (
                 etnd_LongitudPico.getText().toString().equals("") || etnd_LongitudTarso.getText().toString().equals("") ||
-                etnd_LongitudTerceraPrimaria.getText().toString().equals("") || etnd_Peso.getText().toString().equals("")
+                etnd_LongitudTerceraPrimaria.getText().toString().equals("") || etnd_LongitudCola.getText().toString().equals("") ||
+                etnd_Peso.getText().toString().equals("")
         ){
             Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
             return false;

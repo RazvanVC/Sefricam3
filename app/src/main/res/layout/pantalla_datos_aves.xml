@@ -291,6 +291,15 @@
                 android:textColor="@color/Negro"
                 android:hint="Longitud tercera primaria (cm)"
                 android:enabled="true"/>
+            <EditText
+                android:id="@+id/etnd_LongitudCola"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/Negro"
+                android:hint="Longitud de la cola (cm)"
+                android:enabled="true"/>
 
             <TextView
                 android:layout_width="match_parent"
