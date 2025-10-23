@@ -1,4 +1,4 @@
-package com.sefricam.sefricam3;
+package com.sefricam.sefricam4;
 
 import android.app.Activity;
 import android.content.Intent;

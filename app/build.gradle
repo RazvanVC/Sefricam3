@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.sefricam.sefricam3' // NUEVO y obligatorio con AGP 8+
+    namespace 'com.sefricam.sefricam4' // NUEVO y obligatorio con AGP 8+
     compileSdk 35 // Android 14 o 15
 
     defaultConfig {

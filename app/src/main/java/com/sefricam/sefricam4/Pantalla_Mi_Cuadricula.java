@@ -1,4 +1,4 @@
-package com.sefricam.sefricam3;
+package com.sefricam.sefricam4;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import static java.lang.Math.*;
-import com.sefricam.sefricam3.GridRegistry.GridCell;
+import com.sefricam.sefricam4.GridRegistry.GridCell;
 
 import java.util.List;
 

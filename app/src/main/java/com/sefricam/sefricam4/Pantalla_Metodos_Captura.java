@@ -1,4 +1,4 @@
-package com.sefricam.sefricam3;
+package com.sefricam.sefricam4;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;

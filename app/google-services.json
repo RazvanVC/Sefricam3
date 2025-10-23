@@ -1,9 +1,9 @@
 {
   "project_info": {
     "project_number": "770218067258",
-    "firebase_url": "https://sefricam-v3.firebaseio.com",
-    "project_id": "sefricam-v3",
-    "storage_bucket": "sefricam-v3.appspot.com"
+    "firebase_url": "https://sefricam-v4.firebaseio.com",
+    "project_id": "sefricam-v4",
+    "storage_bucket": "sefricam-v4.appspot.com"
   },
   "client": [
     {

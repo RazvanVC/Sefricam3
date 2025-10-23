@@ -1,4 +1,4 @@
-package com.sefricam.sefricam3;
+package com.sefricam.sefricam4;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,7 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-import com.sefricam.sefricam3.GridRegistry;
 
 public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener {
 
