@@ -48,8 +48,6 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
         iniciarFindView();
         iniciarOnClickListener();
         iniciarSpinners();
-
-
     }
 
     private void iniciarSpinners() {
@@ -76,7 +74,7 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
                     obj = objects.get(i);
 
                     localAve = getAve(obj);
-                    avesAnilladas.add(localAve.getnAnilla());
+                    avesAnilladas.add(localAve.getNAnilla());
                     if (localAve.getLatitud() == envio.getLatitud() && localAve.getLongitud() == envio.getLongitud()){
                         enviosRecibidos.add(localAve);
                     }
@@ -85,10 +83,10 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
                 for (int i = 0; i<enviosRecibidos.size(); i++){
                     DatosAves localAve = enviosRecibidos.get(i);
 
-                    if (localAve.getnAnilla()==0){
+                    if (localAve.getNAnilla()==0){
                         enviosCargados.add(localAve.getAnillaPreexistente());
                     } else  {
-                        enviosCargados.add(String.valueOf(localAve.getnAnilla()));
+                        enviosCargados.add(String.valueOf(localAve.getNAnilla()));
                     }
 
                 }
@@ -115,14 +113,15 @@ public class Pantalla_Modificacion_Aves extends Activity implements AdapterView.
 
         localAve.setHoraCaptura(obj.getString("HoraCap"));
         localAve.setEspecie(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Especie")).toString()));
-        localAve.setnEjemplares(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NEjemplares")).toString()));
+        localAve.setNEjemplares(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NEjemplares")).toString()));
 
-        localAve.setnAnilla(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumAnilla")).toString()));
+        localAve.setNAnilla(Integer.parseInt(Objects.requireNonNull(obj.getNumber("NumAnilla")).toString()));
         localAve.setAnillaPreexistente(obj.getString("AnillaPre"));
         localAve.setPeso(Double.parseDouble(Objects.requireNonNull(obj.getNumber("Peso")).toString()));
         localAve.setLongitudTarso(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTarso")).toString()));
         localAve.setLongitudPico(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongPico")).toString()));
         localAve.setLongitudTerceraPrimaria(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongTerPrim")).toString()));
+        localAve.setLongitudCola(Double.parseDouble(Objects.requireNonNull(obj.getNumber("LongCola")).toString()));
         localAve.setLocalizacion(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Localizacion")).toString()));
         localAve.setSexo(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Sexo")).toString()));
         localAve.setEdad(Integer.parseInt(Objects.requireNonNull(obj.getNumber("Edad")).toString()));

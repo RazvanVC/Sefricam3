@@ -3,10 +3,13 @@ package com.sefricam.sefricam3;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import lombok.Getter;
+
 /**
  * This is a Object Class in order to make data more readable at debug. Contains all the data related
  * to the DatosEntorno that we store in the Parse DB
  */
+@Getter
 public class DatosEntorno implements Serializable {
 
     private final double tInicio;
@@ -33,43 +36,4 @@ public class DatosEntorno implements Serializable {
         this.EP38 = EP38;
     }
 
-    public double gettInicio() {
-        return tInicio;
-    }
-
-    public double gettFin() {
-        return tFin;
-    }
-
-    public int getZonificacion() {
-        return zonificacion;
-    }
-
-    public int getViento() {
-        return viento;
-    }
-
-    public String getDireccionViento() {
-        return direccionViento;
-    }
-
-    public int getNubes() {
-        return nubes;
-    }
-
-    public int getLluvia() {
-        return lluvia;
-    }
-
-    public ArrayList<Integer> getPlantas() {
-        return plantas;
-    }
-
-    public String getEP37() {
-        return EP37;
-    }
-
-    public String getEP38() {
-        return EP38;
-    }
 }

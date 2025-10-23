@@ -75,7 +75,7 @@
                 android:textSize="@dimen/_15sdp"
                 android:hint="@string/hint_Latitud"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal|numberSigned"/>
 
             <EditText
                 android:id="@+id/etnd_LongitudCuadricula"
@@ -88,7 +88,7 @@
                 android:textSize="@dimen/_15sdp"
                 android:hint="@string/hint_Longitud"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal|numberSigned"/>
         </LinearLayout>
 
         <Button
@@ -188,7 +188,7 @@
                 android:textSize="@dimen/_15ssp"
                 android:hint="@string/hint_Latitud"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal|numberSigned"/>
 
             <EditText
                 android:id="@+id/etnd_LongitudAnterior"
@@ -201,7 +201,7 @@
                 android:textSize="@dimen/_15ssp"
                 android:hint="@string/hint_Longitud"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal|numberSigned"/>
         </LinearLayout>
 
         <LinearLayout

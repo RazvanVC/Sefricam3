@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import com.sefricam.sefricam3.GridRegistry;
 
 public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.OnClickListener {
 
@@ -71,7 +71,7 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
                 if (envio.isModificacion()) btn_Enviar.setText(R.string.PMMC_btn_Modificar);
             }
             // Comprobacion de Datos, descomentar la lineas de codigo cuando quieras comprobar los parametros que vas recibiendo
-            // envio.printData(this.getClass().getName());
+            envio.printData(this.getClass().getName());
         }
     }
 
@@ -253,8 +253,8 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("NumGrupo", limites.getNumeroGrupo());
 
         //Entorno
-        entity.put("TempInicial",envio.getDatosEntorno().gettInicio());
-        entity.put("TempFinal",envio.getDatosEntorno().gettFin());
+        entity.put("TempInicial",envio.getDatosEntorno().getTInicio());
+        entity.put("TempFinal",envio.getDatosEntorno().getTFin());
         entity.put("Zonificacion",envio.getDatosEntorno().getZonificacion());
         entity.put("Viento",envio.getDatosEntorno().getViento());
         entity.put("DirViento",envio.getDatosEntorno().getDireccionViento());
@@ -298,6 +298,12 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         entity.put("EP34", envio.getDatosEntorno().getPlantas().get(33));
         entity.put("EP35", envio.getDatosEntorno().getPlantas().get(34));
         entity.put("EP36", envio.getDatosEntorno().getPlantas().get(35));
+        entity.put("EP39", envio.getDatosEntorno().getPlantas().get(36));
+        entity.put("EP40", envio.getDatosEntorno().getPlantas().get(37));
+        entity.put("EP41", envio.getDatosEntorno().getPlantas().get(38));
+        entity.put("EP42", envio.getDatosEntorno().getPlantas().get(39));
+        entity.put("EP43", envio.getDatosEntorno().getPlantas().get(40));
+        entity.put("EP44", envio.getDatosEntorno().getPlantas().get(41));
         entity.put("EP37", envio.getDatosEntorno().getEP37());
         entity.put("EP38", envio.getDatosEntorno().getEP38());
 
@@ -684,7 +690,25 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
      * Assign the Cuadricula field
      * @return Cuadricula code based on the coordinates
      */
-    private String cuadricula(){
+    private String cuadricula(){// 1) Elige el conjunto de celdas (todas por defecto).
+        java.util.List<GridRegistry.GridCell> cells = GridRegistry.all();
+
+        // 2) Coordenadas del envío (grados, con signo ±)
+        double lat = envio.getLatitud();
+        double lon = envio.getLongitud();
+
+        // 3) Encuentra la grid más cercana inyectando la distancia en KM
+        GridRegistry.GridCell nearest = GridRegistry.findNearest(
+                lat,    // (lat, lon)
+                lon,
+                cells,
+                this::miDistanciaKm
+        );
+
+        // 4) Devuelve denominación o "ERROR" si no hay celdas
+        return (nearest != null) ? nearest.denominacion() : "ERROR";
+
+        /*
         //Primer valor
         double x = 12-((envio.getLongitud() - 3.123)/0.1159);
         if(x<0) x=0.0;
@@ -698,270 +722,107 @@ public class Pantalla_Menu_Metodos_Y_Captura extends Activity implements View.On
         //Juntar los dos numeros
         int numCuadricula = Integer.parseInt(String.valueOf((int) x).concat(String.valueOf((int) y)));
 
-        String codCuadricula;
-        switch (numCuadricula){
-            case 37:
-                codCuadricula = "01UKA10";
-                break;
-            case 38:
-                codCuadricula = "02UKB10";
-                break;
-            case 29:
-                codCuadricula = "03UKC09";
-                break;
-            case 39:
-                codCuadricula = "04UKC10";
-                break;
-            case 110:
-                codCuadricula = "05UKD08";
-                break;
-            case 210:
-                codCuadricula = "06UKD09";
-                break;
-            case 310:
-                codCuadricula = "07UKD10";
-                break;
-            case 111:
-                codCuadricula = "08UKE08";
-                break;
-            case 211:
-                codCuadricula = "09UKE09";
-                break;
-            case 91:
-                codCuadricula = "10VLE06";
-                break;
-            case 82:
-                codCuadricula = "11VLF05";
-                break;
-            case 92:
-                codCuadricula = "12VLF06";
-                break;
-            case 102:
-                codCuadricula = "13VLF07";
-                break;
-            case 63:
-                codCuadricula = "14VLG03";
-                break;
-            case 73:
-                codCuadricula = "15VLG04";
-                break;
-            case 83:
-                codCuadricula = "16VLG05";
-                break;
-            case 93:
-                codCuadricula = "17VLG06";
-                break;
-            case 103:
-                codCuadricula = "18VLG07";
-                break;
-            case 64:
-                codCuadricula = "19VLH03";
-                break;
-            case 74:
-                codCuadricula = "20VLH04";
-                break;
-            case 84:
-                codCuadricula = "21VLH05";
-                break;
-            case 94:
-                codCuadricula = "22VLH06";
-                break;
-            case 55:
-                codCuadricula = "23VLI02";
-                break;
-            case 65:
-                codCuadricula = "24VLI03";
-                break;
-            case 75:
-                codCuadricula = "25VLI04";
-                break;
-            case 85:
-                codCuadricula = "26VLI05";
-                break;
-            case 95:
-                codCuadricula = "27VLI06";
-                break;
-            case 46:
-                codCuadricula = "28VLJ01";
-                break;
-            case 56:
-                codCuadricula = "29VLJ02";
-                break;
-            case 66:
-                codCuadricula = "30VLJ03";
-                break;
-            case 76:
-                codCuadricula = "31VLJ04";
-                break;
-            case 86:
-                codCuadricula = "32VLJ05";
-                break;
-            case 96:
-                codCuadricula = "33VLJ06";
-                break;
-            case 47:
-                codCuadricula = "34VKA01";
-                break;
-            case 57:
-                codCuadricula = "35VKA02";
-                break;
-            case 67:
-                codCuadricula = "36VKA03";
-                break;
-            case 77:
-                codCuadricula = "37VKA04";
-                break;
-            case 87:
-                codCuadricula = "38VKA05";
-                break;
-            case 97:
-                codCuadricula = "39VKA06";
-                break;
-            case 107:
-                codCuadricula = "40VKA07";
-                break;
-            case 48:
-                codCuadricula = "41VKB01";
-                break;
-            case 58:
-                codCuadricula = "42VKB02";
-                break;
-            case 68:
-                codCuadricula = "43VKB03";
-                break;
-            case 78:
-                codCuadricula = "44VKB04";
-                break;
-            case 88:
-                codCuadricula = "45VKB05";
-                break;
-            case 98:
-                codCuadricula = "46VKB06";
-                break;
-            case 108:
-                codCuadricula = "47VKB07";
-                break;
-            case 118:
-                codCuadricula = "48VKB08";
-                break;
-            case 49:
-                codCuadricula = "49VKC01";
-                break;
-            case 59:
-                codCuadricula = "50VKC02";
-                break;
-            case 69:
-                codCuadricula = "51VKC03";
-                break;
-            case 79:
-                codCuadricula = "52VKC04";
-                break;
-            case 89:
-                codCuadricula = "53VKC05";
-                break;
-            case 99:
-                codCuadricula = "54VKC06";
-                break;
-            case 109:
-                codCuadricula = "55VKC07";
-                break;
-            case 119:
-                codCuadricula = "56VKC08";
-                break;
-            case 129:
-                codCuadricula = "57VKC09";
-                break;
-            case 410:
-                codCuadricula = "58VKD01";
-                break;
-            case 510:
-                codCuadricula = "59VKD02";
-                break;
-            case 610:
-                codCuadricula = "60VKD03";
-                break;
-            case 710:
-                codCuadricula = "61VKD04";
-                break;
-            case 810:
-                codCuadricula = "62VKD05";
-                break;
-            case 910:
-                codCuadricula = "63VKD06";
-                break;
-            case 1010:
-                codCuadricula = "64VKD07";
-                break;
-            case 1110:
-                codCuadricula = "65VKD08";
-                break;
-            case 1210:
-                codCuadricula = "66VKD09";
-                break;
-            case 411:
-                codCuadricula = "67VKE01";
-                break;
-            case 511:
-                codCuadricula = "68VKE02";
-                break;
-            case 611:
-                codCuadricula = "69VKE03";
-                break;
-            case 711:
-                codCuadricula = "70VKE04";
-                break;
-            case 811:
-                codCuadricula = "71VKE05";
-                break;
-            case 911:
-                codCuadricula = "72VKE06";
-                break;
-            case 1011:
-                codCuadricula = "73VKE07";
-                break;
-            case 1111:
-                codCuadricula = "74VKE08";
-                break;
-            case 1211:
-                codCuadricula = "75VKE09";
-                break;
-            case 712:
-                codCuadricula = "76VKF04";
-                break;
-            case 812:
-                codCuadricula = "77VKF05";
-                break;
-            case 912:
-                codCuadricula = "78VKF06";
-                break;
-            case 1012:
-                codCuadricula = "79VKF07";
-                break;
-            case 1112:
-                codCuadricula = "80VKF08";
-                break;
-            case 1212:
-                codCuadricula = "81VKF09";
-                break;
-            case 913:
-                codCuadricula = "82VKG06";
-                break;
-            case 1013:
-                codCuadricula = "83VKG07";
-                break;
-            case 1113:
-                codCuadricula = "84VKG08";
-                break;
-            case 1213:
-                codCuadricula = "85VKG09";
-                break;
-            case 814:
-                codCuadricula = "86VKH05";
-                break;
-            default:
-                codCuadricula = "ERROR";
-                break;
-        }
-        return codCuadricula;
+        return switch (numCuadricula) {
+            case 37 -> "01UKA10";
+            case 38 -> "02UKB10";
+            case 29 -> "03UKC09";
+            case 39 -> "04UKC10";
+            case 110 -> "05UKD08";
+            case 210 -> "06UKD09";
+            case 310 -> "07UKD10";
+            case 111 -> "08UKE08";
+            case 211 -> "09UKE09";
+            case 91 -> "10VLE06";
+            case 82 -> "11VLF05";
+            case 92 -> "12VLF06";
+            case 102 -> "13VLF07";
+            case 63 -> "14VLG03";
+            case 73 -> "15VLG04";
+            case 83 -> "16VLG05";
+            case 93 -> "17VLG06";
+            case 103 -> "18VLG07";
+            case 64 -> "19VLH03";
+            case 74 -> "20VLH04";
+            case 84 -> "21VLH05";
+            case 94 -> "22VLH06";
+            case 55 -> "23VLI02";
+            case 65 -> "24VLI03";
+            case 75 -> "25VLI04";
+            case 85 -> "26VLI05";
+            case 95 -> "27VLI06";
+            case 46 -> "28VLJ01";
+            case 56 -> "29VLJ02";
+            case 66 -> "30VLJ03";
+            case 76 -> "31VLJ04";
+            case 86 -> "32VLJ05";
+            case 96 -> "33VLJ06";
+            case 47 -> "34VKA01";
+            case 57 -> "35VKA02";
+            case 67 -> "36VKA03";
+            case 77 -> "37VKA04";
+            case 87 -> "38VKA05";
+            case 97 -> "39VKA06";
+            case 107 -> "40VKA07";
+            case 48 -> "41VKB01";
+            case 58 -> "42VKB02";
+            case 68 -> "43VKB03";
+            case 78 -> "44VKB04";
+            case 88 -> "45VKB05";
+            case 98 -> "46VKB06";
+            case 108 -> "47VKB07";
+            case 118 -> "48VKB08";
+            case 49 -> "49VKC01";
+            case 59 -> "50VKC02";
+            case 69 -> "51VKC03";
+            case 79 -> "52VKC04";
+            case 89 -> "53VKC05";
+            case 99 -> "54VKC06";
+            case 109 -> "55VKC07";
+            case 119 -> "56VKC08";
+            case 129 -> "57VKC09";
+            case 410 -> "58VKD01";
+            case 510 -> "59VKD02";
+            case 610 -> "60VKD03";
+            case 710 -> "61VKD04";
+            case 810 -> "62VKD05";
+            case 910 -> "63VKD06";
+            case 1010 -> "64VKD07";
+            case 1110 -> "65VKD08";
+            case 1210 -> "66VKD09";
+            case 411 -> "67VKE01";
+            case 511 -> "68VKE02";
+            case 611 -> "69VKE03";
+            case 711 -> "70VKE04";
+            case 811 -> "71VKE05";
+            case 911 -> "72VKE06";
+            case 1011 -> "73VKE07";
+            case 1111 -> "74VKE08";
+            case 1211 -> "75VKE09";
+            case 712 -> "76VKF04";
+            case 812 -> "77VKF05";
+            case 912 -> "78VKF06";
+            case 1012 -> "79VKF07";
+            case 1112 -> "80VKF08";
+            case 1212 -> "81VKF09";
+            case 913 -> "82VKG06";
+            case 1013 -> "83VKG07";
+            case 1113 -> "84VKG08";
+            case 1213 -> "85VKG09";
+            case 814 -> "86VKH05";
+            default -> "ERROR";
+        };*/
+    }
+
+    /** Distancia Haversine en KM (lat/lon en grados). NO usa ABS, respeta signos ±. */
+    private double miDistanciaKm(double lat1, double lon1, double lat2, double lon2) {
+        final double R = 6371.0088; // km
+        double phi1 = Math.toRadians(lat1);
+        double phi2 = Math.toRadians(lat2);
+        double dPhi = Math.toRadians(lat2 - lat1);
+        double dLam = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dPhi/2)*Math.sin(dPhi/2)
+                + Math.cos(phi1)*Math.cos(phi2)*Math.sin(dLam/2)*Math.sin(dLam/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
     }
 }

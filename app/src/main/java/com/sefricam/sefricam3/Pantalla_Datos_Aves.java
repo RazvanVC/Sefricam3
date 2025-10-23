@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -31,6 +32,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private EditText etnd_LongitudTarso;
     private EditText etnd_LongitudPico;
     private EditText etnd_LongitudTerceraPrimaria;
+    private EditText etnd_LongitudCola;
     private RadioGroup rbg_Localizacion;
     private RadioGroup rbg_Sexo;
     private RadioGroup rbg_Edad;
@@ -94,7 +96,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
     private DatosAves ave;
     private Limites limites;
     //Biometric parameters for the birds
-    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico;
+    private double maxPeso, maxTarso, maxAla, maxPico, minPeso, minTarso, minAla, minPico, maxCola, minCola;
 
     /**
      * Initialize the screen and all its components
@@ -159,13 +161,14 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 break;
         }
 
-        etn_EjemplaresCapturados.setText(String.valueOf(ave.getnEjemplares()));
-        etn_NumeroAnilla.setText(String.valueOf(ave.getnAnilla()));
+        etn_EjemplaresCapturados.setText(String.valueOf(ave.getNEjemplares()));
+        etn_NumeroAnilla.setText(String.valueOf(ave.getNAnilla()));
         et_NumeroAnillaPreexistente.setText(ave.getAnillaPreexistente());
         etnd_Peso.setText(String.valueOf(ave.getPeso()));
         etnd_LongitudTarso.setText(String.valueOf(ave.getLongitudTarso()));
         etnd_LongitudPico.setText(String.valueOf(ave.getLongitudPico()));
         etnd_LongitudTerceraPrimaria.setText(String.valueOf(ave.getLongitudTerceraPrimaria()));
+        etnd_LongitudCola.setText(String.valueOf(ave.getLongitudCola()));
 
         switch (ave.getLocalizacion()){
             case 1:
@@ -254,6 +257,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
                 break;
             case 2:
                 rb_MudaEnCurso.setChecked(true);
+                switchPlacaIncubatriz(ave.getSexo() == 2);
                 break;
             case 3:
                 rb_MudaTerminada.setChecked(true);
@@ -309,6 +313,7 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         etnd_LongitudTarso = findViewById(R.id.etnd_LongitudTarso);
         etnd_LongitudPico = findViewById(R.id.etnd_LongitudPico);
         etnd_LongitudTerceraPrimaria = findViewById(R.id.etnd_LongitudTerceraPrimaria);
+        etnd_LongitudCola = findViewById(R.id.etnd_LongitudCola);
 
         //Radio Buttons Localizacion
         rbg_Localizacion = findViewById(R.id.rbg_Localizacion);
@@ -547,13 +552,14 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         entity.put("Longitud",ave.getLongitud());
         entity.put("HoraCap",ave.getHoraCaptura());
         entity.put("Especie",ave.getEspecie());
-        entity.put("NEjemplares",ave.getnEjemplares());
-        entity.put("NumAnilla",ave.getnAnilla());
+        entity.put("NEjemplares",ave.getNEjemplares());
+        entity.put("NumAnilla",ave.getNAnilla());
         entity.put("AnillaPre",ave.getAnillaPreexistente());
         entity.put("Peso",ave.getPeso());
         entity.put("LongTarso",ave.getLongitudTarso());
         entity.put("LongPico",ave.getLongitudPico());
         entity.put("LongTerPrim",ave.getLongitudTerceraPrimaria());
+        entity.put("LongCola", ave.getLongitudCola());
         entity.put("Localizacion",ave.getLocalizacion());
         entity.put("Sexo",ave.getSexo());
         entity.put("Edad",ave.getEdad());
@@ -598,48 +604,37 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         ave.setHoraCaptura(tv_Hora.getText().toString());
 
         //Asignacion de especie
-        switch (rbg_EspeciesAves.getCheckedRadioButtonId()){
-            case R.id.rb_EspecieCamachuelo:
-                ave.setEspecie(1);
-                break;
-            case R.id.rb_EspecieJilguero:
-                ave.setEspecie(2);
-                break;
-            case R.id.rb_EspecieLugano:
-                ave.setEspecie(3);
-                break;
-            case R.id.rb_EspeciePardComun:
-                ave.setEspecie(4);
-                break;
-            case R.id.rb_EspeciePicogordo:
-                ave.setEspecie(5);
-                break;
-            case R.id.rb_EspeciePinzComun:
-                ave.setEspecie(6);
-                break;
-            case R.id.rb_EspeciePinzReal:
-                ave.setEspecie(7);
-                break;
-            case R.id.rb_EspeciePiquituerto:
-                ave.setEspecie(8);
-                break;
-            case R.id.rb_EspecieVerdecillo:
-                ave.setEspecie(9);
-                break;
-            case R.id.rb_EspecieVerdComun:
-                ave.setEspecie(10);
-                break;
-            case R.id.rb_EspecieVerdSerrano:
-                ave.setEspecie(11);
-                break;
+        int especieId = rbg_EspeciesAves.getCheckedRadioButtonId();
+        if (especieId == R.id.rb_EspecieCamachuelo) {
+            ave.setEspecie(1);
+        } else if (especieId == R.id.rb_EspecieJilguero) {
+            ave.setEspecie(2);
+        } else if (especieId == R.id.rb_EspecieLugano) {
+            ave.setEspecie(3);
+        } else if (especieId == R.id.rb_EspeciePardComun) {
+            ave.setEspecie(4);
+        } else if (especieId == R.id.rb_EspeciePicogordo) {
+            ave.setEspecie(5);
+        } else if (especieId == R.id.rb_EspeciePinzComun) {
+            ave.setEspecie(6);
+        } else if (especieId == R.id.rb_EspeciePinzReal) {
+            ave.setEspecie(7);
+        } else if (especieId == R.id.rb_EspeciePiquituerto) {
+            ave.setEspecie(8);
+        } else if (especieId == R.id.rb_EspecieVerdecillo) {
+            ave.setEspecie(9);
+        } else if (especieId == R.id.rb_EspecieVerdComun) {
+            ave.setEspecie(10);
+        } else if (especieId == R.id.rb_EspecieVerdSerrano) {
+            ave.setEspecie(11);
         }
 
         //Asignacion de anilla
         if (!etn_NumeroAnilla.getText().toString().isEmpty()) {
-            ave.setnAnilla(Integer.parseInt(etn_NumeroAnilla.getText().toString()));
+            ave.setNAnilla(Integer.parseInt(etn_NumeroAnilla.getText().toString()));
             ave.setAnillaPreexistente("");
         } else {
-            ave.setnAnilla(0);
+            ave.setNAnilla(0);
             ave.setAnillaPreexistente(et_NumeroAnillaPreexistente.getText().toString());
         }
 
@@ -648,106 +643,92 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         ave.setLongitudTarso(Double.parseDouble(etnd_LongitudTarso.getText().toString()));
         ave.setLongitudPico(Double.parseDouble(etnd_LongitudPico.getText().toString()));
         ave.setLongitudTerceraPrimaria(Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString()));
+        ave.setLongitudCola(Double.parseDouble(etnd_LongitudCola.getText().toString()));
 
-        switch (rbg_Localizacion.getCheckedRadioButtonId()){
-            case R.id.rb_LocalizacionLocal:
-                ave.setLocalizacion(1);
-                break;
-            case R.id.rb_LocalizacionNoLocal:
-                ave.setLocalizacion(2);
-                break;
-            case R.id.rb_LocalizacionIndeterminado:
-                ave.setLocalizacion(3);
-                break;
-        }
-        switch (rbg_Sexo.getCheckedRadioButtonId()){
-            case R.id.rb_SexoMacho:
-                ave.setSexo(1);
-                break;
-            case R.id.rb_SexoHembra:
-                ave.setSexo(2);
-                break;
-            case R.id.rb_SexoIndeterminado:
-                ave.setSexo(3);
-                break;
-        }
-        switch (rbg_Edad.getCheckedRadioButtonId()){
-            case R.id.rb_EdadJuvenil:
-                ave.setEdad(1);
-                break;
-            case R.id.rb_EdadAdulto:
-                ave.setEdad(2);
-                break;
+        //Asignación de localización
+        int localizacionId = rbg_Localizacion.getCheckedRadioButtonId();
+        if (localizacionId == R.id.rb_LocalizacionLocal) {
+            ave.setLocalizacion(1);
+        } else if (localizacionId == R.id.rb_LocalizacionNoLocal) {
+            ave.setLocalizacion(2);
+        } else if (localizacionId == R.id.rb_LocalizacionIndeterminado) {
+            ave.setLocalizacion(3);
         }
 
-        ave.setnEjemplares(Integer.parseInt(etn_EjemplaresCapturados.getText().toString()));
+        //Asignación de sexo
+        int sexoId = rbg_Sexo.getCheckedRadioButtonId();
+        if (sexoId == R.id.rb_SexoMacho) {
+            ave.setSexo(1);
+        } else if (sexoId == R.id.rb_SexoHembra) {
+            ave.setSexo(2);
+        } else if (sexoId == R.id.rb_SexoIndeterminado) {
+            ave.setSexo(3);
+        }
 
-        switch (rbg_CondicionFisica.getCheckedRadioButtonId()){
-            case R.id.rb_CondicionBuena:
-                ave.setCondicionFisica(1);
-                break;
-            case R.id.rb_CondicionLesiones:
-                ave.setCondicionFisica(2);
-                break;
-            case R.id.rb_CondicionEnfermedad:
-                ave.setCondicionFisica(3);
-                break;
-            case R.id.rb_CondicionMalformacion:
-                ave.setCondicionFisica(4);
-                break;
+        //Asignación de edad
+        int edadId = rbg_Edad.getCheckedRadioButtonId();
+        if (edadId == R.id.rb_EdadJuvenil) {
+            ave.setEdad(1);
+        } else if (edadId == R.id.rb_EdadAdulto) {
+            ave.setEdad(2);
         }
-        switch (rbg_Grasa.getCheckedRadioButtonId()){
-            case R.id.rb_GrasaAusente:
-                ave.setGrasa(1);
-                break;
-            case R.id.rb_GrasaInter:
-                ave.setGrasa(2);
-                break;
-            case R.id.rb_GrasaInter_Abd:
-                ave.setGrasa(3);
-                break;
-            case R.id.rb_GrasaInter_Abd_Pectoral:
-                ave.setGrasa(4);
-                break;
+
+        ave.setNEjemplares(Integer.parseInt(etn_EjemplaresCapturados.getText().toString()));
+
+        //Asignación de condición física
+        int condicionFisicaId = rbg_CondicionFisica.getCheckedRadioButtonId();
+        if (condicionFisicaId == R.id.rb_CondicionBuena) {
+            ave.setCondicionFisica(1);
+        } else if (condicionFisicaId == R.id.rb_CondicionLesiones) {
+            ave.setCondicionFisica(2);
+        } else if (condicionFisicaId == R.id.rb_CondicionEnfermedad) {
+            ave.setCondicionFisica(3);
+        } else if (condicionFisicaId == R.id.rb_CondicionMalformacion) {
+            ave.setCondicionFisica(4);
         }
-        switch (rbg_MusculoPectoral.getCheckedRadioButtonId()){
-            case R.id.rb_MusculoQEvidente:
-                ave.setMusculoPectoral(1);
-                break;
-            case R.id.rb_MusculoQDistinguible:
-                ave.setMusculoPectoral(2);
-                break;
-            case R.id.rb_MusculoQLigera:
-                ave.setMusculoPectoral(3);
-                break;
-            case R.id.rb_MusculoNoQ:
-                ave.setMusculoPectoral(4);
-                break;
+        //Asignación de grasa
+        int grasaId = rbg_Grasa.getCheckedRadioButtonId();
+        if (grasaId == R.id.rb_GrasaAusente) {
+            ave.setGrasa(1);
+        } else if (grasaId == R.id.rb_GrasaInter) {
+            ave.setGrasa(2);
+        } else if (grasaId == R.id.rb_GrasaInter_Abd) {
+            ave.setGrasa(3);
+        } else if (grasaId == R.id.rb_GrasaInter_Abd_Pectoral) {
+            ave.setGrasa(4);
         }
-        switch (rbg_Muda.getCheckedRadioButtonId()){
-            case R.id.rb_MudaAusente:
-                ave.setMuda(1);
-                break;
-            case R.id.rb_MudaEnCurso:
-                ave.setMuda(2);
-                break;
-            case R.id.rb_MudaTerminada:
-                ave.setMuda(3);
-                break;
+        int musculoId = rbg_MusculoPectoral.getCheckedRadioButtonId();
+        if (musculoId == R.id.rb_MusculoQEvidente) {
+            ave.setMusculoPectoral(1);
+        } else if (musculoId == R.id.rb_MusculoQDistinguible) {
+            ave.setMusculoPectoral(2);
+        } else if (musculoId == R.id.rb_MusculoQLigera) {
+            ave.setMusculoPectoral(3);
+        } else if (musculoId == R.id.rb_MusculoNoQ) {
+            ave.setMusculoPectoral(4);
         }
-        if (ave.getSexo()==2){
-            switch (rbg_PlacaInc.getCheckedRadioButtonId()){
-                case R.id.rb_PlacaIncNoEvidencia:
-                    ave.setPlacaIncubatriz(1);
-                    break;
-                case R.id.rb_PlacaIncIncompleta:
-                    ave.setPlacaIncubatriz(2);
-                    break;
-                case R.id.rb_PlacaIncMEvidente:
-                    ave.setPlacaIncubatriz(3);
-                    break;
+
+        //Asignación de muda
+        int mudaId = rbg_Muda.getCheckedRadioButtonId();
+        if (mudaId == R.id.rb_MudaAusente) {
+            ave.setMuda(1);
+        } else if (mudaId == R.id.rb_MudaEnCurso) {
+            ave.setMuda(2);
+        } else if (mudaId == R.id.rb_MudaTerminada) {
+            ave.setMuda(3);
+        }
+        if (ave.getSexo() == 2) {
+            int placaId = rbg_PlacaInc.getCheckedRadioButtonId();
+            if (placaId == R.id.rb_PlacaIncNoEvidencia) {
+                ave.setPlacaIncubatriz(1);
+            } else if (placaId == R.id.rb_PlacaIncIncompleta) {
+                ave.setPlacaIncubatriz(2);
+            } else if (placaId == R.id.rb_PlacaIncMEvidente) {
+                ave.setPlacaIncubatriz(3);
             }
-        } else ave.setPlacaIncubatriz(0);
+        } else {
+            ave.setPlacaIncubatriz(0);
+        }
 
         ave.setObservaciones(et_ObservacionesAves.getText().toString());
     }
@@ -809,8 +790,8 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
 
         //Comprobacion de que los parámetros no estén vacios
         if (
-                etnd_LongitudPico.getText().toString().equals("") || etnd_LongitudTarso.getText().toString().equals("") ||
-                etnd_LongitudTerceraPrimaria.getText().toString().equals("") || etnd_Peso.getText().toString().equals("")
+                etnd_LongitudPico.getText().toString().isEmpty() || etnd_LongitudTarso.getText().toString().isEmpty() ||
+                        etnd_LongitudTerceraPrimaria.getText().toString().isEmpty() || etnd_Peso.getText().toString().isEmpty() || etnd_LongitudCola.getText().toString().isEmpty()
         ){
             Toast.makeText(this, "Los parámetros del ave no pueden estar vacíos", Toast.LENGTH_SHORT).show();
             return false;
@@ -842,6 +823,13 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
         if(Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())!=0){
             if (Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())<minAla || Double.parseDouble(etnd_LongitudTerceraPrimaria.getText().toString())>maxAla){
                 Toast.makeText(this, "La longitud de la tercera primaria no se correspone a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if(Double.parseDouble(etnd_LongitudCola.getText().toString())!=0){
+            if (Double.parseDouble(etnd_LongitudCola.getText().toString())<minCola || Double.parseDouble(etnd_LongitudCola.getText().toString())>maxCola){
+                Toast.makeText(this, "La longitud de la cola no se correspone a los parámetros del ave seleccionada", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -894,31 +882,30 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
      * Checks if the species can be submitted
      * @return default false, true is can be submitted
      */
-    @SuppressLint("NonConstantResourceId")
     private boolean checkAve() {
-        switch (rbg_EspeciesAves.getCheckedRadioButtonId()){
-            case R.id.rb_EspecieCamachuelo:
-                return limites.isAnillableCamachuelo();
-            case R.id.rb_EspecieJilguero:
-                return limites.isAnillableJilguero();
-            case R.id.rb_EspecieLugano:
-                return limites.isAnillableLugano();
-            case R.id.rb_EspeciePardComun:
-                return limites.isAnillablePardComun();
-            case R.id.rb_EspeciePicogordo:
-                return limites.isAnillablePicogordo();
-            case R.id.rb_EspeciePinzComun:
-                return limites.isAnillablePinzComun();
-            case R.id.rb_EspeciePinzReal:
-                return limites.isAnillablePinzReal();
-            case R.id.rb_EspeciePiquituerto:
-                return limites.isAnillablePiquituerto();
-            case R.id.rb_EspecieVerdecillo:
-                return limites.isAnillableVerdecillo();
-            case R.id.rb_EspecieVerdComun:
-                return limites.isAnillableVerdComun();
-            case R.id.rb_EspecieVerdSerrano:
-                return limites.isAnillableVerdSerrano();
+        int especieId = rbg_EspeciesAves.getCheckedRadioButtonId();
+        if (especieId == R.id.rb_EspecieCamachuelo) {
+            return limites.isAnillableCamachuelo();
+        } else if (especieId == R.id.rb_EspecieJilguero) {
+            return limites.isAnillableJilguero();
+        } else if (especieId == R.id.rb_EspecieLugano) {
+            return limites.isAnillableLugano();
+        } else if (especieId == R.id.rb_EspeciePardComun) {
+            return limites.isAnillablePardComun();
+        } else if (especieId == R.id.rb_EspeciePicogordo) {
+            return limites.isAnillablePicogordo();
+        } else if (especieId == R.id.rb_EspeciePinzComun) {
+            return limites.isAnillablePinzComun();
+        } else if (especieId == R.id.rb_EspeciePinzReal) {
+            return limites.isAnillablePinzReal();
+        } else if (especieId == R.id.rb_EspeciePiquituerto) {
+            return limites.isAnillablePiquituerto();
+        } else if (especieId == R.id.rb_EspecieVerdecillo) {
+            return limites.isAnillableVerdecillo();
+        } else if (especieId == R.id.rb_EspecieVerdComun) {
+            return limites.isAnillableVerdComun();
+        } else if (especieId == R.id.rb_EspecieVerdSerrano) {
+            return limites.isAnillableVerdSerrano();
         }
         return false;
     }
@@ -947,128 +934,139 @@ public class Pantalla_Datos_Aves extends Activity implements  View.OnClickListen
      */
     @SuppressLint("NonConstantResourceId")
     private void setBiometricParameters() {
-        switch (rbg_EspeciesAves.getCheckedRadioButtonId()){
-            case R.id.rb_EspecieCamachuelo:
-                maxPeso  = limites.getMaxPesoCamachuelo();
-                maxTarso = limites.getMaxTarsoCamachuelo();
-                maxAla = limites.getMaxAlaCamachuelo();
-                maxPico = limites.getMaxPicoCamachuelo();
+        int especieId = rbg_EspeciesAves.getCheckedRadioButtonId();
+        if (especieId == R.id.rb_EspecieCamachuelo) {
+            maxPeso = limites.getMaxPesoCamachuelo();
+            maxTarso = limites.getMaxTarsoCamachuelo();
+            maxAla = limites.getMaxAlaCamachuelo();
+            maxPico = limites.getMaxPicoCamachuelo();
+            maxCola = limites.getMaxColaCamachuelo();
 
-                minPeso  = limites.getMinPesoCamachuelo();
-                minTarso = limites.getMinTarsoCamachuelo();
-                minAla = limites.getMinAlaCamachuelo();
-                minPico = limites.getMinPicoCamachuelo();
-                break;
-            case R.id.rb_EspecieJilguero:
-                maxPeso  = limites.getMaxPesoJilguero();
-                maxTarso = limites.getMaxTarsoJilguero();
-                maxAla = limites.getMaxAlaJilguero();
-                maxPico = limites.getMaxPicoCamachuelo();
+            minPeso = limites.getMinPesoCamachuelo();
+            minTarso = limites.getMinTarsoCamachuelo();
+            minAla = limites.getMinAlaCamachuelo();
+            minPico = limites.getMinPicoCamachuelo();
+            minCola = limites.getMinColaCamachuelo();
+        } else if (especieId == R.id.rb_EspecieJilguero) {
+            maxPeso  = limites.getMaxPesoJilguero();
+            maxTarso = limites.getMaxTarsoJilguero();
+            maxAla = limites.getMaxAlaJilguero();
+            maxPico = limites.getMaxPicoCamachuelo();
+            maxCola = limites.getMaxColaJilguero();
 
-                minPeso  = limites.getMinPesoJilguero();
-                minTarso = limites.getMinTarsoJilguero();
-                minAla = limites.getMinAlaJilguero();
-                minPico = limites.getMinPicoJilguero();
-                break;
-            case R.id.rb_EspecieLugano:
-                maxPeso  = limites.getMaxPesoLugano();
-                maxTarso = limites.getMaxTarsoLugano();
-                maxAla = limites.getMaxAlaLugano();
-                maxPico = limites.getMaxPicoLugano();
+            minPeso  = limites.getMinPesoJilguero();
+            minTarso = limites.getMinTarsoJilguero();
+            minAla = limites.getMinAlaJilguero();
+            minPico = limites.getMinPicoJilguero();
+            minCola = limites.getMinColaJilguero();
+        } else if (especieId == R.id.rb_EspecieLugano) {
+            maxPeso = limites.getMaxPesoLugano();
+            maxTarso = limites.getMaxTarsoLugano();
+            maxAla = limites.getMaxAlaLugano();
+            maxPico = limites.getMaxPicoLugano();
+            maxCola = limites.getMaxColaLugano();
 
-                minPeso  = limites.getMinPesoLugano();
-                minTarso = limites.getMinTarsoLugano();
-                minAla = limites.getMinAlaLugano();
-                minPico = limites.getMinPicoLugano();
-                break;
-            case R.id.rb_EspeciePardComun:
-                maxPeso  = limites.getMaxPesoPardComun();
-                maxTarso = limites.getMaxTarsoPardComun();
-                maxAla = limites.getMaxAlaPardComun();
-                maxPico = limites.getMaxPicoPardComun();
+            minPeso = limites.getMinPesoLugano();
+            minTarso = limites.getMinTarsoLugano();
+            minAla = limites.getMinAlaLugano();
+            minPico = limites.getMinPicoLugano();
+            minCola = limites.getMinColaLugano();
+        } else if (especieId == R.id.rb_EspeciePardComun) {
+            maxPeso = limites.getMaxPesoPardComun();
+            maxTarso = limites.getMaxTarsoPardComun();
+            maxAla = limites.getMaxAlaPardComun();
+            maxPico = limites.getMaxPicoPardComun();
+            maxCola = limites.getMaxColaPardComun();
 
-                minPeso  = limites.getMinPesoPardComun();
-                minTarso = limites.getMinTarsoPardComun();
-                minAla = limites.getMinAlaPardComun();
-                minPico = limites.getMinPicoPardComun();
-                break;
-            case R.id.rb_EspeciePicogordo:
-                maxPeso  = limites.getMaxPesoPicogordo();
-                maxTarso = limites.getMaxTarsoPicogordo();
-                maxAla = limites.getMaxAlaPicogordo();
-                maxPico = limites.getMaxPicoPicogordo();
+            minPeso = limites.getMinPesoPardComun();
+            minTarso = limites.getMinTarsoPardComun();
+            minAla = limites.getMinAlaPardComun();
+            minPico = limites.getMinPicoPardComun();
+            minCola = limites.getMinColaPardComun();
+        } else if (especieId == R.id.rb_EspeciePicogordo) {
+            maxPeso = limites.getMaxPesoPicogordo();
+            maxTarso = limites.getMaxTarsoPicogordo();
+            maxAla = limites.getMaxAlaPicogordo();
+            maxPico = limites.getMaxPicoPicogordo();
+            maxCola = limites.getMaxColaPicogordo();
 
-                minPeso  = limites.getMinPesoPicogordo();
-                minTarso = limites.getMinTarsoPicogordo();
-                minAla = limites.getMinAlaPicogordo();
-                minPico = limites.getMinPicoPicogordo();
-                break;
-            case R.id.rb_EspeciePinzComun:
-                maxPeso  = limites.getMaxPesoPinzComun();
-                maxTarso = limites.getMaxTarsoPinzComun();
-                maxAla = limites.getMaxAlaPinzComun();
-                maxPico = limites.getMaxPicoPinzComun();
+            minPeso = limites.getMinPesoPicogordo();
+            minTarso = limites.getMinTarsoPicogordo();
+            minAla = limites.getMinAlaPicogordo();
+            minPico = limites.getMinPicoPicogordo();
+            minCola = limites.getMinColaPicogordo();
+        } else if (especieId == R.id.rb_EspeciePinzComun) {
+            maxPeso = limites.getMaxPesoPinzComun();
+            maxTarso = limites.getMaxTarsoPinzComun();
+            maxAla = limites.getMaxAlaPinzComun();
+            maxPico = limites.getMaxPicoPinzComun();
+            maxCola = limites.getMaxColaPinzComun();
 
-                minPeso  = limites.getMinPesoPinzComun();
-                minTarso = limites.getMinTarsoPinzComun();
-                minAla = limites.getMinAlaPinzComun();
-                minPico = limites.getMinPicoPinzComun();
-                break;
-            case R.id.rb_EspeciePinzReal:
-                maxPeso  = limites.getMaxPesoPinzReal();
-                maxTarso = limites.getMaxTarsoPinzReal();
-                maxAla = limites.getMaxAlaPinzReal();
-                maxPico = limites.getMaxPicoPinzReal();
+            minPeso = limites.getMinPesoPinzComun();
+            minTarso = limites.getMinTarsoPinzComun();
+            minAla = limites.getMinAlaPinzComun();
+            minPico = limites.getMinPicoPinzComun();
+            minCola = limites.getMinColaPinzComun();
+        } else if (especieId == R.id.rb_EspeciePinzReal) {
+            maxPeso = limites.getMaxPesoPinzReal();
+            maxTarso = limites.getMaxTarsoPinzReal();
+            maxAla = limites.getMaxAlaPinzReal();
+            maxPico = limites.getMaxPicoPinzReal();
+            maxCola = limites.getMaxColaPinzReal();
 
-                minPeso  = limites.getMinPesoPinzReal();
-                minTarso = limites.getMinTarsoPinzReal();
-                minAla = limites.getMinAlaPinzReal();
-                minPico = limites.getMinPicoPinzReal();
-                break;
-            case R.id.rb_EspeciePiquituerto:
-                maxPeso  = limites.getMaxPesoPiquituerto();
-                maxTarso = limites.getMaxTarsoPiquituerto();
-                maxAla = limites.getMaxAlaPiquituerto();
-                maxPico = limites.getMaxPicoPiquituerto();
+            minPeso = limites.getMinPesoPinzReal();
+            minTarso = limites.getMinTarsoPinzReal();
+            minAla = limites.getMinAlaPinzReal();
+            minPico = limites.getMinPicoPinzReal();
+            minCola = limites.getMinColaPinzReal();
+        } else if (especieId == R.id.rb_EspeciePiquituerto) {
+            maxPeso = limites.getMaxPesoPiquituerto();
+            maxTarso = limites.getMaxTarsoPiquituerto();
+            maxAla = limites.getMaxAlaPiquituerto();
+            maxPico = limites.getMaxPicoPiquituerto();
+            maxCola = limites.getMaxColaPiquituerto();
 
-                minPeso  = limites.getMinPesoPiquituerto();
-                minTarso = limites.getMinTarsoPiquituerto();
-                minAla = limites.getMinAlaPiquituerto();
-                minPico = limites.getMinPicoPiquituerto();
-                break;
-            case R.id.rb_EspecieVerdecillo:
-                maxPeso  = limites.getMaxPesoVerdecillo();
-                maxTarso = limites.getMaxTarsoVerdecillo();
-                maxAla = limites.getMaxAlaVerdecillo();
-                maxPico = limites.getMaxPicoVerdecillo();
+            minPeso = limites.getMinPesoPiquituerto();
+            minTarso = limites.getMinTarsoPiquituerto();
+            minAla = limites.getMinAlaPiquituerto();
+            minPico = limites.getMinPicoPiquituerto();
+            minCola = limites.getMinColaPiquituerto();
+        } else if (especieId == R.id.rb_EspecieVerdecillo) {
+            maxPeso = limites.getMaxPesoVerdecillo();
+            maxTarso = limites.getMaxTarsoVerdecillo();
+            maxAla = limites.getMaxAlaVerdecillo();
+            maxPico = limites.getMaxPicoVerdecillo();
+            maxCola = limites.getMaxColaVerdecillo();
 
-                minPeso  = limites.getMinPesoVerdecillo();
-                minTarso = limites.getMinTarsoVerdecillo();
-                minAla = limites.getMinAlaVerdecillo();
-                minPico = limites.getMinPicoVerdecillo();
-                break;
-            case R.id.rb_EspecieVerdComun:
-                maxPeso  = limites.getMaxPesoVerdComun();
-                maxTarso = limites.getMaxTarsoVerdComun();
-                maxAla = limites.getMaxAlaVerdComun();
-                maxPico = limites.getMaxPicoVerdComun();
+            minPeso = limites.getMinPesoVerdecillo();
+            minTarso = limites.getMinTarsoVerdecillo();
+            minAla = limites.getMinAlaVerdecillo();
+            minPico = limites.getMinPicoVerdecillo();
+            minCola = limites.getMinColaVerdecillo();
+        } else if (especieId == R.id.rb_EspecieVerdComun) {
+            maxPeso = limites.getMaxPesoVerdComun();
+            maxTarso = limites.getMaxTarsoVerdComun();
+            maxAla = limites.getMaxAlaVerdComun();
+            maxPico = limites.getMaxPicoVerdComun();
+            maxCola = limites.getMaxColaVerdComun();
 
-                minPeso  = limites.getMinPesoVerdComun();
-                minTarso = limites.getMinTarsoVerdComun();
-                minAla = limites.getMinAlaVerdComun();
-                minPico = limites.getMinPicoVerdComun();
-                break;
-            case R.id.rb_EspecieVerdSerrano:
-                maxPeso  = limites.getMaxPesoVerdSerrano();
-                maxTarso = limites.getMaxTarsoVerdSerrano();
-                maxAla = limites.getMaxAlaVerdSerrano();
-                maxPico = limites.getMaxPicoVerdSerrano();
+            minPeso = limites.getMinPesoVerdComun();
+            minTarso = limites.getMinTarsoVerdComun();
+            minAla = limites.getMinAlaVerdComun();
+            minPico = limites.getMinPicoVerdComun();
+            minCola = limites.getMinColaVerdComun();
+        } else if (especieId == R.id.rb_EspecieVerdSerrano) {
+            maxPeso  = limites.getMaxPesoVerdSerrano();
+            maxTarso = limites.getMaxTarsoVerdSerrano();
+            maxAla = limites.getMaxAlaVerdSerrano();
+            maxPico = limites.getMaxPicoVerdSerrano();
+            maxCola = limites.getMaxColaVerdSerrano();
 
-                minPeso  = limites.getMinPesoVerdSerrano();
-                minTarso = limites.getMinTarsoVerdSerrano();
-                minAla = limites.getMinAlaVerdSerrano();
-                minPico = limites.getMinPicoVerdSerrano();
-                break;
+            minPeso = limites.getMinPesoVerdSerrano();
+            minTarso = limites.getMinTarsoVerdSerrano();
+            minAla = limites.getMinAlaVerdSerrano();
+            minPico = limites.getMinPicoVerdSerrano();
+            minCola = limites.getMinColaVerdSerrano();
         }
     }
 }

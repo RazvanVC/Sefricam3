@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import static java.lang.Math.*;
+import com.sefricam.sefricam3.GridRegistry.GridCell;
+
+import java.util.List;
 
 public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickListener{
 
@@ -128,16 +131,43 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
     }
 
     private String setDistancia(double longitud1, double latitud1, double longitud2, double latitud2) {
+        double km = miDistanciaKm(latitud1, longitud1, latitud2, longitud2);
+        double distanciaTotal = round(km * 100.0) / 100.0;
+        return distanciaTotal + " KM";
+        /*
         double distanciaGrados = acos(sin(latitud1)*sin(latitud2)+cos(latitud1)*cos(latitud2)*cos(longitud1-longitud2));
         double distanciaTotal = round(111.18*distanciaGrados*100.0)/100.0;
         return distanciaTotal+" KM";
+        */
     }
+
+    /**
+     * Devuelve el código de cuadrícula más cercana usando datos embebidos en GridRegistry.
+     * No usa ABS: acepta longitudes negativas (Oeste) y latitudes negativas (Sur).
+     */
+    private String setCuadricula(double longitud, double latitud) {
+        // 1) Elegimos el conjunto de celdas donde buscar.
+        //    Si no tienes selector de comunidad, usa todo:
+        List<GridCell> cells = GridRegistry.all();
+
+        // 2) Buscamos la más cercana inyectando nuestro cálculo de distancia en KM.
+        GridCell nearest = GridRegistry.findNearest(
+                latitud,  // ojo: (lat, lon)
+                longitud,
+                cells,
+                this::miDistanciaKm
+        );
+
+        // 3) Si no hay coincidencia (lista vacía), devolvemos "ERROR" como antes.
+        return (nearest != null) ? nearest.denominacion() : "ERROR";
+    }
+
 
     /**
      * Set the code for the coordinates provided
      * @return code for the Quadrille
      */
-    private String setCuadricula(double longitud, double latitud){
+    private String setCuadricula2(double longitud, double latitud){
         //Primer valor
         double x = 12-((longitud - 3.123)/0.1159);
         if(x<0) x=0.0;
@@ -416,5 +446,18 @@ public class Pantalla_Mi_Cuadricula extends Activity implements View.OnClickList
         }
 
         return codCuadricula;
+    }
+
+    /** Distancia Haversine en KM con lat/lon en grados. NO usa ABS, respeta signos ±. */
+    private double miDistanciaKm(double lat1, double lon1, double lat2, double lon2) {
+        final double R = 6371.0088; // km
+        double phi1 = Math.toRadians(lat1);
+        double phi2 = Math.toRadians(lat2);
+        double dPhi = Math.toRadians(lat2 - lat1);
+        double dLam = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dPhi/2) * Math.sin(dPhi/2)
+                + Math.cos(phi1) * Math.cos(phi2) * Math.sin(dLam/2) * Math.sin(dLam/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
     }
 }

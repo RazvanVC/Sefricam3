@@ -55,47 +55,12 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     private RadioButton rb_LluviaLigera;
     private RadioButton rb_LluviaFuerte;
     private RadioButton rb_LluviaMFuerte;
-    private RadioGroup rbg_Especie01;
-    private RadioGroup rbg_Especie02;
-    private RadioGroup rbg_Especie03;
-    private RadioGroup rbg_Especie04;
-    private RadioGroup rbg_Especie05;
-    private RadioGroup rbg_Especie06;
-    private RadioGroup rbg_Especie07;
-    private RadioGroup rbg_Especie08;
-    private RadioGroup rbg_Especie09;
-    private RadioGroup rbg_Especie10;
-    private RadioGroup rbg_Especie11;
-    private RadioGroup rbg_Especie12;
-    private RadioGroup rbg_Especie13;
-    private RadioGroup rbg_Especie14;
-    private RadioGroup rbg_Especie15;
-    private RadioGroup rbg_Especie16;
-    private RadioGroup rbg_Especie17;
-    private RadioGroup rbg_Especie18;
-    private RadioGroup rbg_Especie19;
-    private RadioGroup rbg_Especie20;
-    private RadioGroup rbg_Especie21;
-    private RadioGroup rbg_Especie22;
-    private RadioGroup rbg_Especie23;
-    private RadioGroup rbg_Especie24;
-    private RadioGroup rbg_Especie25;
-    private RadioGroup rbg_Especie26;
-    private RadioGroup rbg_Especie27;
-    private RadioGroup rbg_Especie28;
-    private RadioGroup rbg_Especie29;
-    private RadioGroup rbg_Especie30;
-    private RadioGroup rbg_Especie31;
-    private RadioGroup rbg_Especie32;
-    private RadioGroup rbg_Especie33;
-    private RadioGroup rbg_Especie34;
-    private RadioGroup rbg_Especie35;
-    private RadioGroup rbg_Especie36;
     private EditText et_Especie37;
     private EditText et_Especie38;
     private TextView tv_DireccionViento;
     private Button btn_Guardar;
     private Button btn_Volver;
+    private final RadioButton[][] rbEspecie = new RadioButton[42][4];
 
     //Class Parameters
     private Envio envio;
@@ -174,48 +139,42 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_LluviaFuerte = findViewById(R.id.rb_LluviaFuerte);
         rb_LluviaMFuerte = findViewById(R.id.rb_LluviaMFuerte);
 
-        rbg_Especie01 = findViewById(R.id.rbg_Especie01);
-        rbg_Especie02 = findViewById(R.id.rbg_Especie02);
-        rbg_Especie03 = findViewById(R.id.rbg_Especie03);
-        rbg_Especie04 = findViewById(R.id.rbg_Especie04);
-        rbg_Especie05 = findViewById(R.id.rbg_Especie05);
-        rbg_Especie06 = findViewById(R.id.rbg_Especie06);
-        rbg_Especie07 = findViewById(R.id.rbg_Especie07);
-        rbg_Especie08 = findViewById(R.id.rbg_Especie08);
-        rbg_Especie09 = findViewById(R.id.rbg_Especie09);
-        rbg_Especie10 = findViewById(R.id.rbg_Especie10);
-        rbg_Especie11 = findViewById(R.id.rbg_Especie11);
-        rbg_Especie12 = findViewById(R.id.rbg_Especie12);
-        rbg_Especie13 = findViewById(R.id.rbg_Especie13);
-        rbg_Especie14 = findViewById(R.id.rbg_Especie14);
-        rbg_Especie15 = findViewById(R.id.rbg_Especie15);
-        rbg_Especie16 = findViewById(R.id.rbg_Especie16);
-        rbg_Especie17 = findViewById(R.id.rbg_Especie17);
-        rbg_Especie18 = findViewById(R.id.rbg_Especie18);
-        rbg_Especie19 = findViewById(R.id.rbg_Especie19);
-        rbg_Especie20 = findViewById(R.id.rbg_Especie20);
-        rbg_Especie21 = findViewById(R.id.rbg_Especie21);
-        rbg_Especie22 = findViewById(R.id.rbg_Especie22);
-        rbg_Especie23 = findViewById(R.id.rbg_Especie23);
-        rbg_Especie24 = findViewById(R.id.rbg_Especie24);
-        rbg_Especie25 = findViewById(R.id.rbg_Especie25);
-        rbg_Especie26 = findViewById(R.id.rbg_Especie26);
-        rbg_Especie27 = findViewById(R.id.rbg_Especie27);
-        rbg_Especie28 = findViewById(R.id.rbg_Especie28);
-        rbg_Especie29 = findViewById(R.id.rbg_Especie29);
-        rbg_Especie30 = findViewById(R.id.rbg_Especie30);
-        rbg_Especie31 = findViewById(R.id.rbg_Especie31);
-        rbg_Especie32 = findViewById(R.id.rbg_Especie32);
-        rbg_Especie33 = findViewById(R.id.rbg_Especie33);
-        rbg_Especie34 = findViewById(R.id.rbg_Especie34);
-        rbg_Especie35 = findViewById(R.id.rbg_Especie35);
-        rbg_Especie36 = findViewById(R.id.rbg_Especie36);
+        for (int i = 1; i <= 44; i++) {
+            if (i == 37 || i == 38) continue; // Saltar especies de texto libre
+            int idx = especieToIndex(i);
+            for (int j = 0; j < 4; j++) {
+                String suffix = switch (j) {
+                    case 0 -> "N";
+                    case 1 -> "S";
+                    case 2 -> "A";
+                    case 3 -> "MA";
+                    default -> "";
+                };
+                int resId = getResources().getIdentifier(
+                        String.format("rb_Especie%02d%s", i, suffix),
+                        "id", getPackageName());
+                rbEspecie[idx][j] = findViewById(resId);
+                if (j == 0) rbEspecie[idx][0].setChecked(true);
+                int finalIdx = idx;
+                rbEspecie[idx][j].setOnClickListener(v -> {
+                    for (int k = 0; k < 4; k++) {
+                        if (rbEspecie[finalIdx][k] != v) rbEspecie[finalIdx][k].setChecked(false);
+                    }
+                });
+            }
+        }
 
         et_Especie37 = findViewById(R.id.et_Especie37);
         et_Especie38 = findViewById(R.id.et_Especie38);
 
         btn_Guardar = findViewById(R.id.btn_GuardarEntorno);
         btn_Volver = findViewById(R.id.btn_VolverEntorno);
+    }
+
+    private int especieToIndex(int especieNum) {
+        if (especieNum < 37) return especieNum - 1;
+        if (especieNum > 38) return especieNum - 3;
+        throw new IllegalArgumentException("La especie 37 y 38 no tienen radio buttons");
     }
 
     /**
@@ -227,6 +186,42 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         rb_VientoCalma.setOnClickListener(this);
         rb_VientoFuerte.setOnClickListener(this);
         rb_VientoLigero.setOnClickListener(this);
+
+        // Listeners para los RadioButton de nubes
+        View.OnClickListener nubesListener = v -> {
+            if (rb_NubesAusente.isChecked()) {
+                rb_LluviaAusente.setChecked(false);
+                rb_LluviaIntermitente.setChecked(false);
+                rb_LluviaLigera.setChecked(false);
+                rb_LluviaFuerte.setChecked(false);
+                rb_LluviaMFuerte.setChecked(false);
+                rb_LluviaAusente.setClickable(false);
+                rb_LluviaIntermitente.setClickable(false);
+                rb_LluviaLigera.setClickable(false);
+                rb_LluviaFuerte.setClickable(false);
+                rb_LluviaMFuerte.setClickable(false);
+                rb_LluviaAusente.setTextColor(getColor(R.color.Gris));
+                rb_LluviaIntermitente.setTextColor(getColor(R.color.Gris));
+                rb_LluviaLigera.setTextColor(getColor(R.color.Gris));
+                rb_LluviaFuerte.setTextColor(getColor(R.color.Gris));
+                rb_LluviaMFuerte.setTextColor(getColor(R.color.Gris));
+            } else {
+                rb_LluviaAusente.setClickable(true);
+                rb_LluviaIntermitente.setClickable(true);
+                rb_LluviaLigera.setClickable(true);
+                rb_LluviaFuerte.setClickable(true);
+                rb_LluviaMFuerte.setClickable(true);
+                rb_LluviaAusente.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaIntermitente.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaLigera.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaFuerte.setTextColor(getColor(R.color.VerdePrimario));
+                rb_LluviaMFuerte.setTextColor(getColor(R.color.VerdePrimario));
+            }
+        };
+        rb_NubesAusente.setOnClickListener(nubesListener);
+        rb_NubesNYC.setOnClickListener(nubesListener);
+        rb_NubesCubierto.setOnClickListener(nubesListener);
+        rb_NubesMCubierto.setOnClickListener(nubesListener);
     }
 
     /**
@@ -351,7 +346,9 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
             if (rbg_DireccionViento.getCheckedRadioButtonId()==-1) return false;
         }
         if (rbg_Nubes.getCheckedRadioButtonId()==-1) return false;
-        if (rbg_Lluvia.getCheckedRadioButtonId()==-1) return false;
+        if (!rb_NubesAusente.isChecked()){
+            if (rbg_Lluvia.getCheckedRadioButtonId()==-1) return false;
+        }
         try {
             Double.valueOf(etnd_TemperaturaInicio.getText().toString());
             Double.valueOf(etnd_TemperaturaFin.getText().toString());
@@ -374,7 +371,6 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     /**
      * Puts the data in the Envio Object
      */
-    @SuppressLint("NonConstantResourceId")
     private void setValues() {
         int zonificacion = 0;
         int viento = 0;
@@ -386,124 +382,100 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
         double tInicio = Double.parseDouble(etnd_TemperaturaInicio.getText().toString());
         double tFin = Double.parseDouble(etnd_TemperaturaFin.getText().toString());
 
-        switch (rbg_Zonificacion.getCheckedRadioButtonId()){
-            case R.id.rb_Zonificacion01:
-                zonificacion = 1;
-                break;
-            case R.id.rb_Zonificacion02:
-                zonificacion = 2;
-                break;
-            case R.id.rb_Zonificacion03:
-                zonificacion = 3;
-                break;
-            case R.id.rb_Zonificacion04:
-                zonificacion = 4;
-                break;
-            case R.id.rb_Zonificacion05:
-                zonificacion = 5;
-                break;
-            case R.id.rb_Zonificacion06:
-                zonificacion = 6;
-                break;
-            case R.id.rb_Zonificacion07:
-                zonificacion = 7;
-                break;
-            case R.id.rb_Zonificacion08:
-                zonificacion = 8;
-                break;
-            case R.id.rb_Zonificacion09:
-                zonificacion = 9;
-                break;
-            case R.id.rb_Zonificacion10:
-                zonificacion = 10;
-                break;
-            case R.id.rb_Zonificacion11:
-                zonificacion = 11;
-                break;
+        int checkedIdZonificacion = rbg_Zonificacion.getCheckedRadioButtonId();
+        if (checkedIdZonificacion == R.id.rb_Zonificacion01) {
+            zonificacion = 1;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion02) {
+            zonificacion = 2;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion03) {
+            zonificacion = 3;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion04) {
+            zonificacion = 4;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion05) {
+            zonificacion = 5;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion06) {
+            zonificacion = 6;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion07) {
+            zonificacion = 7;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion08) {
+            zonificacion = 8;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion09) {
+            zonificacion = 9;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion10) {
+            zonificacion = 10;
+        } else if (checkedIdZonificacion == R.id.rb_Zonificacion11) {
+            zonificacion = 11;
         }
 
-        switch (rbg_FuerzaViento.getCheckedRadioButtonId()) {
-            case R.id.rb_VientoCalma:
-                viento = 1;
-                break;
-            case R.id.rb_VientoLigero:
-                viento = 2;
-                break;
-            case R.id.rb_VientoFuerte:
-                viento=3;
-                break;
+        int checkedIdFuerzaViento = rbg_FuerzaViento.getCheckedRadioButtonId();
+        if (checkedIdFuerzaViento == R.id.rb_VientoCalma) {
+            viento = 1;
+        } else if (checkedIdFuerzaViento == R.id.rb_VientoLigero) {
+            viento = 2;
+        } else if (checkedIdFuerzaViento == R.id.rb_VientoFuerte) {
+            viento = 3;
         }
 
-        if (rb_VientoLigero.isChecked() || rb_VientoFuerte.isChecked()){
-            switch (rbg_DireccionViento.getCheckedRadioButtonId()){
-                case R.id.rb_DirN:
-                    direccionViento = "N";
-                    break;
-                case R.id.rb_DirS:
-                    direccionViento = "S";
-                    break;
-                case R.id.rb_DirE:
-                    direccionViento = "E";
-                    break;
-                case R.id.rb_DirO:
-                    direccionViento = "O";
-                    break;
-                case R.id.rb_DirNE:
-                    direccionViento = "NE";
-                    break;
-                case R.id.rb_DirNO:
-                    direccionViento = "NO";
-                    break;
-                case R.id.rb_DirSE:
-                    direccionViento = "SE";
-                    break;
-                case R.id.rb_DirSO:
-                    direccionViento = "SO";
-                    break;
+
+        if (rb_VientoLigero.isChecked() || rb_VientoFuerte.isChecked()) {
+            int checkedIdViento = rbg_DireccionViento.getCheckedRadioButtonId();
+            if (checkedIdViento == R.id.rb_DirN) {
+                direccionViento = "N";
+            } else if (checkedIdViento == R.id.rb_DirS) {
+                direccionViento = "S";
+            } else if (checkedIdViento == R.id.rb_DirE) {
+                direccionViento = "E";
+            } else if (checkedIdViento == R.id.rb_DirO) {
+                direccionViento = "O";
+            } else if (checkedIdViento == R.id.rb_DirNE) {
+                direccionViento = "NE";
+            } else if (checkedIdViento == R.id.rb_DirNO) {
+                direccionViento = "NO";
+            } else if (checkedIdViento == R.id.rb_DirSE) {
+                direccionViento = "SE";
+            } else if (checkedIdViento == R.id.rb_DirSO) {
+                direccionViento = "SO";
             }
-        } else direccionViento = "0";
-
-
-        switch (rbg_Nubes.getCheckedRadioButtonId()){
-            case R.id.rb_NubesAusente:
-                nubes=1;
-                break;
-            case R.id.rb_NubesNYC:
-                nubes=2;
-                break;
-            case R.id.rb_NubesCubierto:
-                nubes=3;
-                break;
-            case R.id.rb_NubesMCubierto:
-                nubes=4;
-                break;
+        } else {
+            direccionViento = "0";
         }
 
-        switch (rbg_Lluvia.getCheckedRadioButtonId()){
-            case R.id.rb_LluviaAusente:
-                lluvia=1;
-                break;
-            case R.id.rb_LluviaIntermitente:
-                lluvia=2;
-                break;
-            case R.id.rb_LluviaLigera:
+
+        int checkedIdNubes = rbg_Nubes.getCheckedRadioButtonId();
+        if (checkedIdNubes == R.id.rb_NubesAusente) {
+            nubes = 1;
+        } else if (checkedIdNubes == R.id.rb_NubesNYC) {
+            nubes = 2;
+        } else if (checkedIdNubes == R.id.rb_NubesCubierto) {
+            nubes = 3;
+        } else if (checkedIdNubes == R.id.rb_NubesMCubierto) {
+            nubes = 4;
+        }
+
+        if (rb_NubesAusente.isChecked()) {
+            lluvia = 1;
+        } else {
+            int checkedIdLluvia = rbg_Lluvia.getCheckedRadioButtonId();
+            if (checkedIdLluvia == R.id.rb_LluviaAusente) {
+                lluvia = 1;
+            } else if (checkedIdLluvia == R.id.rb_LluviaIntermitente) {
+                lluvia = 2;
+            } else if (checkedIdLluvia == R.id.rb_LluviaLigera) {
                 lluvia = 3;
-                break;
-            case R.id.rb_LluviaFuerte:
+            } else if (checkedIdLluvia == R.id.rb_LluviaFuerte) {
                 lluvia = 4;
-                break;
-            case R.id.rb_LluviaMFuerte:
+            } else if (checkedIdLluvia == R.id.rb_LluviaMFuerte) {
                 lluvia = 5;
-                break;
+            }
         }
 
         ArrayList<Integer> plantas = setPlantas();
 
         String ep37, ep38;
-        if (et_Especie37.getText().toString().equals("")) ep37 = "-";
+        if (et_Especie37.getText().toString().isEmpty()) ep37 = "-";
         else ep37 = et_Especie37.getText().toString();
 
-        if (et_Especie38.getText().toString().equals("")) ep38 = "-";
+        if (et_Especie38.getText().toString().isEmpty()) ep38 = "-";
         else ep38 = et_Especie38.getText().toString();
 
         envio.setDatosEntorno( new DatosEntorno(tInicio, tFin, zonificacion, viento, direccionViento, nubes, lluvia, plantas, ep37, ep38) );
@@ -516,403 +488,18 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
     @SuppressLint("NonConstantResourceId")
     private ArrayList<Integer> setPlantas() {
         ArrayList<Integer> plantasSeleccionadas = new ArrayList<>();
-        switch (rbg_Especie01.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie01N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie01S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie01A:
-                plantasSeleccionadas.add(2);
-                break;
+        for (int i = 1; i <= 44; i++) {
+            if (i == 37 || i == 38) {
+                plantasSeleccionadas.add(0); // Para mantener la posición
+                continue;
+            }
+            int idx = especieToIndex(i);
+            int val = 0;
+            if (rbEspecie[idx][1].isChecked()) val = 1;
+            else if (rbEspecie[idx][2].isChecked()) val = 2;
+            else if (rbEspecie[idx][3].isChecked()) val = 3;
+            plantasSeleccionadas.add(val);
         }
-        switch (rbg_Especie02.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie02N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie02S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie02A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie03.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie03N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie03S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie03A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie04.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie04N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie04S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie04A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie05.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie05N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie05S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie05A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie06.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie06N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie06S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie06A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie07.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie07N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie07S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie07A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie08.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie08N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie08S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie08A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie09.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie09N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie09S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie09A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie10.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie10N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie10S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie10A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie11.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie11N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie11S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie11A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie12.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie12N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie12S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie12A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie13.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie13N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie13S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie13A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie14.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie14N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie14S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie14A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie15.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie15N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie15S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie15A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie16.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie16N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie16S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie16A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie17.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie17N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie17S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie17A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie18.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie18N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie18S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie18A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie19.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie19N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie19S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie19A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie20.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie20N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie20S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie20A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie21.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie21N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie21S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie21A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie22.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie22N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie22S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie22A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie23.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie23N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie23S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie23A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie24.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie24N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie24S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie24A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie25.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie25N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie25S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie25A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie26.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie26N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie26S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie26A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie27.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie27N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie27S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie27A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie28.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie28N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie28S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie28A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie29.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie29N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie29S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie29A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie30.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie30N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie30S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie30A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie31.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie31N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie31S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie31A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie32.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie32N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie32S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie32A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie33.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie33N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie33S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie33A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie34.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie34N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie34S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie34A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie35.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie35N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie35S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie35A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-        switch (rbg_Especie36.getCheckedRadioButtonId()) {
-            case R.id.rb_Especie36N:
-                plantasSeleccionadas.add(0);
-                break;
-            case R.id.rb_Especie36S:
-                plantasSeleccionadas.add(1);
-                break;
-            case R.id.rb_Especie36A:
-                plantasSeleccionadas.add(2);
-                break;
-        }
-
         return plantasSeleccionadas;
     }
 
@@ -939,8 +526,8 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
      */
     private void loadData() {
 
-        etnd_TemperaturaInicio.setText(String.valueOf(envio.getDatosEntorno().gettInicio()));
-        etnd_TemperaturaFin.setText(String.valueOf(envio.getDatosEntorno().gettFin()));
+        etnd_TemperaturaInicio.setText(String.valueOf(envio.getDatosEntorno().getTInicio()));
+        etnd_TemperaturaFin.setText(String.valueOf(envio.getDatosEntorno().getTFin()));
 
         switch (envio.getDatosEntorno().getZonificacion()){
             case 1:
@@ -1087,10 +674,11 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
 
 
         int i = 0;
-        while (i < envio.getDatosEntorno().getPlantas().size()) {
-            int planta = envio.getDatosEntorno().getPlantas().get(i);
-            loadPlantas(i, planta);
-            i++;
+        for (int especieNum = 1; especieNum <= 44; especieNum++) {
+            if (especieNum == 37 || especieNum == 38) continue;
+            int idx = especieToIndex(especieNum);
+            int planta = envio.getDatosEntorno().getPlantas().get(especieNum - 1);
+            loadPlantas(idx, planta);
         }
 
         et_Especie37.setText(envio.getDatosEntorno().getEP37());
@@ -1137,331 +725,7 @@ public class Pantalla_Datos_Entorno extends Activity implements View.OnClickList
      * @param planta the state in which is checked
      */
     private void loadPlantas(int numero, int planta) {
-        switch (numero) {
-            case 0:
-                if (planta == 0) {
-                    rbg_Especie01.check(R.id.rb_Especie01N);
-                } else if (planta == 1) {
-                    rbg_Especie01.check(R.id.rb_Especie01S);
-                } else if (planta == 2) {
-                    rbg_Especie01.check(R.id.rb_Especie01A);
-                }
-                break;
-            case 1:
-                if (planta == 0) {
-                    rbg_Especie02.check(R.id.rb_Especie02N);
-                } else if (planta == 1) {
-                    rbg_Especie02.check(R.id.rb_Especie02S);
-                } else if (planta == 2) {
-                    rbg_Especie02.check(R.id.rb_Especie02A);
-                }
-                break;
-            case 2:
-                if (planta == 0) {
-                    rbg_Especie03.check(R.id.rb_Especie03N);
-                } else if (planta == 1) {
-                    rbg_Especie03.check(R.id.rb_Especie03S);
-                } else if (planta == 2) {
-                    rbg_Especie03.check(R.id.rb_Especie03A);
-                }
-                break;
-            case 3:
-                if (planta == 0) {
-                    rbg_Especie04.check(R.id.rb_Especie04N);
-                } else if (planta == 1) {
-                    rbg_Especie04.check(R.id.rb_Especie04S);
-                } else if (planta == 2) {
-                    rbg_Especie04.check(R.id.rb_Especie04A);
-                }
-                break;
-            case 4:
-                if (planta == 0) {
-                    rbg_Especie05.check(R.id.rb_Especie05N);
-                } else if (planta == 1) {
-                    rbg_Especie05.check(R.id.rb_Especie05S);
-                } else if (planta == 2) {
-                    rbg_Especie05.check(R.id.rb_Especie05A);
-                }
-                break;
-            case 5:
-                if (planta == 0) {
-                    rbg_Especie06.check(R.id.rb_Especie06N);
-                } else if (planta == 1) {
-                    rbg_Especie06.check(R.id.rb_Especie06S);
-                } else if (planta == 2) {
-                    rbg_Especie06.check(R.id.rb_Especie06A);
-                }
-                break;
-            case 6:
-                if (planta == 0) {
-                    rbg_Especie07.check(R.id.rb_Especie07N);
-                } else if (planta == 1) {
-                    rbg_Especie07.check(R.id.rb_Especie07S);
-                } else if (planta == 2) {
-                    rbg_Especie07.check(R.id.rb_Especie07A);
-                }
-                break;
-            case 7:
-                if (planta == 0) {
-                    rbg_Especie08.check(R.id.rb_Especie08N);
-                } else if (planta == 1) {
-                    rbg_Especie08.check(R.id.rb_Especie08S);
-                } else if (planta == 2) {
-                    rbg_Especie08.check(R.id.rb_Especie08A);
-                }
-                break;
-            case 8:
-                if (planta == 0) {
-                    rbg_Especie09.check(R.id.rb_Especie09N);
-                } else if (planta == 1) {
-                    rbg_Especie09.check(R.id.rb_Especie09S);
-                } else if (planta == 2) {
-                    rbg_Especie09.check(R.id.rb_Especie09A);
-                }
-                break;
-            case 9:
-                if (planta == 0) {
-                    rbg_Especie10.check(R.id.rb_Especie10N);
-                } else if (planta == 1) {
-                    rbg_Especie10.check(R.id.rb_Especie10S);
-                } else if (planta == 2) {
-                    rbg_Especie10.check(R.id.rb_Especie10A);
-                }
-                break;
-            case 10:
-                if (planta == 0) {
-                    rbg_Especie11.check(R.id.rb_Especie11N);
-                } else if (planta == 1) {
-                    rbg_Especie11.check(R.id.rb_Especie11S);
-                } else if (planta == 2) {
-                    rbg_Especie11.check(R.id.rb_Especie11A);
-                }
-                break;
-            case 11:
-                if (planta == 0) {
-                    rbg_Especie12.check(R.id.rb_Especie12N);
-                } else if (planta == 1) {
-                    rbg_Especie12.check(R.id.rb_Especie12S);
-                } else if (planta == 2) {
-                    rbg_Especie12.check(R.id.rb_Especie12A);
-                }
-                break;
-            case 12:
-                if (planta == 0) {
-                    rbg_Especie13.check(R.id.rb_Especie13N);
-                } else if (planta == 1) {
-                    rbg_Especie13.check(R.id.rb_Especie13S);
-                } else if (planta == 2) {
-                    rbg_Especie13.check(R.id.rb_Especie13A);
-                }
-                break;
-            case 13:
-                if (planta == 0) {
-                    rbg_Especie14.check(R.id.rb_Especie14N);
-                } else if (planta == 1) {
-                    rbg_Especie14.check(R.id.rb_Especie14S);
-                } else if (planta == 2) {
-                    rbg_Especie14.check(R.id.rb_Especie14A);
-                }
-                break;
-            case 14:
-                if (planta == 0) {
-                    rbg_Especie15.check(R.id.rb_Especie15N);
-                } else if (planta == 1) {
-                    rbg_Especie15.check(R.id.rb_Especie15S);
-                } else if (planta == 2) {
-                    rbg_Especie15.check(R.id.rb_Especie15A);
-                }
-                break;
-            case 15:
-                if (planta == 0) {
-                    rbg_Especie16.check(R.id.rb_Especie16N);
-                } else if (planta == 1) {
-                    rbg_Especie16.check(R.id.rb_Especie16S);
-                } else if (planta == 2) {
-                    rbg_Especie16.check(R.id.rb_Especie16A);
-                }
-                break;
-            case 16:
-                if (planta == 0) {
-                    rbg_Especie17.check(R.id.rb_Especie17N);
-                } else if (planta == 1) {
-                    rbg_Especie17.check(R.id.rb_Especie17S);
-                } else if (planta == 2) {
-                    rbg_Especie17.check(R.id.rb_Especie17A);
-                }
-                break;
-            case 17:
-                if (planta == 0) {
-                    rbg_Especie18.check(R.id.rb_Especie18N);
-                } else if (planta == 1) {
-                    rbg_Especie18.check(R.id.rb_Especie18S);
-                } else if (planta == 2) {
-                    rbg_Especie18.check(R.id.rb_Especie18A);
-                }
-                break;
-            case 18:
-                if (planta == 0) {
-                    rbg_Especie19.check(R.id.rb_Especie19N);
-                } else if (planta == 1) {
-                    rbg_Especie19.check(R.id.rb_Especie19S);
-                } else if (planta == 2) {
-                    rbg_Especie19.check(R.id.rb_Especie19A);
-                }
-                break;
-            case 19:
-                if (planta == 0) {
-                    rbg_Especie20.check(R.id.rb_Especie20N);
-                } else if (planta == 1) {
-                    rbg_Especie20.check(R.id.rb_Especie20S);
-                } else if (planta == 2) {
-                    rbg_Especie20.check(R.id.rb_Especie20A);
-                }
-                break;
-            case 20:
-                if (planta == 0) {
-                    rbg_Especie21.check(R.id.rb_Especie21N);
-                } else if (planta == 1) {
-                    rbg_Especie21.check(R.id.rb_Especie21S);
-                } else if (planta == 2) {
-                    rbg_Especie21.check(R.id.rb_Especie21A);
-                }
-                break;
-            case 21:
-                if (planta == 0) {
-                    rbg_Especie22.check(R.id.rb_Especie22N);
-                } else if (planta == 1) {
-                    rbg_Especie22.check(R.id.rb_Especie22S);
-                } else if (planta == 2) {
-                    rbg_Especie22.check(R.id.rb_Especie22A);
-                }
-                break;
-            case 22:
-                if (planta == 0) {
-                    rbg_Especie23.check(R.id.rb_Especie23N);
-                } else if (planta == 1) {
-                    rbg_Especie23.check(R.id.rb_Especie23S);
-                } else if (planta == 2) {
-                    rbg_Especie23.check(R.id.rb_Especie23A);
-                }
-                break;
-            case 23:
-                if (planta == 0) {
-                    rbg_Especie24.check(R.id.rb_Especie24N);
-                } else if (planta == 1) {
-                    rbg_Especie24.check(R.id.rb_Especie24S);
-                } else if (planta == 2) {
-                    rbg_Especie24.check(R.id.rb_Especie24A);
-                }
-                break;
-            case 24:
-                if (planta == 0) {
-                    rbg_Especie25.check(R.id.rb_Especie25N);
-                } else if (planta == 1) {
-                    rbg_Especie25.check(R.id.rb_Especie25S);
-                } else if (planta == 2) {
-                    rbg_Especie25.check(R.id.rb_Especie25A);
-                }
-                break;
-            case 25:
-                if (planta == 0) {
-                    rbg_Especie26.check(R.id.rb_Especie26N);
-                } else if (planta == 1) {
-                    rbg_Especie26.check(R.id.rb_Especie26S);
-                } else if (planta == 2) {
-                    rbg_Especie26.check(R.id.rb_Especie26A);
-                }
-                break;
-            case 26:
-                if (planta == 0) {
-                    rbg_Especie27.check(R.id.rb_Especie27N);
-                } else if (planta == 1) {
-                    rbg_Especie27.check(R.id.rb_Especie27S);
-                } else if (planta == 2) {
-                    rbg_Especie27.check(R.id.rb_Especie27A);
-                }
-                break;
-            case 27:
-                if (planta == 0) {
-                    rbg_Especie28.check(R.id.rb_Especie28N);
-                } else if (planta == 1) {
-                    rbg_Especie28.check(R.id.rb_Especie28S);
-                } else if (planta == 2) {
-                    rbg_Especie28.check(R.id.rb_Especie28A);
-                }
-                break;
-            case 28:
-                if (planta == 0) {
-                    rbg_Especie29.check(R.id.rb_Especie29N);
-                } else if (planta == 1) {
-                    rbg_Especie29.check(R.id.rb_Especie29S);
-                } else if (planta == 2) {
-                    rbg_Especie29.check(R.id.rb_Especie29A);
-                }
-                break;
-            case 29:
-                if (planta == 0) {
-                    rbg_Especie30.check(R.id.rb_Especie30N);
-                } else if (planta == 1) {
-                    rbg_Especie30.check(R.id.rb_Especie30S);
-                } else if (planta == 2) {
-                    rbg_Especie30.check(R.id.rb_Especie30A);
-                }
-                break;
-            case 30:
-                if (planta == 0) {
-                    rbg_Especie31.check(R.id.rb_Especie31N);
-                } else if (planta == 1) {
-                    rbg_Especie31.check(R.id.rb_Especie31S);
-                } else if (planta == 2) {
-                    rbg_Especie31.check(R.id.rb_Especie31A);
-                }
-                break;
-            case 31:
-                if (planta == 0) {
-                    rbg_Especie32.check(R.id.rb_Especie32N);
-                } else if (planta == 1) {
-                    rbg_Especie32.check(R.id.rb_Especie32S);
-                } else if (planta == 2) {
-                    rbg_Especie32.check(R.id.rb_Especie32A);
-                }
-                break;
-            case 32:
-                if (planta == 0) {
-                    rbg_Especie33.check(R.id.rb_Especie33N);
-                } else if (planta == 1) {
-                    rbg_Especie33.check(R.id.rb_Especie33S);
-                } else if (planta == 2) {
-                    rbg_Especie33.check(R.id.rb_Especie33A);
-                }
-                break;
-            case 33:
-                if (planta == 0) {
-                    rbg_Especie34.check(R.id.rb_Especie34N);
-                } else if (planta == 1) {
-                    rbg_Especie34.check(R.id.rb_Especie34S);
-                } else if (planta == 2) {
-                    rbg_Especie34.check(R.id.rb_Especie34A);
-                }
-                break;
-            case 34:
-                if (planta == 0) {
-                    rbg_Especie35.check(R.id.rb_Especie35N);
-                } else if (planta == 1) {
-                    rbg_Especie35.check(R.id.rb_Especie35S);
-                } else if (planta == 2) {
-                    rbg_Especie35.check(R.id.rb_Especie35A);
-                }
-                break;
-            case 35:
-                if (planta == 0) {
-                    rbg_Especie36.check(R.id.rb_Especie36N);
-                } else if (planta == 1) {
-                    rbg_Especie36.check(R.id.rb_Especie36S);
-                } else if (planta == 2) {
-                    rbg_Especie36.check(R.id.rb_Especie36A);
-                }
-                break;
-        }
+        for (int j = 0; j < 4; j++) rbEspecie[numero][j].setChecked(false);
+        if (planta > 0 && planta <= 4) rbEspecie[numero][planta].setChecked(true);
     }
 }

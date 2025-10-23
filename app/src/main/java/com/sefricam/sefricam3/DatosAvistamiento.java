@@ -3,10 +3,13 @@ package com.sefricam.sefricam3;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import lombok.Getter;
+
 /**
  * This is a Object Class in order to make data more readable at debug. Contains all the data related
  * to the DatosAvistamiento that we store in the Parse DB
  */
+@Getter
 public class DatosAvistamiento implements Serializable {
 
     private final String horaInicio;
@@ -32,39 +35,4 @@ public class DatosAvistamiento implements Serializable {
         this.hora14 = hora14;
     }
 
-    public String getHoraInicio() {
-        return horaInicio;
-    }
-
-    public String getHoraFin() {
-        return horaFin;
-    }
-
-    public ArrayList<Integer> getHora08() {
-        return hora08;
-    }
-
-    public ArrayList<Integer> getHora09() {
-        return hora09;
-    }
-
-    public ArrayList<Integer> getHora10() {
-        return hora10;
-    }
-
-    public ArrayList<Integer> getHora11() {
-        return hora11;
-    }
-
-    public ArrayList<Integer> getHora12() {
-        return hora12;
-    }
-
-    public ArrayList<Integer> getHora13() {
-        return hora13;
-    }
-
-    public ArrayList<Integer> getHora14() {
-        return hora14;
-    }
 }

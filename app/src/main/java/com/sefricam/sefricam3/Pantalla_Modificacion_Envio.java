@@ -211,12 +211,24 @@ public class Pantalla_Modificacion_Envio extends Activity implements View.OnClic
     private DatosEntorno getDatosEntorno(ParseObject obj) {
         ArrayList<Integer> plantas = new ArrayList<>();
 
-        for (int i = 1; i<37; i++){
+        for (int i = 1; i<45; i++){
+            if (i==37 || i==38) {
+                plantas.add(0);
+            }
             String field;
             if (i<10) field = "EP0".concat(String.valueOf(i));
             else field = "EP".concat(String.valueOf(i));
 
             System.out.println("GMC - " + field);
+            try {
+                if (obj.getNumber(field) == null) {
+                    plantas.add(0);
+                    continue;
+                }
+            } catch (Exception e) {
+                plantas.add(0);
+                continue;
+            }
             plantas.add(Integer.valueOf(Objects.requireNonNull(obj.getNumber(field)).toString()));
         }
 

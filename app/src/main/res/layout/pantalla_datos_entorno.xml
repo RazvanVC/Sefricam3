@@ -6,6 +6,7 @@
     android:background="@color/Blanco">
 
     <ImageView
+        android:contentDescription="Logo Federación Madrileña de Caza"
         android:id="@+id/iv_LogoGrandeEntorno"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
@@ -38,7 +39,7 @@
                 android:id="@+id/tv_IntruduceTemperatura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Introduzca la temperatura:"
+                android:text="@string/introduzca_la_temperatura"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
@@ -52,7 +53,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Temperatura Incio"
+                    android:importantForAutofill="no"
+                    android:hint="@string/temperatura_incio"
                     android:inputType="numberDecimal|numberSigned"
                     android:textColor="@color/Negro"
                     android:textSize="@dimen/_13ssp" />
@@ -67,7 +69,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Temperatura Fin"
+                    android:importantForAutofill="no"
+                    android:hint="@string/temperatura_fin"
                     android:inputType="numberDecimal|numberSigned"
                     android:textColor="@color/Negro"
                     android:textSize="@dimen/_13ssp" />
@@ -78,7 +81,7 @@
                 android:id="@+id/tv_Zonificacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Zonificacion por uso del Suelo"
+                android:text="@string/zonificacion"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
@@ -93,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Afloramientos Rocosos y Rasos"/>
+                    android:text="@string/zonificacion_01"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion02"
@@ -101,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Cultivos"/>
+                    android:text="@string/zonificacion_02"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion03"
@@ -109,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Láminas y Cursos de Agua"/>
+                    android:text="@string/zonificacion_03"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion04"
@@ -117,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Dehesa y zonas adehesadas"/>
+                    android:text="@string/zonificacion_04"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion05"
@@ -125,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Plantaciones de Frondosas y Coníferas"/>
+                    android:text="@string/zonificacion_05"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion06"
@@ -133,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación Arbórea de Coníferas"/>
+                    android:text="@string/zonificacion_06"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion07"
@@ -141,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación Arbórea de Frondosas"/>
+                    android:text="@string/zonificacion_07"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion08"
@@ -149,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación de Matorral"/>
+                    android:text="@string/zonificacion_08"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion09"
@@ -157,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Vegetación Herbácea"/>
+                    android:text="@string/zonificacion_09"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion10"
@@ -165,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Viñedos, Olivares y Otros Frutales"/>
+                    android:text="@string/zonificacion_10"/>
 
                 <RadioButton
                     android:id="@+id/rb_Zonificacion11"
@@ -173,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_13ssp"
                     android:textColor="@color/VerdePrimario"
-                    android:text="Zonas Artificiales"/>
+                    android:text="@string/zonificacion_11"/>
 
             </RadioGroup>
 
@@ -181,7 +184,7 @@
                 android:id="@+id/tv_FuerzaViento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Viento (Marque la correspondiente)"
+                android:text="@string/viento"
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
@@ -194,7 +197,7 @@
                     android:id="@+id/rb_VientoCalma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="CALMA"
+                    android:text="@string/viento_01"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
@@ -202,7 +205,7 @@
                     android:id="@+id/rb_VientoLigero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="LIGERO"
+                    android:text="@string/viento_02"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
@@ -210,7 +213,7 @@
                     android:id="@+id/rb_VientoFuerte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="FUERTE"
+                    android:text="@string/viento_03"
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
             </RadioGroup>
@@ -375,7 +378,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="AUSENTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -383,7 +387,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="INTERMITENTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -391,7 +396,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="LIGERA"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -399,7 +405,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="FUERTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:clickable="false"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
 
                 <RadioButton
@@ -407,7 +414,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MUY FUERTE"
-                    android:textColor="@color/VerdePrimario"
+                    android:textColor="@color/Gris"
                     android:textSize="@dimen/_13ssp" />
             </RadioGroup>
 
@@ -418,10 +425,19 @@
                 android:textColor="@color/VerdePrimario"
                 android:textSize="@dimen/_15ssp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:outlineAmbientShadowColor="@color/Gris"
+                >
 
                 <TextView
                     android:id="@+id/tv_Especie01"
@@ -433,41 +449,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie01"
+                <GridLayout
+                    android:id="@+id/grid_Especie01"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie01N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie01S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie01A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie01MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -484,41 +507,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie02"
+                <GridLayout
+                    android:id="@+id/grid_Especie02"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie02N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie02S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie02A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie02MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -535,42 +565,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie03"
+                <GridLayout
+                    android:id="@+id/grid_Especie03"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie03N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie03S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie03A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie03MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -586,42 +622,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie04"
+                <GridLayout
+                    android:id="@+id/grid_Especie04"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie04N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie04S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie04A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie04MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -637,42 +679,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie05"
+                <GridLayout
+                    android:id="@+id/grid_Especie05"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie05N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie05S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie05A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie05MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -688,42 +736,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie06"
+                <GridLayout
+                    android:id="@+id/grid_Especie06"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie06N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie06S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie06A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie06MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -739,42 +793,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie07"
+                <GridLayout
+                    android:id="@+id/grid_Especie07"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie07N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie07S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie07A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie07MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -790,42 +850,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie08"
+                <GridLayout
+                    android:id="@+id/grid_Especie08"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie08N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie08S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie08A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie08MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -841,42 +907,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie09"
+                <GridLayout
+                    android:id="@+id/grid_Especie09"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie09N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie09S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie09A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie09MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -892,42 +964,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie10"
+                <GridLayout
+                    android:id="@+id/grid_Especie10"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie10N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie10S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie10A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie10MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -943,42 +1021,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie11"
+                <GridLayout
+                    android:id="@+id/grid_Especie11"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie11N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie11S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie11A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie11MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -994,42 +1078,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie12"
+                <GridLayout
+                    android:id="@+id/grid_Especie12"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie12N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie12S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie12A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie12MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1045,42 +1135,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie13"
+                <GridLayout
+                    android:id="@+id/grid_Especie13"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie13N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie13S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie13A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie13MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1096,42 +1192,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie14"
+                <GridLayout
+                    android:id="@+id/grid_Especie14"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie14N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie14S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie14A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie14MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1147,42 +1249,105 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie15"
+                <GridLayout
+                    android:id="@+id/grid_Especie15"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie15N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie15S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie15A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie15MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie44"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="Colza"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <GridLayout
+                    android:id="@+id/grid_Especie44"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie44N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie44S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie44A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie44MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1198,42 +1363,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie16"
+                <GridLayout
+                    android:id="@+id/grid_Especie16"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie16N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie16S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie16A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie16MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1249,42 +1420,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie17"
+                <GridLayout
+                    android:id="@+id/grid_Especie17"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie17N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie17S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie17A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie17MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1300,42 +1477,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie21"
+                <GridLayout
+                    android:id="@+id/grid_Especie21"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie21N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie21S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie21A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie21MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1351,42 +1534,105 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie20"
+                <GridLayout
+                    android:id="@+id/grid_Especie20"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie20N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie20S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie20A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie20MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie42"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="Amagarza/Manzanilla loca"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <GridLayout
+                    android:id="@+id/grid_Especie42"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie42N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie42S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie42A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie42MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1402,42 +1648,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie22"
+                <GridLayout
+                    android:id="@+id/grid_Especie22"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie22N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie22S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie22A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie22MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1453,42 +1705,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie23"
+                <GridLayout
+                    android:id="@+id/grid_Especie23"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie23N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie23S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie23A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie23MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1504,42 +1762,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie24"
+                <GridLayout
+                    android:id="@+id/grid_Especie24"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie24N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie24S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie24A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie24MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1555,42 +1819,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie18"
+                <GridLayout
+                    android:id="@+id/grid_Especie18"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie18N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie18S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie18A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie18MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1606,42 +1876,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie25"
+                <GridLayout
+                    android:id="@+id/grid_Especie25"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie25N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie25S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie25A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie25MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1657,42 +1933,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie26"
+                <GridLayout
+                    android:id="@+id/grid_Especie26"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie26N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie26S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie26A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie26MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1708,42 +1990,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie27"
+                <GridLayout
+                    android:id="@+id/grid_Especie27"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie27N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie27S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie27A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie27MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1759,42 +2047,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie28"
+                <GridLayout
+                    android:id="@+id/grid_Especie28"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie28N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie28S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie28A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie28MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1810,42 +2104,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie29"
+                <GridLayout
+                    android:id="@+id/grid_Especie29"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie29N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie29S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie29A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie29MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1861,42 +2161,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie30"
+                <GridLayout
+                    android:id="@+id/grid_Especie30"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie30N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie30S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie30A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie30MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1912,42 +2218,105 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie19"
+                <GridLayout
+                    android:id="@+id/grid_Especie19"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie19N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie19S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie19A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie19MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie39"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="Llantén"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <GridLayout
+                    android:id="@+id/grid_Especie39"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie39N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie39S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie39A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie39MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1963,42 +2332,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie36"
+                <GridLayout
+                    android:id="@+id/grid_Especie36"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie36N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie36S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie36A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie36MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2014,42 +2389,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie31"
+                <GridLayout
+                    android:id="@+id/grid_Especie31"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie31N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie31S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie31A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie31MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2065,42 +2446,162 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie32"
+                <GridLayout
+                    android:id="@+id/grid_Especie32"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie32N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie32S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie32A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie32MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie40"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="Sedum Rojo"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <GridLayout
+                    android:id="@+id/grid_Especie40"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie40N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie40S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie40A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie40MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie41"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="Verdolaga"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <GridLayout
+                    android:id="@+id/grid_Especie41"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie41N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie41S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie41A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie41MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2116,42 +2617,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie33"
+                <GridLayout
+                    android:id="@+id/grid_Especie33"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie33N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie33S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie33A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie33MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2167,42 +2674,48 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie34"
+                <GridLayout
+                    android:id="@+id/grid_Especie34"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie34N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie34S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie34A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie34MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2218,41 +2731,105 @@
                     android:textColor="@color/VerdePrimario"
                     android:textSize="@dimen/_13ssp" />
 
-                <RadioGroup
-                    android:id="@+id/rbg_Especie35"
+                <GridLayout
+                    android:id="@+id/grid_Especie35"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="65"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="2">
 
                     <RadioButton
                         android:id="@+id/rb_Especie35N"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="@string/rb_PlantaNo"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie35S"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaPresente"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
 
                     <RadioButton
                         android:id="@+id/rb_Especie35A"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/rb_PlantaAbundante"
-                        android:textColor="@color/VerdePrimario"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
 
-                </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rb_Especie35MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_Especie43"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="35"
+                    android:text="Frutos rojos/azules"
+                    android:textColor="@color/VerdePrimario"
+                    android:textSize="@dimen/_13ssp" />
+
+                <GridLayout
+                    android:id="@+id/grid_Especie43"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="65"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie43N"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_N" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie43S"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_S" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie43A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_A" />
+
+                    <RadioButton
+                        android:id="@+id/rb_Especie43MA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/opt_MA" />
+
+                </GridLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/Gris" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -2325,3 +2902,4 @@
             android:textSize="@dimen/_18ssp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
